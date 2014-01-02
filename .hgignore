@@ -1,0 +1,7 @@
+syntax: glob
+CODE/.classpath
+CODE/.settings/org.eclipse.jdt.core.prefs
+CODE/.settings/.jsdtscope
+CODE/.settings/
+CODE/.project
+CODE/target/
