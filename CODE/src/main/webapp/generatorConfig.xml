@@ -10,24 +10,12 @@
     <javaModelGenerator targetPackage="com.flt.dao.model" targetProject="baseweb" />
     <sqlMapGenerator targetPackage="com.flt.dao.sqlmap" targetProject="baseweb" />
     <javaClientGenerator targetPackage="com.flt.dao.client" implementationPackage="com.flt.dao.client.impl" targetProject="baseweb" type="XMLMAPPER" />
-<!--     <table schema="admin" tableName="admin" > -->
-<!--       <columnOverride column="id" property="id" /> -->
-<!--     </table> -->
-<!--     <table schema="menu" tableName="p_menu" > -->
-<!--       <columnOverride column="menu_id" property="menu_id" /> -->
-<!--     </table> -->
-<!--     <table schema="basedb" tableName="p_category" domainObjectName="Category"> -->
-<!--       <columnOverride column="id_category" property="id_category" /> -->
-<!--     </table> -->
+
+    <table schema="basedb" tableName="admin" domainObjectName="Admin">
+      <columnOverride column="id" property="id" />
+    </table>
     
-<!--     <table schema="basedb" tableName="p_passage" domainObjectName="Passage"> -->
-<!--       <columnOverride column="id_passage" property="id_passage" /> -->
-<!--     </table> -->
-    
-<!--     <table schema="basedb" tableName="p_channel" domainObjectName="Channel"> -->
-<!--       <columnOverride column="id" property="id" /> -->
-<!--     </table> -->
-    <table schema="basedb" tableName="p_product" domainObjectName="Product">
+    <table schema="basedb" tableName="channel" domainObjectName="Channel">
       <columnOverride column="id" property="id" />
     </table>
     

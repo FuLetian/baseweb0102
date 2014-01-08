@@ -1,33 +1,46 @@
 package com.flt.web.module.views.channel;
 
 import java.util.List;
+import java.util.Map;
 
-import org.springframework.ui.Model;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import com.flt.common.annotation.View;
+import com.flt.common.view.BaseView;
 import com.flt.dao.model.Channel;
-import com.flt.web.base.BaseView;
 
+@View(template="component/channel/{theme}/channelView.ftl")
 public class ChannelView extends BaseView {
 	
-	private List<Channel> channelList;
-
-	public ChannelView(Model model) {
-		super(model, ChannelView.class);
-		// TODO Auto-generated constructor stub
-	}
-
+	@Autowired
+	private IChannelService channelService;
+	
+	private Integer activeChannelId=0;
+	
 	@Override
-	public void rander() {
+	public void render() {
 		// TODO Auto-generated method stub
-		model.addAttribute("channelList", channelList);
+		super.render();
+		
+		List<Channel> list=channelService.listChannels();
+		
+		root.put("channels", list);
+		root.put("activeChannelId", activeChannelId);
 	}
 
-	public List<Channel> getChannelList() {
-		return channelList;
+	public IChannelService getChannelService() {
+		return channelService;
 	}
 
-	public void setChannelList(List<Channel> channelList) {
-		this.channelList = channelList;
+	public void setChannelService(IChannelService channelService) {
+		this.channelService = channelService;
 	}
 
+	public Integer getActiveChannelId() {
+		return activeChannelId;
+	}
+
+	public void setActiveChannelId(Integer activeChannelId) {
+		this.activeChannelId = activeChannelId;
+	}
 }
