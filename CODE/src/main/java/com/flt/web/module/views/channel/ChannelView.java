@@ -1,7 +1,6 @@
 package com.flt.web.module.views.channel;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 

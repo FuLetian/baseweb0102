@@ -8,4 +8,5 @@ public class BaseController {
 		String basePath=req.getContextPath()+"/";
 		return basePath;
 	}
+	
 }

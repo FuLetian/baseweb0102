@@ -8,6 +8,8 @@ import com.flt.common.view.BasePage;
 @View(template="web/page1/{theme}/page1View.ftl")
 public class Page1View extends BasePage {
 	
+	public static Integer BRAND_TYPE=0;
+	
 	public Page1View() {
 		// TODO Auto-generated constructor stub
 	}

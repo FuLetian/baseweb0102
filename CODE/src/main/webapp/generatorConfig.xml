@@ -11,14 +11,21 @@
     <sqlMapGenerator targetPackage="com.flt.dao.sqlmap" targetProject="baseweb" />
     <javaClientGenerator targetPackage="com.flt.dao.client" implementationPackage="com.flt.dao.client.impl" targetProject="baseweb" type="XMLMAPPER" />
 
-    <table schema="basedb" tableName="admin" domainObjectName="Admin">
-      <columnOverride column="id" property="id" />
-    </table>
-    
     <table schema="basedb" tableName="channel" domainObjectName="Channel">
       <columnOverride column="id" property="id" />
     </table>
     
+    <table schema="basedb" tableName="menu" domainObjectName="Menu">
+      <columnOverride column="id" property="id" />
+    </table>
+    
+    <table schema="basedb" tableName="article" domainObjectName="Article">
+      <columnOverride column="id" property="id" />
+    </table>
+    
+    <table schema="basedb" tableName="brand" domainObjectName="Brand">
+      <columnOverride column="id" property="id" />
+    </table>
     
   </context>
 </generatorConfiguration>
