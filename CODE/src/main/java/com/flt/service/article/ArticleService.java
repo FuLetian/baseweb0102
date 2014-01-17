@@ -25,5 +25,42 @@ public class ArticleService extends BaseService implements IArticleService{
 		}});
 	}
 
+	@Override
+	public List<Article> findArticlesIfConditionExist(Integer channelId,
+			Integer brandId, Integer menuId, String priceRange,
+			String discountRange) {
+		// TODO Auto-generated method stub
+		ArticleMapper m=getSqlSession().getMapper(ArticleMapper.class);
+		ArticleExample ex=new ArticleExample();
+		ArticleExample.Criteria c=ex.createCriteria();
+		
+		if(channelId!=null){
+			c.andChannelIdEqualTo(channelId);
+		}
+		if(brandId!=null){
+			c.andBrandIdEqualTo(brandId);
+		}
+		if(menuId!=null){
+			c.andMenuIdEqualTo(menuId);
+		}
+		if(priceRange!=null){
+			Double[] nums=parseRangeToInteger(priceRange);
+			c.andPriceBetween(nums[0], nums[1]);
+		}
+		if(discountRange!=null){
+			Double[] nums=parseRangeToInteger(discountRange);
+			c.andDiscountBetween(nums[0], nums[1]);
+		}
+		
+		return m.selectByExample(ex);
+	}
+
+	private Double[] parseRangeToInteger(String priceRange) {
+		// TODO Auto-generated method stub
+		String[] strs=priceRange.split("-");
+		Double[] nums=new Double[]{Double.valueOf(strs[0]),Double.valueOf(strs[1])};
+		return nums;
+	}
+
 	
 }

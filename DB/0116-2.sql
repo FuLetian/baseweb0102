@@ -1,0 +1,69 @@
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
+
+CREATE  TABLE IF NOT EXISTS `basedb`.`ball` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT ,
+  `term` INT(11) NOT NULL ,
+  `make_date_time` DATETIME NOT NULL ,
+  `day` VARCHAR(5) NULL DEFAULT NULL ,
+  `red_one` INT(11) NOT NULL ,
+  `red_two` INT(11) NOT NULL ,
+  `red_three` INT(11) NOT NULL ,
+  `red_four` INT(11) NOT NULL ,
+  `red_five` INT(11) NOT NULL ,
+  `red_six` INT(11) NOT NULL ,
+  `blue` INT(11) NOT NULL ,
+  `summation_value` INT(11) NULL DEFAULT NULL ,
+  `median_value` INT(11) NULL DEFAULT NULL ,
+  `min_value` INT(11) NULL DEFAULT NULL ,
+  `max_value` INT(11) NULL DEFAULT NULL ,
+  `variance_value` DOUBLE NULL DEFAULT NULL ,
+  `e_value` DOUBLE NULL DEFAULT NULL ,
+  `average_value` DOUBLE NULL DEFAULT NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB
+AUTO_INCREMENT = 1600
+DEFAULT CHARACTER SET = latin1
+COLLATE = latin1_swedish_ci;
+
+CREATE  TABLE IF NOT EXISTS `basedb`.`comment` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT ,
+  `content` VARCHAR(45) NOT NULL ,
+  `u_dt` DATETIME NULL DEFAULT NULL ,
+  `c_dt` DATETIME NULL DEFAULT NULL ,
+  `article_id` INT(11) NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_comment_article1` (`article_id` ASC) ,
+  CONSTRAINT `fk_comment_article1`
+    FOREIGN KEY (`article_id` )
+    REFERENCES `basedb`.`article` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1
+COLLATE = latin1_swedish_ci;
+
+CREATE  TABLE IF NOT EXISTS `basedb`.`resource` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT ,
+  `text` VARCHAR(1024) NULL DEFAULT NULL ,
+  `idx` INT(11) NULL DEFAULT NULL ,
+  `u_dt` DATETIME NULL DEFAULT NULL ,
+  `c_dt` DATETIME NULL DEFAULT NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1
+COLLATE = latin1_swedish_ci;
+
+ALTER TABLE `basedb`.`article` DROP COLUMN `idx` , ADD COLUMN `idx` INT(11) NOT NULL DEFAULT 0  AFTER `c_dt` ;
+
+ALTER TABLE `basedb`.`channel` DROP COLUMN `idx` , ADD COLUMN `idx` INT(11) NOT NULL DEFAULT 0  AFTER `c_dt` ;
+
+ALTER TABLE `basedb`.`menu` DROP COLUMN `idx` , ADD COLUMN `idx` INT(11) NOT NULL DEFAULT 0  AFTER `c_dt` ;
+
+ALTER TABLE `basedb`.`brand` DROP COLUMN `idx` , ADD COLUMN `idx` INT(11) NOT NULL DEFAULT 0  AFTER `c_dt` ;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

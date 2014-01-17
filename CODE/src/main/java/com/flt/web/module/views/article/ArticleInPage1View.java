@@ -5,6 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.flt.common.annotation.View;
 import com.flt.common.view.BaseView;
 
+/**
+ * @description 商品列表，竖直排列
+ * @author Administrator
+ *
+ */
 @View(template="component/article/{theme}/articleInPage1View.ftl")
 public class ArticleInPage1View extends BaseView {
 

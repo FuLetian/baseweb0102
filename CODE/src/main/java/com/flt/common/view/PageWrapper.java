@@ -32,6 +32,16 @@ public class PageWrapper {
 		view.render();
 	}
 	
+	public void addView(BaseView view,String attributeName){
+		
+		String template=this.getPageTemplate(view);
+		
+		root.put(attributeName, template);
+		
+		view.setRoot(root);
+		view.render();
+	}
+	
 	public String getTargetHtmlName(){
 		String p="Page1View_ChannelView_component/channel/default//channelView.ftl_activeChannelId_0_channels_[com.flt.dao.model.Channel@689d8408].html";
 		String pageName=this.subObjectName(page);

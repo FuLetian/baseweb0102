@@ -15,29 +15,11 @@
 
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
-<style type="text/css">
-body{background-color:#FDFBFE;}
-.header-main-bg{background-color:#E02284;}
-.header-ul{list-style-type:none;}
-.header-ul>li{float:left;width:60px;height:50px;text-align:center;}
-.header-logo{height:100px;}
-.header-logo-ul{float:right;margin-top:3px;font-size:13px;}
-.header-logo-ul>li{border-right:1px solid #D6D5D6;}
-.header-logo-ul>li>a{color:black;}
-.header-menu>li>a{color:#FFFFFF;font-weight:bold;}
-.subject-text2{background-position: -250px -150px;background-image:url(../images/texts.png);background-repeat: no-repeat;height:35px;margin-top:20px;margin-bottom:10px;}
-.right-content{}
-.right-content>div{border-bottom:1px dashed #E5E3E6;margin:0px 5px 15px 5px;padding-bottom:10px;}
-.right-content-title{font-size:14px;color:#F52D96;font-weight:bold;margin-bottom:5px;}
-.right-content-text{font-size:12px;color:#666666;}
-.store-list-title{width:100%;height:35px;line-height:35px;background-color:#D96196;color:#FFFFFF;font-weight:bold;text-indent:2em;}
 
-.font-bold{font-weight:bold;text-align:left;}
-.margin-top-line{margin-top:10px;}
-.image-equal-width{width:100%;}
-.subject-text1{background-image:url(../images/texts.png);background-repeat: no-repeat;height:35px;margin-top:20px;margin-bottom:10px;}
-.bg{background-color:#FDFBFE;}
-</style>
+<link rel="stylesheet" href="../css/common.css">
+
+<script src="../javascript/common.js"></script>
+
 </head>
 <body>
 <!-- header log -->
@@ -56,7 +38,11 @@ body{background-color:#FDFBFE;}
 	</ul>
 </div>
 <div class="row">
-<div class="col-xs-6"><img src="../images/vip.png" /></div>
+	<div class="col-xs-6"><img src="../images/vip.png" /></div>
+	<div class="col-xs-6" align="right">
+		<div id="buyCar" class="buy-car"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;购物车<span class="buy-car-count">0</span></div>
+		<div id="buyCarContent" style="z-index:500;">gggb</div>
+	</div>
 </div>
 </div>
 <!-- //header log -->
@@ -98,7 +84,7 @@ body{background-color:#FDFBFE;}
 <!-- channels -->
 <div class="container margin-top-line">
 	<div class="row">
-		<div class="col-xs-3"><img src="../images/channel1.png" class="image-equal-width"/></div>
+		<div class="col-xs-3"><img src="../images/channel1.png" class="image-equal-width" /></div>
 		<div class="col-xs-3"><img src="../images/channel2.png" class="image-equal-width"/></div>
 		<div class="col-xs-3"><img src="../images/channel3.png" class="image-equal-width"/></div>
 		<div class="col-xs-3"><img src="../images/channel3.png" class="image-equal-width"/></div>
@@ -196,7 +182,7 @@ body{background-color:#FDFBFE;}
 		<div class="margin-top-line store-list-title">入驻商家</div>
 		<div class="panel">
 			<div class="panel-body">
-				<div class="col-xs-4"><img src="../images/icon-store.jpg" class="image-equal-width" onmouseover="$('#tooltip').tooltip();"/></div>
+				<div class="col-xs-4"><img src="../images/icon-store.jpg" class="image-equal-width" /></div>
 				<div class="col-xs-4"><img src="../images/icon-store.jpg" class="image-equal-width" /></div>
 				<div class="col-xs-4"><img src="../images/icon-store.jpg" class="image-equal-width" /></div>
 				<div class="col-xs-4"><img src="../images/icon-store.jpg" class="image-equal-width" /></div>
@@ -216,15 +202,6 @@ body{background-color:#FDFBFE;}
 				<div class="col-xs-4"><img src="../images/icon-store.jpg" class="image-equal-width" /></div>
 			</div>
 		</div>
-
-<!-- tooltip -->
-<div id="tooltip" class="tooltip">
-  <div class="tooltip-inner">
-    Tooltip!
-  </div>
-  <div class="tooltip-arrow"></div>
-</div>
-<!-- //tooltip -->
 
 		</div>
 	</div>

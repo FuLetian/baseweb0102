@@ -22,9 +22,17 @@ import com.flt.web.module.views.article.ArticleInPage1View;
 import com.flt.web.module.views.brand.BrandInPage1View;
 import com.flt.web.module.views.channel.ChannelView;
 import com.flt.web.module.views.channel.IChannelService;
+import com.flt.web.module.views.comment.CommentInPage1View;
+import com.flt.web.module.views.footer.FooterView;
 import com.flt.web.module.views.menu.MenuView;
+import com.flt.web.module.views.staticstate.ServiceAndPromise;
 import com.flt.web.pages.page1.view.Page1View;
 
+/**
+ * @description 首页，根据channelId动态变化内容
+ * @author Administrator
+ *
+ */
 @Controller
 @RequestMapping(value="page1")
 public class Page1Controller extends BaseController implements htmlAbled{
@@ -34,6 +42,9 @@ public class Page1Controller extends BaseController implements htmlAbled{
 	@Autowired private ArticleInPage1View articleView;
 	@Autowired private BrandInPage1View brandInPage1View;
 	@Autowired private MenuView menuView;
+	@Autowired private CommentInPage1View commentInPage1View;
+	@Autowired private ServiceAndPromise serviceAndPromise;
+	@Autowired private FooterView footerView;
 	private PageWrapper buildPage(Integer channelId){
 		
 		Assert.notNull(channelId,"channelId is unable to be null",this.getClass());
@@ -44,9 +55,14 @@ public class Page1Controller extends BaseController implements htmlAbled{
 		p.addView(articleView);
 		p.addView(channelView);
 		p.addView(menuView);
+		p.addView(commentInPage1View);
+		p.addView(serviceAndPromise);
+		p.addView(footerView);
 		
 		brandInPage1View.setBrandType(Page1View.BRAND_TYPE);
 		p.addView(brandInPage1View);
+		
+		
 		
 		return p;
 	}

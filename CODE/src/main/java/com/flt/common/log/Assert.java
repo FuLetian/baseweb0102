@@ -8,10 +8,10 @@ public class Assert {
 		if(obj==null){
 			LogManager.getLogger(clz).error(msg);
 			
-			return LogEnum.SUCCESS;
+			return LogEnum.FAIL;
 		}
 		
-		return LogEnum.FAIL;
+		return LogEnum.SUCCESS;
 	}
 	
 }
