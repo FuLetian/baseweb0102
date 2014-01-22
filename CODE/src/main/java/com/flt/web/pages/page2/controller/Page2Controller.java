@@ -13,6 +13,7 @@ import com.flt.common.view.PageWrapper;
 import com.flt.web.module.views.article.ArticleInPage2View;
 import com.flt.web.module.views.footer.FooterView;
 import com.flt.web.module.views.menu.MenuView;
+import com.flt.web.module.views.staticstate.LocationView;
 import com.flt.web.pages.page2.view.Page2View;
 
 /**
@@ -27,10 +28,13 @@ public class Page2Controller{
 	@Autowired private MenuView menuView;
 	@Autowired private FooterView footerView;
 	@Autowired private ArticleInPage2View articleInPage2View;
+	@Autowired private LocationView locationView;
 	@Autowired private Page2View page2View;
 	public PageWrapper buildPage(){
 		
 		PageWrapper p=new PageWrapper(page2View, new HashMap<String,Object>());
+		
+		p.addView(locationView);
 		
 		return p;
 	}
