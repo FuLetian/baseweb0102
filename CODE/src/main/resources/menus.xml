@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+	<menu>
+		<title>a1</title>
+		<list>
+			<menu>
+				<title>a1-a</title>
+			</menu>
+		</list>
+	</menu>
+	<menu>
+		<title>b1</title>
+		<list>
+			<menu>
+				<title>b1-1</title>
+			</menu>
+		</list>
+	</menu>
+</list>

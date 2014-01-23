@@ -1,0 +1,66 @@
+package com.flt.service.article;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.flt.dao.client.ArticleMapper;
+import com.flt.dao.model.Article;
+import com.flt.dao.model.ArticleExample;
+import com.flt.service.base.BaseService;
+import com.flt.web.module.views.article.IArticleService;
+
+@Service
+public class ArticleService extends BaseService implements IArticleService{
+
+	@Override
+	public List<Article> listArticlesByChannelId(final Integer channelId) {
+		// TODO Auto-generated method stub
+		
+		ArticleMapper m=getSqlSession().getMapper(ArticleMapper.class);
+		
+		return m.selectByExample(new ArticleExample(){{
+			this.createCriteria().andChannelIdEqualTo(channelId);
+			this.setOrderByClause("idx DESC");
+		}});
+	}
+
+	@Override
+	public List<Article> findArticlesIfConditionExist(Integer channelId,
+			Integer brandId, Integer menuId, String priceRange,
+			String discountRange) {
+		// TODO Auto-generated method stub
+		ArticleMapper m=getSqlSession().getMapper(ArticleMapper.class);
+		ArticleExample ex=new ArticleExample();
+		ArticleExample.Criteria c=ex.createCriteria();
+		
+		if(channelId!=null){
+			c.andChannelIdEqualTo(channelId);
+		}
+		if(brandId!=null){
+			c.andBrandIdEqualTo(brandId);
+		}
+		if(menuId!=null){
+			c.andMenuIdEqualTo(menuId);
+		}
+		if(priceRange!=null){
+			Double[] nums=parseRangeToInteger(priceRange);
+			c.andPriceBetween(nums[0], nums[1]);
+		}
+		if(discountRange!=null){
+			Double[] nums=parseRangeToInteger(discountRange);
+			c.andDiscountBetween(nums[0], nums[1]);
+		}
+		
+		return m.selectByExample(ex);
+	}
+
+	private Double[] parseRangeToInteger(String priceRange) {
+		// TODO Auto-generated method stub
+		String[] strs=priceRange.split("-");
+		Double[] nums=new Double[]{Double.valueOf(strs[0]),Double.valueOf(strs[1])};
+		return nums;
+	}
+
+	
+}

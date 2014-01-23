@@ -1,0 +1,18 @@
+syntax: glob
+CODE/.classpath
+CODE/.settings/org.eclipse.jdt.core.prefs
+CODE/.settings/.jsdtscope
+CODE/.settings/
+CODE/.project
+CODE/target/
+CODE/bin
+CODE/logs
+CODE/test-output
+CODE/WebContent
+manage/target
+manage/bin
+manage/logs/
+manage/.settings/
+manage/.project
+manage/.classpath
+manage/test-output/
