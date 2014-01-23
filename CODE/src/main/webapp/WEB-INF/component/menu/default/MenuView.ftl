@@ -1,3 +1,9 @@
+<style>
+.all-menu-btn{color:#FFFFFF;font-size:14px;text-align:center;float:right;width:150px;height:50px;line-height:50px;border-left:1px solid #E5E3E6;border-right:1px solid #E5E3E6;}
+.all-menu-content{width:20px;height:100px;float:right;}
+.AllMenuBtnActive{background-color:#FFFFFF;color:#E02284;}
+.all-menu-ul li{height:30px;border-bottom:1px dashed #666666;line-height:30px;}
+</style>
 <!-- header log -->
 <div class="header-logo border container">
 <div class="row" align="right">
@@ -43,8 +49,43 @@
       		<li><a href="#">${item.menu.name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
 		</#list>
     </ul>
+    <div class="all-menu-btn"><label>所有商品分类</label></div>
+
 </div>
 </div>
 </div>
 </div>
 <!-- //header-menu -->
+
+<div id="allMenus" class="popover fade bottom in" style="display: none;">
+	<div class="arrow"></div>
+	<h3 class="popover-title">A Title</h3>
+	<div class="popover-content" style="height:400px;width:270px;overflow-y:scroll;padding:0px;">
+		<ul class="all-menu-ul list-unstyled">
+			<li>fefa</li>
+			<li>bbb</li>
+		</ul>
+	</div>
+</div>
+<script>
+$(function(){
+
+	<!--allMenus listener-->
+		$("#allMenus").mouseleave(function(){
+			$(this).hide();
+		});
+	<!--// allMenus listener-->
+
+	$(".all-menu-btn").hover(function(){
+		
+		var allMenuBtn=$(".all-menu-btn");
+		var left=allMenuBtn.offset().left;
+		var top=allMenuBtn.offset().top;
+		$("#allMenus").show().css("left",left-100).css("top",top+50);
+		
+		$(".all-menu-btn").addClass("AllMenuBtnActive");
+	},function(){
+		$(".all-menu-btn").removeClass("AllMenuBtnActive");
+	});
+});
+</script>
