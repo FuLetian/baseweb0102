@@ -7,7 +7,7 @@
 	<div class="row">
 		<div class="col-xs-3">
 			<div class="footer-list">
-				<div class="footer-title"><h3>服务保障</h3></div>
+				<div class="footer-title"><h4>服务保障</h4></div>
 				<ul>
 					<li><a class="a">正品保障</a></li>
 					<li><a class="a">7*12小时服务</a></li>
@@ -18,7 +18,7 @@
 		</div>
 		<div class="col-xs-3">
 			<div class="footer-list">
-				<div class="footer-title"><h3>购物指南</h3></div>
+				<div class="footer-title"><h4>购物指南</h4></div>
 				<ul>
 					<li><a class="a">导购演示</a></li>
 					<li><a class="a">订单操作</a></li>
@@ -29,7 +29,7 @@
 		</div>
 		<div class="col-xs-3">
 			<div class="footer-list">
-				<div class="footer-title"><h3>配送方式</h3></div>
+				<div class="footer-title"><h4>配送方式</h4></div>
 				<ul>
 					<li><a class="a">支付方式</a></li>
 					<li><a class="a">货到付款</a></li>
@@ -40,7 +40,7 @@
 		</div>
 		<div class="col-xs-3">
 			<div class="footer-list">
-				<div class="footer-title"><h3>售后服务</h3></div>
+				<div class="footer-title"><h4>售后服务</h4></div>
 				<ul>
 					<li><a class="a" href="#">退货政策</a></li>
 					<li><a class="a">退货流程</a></li>
