@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.flt.dao.client.ArticleImgMapper;
 import com.flt.dao.client.ArticleMapper;
 import com.flt.dao.client.ArticlePropertyMapper;
 import com.flt.dao.client.CommonMapper;
 import com.flt.dao.model.Article;
 import com.flt.dao.model.ArticleExample;
 import com.flt.dao.model.ArticleImg;
+import com.flt.dao.model.ArticleImgExample;
 import com.flt.dao.model.ArticleProperty;
 import com.flt.dao.model.ArticlePropertyExample;
 import com.flt.service.base.BaseService;
@@ -105,6 +107,15 @@ public class ArticleService extends BaseService implements IArticleService{
 		
 		CommonMapper m=this.getSqlSession().getMapper(CommonMapper.class);
 		return m.selectFirstImgForArticle(articleId);
+	}
+
+	@Override
+	public List<ArticleImg> listArticleImgsByArticleId(Integer articleId) {
+		// TODO Auto-generated method stub
+		
+		ArticleImgMapper m=this.getSqlSession().getMapper(ArticleImgMapper.class);
+		
+		return m.selectByExample(new ArticleImgExample());
 	}
 
 	

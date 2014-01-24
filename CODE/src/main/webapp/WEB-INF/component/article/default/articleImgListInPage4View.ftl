@@ -10,9 +10,8 @@
 <!-- //location -->
 <div class="container">
 	<div class="row">
-		<div class="col-xs-6"><img alt="" src="../images/big-article.jpg" class="image-equal-width"/></div>
-		<div class="col-xs-6"><img alt="" src="../images/big-article.jpg" class="image-equal-width"/></div>
-		<div class="col-xs-6"><img alt="" src="../images/big-article.jpg" class="image-equal-width"/></div>
-		<div class="col-xs-6"><img alt="" src="../images/big-article.jpg" class="image-equal-width"/></div>
+		<#list imgs as item>
+		<div class="col-xs-6"><img alt="" src="${item.path}" class="image-equal-width"/></div>
+		</#list>
 	</div>
 </div>
