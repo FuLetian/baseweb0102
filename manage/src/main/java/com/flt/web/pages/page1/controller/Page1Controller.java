@@ -33,7 +33,7 @@ import com.flt.web.pages.page1.view.Page1View;
  * @author Administrator
  *
  */
-@Controller
+//@Controller
 @RequestMapping(value="page1")
 public class Page1Controller extends BaseController implements htmlAbled{
 	

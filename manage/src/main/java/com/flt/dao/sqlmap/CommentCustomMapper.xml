@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.flt.dao.client.CommentCustomMapper">
-    <select id="findMaxCountLimitComment" parameterType="java.lang.Integer" resultMap="com.flt.dao.client.CommentMapper.BaseResultMap">
-        select * from comment order by c_dt desc limit #{max}
-    </select>
-</mapper>

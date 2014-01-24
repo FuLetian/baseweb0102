@@ -11,8 +11,10 @@
     <sqlMapGenerator targetPackage="com.flt.dao.sqlmap" targetProject="baseweb" />
     <javaClientGenerator targetPackage="com.flt.dao.client" implementationPackage="com.flt.dao.client.impl" targetProject="baseweb" type="XMLMAPPER" />
 
-    <table schema="basedb" tableName="passage" domainObjectName="Passage">
-    </table>
+	<table schema="basedb" tableName="comment" domainObjectName="Comment">
+		<generatedKey column="id" sqlStatement="MySql" identity="true" />
+	</table>
+
     
   </context>
 </generatorConfiguration>

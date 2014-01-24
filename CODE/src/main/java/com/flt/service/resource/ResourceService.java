@@ -2,8 +2,8 @@ package com.flt.service.resource;
 
 import org.springframework.stereotype.Service;
 
-import com.flt.dao.client.resourceMapper;
-import com.flt.dao.model.resource;
+import com.flt.dao.client.ResourceMapper;
+import com.flt.dao.model.Resource;
 import com.flt.service.base.BaseService;
 import com.flt.web.module.views.staticstate.IServiceAndPromiseService;
 
@@ -11,9 +11,9 @@ import com.flt.web.module.views.staticstate.IServiceAndPromiseService;
 public class ResourceService extends BaseService implements IServiceAndPromiseService {
 
 	@Override
-	public resource findResourceById(Integer id) {
+	public Resource findResourceById(Integer id) {
 		// TODO Auto-generated method stub
-		resourceMapper m=getSqlSession().getMapper(resourceMapper.class);
+		ResourceMapper m=getSqlSession().getMapper(ResourceMapper.class);
 		
 		return m.selectByPrimaryKey(id);
 	}

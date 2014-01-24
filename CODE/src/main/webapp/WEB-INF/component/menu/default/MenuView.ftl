@@ -2,7 +2,8 @@
 .all-menu-btn{color:#FFFFFF;font-size:14px;text-align:center;float:right;width:150px;height:50px;line-height:50px;border-left:1px solid #E5E3E6;border-right:1px solid #E5E3E6;}
 .all-menu-content{width:20px;height:100px;float:right;}
 .AllMenuBtnActive{background-color:#FFFFFF;color:#E02284;}
-.all-menu-ul li{height:30px;border-bottom:1px dashed #666666;line-height:30px;}
+.all-menu-ul li{height:30px;line-height:30px;}
+.first-menu-title{color:#E5288A;font-size:12px;margin-top:10px;font-weight:bold;}
 </style>
 <!-- header log -->
 <div class="header-logo border container">
@@ -60,11 +61,17 @@
 <div id="allMenus" class="popover fade bottom in" style="display: none;">
 	<div class="arrow"></div>
 	<h3 class="popover-title">A Title</h3>
-	<div class="popover-content" style="height:400px;width:270px;overflow-y:scroll;padding:0px;">
-		<ul class="all-menu-ul list-unstyled">
-			<li>fefa</li>
-			<li>bbb</li>
+	<div class="popover-content" style="height:400px;width:270px;overflow-y:scroll;padding:0px 10px 10px 10px;">
+	
+		<#list menus as item>
+		<div class="first-menu-title">${item.menu.name}</div>
+		<ul class="all-menu-ul list-inline">
+			<#list item.childMenus as item2>
+			<li><a href="#">${item2.menu.name}</a></li>
+			</#list>
 		</ul>
+		</#list>
+		
 	</div>
 </div>
 <script>

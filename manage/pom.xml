@@ -372,11 +372,19 @@
 			<version>6.8.5</version>
 		</dependency>
 		
-<dependency>
-	<groupId>org.kohsuke.stapler</groupId>
-	<artifactId>json-lib</artifactId>
-	<version>2.1-rev6</version>
-</dependency>
+
+		
+		<dependency>
+			<groupId>org.kohsuke.stapler</groupId>
+			<artifactId>json-lib</artifactId>
+			<version>2.1-rev6</version>
+		</dependency>
+		
+		<dependency>
+		  <groupId>com.flt</groupId>
+		  <artifactId>basecommon</artifactId>
+		  <version>0.0.1-SNAPSHOT</version>
+		</dependency>
             
             
 		

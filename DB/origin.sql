@@ -95,6 +95,21 @@ COMMENT = '商品表';
 
 
 -- -----------------------------------------------------
+-- Table `basedb`.`consumer`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `basedb`.`consumer` ;
+
+CREATE  TABLE IF NOT EXISTS `basedb`.`consumer` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `name` VARCHAR(45) NULL ,
+  `account` VARCHAR(45) NULL ,
+  `password` VARCHAR(45) NULL ,
+  `thumbnail_path` VARCHAR(100) NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `basedb`.`comment`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `basedb`.`comment` ;
@@ -102,14 +117,22 @@ DROP TABLE IF EXISTS `basedb`.`comment` ;
 CREATE  TABLE IF NOT EXISTS `basedb`.`comment` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `content` VARCHAR(45) NOT NULL ,
+  `reply_content` VARCHAR(500) NULL ,
   `u_dt` DATETIME NULL ,
   `c_dt` DATETIME NULL ,
   `article_id` INT NOT NULL ,
+  `consumer_id` INT NOT NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `fk_comment_article1` (`article_id` ASC) ,
+  INDEX `fk_comment_consumer1` (`consumer_id` ASC) ,
   CONSTRAINT `fk_comment_article1`
     FOREIGN KEY (`article_id` )
     REFERENCES `basedb`.`article` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_comment_consumer1`
+    FOREIGN KEY (`consumer_id` )
+    REFERENCES `basedb`.`consumer` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -174,6 +197,51 @@ CREATE  TABLE IF NOT EXISTS `basedb`.`passage` (
   `c_dt` DATETIME NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `basedb`.`article_property`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `basedb`.`article_property` ;
+
+CREATE  TABLE IF NOT EXISTS `basedb`.`article_property` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `name` VARCHAR(45) NULL ,
+  `value` VARCHAR(45) NULL ,
+  `u_dt` DATETIME NULL ,
+  `c_dt` DATETIME NULL ,
+  `idx` INT NULL ,
+  `article_id` INT NOT NULL ,
+  `type` VARCHAR(45) NULL DEFAULT 0 COMMENT '0-商品详细界面的属性\n1-商品参数属性' ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_article_property_article1` (`article_id` ASC) ,
+  CONSTRAINT `fk_article_property_article1`
+    FOREIGN KEY (`article_id` )
+    REFERENCES `basedb`.`article` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `basedb`.`article_img`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `basedb`.`article_img` ;
+
+CREATE  TABLE IF NOT EXISTS `basedb`.`article_img` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `title` VARCHAR(45) NULL ,
+  `path` VARCHAR(100) NULL ,
+  `article_id` INT NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_article_img_article1` (`article_id` ASC) ,
+  CONSTRAINT `fk_article_img_article1`
+    FOREIGN KEY (`article_id` )
+    REFERENCES `basedb`.`article` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+COMMENT = 'article详细画面多个图片展示源';
 
 
 
