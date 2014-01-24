@@ -19,4 +19,6 @@ public interface IArticleService {
 	Integer countArticleGrade(Integer articleId);
 	
 	ArticleImg loadFirstArticleImgByArticleId(Integer articleId);
+	
+	List<ArticleImg> listArticleImgsByArticleId(Integer articleId);
 }
