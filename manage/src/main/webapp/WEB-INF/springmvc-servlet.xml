@@ -44,6 +44,7 @@
 		<mvc:resources mapping="/video/**" location="/video/"/>
 		<mvc:resources mapping="/h/**" location="/h/"/>
 		<mvc:resources mapping="/h2/**" location="/h2/"/>
+		<mvc:resources mapping="/editor/**" location="/editor/"/>
 	
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basename" value="messages"></property>

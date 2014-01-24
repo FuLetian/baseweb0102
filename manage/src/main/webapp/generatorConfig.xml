@@ -7,12 +7,44 @@
   <context id="context1" >
   	
     <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/basedb?useUnicode=true&amp;characterEncoding=utf-8" userId="root" password="root"></jdbcConnection>
-    <javaModelGenerator targetPackage="com.flt.dao.model" targetProject="baseweb" />
-    <sqlMapGenerator targetPackage="com.flt.dao.sqlmap" targetProject="baseweb" />
-    <javaClientGenerator targetPackage="com.flt.dao.client" implementationPackage="com.flt.dao.client.impl" targetProject="baseweb" type="XMLMAPPER" />
-
-    <table schema="basedb" tableName="passage" domainObjectName="Passage">
-    </table>
+    <javaModelGenerator targetPackage="com.flt.dao.model" targetProject="basemanage" />
+    <sqlMapGenerator targetPackage="com.flt.dao.sqlmap" targetProject="basemanage" />
+    <javaClientGenerator targetPackage="com.flt.dao.client" implementationPackage="com.flt.dao.client.impl" targetProject="basemanage" type="XMLMAPPER" />
+	
+<!-- 	<table schema="basedb" tableName="article" domainObjectName="Article"> -->
+<!-- 		<generatedKey column="id" sqlStatement="MySql" identity="true" /> -->
+<!-- 	</table> -->
+<!-- 	<table schema="basedb" tableName="article_img" domainObjectName="ArticleImg"> -->
+<!-- 		<generatedKey column="id" sqlStatement="MySql" identity="true" /> -->
+<!-- 	</table> -->
+	<table schema="basedb" tableName="article_property" domainObjectName="ArticleProperty">
+		<generatedKey column="id" sqlStatement="MySql" identity="true" />
+	</table>
+<!-- 	<table schema="basedb" tableName="ball" domainObjectName="Ball"> -->
+<!-- 		<generatedKey column="id" sqlStatement="MySql" identity="true" /> -->
+<!-- 	</table> -->
+<!-- 	<table schema="basedb" tableName="brand" domainObjectName="Brand"> -->
+<!-- 		<generatedKey column="id" sqlStatement="MySql" identity="true" /> -->
+<!-- 	</table> -->
+<!-- 	<table schema="basedb" tableName="channel" domainObjectName="Channel"> -->
+<!-- 		<generatedKey column="id" sqlStatement="MySql" identity="true" /> -->
+<!-- 	</table> -->
+	
+<!-- 	<table schema="basedb" tableName="comment" domainObjectName="Comment"> -->
+<!-- 		<generatedKey column="id" sqlStatement="MySql" identity="true" /> -->
+<!-- 	</table> -->
+<!-- 	<table schema="basedb" tableName="consumer" domainObjectName="Consume"> -->
+<!-- 		<generatedKey column="id" sqlStatement="MySql" identity="true" /> -->
+<!-- 	</table> -->
+<!-- 	<table schema="basedb" tableName="menu" domainObjectName="Menu"> -->
+<!-- 		<generatedKey column="id" sqlStatement="MySql" identity="true" /> -->
+<!-- 	</table> -->
+<!-- 	<table schema="basedb" tableName="passage" domainObjectName="Passage"> -->
+<!-- 		<generatedKey column="id" sqlStatement="MySql" identity="true" /> -->
+<!-- 	</table> -->
+<!-- 	<table schema="basedb" tableName="resource" domainObjectName="Resource"> -->
+<!-- 		<generatedKey column="id" sqlStatement="MySql" identity="true" /> -->
+<!-- 	</table> -->
     
   </context>
 </generatorConfiguration>

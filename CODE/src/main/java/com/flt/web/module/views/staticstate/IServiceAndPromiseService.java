@@ -1,8 +1,8 @@
 package com.flt.web.module.views.staticstate;
 
-import com.flt.dao.model.resource;
+import com.flt.dao.model.Resource;
 
 public interface IServiceAndPromiseService {
 
-	resource findResourceById(Integer id);
+	Resource findResourceById(Integer id);
 }

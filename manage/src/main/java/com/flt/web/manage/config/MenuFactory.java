@@ -15,6 +15,9 @@ public class MenuFactory {
 		menus.add(new LeftMenu("channel", "/basemanage/channel/view", false));
 		menus.add(new LeftMenu("menu", "/basemanage/menu/list", false));
 		menus.add(new LeftMenu("brand", "/basemanage/brand/view", false));
+		menus.add(new LeftMenu("passage", "/basemanage/passage/view", false));
+		menus.add(new LeftMenu("article", "/basemanage/article/view", false));
+		menus.add(new LeftMenu("服务承诺", "/basemanage/serviceAndPromise/view", false));
 		
 		return menus;
 	}

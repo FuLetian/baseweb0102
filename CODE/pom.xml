@@ -369,6 +369,12 @@
 			<version>1.3.1</version>
 		</dependency>
 		
+		<dependency>
+		  <groupId>com.flt</groupId>
+		  <artifactId>basecommon</artifactId>
+		  <version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>

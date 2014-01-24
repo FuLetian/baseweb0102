@@ -1,9 +1,10 @@
 <style>
 .footer-list{border-right:1px solid #E9E1E8;}
 .footer-list li{color:#666666;height:25px;}
+.footer-container{margin-top:30px;}
 </style>
 
-<div class="container">
+<div class="container footer-container">
 	<div class="row">
 		<div class="col-xs-3">
 			<div class="footer-list">

@@ -5,8 +5,13 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.flt.dao.client.ArticleMapper;
+import com.flt.dao.client.ArticlePropertyMapper;
+import com.flt.dao.client.CommonMapper;
 import com.flt.dao.model.Article;
 import com.flt.dao.model.ArticleExample;
+import com.flt.dao.model.ArticleImg;
+import com.flt.dao.model.ArticleProperty;
+import com.flt.dao.model.ArticlePropertyExample;
 import com.flt.service.base.BaseService;
 import com.flt.web.module.views.article.IArticleService;
 
@@ -60,6 +65,46 @@ public class ArticleService extends BaseService implements IArticleService{
 		String[] strs=priceRange.split("-");
 		Double[] nums=new Double[]{Double.valueOf(strs[0]),Double.valueOf(strs[1])};
 		return nums;
+	}
+
+	@Override
+	public Article loadArticleById(Integer id) {
+		// TODO Auto-generated method stub
+		ArticleMapper m=getSqlSession().getMapper(ArticleMapper.class);
+		return m.selectByPrimaryKey(id);
+	}
+
+	@Override
+	public List<ArticleProperty> listArticlePropertiesByArticleIdAndType(
+			Integer articleId, String type) {
+		// TODO Auto-generated method stub
+		ArticlePropertyMapper m=this.getSqlSession().getMapper(ArticlePropertyMapper.class);
+		
+		ArticlePropertyExample ex=new ArticlePropertyExample();
+		ex.createCriteria().andArticleIdEqualTo(articleId).andTypeEqualTo(type);
+		return m.selectByExample(ex);
+	}
+
+	@Override
+	public Integer countArticleGrade(Integer articleId) {
+		// TODO Auto-generated method stub
+		CommonMapper m=this.getSqlSession().getMapper(CommonMapper.class);
+
+		String avg=m.countArticleGrade(articleId);
+		if(avg==null){
+			return 0;
+		}else{
+			Double d= Math.ceil(Double.valueOf(avg));
+			return d.intValue();
+		}
+	}
+
+	@Override
+	public ArticleImg loadFirstArticleImgByArticleId(Integer articleId) {
+		// TODO Auto-generated method stub
+		
+		CommonMapper m=this.getSqlSession().getMapper(CommonMapper.class);
+		return m.selectFirstImgForArticle(articleId);
 	}
 
 	
