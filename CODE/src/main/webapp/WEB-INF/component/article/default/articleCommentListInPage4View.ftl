@@ -10,9 +10,9 @@
 <!-- //location -->
 
 <!-- comment -->
-<div class="container">
-	<div class="row">
-		<div class="col-xs-1"><img alt="" src="../images/icon-user.jpg" class="image-equal-width"/></div>
+<div class="container" data-bind="foreach:comments">
+	<div class="row  margin-top-line">
+		<div class="col-xs-1"><img data-bind="attr{'src':consumer.thumbnailPath}" class="image-equal-width"/></div>
 		<div class="col-xs-11">
 			<div class="detail-comment">
 				<div class="detail-comment-title">
@@ -24,11 +24,11 @@
 				</div>
 				<div class="detail-comment-text">
 					<div class="detail-comment-text-title"><b>评&nbsp;&nbsp;&nbsp;价:</b></div>
-					<div class="detail-comment-text-content">各位各位广东人鬼地方个个人个人个人个人提供好人说都噶尔各色人各色人各色人</div>
+					<div class="detail-comment-text-content" data-bind="text:comment.content">各位各位广东人鬼地方个个人个人个人个人提供好人说都噶尔各色人各色人各色人</div>
 				</div>
 				<div class="detail-comment-text-reply">
 					<div class="detail-comment-text-title"><b>评&nbsp;&nbsp;&nbsp;价:</b></div>
-					<div class="detail-comment-text-content">各位各位广东人鬼地方个个人个人个人个人提供好人说都噶尔各色人各色人各色人</div>
+					<div class="detail-comment-text-content" data-bind="text:comment.replyContent">各位各位广东人鬼地方个个人个人个人个人提供好人说都噶尔各色人各色人各色人</div>
 				</div>
 				
 			</div>
