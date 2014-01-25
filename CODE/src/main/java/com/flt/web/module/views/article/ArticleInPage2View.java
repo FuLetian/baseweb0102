@@ -24,7 +24,7 @@ public class ArticleInPage2View extends BaseView {
 		// TODO Auto-generated method stub
 		super.render();
 		
-		List<Article> list=service.findArticlesIfConditionExist(channelId, brandId, menuId, priceRange, discountRange);
+		List<Article> list=service.findArticlesIfConditionExist(channelId, brandId, menuId, priceRange, discountRange,userId);
 		
 		root.put("articles", list);
 	}

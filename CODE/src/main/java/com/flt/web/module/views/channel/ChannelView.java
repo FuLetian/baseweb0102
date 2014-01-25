@@ -21,7 +21,7 @@ public class ChannelView extends BaseView {
 		// TODO Auto-generated method stub
 		super.render();
 		
-		List<Channel> list=channelService.listChannels();
+		List<Channel> list=channelService.listChannels(userId);
 		
 		root.put("channels", list);
 		root.put("activeChannelId", activeChannelId);

@@ -17,8 +17,8 @@ public class ServiceAndPromise extends BaseView {
 		// TODO Auto-generated method stub
 		super.render();
 		
-		root.put("static_text1", service.findResourceById(FieldConstant.resource.id.ServiceAndPromise_RES_1));
-		root.put("static_text2", service.findResourceById(FieldConstant.resource.id.ServiceAndPromise_RES_2));
-		root.put("static_text3", service.findResourceById(FieldConstant.resource.id.ServiceAndPromise_RES_3));
+		root.put("static_text1", service.findResourceByNum(FieldConstant.resource.id.ServiceAndPromise_RES_1,userId));
+		root.put("static_text2", service.findResourceByNum(FieldConstant.resource.id.ServiceAndPromise_RES_2,userId));
+		root.put("static_text3", service.findResourceByNum(FieldConstant.resource.id.ServiceAndPromise_RES_3,userId));
 	}
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.flt.common.annotation.View;
+import com.flt.common.config.Configuration;
 import com.flt.common.view.BaseView;
 import com.flt.dao.model.Comment;
 
@@ -21,7 +22,7 @@ public class CommentInPage1View extends BaseView {
 		// TODO Auto-generated method stub
 		super.render();
 		
-		List<Comment> list=service.listHomePageComments(COMMENT_MAX_COUNT);
+		List<Comment> list=service.listHomePageComments(COMMENT_MAX_COUNT,Configuration.TMP_SESSION_USER_ID);
 		
 		root.put("comments", list);
 	}

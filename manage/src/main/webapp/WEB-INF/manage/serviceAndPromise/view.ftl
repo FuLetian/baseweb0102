@@ -29,17 +29,17 @@
 </div>
 
 <form action="${basePath}serviceAndPromise/update" method="POST">
-	<input type="hidden" name="id" value="1">
+	<input type="hidden" name="num" value="1">
 	res1:<input name="text" value="${res1}"><input type="submit" value="submit">
 </form>
 
 <script>
 function load(id){
-	$("input[name='id']").val(id);
+	$("input[name='num']").val(id);
 	
 	$.ajax({
 		url:"${basePath}serviceAndPromise/getText",
-		data:{"id":id},
+		data:{"num":id},
 		success:function(data){
 			$("input[name='text']").val(data);
 		}

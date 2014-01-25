@@ -14,12 +14,13 @@ import com.flt.web.module.views.brand.IBrandService;
 public class BrandService extends BaseService implements IBrandService {
 
 	@Override
-	public List<Brand> listbBrandsByType(Integer type) {
+	public List<Brand> listbBrandsByType(Integer type,Integer userId) {
 		// TODO Auto-generated method stub
 		
 		BrandMapper m=getSqlSession().getMapper(BrandMapper.class);
 		BrandExample ex=new BrandExample();
-		ex.createCriteria().andTypeEqualTo(type);
+		ex.createCriteria().andTypeEqualTo(type)
+		.andUserIdEqualTo(userId);
 		
 		return m.selectByExample(ex);
 	}

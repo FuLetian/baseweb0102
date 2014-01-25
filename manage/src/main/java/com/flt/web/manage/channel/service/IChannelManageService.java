@@ -6,7 +6,7 @@ import com.flt.dao.model.Channel;
 
 public interface IChannelManageService {
 
-	List<Channel> findAllChannel();
+	List<Channel> findAllChannel(Integer userId);
 	
 	void saveOrUpdateChannel(Channel channel);
 	

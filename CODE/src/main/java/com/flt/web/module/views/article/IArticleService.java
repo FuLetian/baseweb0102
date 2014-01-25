@@ -14,7 +14,8 @@ public interface IArticleService {
 
 	List<Article> listArticlesByChannelId(Integer channelId);
 	
-	List<Article> findArticlesIfConditionExist(Integer channelId,Integer brandId,Integer menuId,String priceRange,String discountRange);
+	List<Article> findArticlesIfConditionExist(Integer channelId,Integer brandId,Integer menuId,
+			String priceRange,String discountRange,Integer userId);
 	
 	Integer countArticleGrade(Integer articleId);
 	

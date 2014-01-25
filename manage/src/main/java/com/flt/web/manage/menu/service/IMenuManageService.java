@@ -6,9 +6,9 @@ import com.flt.dao.model.Menu;
 
 public interface IMenuManageService {
 
-	List<Menu> listAllMenus();
+	List<Menu> listAllMenus(Integer userId);
 	
-	void onSaveOrUpdateMenu(Menu menu);
+	void onSaveOrUpdateMenu(Menu menu,Integer userId);
 	
 	void deleteMenuById(Integer id);
 	

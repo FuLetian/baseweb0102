@@ -80,12 +80,13 @@ public class ArticleService extends BaseService implements IArticleService,IArti
 	}
 
 	@Override
-	public List<Article> loadAllArticle() {
+	public List<Article> loadAllArticle(final Integer userId) {
 		// TODO Auto-generated method stub
 		ArticleMapper m=getSqlSession().getMapper(ArticleMapper.class);
 		
 		return m.selectByExample(new ArticleExample(){{
 			this.setOrderByClause("idx DESC");
+			this.createCriteria().andUserIdEqualTo(userId);
 		}});
 	}
 
@@ -98,31 +99,37 @@ public class ArticleService extends BaseService implements IArticleService,IArti
 	}
 
 	@Override
-	public List<Menu> listAllSecondMenus() {
+	public List<Menu> listAllSecondMenus(final Integer userId) {
 		// TODO Auto-generated method stub
 		MenuMapper m=getSqlSession().getMapper(MenuMapper.class);
-		return m.selectByExample(new MenuExample());
+		return m.selectByExample(new MenuExample(){{
+			this.createCriteria().andUserIdEqualTo(userId);
+		}});
 	}
 
 	@Override
-	public List<Brand> listAllBrands() {
+	public List<Brand> listAllBrands(final Integer userId) {
 		// TODO Auto-generated method stub
 		BrandMapper m=getSqlSession().getMapper(BrandMapper.class);
-		return m.selectByExample(new BrandExample());
+		return m.selectByExample(new BrandExample(){{
+			this.createCriteria().andUserIdEqualTo(userId);
+		}});
 	}
 
 	@Override
-	public List<Channel> listAllChannels() {
+	public List<Channel> listAllChannels(final Integer userId) {
 		// TODO Auto-generated method stub
 		
 		ChannelMapper m=getSqlSession().getMapper(ChannelMapper.class);
-		return m.selectByExample(new ChannelExample());
+		return m.selectByExample(new ChannelExample(){{
+			this.createCriteria().andUserIdEqualTo(userId);
+		}});
 	}
 
 	@Override
 	public void saveOrUpdateArticle(Integer id, String name, double price,
 			double discount, Integer idx, Integer brandId, Integer menuId,
-			Integer channelId, String imgs, String properties) {
+			Integer channelId, String imgs, String properties,Integer userId) {
 		// TODO Auto-generated method stub
 		
 		
@@ -139,6 +146,7 @@ public class ArticleService extends BaseService implements IArticleService,IArti
 		a.setName(name);
 		a.setPrice(price);
 		a.setuDt(new Date());
+		a.setUserId(userId);
 		
 		if(id==null){
 			m.insert(a);

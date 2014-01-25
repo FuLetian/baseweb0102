@@ -6,5 +6,5 @@ import com.flt.dao.model.Brand;
 
 public interface IBrandService {
 
-	List<Brand> listbBrandsByType(Integer type);
+	List<Brand> listbBrandsByType(Integer type,Integer userId);
 }

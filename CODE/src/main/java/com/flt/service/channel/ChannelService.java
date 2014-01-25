@@ -14,11 +14,13 @@ import com.flt.web.module.views.channel.IChannelService;
 public class ChannelService extends BaseService implements IChannelService {
 
 	@Override
-	public List<Channel> listChannels() {
+	public List<Channel> listChannels(final Integer userId) {
 		// TODO Auto-generated method stub
 		ChannelMapper mapper=getSqlSession().getMapper(ChannelMapper.class);
 		
-		return mapper.selectByExample(new ChannelExample());
+		return mapper.selectByExample(new ChannelExample(){{
+			this.createCriteria().andUserIdEqualTo(userId);
+		}});
 	}
 
 }

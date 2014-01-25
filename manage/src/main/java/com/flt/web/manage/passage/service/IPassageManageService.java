@@ -4,7 +4,7 @@ import com.flt.dao.model.Passage;
 
 public interface IPassageManageService {
 
-	void saveOrUpdatePassage(Integer id,String text);
+	void saveOrUpdatePassage(Integer passageNum,String text,Integer userId);
 	
-	Passage loadPassageById(Integer id);
+	Passage loadPassageByNum(Integer passageNum,Integer uerId);
 }

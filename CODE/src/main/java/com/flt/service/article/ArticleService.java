@@ -35,11 +35,13 @@ public class ArticleService extends BaseService implements IArticleService{
 	@Override
 	public List<Article> findArticlesIfConditionExist(Integer channelId,
 			Integer brandId, Integer menuId, String priceRange,
-			String discountRange) {
+			String discountRange,Integer userId) {
 		// TODO Auto-generated method stub
 		ArticleMapper m=getSqlSession().getMapper(ArticleMapper.class);
 		ArticleExample ex=new ArticleExample();
 		ArticleExample.Criteria c=ex.createCriteria();
+		
+		c.andUserIdEqualTo(userId);
 		
 		if(channelId!=null){
 			c.andChannelIdEqualTo(channelId);

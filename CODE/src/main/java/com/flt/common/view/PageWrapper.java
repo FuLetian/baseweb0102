@@ -2,7 +2,6 @@ package com.flt.common.view;
 
 import java.util.Arrays;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import com.flt.common.annotation.View;
@@ -22,6 +21,8 @@ public class PageWrapper {
 	}
 	
 	public void addView(BaseView view){
+		
+		view.setUserId(page.getUserId());
 		
 		String viewName=this.subObjectName(view);
 		String template=this.getPageTemplate(view);

@@ -6,5 +6,5 @@ import com.flt.dao.model.Channel;
 
 public interface IChannelService {
 
-	List<Channel> listChannels();
+	List<Channel> listChannels(Integer userId);
 }

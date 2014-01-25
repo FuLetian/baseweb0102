@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.flt.common.config.Configuration;
 import com.flt.common.constant.FieldConstant;
 import com.flt.dao.model.Resource;
 import com.flt.web.manage.serviceAndPromise.service.IserviceAndPromiseManageService;
@@ -35,6 +36,7 @@ public class ServiceAndPromiseController {
 	@ResponseBody
 	public String update(Resource resource,Model model,HttpServletRequest req){
 		
+		resource.setUserId(Configuration.TMP_SESSION_USER_ID);
 		service.saveOrUpdateResource(resource);
 		
 		return "SUCCESS";
@@ -42,9 +44,9 @@ public class ServiceAndPromiseController {
 	
 	@RequestMapping("getText")
 	@ResponseBody
-	public String getText(Integer id,Model model,HttpServletRequest req){
+	public String getText(Integer num,Model model,HttpServletRequest req){
 		
-		Resource r=service.loadResourceById(id);
+		Resource r=service.loadResourceByNum(num,Configuration.TMP_SESSION_USER_ID);
 		
 		return r==null?"内容为空":r.getText();
 	}

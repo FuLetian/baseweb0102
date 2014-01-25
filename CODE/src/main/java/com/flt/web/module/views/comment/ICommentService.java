@@ -6,5 +6,5 @@ import com.flt.dao.model.Comment;
 
 public interface ICommentService {
 
-	List<Comment> listHomePageComments(Integer max);
+	List<Comment> listHomePageComments(Integer max,Integer userId);
 }

@@ -44,7 +44,7 @@
 </div>
 
 <form id="editorForm" action="${basePath}passage/onUpdate" method="post" enctype="multipart/form-data">
-<input id="hidden_id" type="hidden" name="id" value="1">
+<input id="hidden_id" type="hidden" name="passageNum" value="1">
 <textarea id="editor_id" name="text" style="width:100%;height:500px;"></textarea>
 </form>
 <button data-bind="click:onPreview">preview</button>
@@ -77,12 +77,12 @@ KindEditor.ready(function(K) {
         });
 });
 
-function setId(id){
-	$("#hidden_id").val(id);
+function setId(num){
+	$("#hidden_id").val(num);
 	
 	$.ajax({
 		url:'${basePath}passage/getPassage',
-		data:{'id':id},
+		data:{'passageNum':num},
 		success:function(data){
 			window.editor.html(data);
 		}

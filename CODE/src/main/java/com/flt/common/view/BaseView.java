@@ -7,6 +7,8 @@ public abstract class BaseView {
 
 	protected Map<String, Object> root;
 	
+	protected Integer userId;
+	
 	public BaseView() {
 		// TODO Auto-generated constructor stub
 	}
@@ -17,4 +19,10 @@ public abstract class BaseView {
 	}
 	
 	public void render(){}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+	
+	
 }

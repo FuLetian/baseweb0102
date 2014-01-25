@@ -2,7 +2,7 @@
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration >
 	
-	<classPathEntry location="C:\Users\Administrator\.m2\repository\mysql\mysql-connector-java\5.1.6\mysql-connector-java-5.1.6.jar" /> 
+	<classPathEntry location="C:\Documents and Settings\Administrator\.m2\repository\mysql\mysql-connector-java\5.1.25\mysql-connector-java-5.1.25.jar" /> 
 
   <context id="context1" >
   	
@@ -11,9 +11,51 @@
     <sqlMapGenerator targetPackage="com.flt.dao.sqlmap" targetProject="baseweb" />
     <javaClientGenerator targetPackage="com.flt.dao.client" implementationPackage="com.flt.dao.client.impl" targetProject="baseweb" type="XMLMAPPER" />
 
+
+	<table schema="basedb" tableName="article" domainObjectName="Article">
+		<generatedKey column="id" sqlStatement="MySql" identity="true" />
+	</table>
+	<table schema="basedb" tableName="user" domainObjectName="User">
+		<generatedKey column="id" sqlStatement="MySql" identity="true" />
+	</table>
 	<table schema="basedb" tableName="comment" domainObjectName="Comment">
 		<generatedKey column="id" sqlStatement="MySql" identity="true" />
 	</table>
+	
+ 	<table schema="basedb" tableName="article" domainObjectName="Article"> 
+ 		<generatedKey column="id" sqlStatement="MySql" identity="true" /> 
+ 	</table> 
+ 	<table schema="basedb" tableName="article_img" domainObjectName="ArticleImg"> 
+ 		<generatedKey column="id" sqlStatement="MySql" identity="true" /> 
+ 	</table> 
+	<table schema="basedb" tableName="article_property" domainObjectName="ArticleProperty">
+		<generatedKey column="id" sqlStatement="MySql" identity="true" />
+	</table>
+ 	<table schema="basedb" tableName="ball" domainObjectName="Ball"> 
+ 		<generatedKey column="id" sqlStatement="MySql" identity="true" /> 
+ 	</table> 
+ 	<table schema="basedb" tableName="brand" domainObjectName="Brand"> 
+ 		<generatedKey column="id" sqlStatement="MySql" identity="true" /> 
+ 	</table> 
+ 	<table schema="basedb" tableName="channel" domainObjectName="Channel"> 
+ 		<generatedKey column="id" sqlStatement="MySql" identity="true" /> 
+ 	</table> 
+	
+ 	<table schema="basedb" tableName="comment" domainObjectName="Comment"> 
+ 		<generatedKey column="id" sqlStatement="MySql" identity="true" /> 
+ 	</table> 
+ 	<table schema="basedb" tableName="consumer" domainObjectName="Consume"> 
+ 		<generatedKey column="id" sqlStatement="MySql" identity="true" /> 
+ 	</table> 
+ 	<table schema="basedb" tableName="menu" domainObjectName="Menu"> 
+ 		<generatedKey column="id" sqlStatement="MySql" identity="true" /> 
+ 	</table> 
+ 	<table schema="basedb" tableName="passage" domainObjectName="Passage"> 
+ 		<generatedKey column="id" sqlStatement="MySql" identity="true" /> 
+ 	</table> 
+ 	<table schema="basedb" tableName="resource" domainObjectName="Resource"> 
+ 		<generatedKey column="id" sqlStatement="MySql" identity="true" /> 
+ 	</table> 
 
     
   </context>

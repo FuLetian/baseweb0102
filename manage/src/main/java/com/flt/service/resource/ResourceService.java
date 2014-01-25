@@ -1,11 +1,13 @@
 package com.flt.service.resource;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import com.flt.dao.client.ResourceMapper;
 import com.flt.dao.model.Resource;
+import com.flt.dao.model.ResourceExample;
 import com.flt.service.base.BaseService;
 import com.flt.web.manage.serviceAndPromise.service.IserviceAndPromiseManageService;
 import com.flt.web.module.views.staticstate.IServiceAndPromiseService;
@@ -22,9 +24,19 @@ public class ResourceService extends BaseService implements IServiceAndPromiseSe
 	}
 
 	@Override
-	public Resource loadResourceById(Integer id) {
+	public Resource loadResourceByNum(Integer num,Integer userId) {
 		// TODO Auto-generated method stub
-		return this.findResourceById(id);
+		ResourceMapper m=getSqlSession().getMapper(ResourceMapper.class);
+		ResourceExample ex=new  ResourceExample();
+		ex.createCriteria().andNumEqualTo(num).andUserIdEqualTo(userId);
+		
+		List<Resource> list=m.selectByExample(ex);
+		
+		if(list.isEmpty()){
+			return null;
+		}else{
+			return list.get(0);
+		}
 	}
 
 	@Override
@@ -40,10 +52,20 @@ public class ResourceService extends BaseService implements IServiceAndPromiseSe
 			resource.setuDt(new Date());
 		}
 		
-		if(resource.getId()==null){
+		ResourceExample ex=new ResourceExample();
+		
+		ex.createCriteria().andUserIdEqualTo(resource.getUserId())
+		.andNumEqualTo(resource.getNum());
+		
+		List<Resource> list=m.selectByExample(ex);
+		
+		if(list.isEmpty()){
 			m.insert(resource);
 		}else{
-			m.updateByPrimaryKey(resource);
+			Resource origin=list.get(0);
+			
+			origin.setText(resource.getText());
+			m.updateByPrimaryKey(origin);
 		}
 	}
 

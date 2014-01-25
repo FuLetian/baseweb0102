@@ -11,18 +11,18 @@ import com.flt.dao.model.Menu;
 
 public interface IArticleManageService {
 
-	List<Article> loadAllArticle();
+	List<Article> loadAllArticle(Integer userId);
 	
 	Article loadArticleById(Integer id);
 	
-	List<Menu> listAllSecondMenus();
+	List<Menu> listAllSecondMenus(Integer userId);
 	
-	List<Brand> listAllBrands();
+	List<Brand> listAllBrands(Integer userId);
 	
-	List<Channel> listAllChannels();
+	List<Channel> listAllChannels(Integer userId);
 	
 	void saveOrUpdateArticle(Integer id,String name,double price,double discount,Integer idx,Integer brandId,
-			Integer menuId,Integer channelId,String imgs,String properties);
+			Integer menuId,Integer channelId,String imgs,String properties,Integer userId);
 	
 	void deleteArticle(Integer id);
 	

@@ -27,16 +27,17 @@ public class BrandService extends BaseService implements IBrandService ,IBrandMa
 	}
 
 	@Override
-	public List<Brand> listAllBrands() {
+	public List<Brand> listAllBrands(Integer userId) {
 		// TODO Auto-generated method stub
 		BrandMapper m=getSqlSession().getMapper(BrandMapper.class);
 		BrandExample ex=new BrandExample();
+		ex.createCriteria().andUserIdEqualTo(userId);
 		
 		return m.selectByExample(ex);
 	}
 
 	@Override
-	public void saveOrUpdateBrand(Integer id, String name, Integer idx) {
+	public void saveOrUpdateBrand(Integer id, String name, Integer idx,Integer userId) {
 		// TODO Auto-generated method stub
 		BrandMapper m=getSqlSession().getMapper(BrandMapper.class);
 		
@@ -51,6 +52,7 @@ public class BrandService extends BaseService implements IBrandService ,IBrandMa
 		b.setName(name);
 		b.setuDt(new Date());
 		b.setType(0);
+		b.setUserId(userId);
 		
 		if(id==null){
 			m.insert(b);

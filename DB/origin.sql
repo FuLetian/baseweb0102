@@ -7,6 +7,19 @@ CREATE SCHEMA IF NOT EXISTS `basedb` DEFAULT CHARACTER SET latin1 ;
 USE `basedb` ;
 
 -- -----------------------------------------------------
+-- Table `basedb`.`user`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `basedb`.`user` ;
+
+CREATE  TABLE IF NOT EXISTS `basedb`.`user` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `account` VARCHAR(45) NULL ,
+  `password` VARCHAR(45) NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `basedb`.`channel`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `basedb`.`channel` ;
@@ -17,7 +30,14 @@ CREATE  TABLE IF NOT EXISTS `basedb`.`channel` (
   `u_dt` DATETIME NOT NULL ,
   `c_dt` DATETIME NOT NULL ,
   `idx` INT NOT NULL DEFAULT 0 ,
-  PRIMARY KEY (`id`) )
+  `user_id` INT NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_channel_user1` (`user_id` ASC) ,
+  CONSTRAINT `fk_channel_user1`
+    FOREIGN KEY (`user_id` )
+    REFERENCES `basedb`.`user` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -33,7 +53,14 @@ CREATE  TABLE IF NOT EXISTS `basedb`.`menu` (
   `u_dt` DATETIME NOT NULL ,
   `c_dt` DATETIME NOT NULL ,
   `idx` INT NOT NULL DEFAULT 0 ,
-  PRIMARY KEY (`id`) )
+  `user_id` INT NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_menu_user1` (`user_id` ASC) ,
+  CONSTRAINT `fk_menu_user1`
+    FOREIGN KEY (`user_id` )
+    REFERENCES `basedb`.`user` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -50,7 +77,14 @@ CREATE  TABLE IF NOT EXISTS `basedb`.`brand` (
   `u_dt` DATETIME NOT NULL ,
   `c_dt` DATETIME NOT NULL ,
   `idx` INT NOT NULL DEFAULT 0 ,
-  PRIMARY KEY (`id`) )
+  `user_id` INT NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_brand_user1` (`user_id` ASC) ,
+  CONSTRAINT `fk_brand_user1`
+    FOREIGN KEY (`user_id` )
+    REFERENCES `basedb`.`user` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB
 COMMENT = '品牌';
 
@@ -118,13 +152,16 @@ CREATE  TABLE IF NOT EXISTS `basedb`.`comment` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `content` VARCHAR(45) NOT NULL ,
   `reply_content` VARCHAR(500) NULL ,
+  `grade` INT NULL COMMENT '评分，1-5' ,
   `u_dt` DATETIME NULL ,
   `c_dt` DATETIME NULL ,
   `article_id` INT NOT NULL ,
   `consumer_id` INT NOT NULL ,
+  `user_id` INT NOT NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `fk_comment_article1` (`article_id` ASC) ,
   INDEX `fk_comment_consumer1` (`consumer_id` ASC) ,
+  INDEX `fk_comment_user1` (`user_id` ASC) ,
   CONSTRAINT `fk_comment_article1`
     FOREIGN KEY (`article_id` )
     REFERENCES `basedb`.`article` (`id` )
@@ -133,6 +170,11 @@ CREATE  TABLE IF NOT EXISTS `basedb`.`comment` (
   CONSTRAINT `fk_comment_consumer1`
     FOREIGN KEY (`consumer_id` )
     REFERENCES `basedb`.`consumer` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_comment_user1`
+    FOREIGN KEY (`user_id` )
+    REFERENCES `basedb`.`user` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -147,9 +189,17 @@ CREATE  TABLE IF NOT EXISTS `basedb`.`resource` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `text` VARCHAR(1024) NULL ,
   `idx` INT NULL ,
+  `num` INT NULL COMMENT '此字段加上userId确定其唯一性' ,
   `u_dt` DATETIME NULL ,
   `c_dt` DATETIME NULL ,
-  PRIMARY KEY (`id`) )
+  `user_id` INT NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_resource_user1` (`user_id` ASC) ,
+  CONSTRAINT `fk_resource_user1`
+    FOREIGN KEY (`user_id` )
+    REFERENCES `basedb`.`user` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -195,7 +245,14 @@ CREATE  TABLE IF NOT EXISTS `basedb`.`passage` (
   `idx` INT NULL ,
   `u_dt` DATETIME NULL ,
   `c_dt` DATETIME NULL ,
-  PRIMARY KEY (`id`) )
+  `user_id` INT NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_passage_user1` (`user_id` ASC) ,
+  CONSTRAINT `fk_passage_user1`
+    FOREIGN KEY (`user_id` )
+    REFERENCES `basedb`.`user` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
