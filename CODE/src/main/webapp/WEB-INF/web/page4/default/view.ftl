@@ -20,6 +20,16 @@
 
 <script src="../javascript/common.js"></script>
 
+<!--knockout-->
+<script src="${basePath}javascript/knockout-3.0.0.js"></script>
+
+<!--jquery.form-->
+<script src="${basePath}javascript/jquery.form.js"></script>
+
+<script src="${basePath}javascript/jquery.cookie.js"></script>
+
+<script src="${basePath}javascript/model.js"></script>
+
 </head>
 <body>
 	<#include MenuView/>

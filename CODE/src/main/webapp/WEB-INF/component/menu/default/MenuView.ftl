@@ -33,8 +33,23 @@
 <div class="row">
 	<div class="col-xs-6"><img src="../images/vip.png" /></div>
 	<div class="col-xs-6" align="right">
-		<div id="buyCar" class="buy-car"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;购物车<span class="buy-car-count">0</span></div>
-		<div id="buyCarContent" style="z-index:500;">gggb</div>
+		<div id="buyCar" class="buy-car"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;购物车<span data-bind="text:carCount" class="buy-car-count">0</span></div>
+		<div id="buyCarContent" style="z-index:500;" align="left">
+			<div class="panel panel-default">
+			  <div class="panel-heading">Panel heading without title</div>
+			  <div class="panel-body" data-bind="foreach:selectedArticles">
+					<div class="media">
+					  <a class="pull-left" href="#" style="width:30%;">
+					    <img data-bind="attr:{'src':thumbnail}" class="media-object" style="width:100%;" alt="...">
+					  </a>
+					  <div class="media-body">
+					    <h4 data-bind="text:articleName" class="media-heading" align="left">Media heading</h4>
+					    	<p>数量:<span data-bind="text:count">1</span></p>
+					  </div>
+					</div>
+			  </div>
+			</div>
+		</div>
 	</div>
 </div>
 </div>
@@ -94,5 +109,6 @@ $(function(){
 	},function(){
 		$(".all-menu-btn").removeClass("AllMenuBtnActive");
 	});
+	
 });
 </script>

@@ -44,7 +44,7 @@
  	<table schema="basedb" tableName="comment" domainObjectName="Comment"> 
  		<generatedKey column="id" sqlStatement="MySql" identity="true" /> 
  	</table> 
- 	<table schema="basedb" tableName="consumer" domainObjectName="Consume"> 
+ 	<table schema="basedb" tableName="consumer" domainObjectName="Consumer"> 
  		<generatedKey column="id" sqlStatement="MySql" identity="true" /> 
  	</table> 
  	<table schema="basedb" tableName="menu" domainObjectName="Menu"> 

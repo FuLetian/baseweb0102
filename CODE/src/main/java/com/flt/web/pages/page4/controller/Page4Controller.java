@@ -18,6 +18,11 @@ import com.flt.web.module.views.footer.FooterView;
 import com.flt.web.module.views.menu.MenuView;
 import com.flt.web.pages.page4.view.Page4View;
 
+/**
+ * 商品详情界面
+ * @author Administrator
+ *
+ */
 @Controller
 @RequestMapping("page4")
 public class Page4Controller {
@@ -28,6 +33,7 @@ public class Page4Controller {
 		PageWrapper pw=this.buildPage(articleId);
 		
 		model.addAllAttributes(pw.getRoot());
+		model.addAttribute("basePath", req.getContextPath()+"/");
 		return pw.getPageTemplate();
 	}
 	
