@@ -63,19 +63,21 @@ public class MenuService extends BaseService implements IMenuService,IMenuManage
 	}
 
 	@Override
-	public List<Menu> listAllMenus() {
+	public List<Menu> listAllMenus(Integer userId) {
 		// TODO Auto-generated method stub
 		
 		MenuMapper m=getSqlSession().getMapper(MenuMapper.class);
 		MenuExample ex=new MenuExample();
-		
+		ex.createCriteria().andUserIdEqualTo(userId);
 		return m.selectByExample(ex);
 	}
 
 
 	@Override
-	public void onSaveOrUpdateMenu(Menu menu) {
+	public void onSaveOrUpdateMenu(Menu menu,Integer userId) {
 		// TODO Auto-generated method stub
+		
+		menu.setUserId(userId);
 		
 		if(menu.getcDt()==null){
 			menu.setcDt(new Date());

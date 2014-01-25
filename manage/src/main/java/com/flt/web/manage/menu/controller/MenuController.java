@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.flt.common.config.Configuration;
 import com.flt.dao.model.Menu;
 import com.flt.web.manage.menu.service.IMenuManageService;
 
@@ -25,7 +26,7 @@ public class MenuController {
 	@RequestMapping("list")
 	public String list(Model model,HttpServletRequest req){
 		
-		List<Menu> menus=iMenuManageService.listAllMenus();
+		List<Menu> menus=iMenuManageService.listAllMenus(Configuration.TMP_SESSION_USER_ID);
 		JSONArray ja=JSONArray.fromObject(menus);
 		
 		model.addAttribute("menus", ja.toString());
@@ -36,7 +37,7 @@ public class MenuController {
 	@RequestMapping("getMenuEditorView")
 	public String getMenuEditorView(Integer menuId,Model model,HttpServletRequest req){
 		
-		List<Menu> menus=iMenuManageService.listAllMenus();
+		List<Menu> menus=iMenuManageService.listAllMenus(Configuration.TMP_SESSION_USER_ID);
 		
 		if(menuId!=null){
 			Menu menu=iMenuManageService.findMenuById(menuId);
@@ -52,7 +53,7 @@ public class MenuController {
 	@ResponseBody
 	public String onSaveOrUpdateMenu(Menu menu,Model model,HttpServletRequest req){
 		
-		iMenuManageService.onSaveOrUpdateMenu(menu);
+		iMenuManageService.onSaveOrUpdateMenu(menu,Configuration.TMP_SESSION_USER_ID);
 		
 		return "SUCCESS";
 	}

@@ -24,12 +24,14 @@ public class ChannelService extends BaseService implements IChannelService,IChan
 	}
 
 	@Override
-	public List<Channel> findAllChannel() {
+	public List<Channel> findAllChannel(final Integer userId) {
 		// TODO Auto-generated method stub
 		
 		ChannelMapper mapper=getSqlSession().getMapper(ChannelMapper.class);
 		
-		return mapper.selectByExample(new ChannelExample());
+		return mapper.selectByExample(new ChannelExample(){{
+			this.createCriteria().andUserIdEqualTo(userId);
+		}});
 	}
 
 	@Override
@@ -49,6 +51,7 @@ public class ChannelService extends BaseService implements IChannelService,IChan
 			newChannel.setuDt(new Date());
 			newChannel.setIdx(channel.getIdx());
 			newChannel.setName(channel.getName());
+			newChannel.setUserId(channel.getUserId());
 			mapper.updateByPrimaryKey(newChannel);
 		}
 	}

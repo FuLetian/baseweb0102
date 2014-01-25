@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.flt.common.config.Configuration;
 import com.flt.common.view.PageWrapper;
 import com.flt.web.module.views.footer.FooterView;
 import com.flt.web.module.views.menu.MenuView;
@@ -34,11 +35,12 @@ public class Page3Controller {
 	@Autowired private LeftNavigationView leftNavigationView;
 	@Autowired private LocationView locationView;
 	@Autowired private MainPassageView mainPassageView;
-	private PageWrapper buildPage(Integer passageId){
+	private PageWrapper buildPage(Integer num,Integer userId){
+		Assert.notNull(num);
 		
-		Assert.notNull(passageId);
+		page3View.setUserId(userId);
 		
-		mainPassageView.setPassageId(passageId);
+		mainPassageView.setNum(num);
 		
 		PageWrapper p=new PageWrapper(page3View, new HashMap<String,Object>());
 		
@@ -52,8 +54,8 @@ public class Page3Controller {
 	}
 	
 	@RequestMapping("view")
-	private String view(Integer passageId,Model model,HttpServletRequest req){
-		PageWrapper p=this.buildPage(passageId);
+	private String view(Integer passageNum,Model model,HttpServletRequest req){
+		PageWrapper p=this.buildPage(passageNum,Configuration.TMP_SESSION_USER_ID);
 		
 		model.addAllAttributes(p.getRoot());
 		

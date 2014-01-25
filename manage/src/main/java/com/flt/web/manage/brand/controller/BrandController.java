@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.flt.common.config.Configuration;
 import com.flt.dao.model.Brand;
 import com.flt.web.manage.brand.service.IBrandManageService;
 
@@ -25,7 +26,7 @@ public class BrandController {
 	@RequestMapping("view")
 	public String view(Model model,HttpServletRequest req){
 		
-		List<Brand> list=service.listAllBrands();
+		List<Brand> list=service.listAllBrands(Configuration.TMP_SESSION_USER_ID);
 		
 		model.addAttribute("brands", JSONArray.fromObject(list).toString());
 		model.addAttribute("basePath", req.getContextPath()+"/");
@@ -36,7 +37,7 @@ public class BrandController {
 	@ResponseBody
 	public String saveOrUpdate(Integer id,String name,Integer idx,Model model,HttpServletRequest req){
 		
-		service.saveOrUpdateBrand(id, name, idx);
+		service.saveOrUpdateBrand(id, name, idx,Configuration.TMP_SESSION_USER_ID);
 		return "SUCCESS";
 	}
 	

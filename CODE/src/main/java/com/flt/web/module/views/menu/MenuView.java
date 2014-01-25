@@ -18,7 +18,7 @@ public class MenuView extends BaseView {
 		// TODO Auto-generated method stub
 		super.render();
 		
-		List<MenuDTO> menus=service.listMenus();
+		List<MenuDTO> menus=service.listMenus(userId);
 		
 		root.put("menus", menus);
 	}

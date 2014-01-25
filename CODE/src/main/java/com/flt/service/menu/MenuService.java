@@ -19,11 +19,12 @@ public class MenuService extends BaseService implements IMenuService {
 
 	
 	@Override
-	public List<MenuDTO> listMenus() {
+	public List<MenuDTO> listMenus(Integer userId) {
 		// TODO Auto-generated method stub
 		MenuMapper m=getSqlSession().getMapper(MenuMapper.class);
 		MenuExample ex=new MenuExample();
-		ex.createCriteria().andPIdIsNull();
+		ex.createCriteria().andPIdIsNull()
+		.andUserIdEqualTo(userId);
 		List<Menu> rootMenus=m.selectByExample(ex);
 		
 		LogEnum logEnum=Assert.notNull(rootMenus, "not found any menu", this.getClass());

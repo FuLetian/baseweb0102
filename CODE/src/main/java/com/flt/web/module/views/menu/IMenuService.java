@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface IMenuService {
 
-	List<MenuDTO> listMenus();
+	List<MenuDTO> listMenus(Integer userId);
 }

@@ -5,4 +5,6 @@ import com.flt.dao.model.Resource;
 public interface IServiceAndPromiseService {
 
 	Resource findResourceById(Integer id);
+	
+	Resource findResourceByNum(Integer num,Integer userId);
 }

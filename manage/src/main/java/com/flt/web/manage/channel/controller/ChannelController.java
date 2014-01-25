@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.flt.common.config.Configuration;
 import com.flt.dao.model.Channel;
 import com.flt.web.manage.channel.service.IChannelManageService;
 
@@ -25,7 +26,7 @@ public class ChannelController {
 	@RequestMapping("view")
 	public String view(Model model,HttpServletRequest req){
 		
-		List<Channel> list=service.findAllChannel();
+		List<Channel> list=service.findAllChannel(Configuration.TMP_SESSION_USER_ID);
 		
 		model.addAttribute("channels", JSONArray.fromObject(list).toString());
 		model.addAttribute("basePath", req.getContextPath()+"/");
@@ -37,6 +38,7 @@ public class ChannelController {
 	@ResponseBody
 	public String onSaveOrUpdateChannel(Channel channel,Model model,HttpServletRequest req){
 		
+		channel.setUserId(Configuration.TMP_SESSION_USER_ID);
 		service.saveOrUpdateChannel(channel);
 		
 		return "SUCCESS";

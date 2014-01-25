@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.flt.common.config.Configuration;
 import com.flt.dao.model.Article;
 import com.flt.dao.model.ArticleImg;
 import com.flt.web.manage.article.service.IArticleManageService;
@@ -28,7 +29,7 @@ public class ArticleController {
 	@RequestMapping("view")
 	public String view(Model model,HttpServletRequest req){
 		
-		List<Article> list=service.loadAllArticle();
+		List<Article> list=service.loadAllArticle(Configuration.TMP_SESSION_USER_ID);
 		String allArticleJSON=buildJSON(list);
 		
 		model.addAttribute("basePath", req.getContextPath()+"/");
@@ -51,7 +52,7 @@ public class ArticleController {
 		Assert.notNull(menuId);
 		Assert.notNull(channelId);
 		
-		service.saveOrUpdateArticle(id, name, price, discount, idx, brandId, menuId, channelId, imgs, properties);
+		service.saveOrUpdateArticle(id, name, price, discount, idx, brandId, menuId, channelId, imgs, properties,Configuration.TMP_SESSION_USER_ID);
 		
 		return "SUCCESS";
 	}
@@ -69,9 +70,9 @@ public class ArticleController {
 		}
 		
 		model.addAttribute("id", id);
-		model.addAttribute("brands", service.listAllBrands());
-		model.addAttribute("menus", service.listAllSecondMenus());
-		model.addAttribute("channels", service.listAllChannels());
+		model.addAttribute("brands", service.listAllBrands(Configuration.TMP_SESSION_USER_ID));
+		model.addAttribute("menus", service.listAllSecondMenus(Configuration.TMP_SESSION_USER_ID));
+		model.addAttribute("channels", service.listAllChannels(Configuration.TMP_SESSION_USER_ID));
 		
 		model.addAttribute("basePath",req.getContextPath()+"/");
 		return "manage/article/editor.ftl";

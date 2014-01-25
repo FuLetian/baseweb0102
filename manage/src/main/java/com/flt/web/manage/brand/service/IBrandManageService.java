@@ -6,9 +6,9 @@ import com.flt.dao.model.Brand;
 
 public interface IBrandManageService {
 
-	List<Brand> listAllBrands();
+	List<Brand> listAllBrands(Integer userId);
 	
-	void saveOrUpdateBrand(Integer id,String name,Integer idx);
+	void saveOrUpdateBrand(Integer id,String name,Integer idx,Integer userId);
 	
 	void deleteBrand(Integer id);
 }

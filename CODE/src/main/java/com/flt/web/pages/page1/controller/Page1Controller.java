@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.flt.common.config.Configuration;
 import com.flt.common.controller.BaseController;
 import com.flt.common.freemarker.htmlAbled;
 import com.flt.common.log.Assert;
@@ -88,7 +89,7 @@ public class Page1Controller extends BaseController implements htmlAbled{
 	public String createHtml(HttpServletRequest req) {
 		// TODO Auto-generated method stub
 		
-		List<Channel> channels=channelService.listChannels();
+		List<Channel> channels=channelService.listChannels(Configuration.TMP_SESSION_USER_ID);
 		for(Channel c:channels){
 			PageWrapper p=this.buildPage(c.getId());
 			Map<String, Object> root=p.getRoot();

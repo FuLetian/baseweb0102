@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.flt.common.annotation.View;
+import com.flt.common.config.Configuration;
 import com.flt.common.view.BaseView;
 import com.flt.dao.model.Brand;
 
@@ -21,7 +22,7 @@ public class BrandInPage1View extends BaseView {
 		// TODO Auto-generated method stub
 		super.render();
 		
-		List<Brand> list=service.listbBrandsByType(brandType);
+		List<Brand> list=service.listbBrandsByType(brandType,Configuration.TMP_SESSION_USER_ID);
 		
 		root.put("brands", list);
 		

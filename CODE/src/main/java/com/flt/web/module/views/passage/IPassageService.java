@@ -4,5 +4,5 @@ import com.flt.dao.model.Passage;
 
 public interface IPassageService {
 
-	Passage findPassageById(Integer id);
+	Passage findPassageByNum(Integer num,Integer userId);
 }

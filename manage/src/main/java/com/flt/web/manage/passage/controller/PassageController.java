@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.flt.common.config.Configuration;
 import com.flt.dao.model.Passage;
 import com.flt.web.manage.passage.service.IPassageManageService;
 
@@ -38,18 +39,18 @@ public class PassageController {
 	
 	@RequestMapping(value="onUpdate",method=RequestMethod.POST)
 	@ResponseBody
-	public String onUpdate(Integer id,String text,Model model,HttpServletRequest req){
+	public String onUpdate(Integer passageNum,String text,Model model,HttpServletRequest req){
 		
-		service.saveOrUpdatePassage(id, text);
+		service.saveOrUpdatePassage(passageNum, text,Configuration.TMP_SESSION_USER_ID);
 		
 		return "SUCCESS";
 	}
 	
 	@RequestMapping(value="getPassage")
 	@ResponseBody
-	public String getPassage(Integer id,Model model,HttpServletRequest req){
+	public String getPassage(Integer passageNum,Model model,HttpServletRequest req){
 		
-		Passage p=service.loadPassageById(id);
+		Passage p=service.loadPassageByNum(passageNum,Configuration.TMP_SESSION_USER_ID);
 		return p==null?"内容为空":p.getText();
 	}
 	

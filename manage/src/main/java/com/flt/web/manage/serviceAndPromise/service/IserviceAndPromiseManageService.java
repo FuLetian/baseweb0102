@@ -4,7 +4,7 @@ import com.flt.dao.model.Resource;
 
 public interface IserviceAndPromiseManageService {
 
-	Resource loadResourceById(Integer id);
+	Resource loadResourceByNum(Integer num,Integer userId);
 	
 	void saveOrUpdateResource(Resource resource);
 }
