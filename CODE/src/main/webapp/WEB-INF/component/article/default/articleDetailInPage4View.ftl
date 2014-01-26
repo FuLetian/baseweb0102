@@ -13,7 +13,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-5">
-			<img alt="" src="${img.path}" class="image-equal-width"/>
+			<img id="bigPic" alt="" src="${img.path}" class="image-equal-width"/>
 		</div>
 		<div class="col-xs-7">
 			<div class="detail-title">${a.name}</div>
@@ -34,8 +34,14 @@
 				  </dd>
 				</dl>
 			</div>
-			<div class="detail-article-line">
-				<a data-bind="click:openBuycarModal" href="#" class="btn btn-primary btn-lg">&nbsp;&nbsp;&nbsp;加入购物车&nbsp;&nbsp;&nbsp;</a>
+			<div class="detail-article-line top-border">
+				<dl class="dl-horizontal">
+					<dt>数量</dt>
+					<dd><input id="articleCount" type="number" value="1"/></dd>
+				<dl>
+				<div style="width:40%;">
+					<a data-bind="click:openBuycarModal" href="#" class="btn btn-primary btn-block">&nbsp;&nbsp;&nbsp;加入购物车&nbsp;&nbsp;&nbsp;</a>
+				</div>
 			</div>
 		</div>
 	</div>	

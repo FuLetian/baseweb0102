@@ -27,7 +27,7 @@ body{background-color:#FDFBFE;}
 .detail-title{font-size:16px;font-weight:bold;color:#6A4D4D;border-bottom: 1px dashed #E5E3E6;margin-top:5px;}
 .detail-price{color:#E6559D;font-weight:bold;margin-top:20px;}
 .detail-price-number{font-size:30px;}
-.detail-article-line{margin-top:10px;}
+.detail-article-line{margin-top:10px;padding-top:20px;}
 .detail-article-line dt{width:60px;height:40px;}
 .detail-article-line dd{margin-left:100px;height:40px;}
 .article-param dt{width:100px;}
@@ -46,3 +46,4 @@ a.a:hover{color:#E02284;}
 .image-equal-width{width:100%;}
 .subject-text1{background-image:url(../images/texts.png);background-repeat: no-repeat;height:35px;margin-top:20px;margin-bottom:10px;}
 .bg{background-color:#FDFBFE;}
+.top-border{border-top:1px dashed #E5E3E6}

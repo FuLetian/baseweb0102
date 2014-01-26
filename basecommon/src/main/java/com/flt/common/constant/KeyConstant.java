@@ -11,4 +11,6 @@ package com.flt.common.constant;
 public class KeyConstant {
 
 	public static String SESSION_BUY_CAR_KEY="jfugbkakgjikt";
+	
+	public static String SESSION_BUY_KEY="gkiewngobmt";
 }
