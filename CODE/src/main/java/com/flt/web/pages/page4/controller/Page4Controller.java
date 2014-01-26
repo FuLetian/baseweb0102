@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.flt.common.controller.BaseController;
 import com.flt.common.view.PageWrapper;
 import com.flt.web.module.views.article.ArticleCommentListInPage4View;
 import com.flt.web.module.views.article.ArticleDetailInPage4View;
@@ -25,12 +26,12 @@ import com.flt.web.pages.page4.view.Page4View;
  */
 @Controller
 @RequestMapping("page4")
-public class Page4Controller {
+public class Page4Controller extends BaseController{
 
 	@RequestMapping("view")
 	public String view(Integer articleId,Model model,HttpServletRequest req){
 		
-		PageWrapper pw=this.buildPage(articleId);
+		PageWrapper pw=this.buildPage(articleId,this.getUserId(req));
 		
 		model.addAllAttributes(pw.getRoot());
 		model.addAttribute("basePath", req.getContextPath()+"/");
@@ -44,8 +45,8 @@ public class Page4Controller {
 	@Autowired private ArticlePropertiesInPage4View articlePropertiesInPage4View;
 	@Autowired private ArticleImgListInPage4View articleImgListInPage4View;
 	@Autowired private ArticleCommentListInPage4View articleCommentListInPage4View;
-	private PageWrapper buildPage(Integer articleId){
-		PageWrapper pw=new PageWrapper(page4View, new HashMap<String,Object>());
+	private PageWrapper buildPage(Integer articleId,Integer userId){
+		PageWrapper pw=new PageWrapper(page4View, new HashMap<String,Object>(),userId);
 		
 		articleDetailInPage4View.setArticleId(articleId);
 		articlePropertiesInPage4View.setArticleId(articleId);

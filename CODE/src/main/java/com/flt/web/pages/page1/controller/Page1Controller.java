@@ -46,11 +46,11 @@ public class Page1Controller extends BaseController implements htmlAbled{
 	@Autowired private CommentInPage1View commentInPage1View;
 	@Autowired private ServiceAndPromise serviceAndPromise;
 	@Autowired private FooterView footerView;
-	private PageWrapper buildPage(Integer channelId){
+	private PageWrapper buildPage(Integer channelId,Integer userId){
 		
 		Assert.notNull(channelId,"channelId is unable to be null",this.getClass());
 		
-		PageWrapper p=new PageWrapper(page,new HashMap<String,Object>());
+		PageWrapper p=new PageWrapper(page,new HashMap<String,Object>(),userId);
 		
 		articleView.setChannelId(channelId);
 		p.addView(articleView);
@@ -74,7 +74,7 @@ public class Page1Controller extends BaseController implements htmlAbled{
 			channelId=0;
 		}
 		
-		PageWrapper p=this.buildPage(channelId);
+		PageWrapper p=this.buildPage(channelId,this.getUserId(req));
 		
 		model.addAllAttributes(p.getRoot());
 		model.addAttribute("basePath",req.getServletPath());
@@ -89,9 +89,9 @@ public class Page1Controller extends BaseController implements htmlAbled{
 	public String createHtml(HttpServletRequest req) {
 		// TODO Auto-generated method stub
 		
-		List<Channel> channels=channelService.listChannels(Configuration.TMP_SESSION_USER_ID);
+		List<Channel> channels=channelService.listChannels(this.getUserId(req));
 		for(Channel c:channels){
-			PageWrapper p=this.buildPage(c.getId());
+			PageWrapper p=this.buildPage(c.getId(),1);
 			Map<String, Object> root=p.getRoot();
 			root.put("basePath", req.getServletPath());
 			freemarkerService.flush(req, p.getTargetHtmlName(), p.getPageTemplate(),root);

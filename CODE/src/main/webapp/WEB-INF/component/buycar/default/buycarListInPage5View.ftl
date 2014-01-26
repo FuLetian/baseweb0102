@@ -19,23 +19,25 @@
 		</th>
 		<th>删除</th>
 	</tr>
-	<tbody>
+	<tbody data-bind="foreach:selectedArticles">
 		<tr>
 			<td>
 				<div class="media">
 				  <a class="pull-left" href="#">
-				    <img class="media-object" style="height:100px;" src="http://localhost:8080/baseweb/images/icon-user.jpg" alt="...">
+				    <img class="media-object" style="height:50px;" data-bind="attr:{'src':thumbnail}" alt="...">
 				  </a>
 				  <div class="media-body">
-				    <h4 class="media-heading">Media heading</h4>
+				    <h4 class="media-heading" data-bind="text:article.name">Media heading</h4>
 				    ...
 				  </div>
 				</div>
 			</td>
+			<td data-bind="text:count*article.price">d</td>
 			<td>d</td>
-			<td>d</td>
-			<td>d</td>
-			<td>d</td>
+			<td data-bind="text:count">d</td>
+			<td>
+				<a href="#" data-bind="click:$parent.deleteItem">删除</a>
+			</td>
 		</tr>
 	</tbody>
 </table>
