@@ -30,7 +30,7 @@ import com.flt.web.itf.service.ICommentITFService;
 
 @Controller
 @RequestMapping("commentITF")
-public class CommonITFController {
+public class CommentITFController {
 	
 	@Autowired
 	private ICommentITFService service;

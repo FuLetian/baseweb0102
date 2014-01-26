@@ -20,6 +20,14 @@ public class PageWrapper {
 		this.root=root;
 	}
 	
+	public PageWrapper(BasePage page,Map<String, Object> root,Integer userId) {
+		// TODO Auto-generated constructor stub
+		this.page=page;
+		this.root=root;
+		this.root.put("global_user_id", userId);
+		this.root.put("global_server_domain", Configuration.DB_SERVER_DOMAIN);
+	}
+	
 	public void addView(BaseView view){
 		
 		view.setUserId(page.getUserId());

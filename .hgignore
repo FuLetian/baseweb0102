@@ -21,3 +21,4 @@ basecommon/.settings/org.eclipse.jdt.core.prefs
 basecommon/.settings/org.maven.ide.eclipse.prefs
 basecommon/.project
 basecommon/.classpath
+basecommon/.settings/org.eclipse.m2e.core.prefs

@@ -10,8 +10,14 @@
 <div class="row" align="right">
 	<ul class="list-inline header-logo-ul">
 		<li>welcome to my world</li>
-		<li><a class="btn btn-primary btn-xs">登陆</a></li>
-		<li><a class="btn btn-default btn-xs">注册</a></a></li>
+		<li>
+			<a data-bind="visible:isTourist,click:openLoginModal" class="btn btn-primary btn-xs">登陆</a>
+			<span data-bind="visible:isConsumer,text:loginConsumerName">2</span>
+			</li>
+		<li>
+			<a data-bind="visible:isTourist,click:register" class="btn btn-default btn-xs">注册</a>
+			<a data-bind="visible:isConsumer,click:logout" class="btn btn-default btn-xs">退出</a>
+			</li>
 		<li>
 			<div class="btn-group" align="left">
 			  <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
@@ -89,6 +95,140 @@
 		
 	</div>
 </div>
+
+<!-- Modal 注册-->
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+      
+<form id="thumbnailForm" class="form-horizontal" role="form" action="${basePath}util/upload" method="POST" enctype="multipart/form-data">
+
+  <div class="form-group">
+    <label for="i7" class="col-sm-2 control-label">头像</label>
+    <div class="col-sm-10">
+		<div class="media">
+		  <a class="pull-left" href="#">
+		    <img id="thumbnailImg" class="media-object" src="http://localhost:8080/baseweb/images/icon-user.jpg" alt="...">
+		  </a>
+		  <div class="media-body">
+		  	<input type="file" name="imgFile"/>
+		  	<input type="hidden" name="userId" value="${global_user_id}">
+		  </div>
+		</div>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button data-bind="click:onThumbnailUpload" type="submit" class="btn btn-default">register</button>
+    </div>
+  </div>
+  
+</form>
+
+<form id="registerForm" class="form-horizontal" role="form" action="${basePath}consumerITF/register" method="POST">
+
+  <div class="form-group">
+    <label for="i2" class="col-sm-2 control-label">真实姓名</label>
+    <div class="col-sm-10">
+      <input id="i2" name="realName" type="text" class="form-control">
+      <input name="userId" type="hidden" value="${global_user_id}">
+      <input name="thumbnailPath" type="hidden" value="">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="i3" class="col-sm-2 control-label">密码</label>
+    <div class="col-sm-10">
+      <input id="i3" name="pwd1" type="text" class="form-control">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="i4" class="col-sm-2 control-label">确认密码</label>
+    <div class="col-sm-10">
+      <input id="i4" name="pwd2" type="text" class="form-control">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="i5" class="col-sm-2 control-label">电话号码</label>
+    <div class="col-sm-10">
+      <input id="i5" name="phoneNum" type="text" class="form-control">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="i6" class="col-sm-2 control-label">收货地址</label>
+    <div class="col-sm-10">
+      <input id="i6" name="address" type="text" class="form-control">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="i7" class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-10">
+      <input id="i7" name="email" type="text" class="form-control" id="inputEmail3" placeholder="Email">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button data-bind="click:onRegister" type="submit" class="btn btn-default">register</button>
+    </div>
+  </div>
+
+</form>
+
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+
+<form class="form-horizontal" role="form">
+  <div class="form-group">
+	<div id="loginResultFeedback" class="text-danger"></div>
+  </div>
+  <div class="form-group">
+    <label for="loginText" class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-10">
+      <input id="loginText" type="text" class="form-control" placeholder="Email">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="loginPwd" class="col-sm-2 control-label">Password</label>
+    <div class="col-sm-10">
+      <input id="loginPwd" type="password" class="form-control" placeholder="Password">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button data-bind="click:login" type="submit" class="btn btn-default">Sign in</button>
+    </div>
+  </div>
+</form>
+
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 <script>
 $(function(){
 

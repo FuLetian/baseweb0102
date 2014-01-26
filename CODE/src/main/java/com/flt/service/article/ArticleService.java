@@ -15,10 +15,11 @@ import com.flt.dao.model.ArticleImgExample;
 import com.flt.dao.model.ArticleProperty;
 import com.flt.dao.model.ArticlePropertyExample;
 import com.flt.service.base.BaseService;
+import com.flt.web.itf.service.IBuycarService;
 import com.flt.web.module.views.article.IArticleService;
 
 @Service
-public class ArticleService extends BaseService implements IArticleService{
+public class ArticleService extends BaseService implements IArticleService,IBuycarService{
 
 	@Override
 	public List<Article> listArticlesByChannelId(final Integer channelId) {
