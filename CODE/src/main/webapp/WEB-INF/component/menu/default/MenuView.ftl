@@ -49,7 +49,7 @@
 					    <img data-bind="attr:{'src':thumbnail}" class="media-object" style="width:100%;" alt="...">
 					  </a>
 					  <div class="media-body">
-					    <h4 data-bind="text:articleName" class="media-heading" align="left">Media heading</h4>
+					    <h4 data-bind="text:article.name" class="media-heading" align="left">Media heading</h4>
 					    	<p>数量:<span data-bind="text:count">1</span></p>
 					  </div>
 					</div>

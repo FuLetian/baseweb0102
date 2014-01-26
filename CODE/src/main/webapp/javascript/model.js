@@ -13,35 +13,20 @@
 			item.thumbnail=$("#bigPic").attr("src");;
 			item.articleName=$(".detail-title").text();
 			item.count=$("#articleCount").val();
-			self.selectedArticles.push(item);
 			
-			var count=self.carCount();
-			self.carCount(count+1);
-			
-			var allSelectedArticles=self.selectedArticles();
-			var strBuf="[";
-			$.each(allSelectedArticles,function(index,value){
-				if(index==0){
-					strBuf='[{"articleId":'+value.articleId+',"thumbnail":"'+value.thumbnail+'","articleName":"'+value.articleName+'","count":'+value.count+'}';
-				}else{
-					strBuf+=',{"articleId":'+value.articleId+',"thumbnail":"'+value.thumbnail+'","articleName":"'+value.articleName+'","count":'+value.count+'}';
-				}
-				
+			//至session
+			$.getJSON(global_server_domain+"buycar/addItem",{"articleId":item.articleId,"count":item.count},function(data){
+				self.selectedArticles(data);
 			});
-			strBuf+="]";
-			$.cookie("localBuyCarKey",strBuf,{expires:7,path:"/",domain:"localhost"});
 		};
 	}
 	var model=new ViewModel();
-	
-	var localBuycarStr=$.cookie("localBuyCarKey");
-	if(!localBuycarStr){
-		localBuycarStr="[]";
-	}
-	console.log("get="+localBuycarStr);
-	var localBuycarJSON=$.parseJSON(localBuycarStr);
-	model.carCount=ko.observable(localBuycarJSON.length);
-	model.selectedArticles=ko.observableArray(localBuycarJSON);
+
+	model.selectedArticles=ko.observableArray();
+	model.carCount=ko.computed(function(){
+		var count= model.selectedArticles().length;
+		return count;
+	});
 	
 	/**
 	 * menuView 与登录相关
@@ -124,8 +109,24 @@
 		});
 	};
 	
+	/**
+	 * 购物车
+	 */
+	model.deleteItem=function(articleDTO){
+		$.getJSON(global_server_domain+"buycar/removeItem",{"articleId":articleDTO.article.id},function(data){
+			model.selectedArticles(data);
+		});
+	};
+	
 $(function(){
-	ko.applyBindings(model);	
+	ko.applyBindings(model);
+	
+	/**
+	 * 与服务器session同步购物车数据
+	 */
+	$.getJSON(global_server_domain+"buycar/getBuycar",function(data){
+		model.selectedArticles(data);
+	});
 	
 	$.getJSON("http://localhost:8080/baseweb/commentITF/getComments",{"articleId":1,"userId":1},function(data){
 		model.comments(data);

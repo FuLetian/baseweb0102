@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
-Source Server Version : 50522
+Source Server Version : 50520
 Source Host           : localhost:3306
 Source Database       : basedb
 
 Target Server Type    : MYSQL
-Target Server Version : 50522
+Target Server Version : 50520
 File Encoding         : 65001
 
-Date: 2014-01-26 00:05:22
+Date: 2014-01-26 18:15:09
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -232,14 +232,26 @@ CREATE TABLE `consumer` (
   `account` varchar(45) DEFAULT NULL,
   `password` varchar(45) DEFAULT NULL,
   `thumbnail_path` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `phone_num` varchar(45) DEFAULT NULL,
+  `address` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_consumer_user1` (`user_id`),
+  CONSTRAINT `fk_consumer_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of consumer
 -- ----------------------------
-INSERT INTO `consumer` VALUES ('1', 'consumer1', 'aaa', 'aaa', 'http://localhost:8080/baseweb/images/icon-user.jpg');
-INSERT INTO `consumer` VALUES ('2', 'bb', 'b', 'bb', 'http://localhost:8080/baseweb/images/icon-user.jpg');
+INSERT INTO `consumer` VALUES ('1', 'consumer1', 'aaa', 'aaa', 'http://localhost:8080/baseweb/images/icon-user.jpg', null, null, null, '1');
+INSERT INTO `consumer` VALUES ('2', 'bb', 'b', 'bb', 'http://localhost:8080/baseweb/images/icon-user.jpg', null, null, null, '1');
+INSERT INTO `consumer` VALUES ('3', null, '', '', null, '', '', '', '1');
+INSERT INTO `consumer` VALUES ('4', null, 'fuletian', '123', null, '15281060106', 'chengdu', '313376212@qq.com', '1');
+INSERT INTO `consumer` VALUES ('5', null, 'fuletian', '123', null, '15281060106', 'chengdu', '313376212@qq.com', '1');
+INSERT INTO `consumer` VALUES ('6', null, 'fuletian', '123', null, '15281060106', 'chengdu', '313376212@qq.com', '1');
+INSERT INTO `consumer` VALUES ('7', null, 'letian', '111', null, '15281060106', 'sichuan', '1111@qq.com', '1');
+INSERT INTO `consumer` VALUES ('8', null, '1', '1', 'http://localhost:8080/baseweb/images/upload/1390718066673.jpg', '1', '1', '1', '1');
 
 -- ----------------------------
 -- Table structure for `menu`
@@ -325,10 +337,11 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `account` varchar(45) DEFAULT NULL,
   `password` varchar(45) DEFAULT NULL,
+  `domain` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'a', 'a');
+INSERT INTO `user` VALUES ('1', 'a', 'a', 'http://localhost:8080');

@@ -13,12 +13,6 @@ public class PageWrapper {
 	private BasePage page;
 	
 	private Map<String, Object> root;
-
-	public PageWrapper(BasePage page,Map<String, Object> root) {
-		// TODO Auto-generated constructor stub
-		this.page=page;
-		this.root=root;
-	}
 	
 	public PageWrapper(BasePage page,Map<String, Object> root,Integer userId) {
 		// TODO Auto-generated constructor stub

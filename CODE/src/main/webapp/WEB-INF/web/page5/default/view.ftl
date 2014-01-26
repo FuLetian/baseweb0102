@@ -28,6 +28,10 @@
 
 <script src="${basePath}javascript/jquery.cookie.js"></script>
 
+<script>
+var global_server_domain="${global_server_domain}";
+</script>
+
 <script src="${basePath}javascript/model.js"></script>
 
 </head>

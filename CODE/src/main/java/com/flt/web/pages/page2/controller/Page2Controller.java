@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.flt.common.controller.BaseController;
 import com.flt.common.view.PageWrapper;
 import com.flt.web.module.views.article.ArticleInPage2View;
 import com.flt.web.module.views.footer.FooterView;
@@ -23,16 +24,16 @@ import com.flt.web.pages.page2.view.Page2View;
  */
 @Controller
 @RequestMapping(value="page2")
-public class Page2Controller{
+public class Page2Controller extends BaseController{
 
 	@Autowired private MenuView menuView;
 	@Autowired private FooterView footerView;
 	@Autowired private ArticleInPage2View articleInPage2View;
 	@Autowired private LocationView locationView;
 	@Autowired private Page2View page2View;
-	public PageWrapper buildPage(){
+	public PageWrapper buildPage(Integer userId){
 		
-		PageWrapper p=new PageWrapper(page2View, new HashMap<String,Object>());
+		PageWrapper p=new PageWrapper(page2View, new HashMap<String,Object>(),userId);
 		
 		p.addView(locationView);
 		
@@ -48,7 +49,7 @@ public class Page2Controller{
 		articleInPage2View.setMenuId(menuId);
 		articleInPage2View.setPriceRange(priceRange);
 		
-		PageWrapper p=this.buildPage();
+		PageWrapper p=this.buildPage(this.getUserId(req));
 		
 		p.addView(menuView);
 		p.addView(footerView);

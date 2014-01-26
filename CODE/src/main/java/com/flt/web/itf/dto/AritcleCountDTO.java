@@ -2,10 +2,21 @@ package com.flt.web.itf.dto;
 
 import com.flt.dao.model.Article;
 
+
 public class AritcleCountDTO {
+
 
 	private Article article;
 	private Integer count;
+	private String thumbnail;
+	
+	
+	public String getThumbnail() {
+		return thumbnail;
+	}
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
+	}
 	public Article getArticle() {
 		return article;
 	}
@@ -18,6 +29,8 @@ public class AritcleCountDTO {
 	public void setCount(Integer count) {
 		this.count = count;
 	}
+	
+	
 	
 	
 	
