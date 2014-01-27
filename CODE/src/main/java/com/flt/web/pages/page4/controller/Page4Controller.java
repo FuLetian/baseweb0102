@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.flt.common.controller.BaseController;
 import com.flt.common.view.PageWrapper;
+import com.flt.dao.model.User;
 import com.flt.web.module.views.article.ArticleCommentListInPage4View;
 import com.flt.web.module.views.article.ArticleDetailInPage4View;
 import com.flt.web.module.views.article.ArticleImgListInPage4View;
@@ -31,7 +32,7 @@ public class Page4Controller extends BaseController{
 	@RequestMapping("view")
 	public String view(Integer articleId,Model model,HttpServletRequest req){
 		
-		PageWrapper pw=this.buildPage(articleId,this.getUserId(req));
+		PageWrapper pw=this.buildPage(articleId,this.getUser(req));
 		
 		model.addAllAttributes(pw.getRoot());
 		model.addAttribute("basePath", req.getContextPath()+"/");
@@ -45,8 +46,8 @@ public class Page4Controller extends BaseController{
 	@Autowired private ArticlePropertiesInPage4View articlePropertiesInPage4View;
 	@Autowired private ArticleImgListInPage4View articleImgListInPage4View;
 	@Autowired private ArticleCommentListInPage4View articleCommentListInPage4View;
-	private PageWrapper buildPage(Integer articleId,Integer userId){
-		PageWrapper pw=new PageWrapper(page4View, new HashMap<String,Object>(),userId);
+	private PageWrapper buildPage(Integer articleId,User user){
+		PageWrapper pw=new PageWrapper(page4View, new HashMap<String,Object>(),user);
 		
 		articleDetailInPage4View.setArticleId(articleId);
 		articlePropertiesInPage4View.setArticleId(articleId);

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.flt.common.controller.BaseController;
 import com.flt.common.view.PageWrapper;
+import com.flt.dao.model.User;
 import com.flt.web.module.views.article.ArticleInPage2View;
 import com.flt.web.module.views.footer.FooterView;
 import com.flt.web.module.views.menu.MenuView;
@@ -31,9 +32,9 @@ public class Page2Controller extends BaseController{
 	@Autowired private ArticleInPage2View articleInPage2View;
 	@Autowired private LocationView locationView;
 	@Autowired private Page2View page2View;
-	public PageWrapper buildPage(Integer userId){
+	public PageWrapper buildPage(User user){
 		
-		PageWrapper p=new PageWrapper(page2View, new HashMap<String,Object>(),userId);
+		PageWrapper p=new PageWrapper(page2View, new HashMap<String,Object>(),user);
 		
 		p.addView(locationView);
 		
@@ -49,7 +50,7 @@ public class Page2Controller extends BaseController{
 		articleInPage2View.setMenuId(menuId);
 		articleInPage2View.setPriceRange(priceRange);
 		
-		PageWrapper p=this.buildPage(this.getUserId(req));
+		PageWrapper p=this.buildPage(this.getUser(req));
 		
 		p.addView(menuView);
 		p.addView(footerView);

@@ -19,24 +19,21 @@ public class BaseController {
 		return basePath;
 	}
 	
-	protected Integer getUserId(HttpServletRequest req){
+	protected User getUser(HttpServletRequest req){
 		
 		String path = req.getContextPath();
 		String basePath = req.getScheme()+"://"+req.getServerName()+":"+req.getServerPort()+path+"/";
 		
-		Integer userId=(Integer) req.getSession().getAttribute(KeyConstant.SESSION_BELOANG_USER_ID_KEY);
-		if(userId==null){
-			User user=userService.loadUserByDomain(basePath);
-			
-			if(user!=null){
-				userId=user.getId();
-			}else{
-				System.err.println("没有找到user,basePath="+basePath);
-				userId=Configuration.TMP_SESSION_USER_ID;
-			}
+		User user=(User) req.getSession().getAttribute(KeyConstant.SESSION_BELOANG_USER_ID_KEY);
+		if(user==null){
+			user=userService.loadUserByDomain(basePath);
 		}
 		
-		return userId;
+		if(user==null){
+			System.err.println("didn`t find the user of base path values :"+basePath);
+		}
+		
+		return user;
 		
 	}
 }

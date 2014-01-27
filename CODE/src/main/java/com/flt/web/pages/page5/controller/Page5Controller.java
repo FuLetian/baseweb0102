@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.flt.common.controller.BaseController;
 import com.flt.common.view.PageWrapper;
+import com.flt.dao.model.User;
 import com.flt.web.module.views.buycar.BuycarListInPage5View;
 import com.flt.web.module.views.menu.MenuView;
 import com.flt.web.pages.page5.view.Page5View;
@@ -27,7 +28,7 @@ public class Page5Controller extends BaseController{
 	@RequestMapping("view")
 	public String view(Model model,HttpServletRequest req){
 		
-		PageWrapper p=this.buildPage(this.getUserId(req));
+		PageWrapper p=this.buildPage(this.getUser(req));
 		
 		model.addAttribute("basePath", req.getContextPath()+"/");
 		model.addAllAttributes(p.getRoot());
@@ -41,9 +42,9 @@ public class Page5Controller extends BaseController{
 	@Autowired
 	private BuycarListInPage5View buycarListInPage5View;
 	
-	private PageWrapper buildPage(Integer userId){
+	private PageWrapper buildPage(User user){
 		
-		PageWrapper p=new PageWrapper(page5View, new HashMap<String, Object>(),userId);
+		PageWrapper p=new PageWrapper(page5View, new HashMap<String, Object>(),user);
 		p.addView(menuView);
 		p.addView(buycarListInPage5View);
 		

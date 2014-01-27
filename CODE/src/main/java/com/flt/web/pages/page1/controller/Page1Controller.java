@@ -18,6 +18,7 @@ import com.flt.common.freemarker.htmlAbled;
 import com.flt.common.log.Assert;
 import com.flt.common.view.PageWrapper;
 import com.flt.dao.model.Channel;
+import com.flt.dao.model.User;
 import com.flt.service.freemarker.FreemarkerService;
 import com.flt.web.module.views.article.ArticleInPage1View;
 import com.flt.web.module.views.brand.BrandInPage1View;
@@ -46,11 +47,11 @@ public class Page1Controller extends BaseController implements htmlAbled{
 	@Autowired private CommentInPage1View commentInPage1View;
 	@Autowired private ServiceAndPromise serviceAndPromise;
 	@Autowired private FooterView footerView;
-	private PageWrapper buildPage(Integer channelId,Integer userId){
+	private PageWrapper buildPage(Integer channelId,User user){
 		
 		Assert.notNull(channelId,"channelId is unable to be null",this.getClass());
 		
-		PageWrapper p=new PageWrapper(page,new HashMap<String,Object>(),userId);
+		PageWrapper p=new PageWrapper(page,new HashMap<String,Object>(),user);
 		
 		articleView.setChannelId(channelId);
 		p.addView(articleView);
@@ -74,7 +75,7 @@ public class Page1Controller extends BaseController implements htmlAbled{
 			channelId=0;
 		}
 		
-		PageWrapper p=this.buildPage(channelId,this.getUserId(req));
+		PageWrapper p=this.buildPage(channelId,this.getUser(req));
 		
 		model.addAllAttributes(p.getRoot());
 		model.addAttribute("basePath",req.getServletPath());
@@ -89,9 +90,9 @@ public class Page1Controller extends BaseController implements htmlAbled{
 	public String createHtml(HttpServletRequest req) {
 		// TODO Auto-generated method stub
 		
-		List<Channel> channels=channelService.listChannels(this.getUserId(req));
+		List<Channel> channels=channelService.listChannels(this.getUser(req).getId());
 		for(Channel c:channels){
-			PageWrapper p=this.buildPage(c.getId(),1);
+			PageWrapper p=this.buildPage(c.getId(),new User());
 			Map<String, Object> root=p.getRoot();
 			root.put("basePath", req.getServletPath());
 			freemarkerService.flush(req, p.getTargetHtmlName(), p.getPageTemplate(),root);
