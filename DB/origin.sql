@@ -6,12 +6,11 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 -- -----------------------------------------------------
 -- Table `user`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `user` ;
-
 CREATE  TABLE IF NOT EXISTS `user` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `account` VARCHAR(45) NULL ,
   `password` VARCHAR(45) NULL ,
+  `domain` VARCHAR(45) NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
@@ -19,8 +18,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `channel`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `channel` ;
-
 CREATE  TABLE IF NOT EXISTS `channel` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL ,
@@ -41,8 +38,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `menu`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `menu` ;
-
 CREATE  TABLE IF NOT EXISTS `menu` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL ,
@@ -64,8 +59,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `brand`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `brand` ;
-
 CREATE  TABLE IF NOT EXISTS `brand` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL ,
@@ -89,8 +82,6 @@ COMMENT = '品牌';
 -- -----------------------------------------------------
 -- Table `article`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `article` ;
-
 CREATE  TABLE IF NOT EXISTS `article` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `price` DOUBLE NULL ,
@@ -135,8 +126,6 @@ COMMENT = '商品表';
 -- -----------------------------------------------------
 -- Table `consumer`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `consumer` ;
-
 CREATE  TABLE IF NOT EXISTS `consumer` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NULL ,
@@ -160,8 +149,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `comment`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `comment` ;
-
 CREATE  TABLE IF NOT EXISTS `comment` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `content` VARCHAR(45) NOT NULL ,
@@ -197,8 +184,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `resource`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `resource` ;
-
 CREATE  TABLE IF NOT EXISTS `resource` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `text` VARCHAR(1024) NULL ,
@@ -220,8 +205,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `ball`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `ball` ;
-
 CREATE  TABLE IF NOT EXISTS `ball` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `term` INT(11) NOT NULL ,
@@ -250,8 +233,6 @@ DEFAULT CHARACTER SET = latin1;
 -- -----------------------------------------------------
 -- Table `passage`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `passage` ;
-
 CREATE  TABLE IF NOT EXISTS `passage` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `text` VARCHAR(1024) NULL ,
@@ -274,8 +255,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `article_property`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `article_property` ;
-
 CREATE  TABLE IF NOT EXISTS `article_property` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NULL ,
@@ -298,8 +277,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `article_img`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `article_img` ;
-
 CREATE  TABLE IF NOT EXISTS `article_img` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `title` VARCHAR(45) NULL ,
@@ -314,6 +291,42 @@ CREATE  TABLE IF NOT EXISTS `article_img` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 COMMENT = 'article详细画面多个图片展示源';
+
+
+-- -----------------------------------------------------
+-- Table `table1`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `table1` (
+)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `t_order`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `t_order` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `count` INT NULL ,
+  `run_status` INT NULL COMMENT '状态' ,
+  `remark` VARCHAR(45) NULL ,
+  `u_dt` DATETIME NULL ,
+  `c_dt` DATETIME NULL ,
+  `consumer_id` INT NOT NULL ,
+  `article_id` INT NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_order_consumer1` (`consumer_id` ASC) ,
+  INDEX `fk_order_article1` (`article_id` ASC) ,
+  CONSTRAINT `fk_order_consumer1`
+    FOREIGN KEY (`consumer_id` )
+    REFERENCES `consumer` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_order_article1`
+    FOREIGN KEY (`article_id` )
+    REFERENCES `article` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 
 

@@ -8,4 +8,6 @@ public interface IConsumerITFService {
 
 	Consumer register(Integer userId,String realName, String pwd1, String phoneNum,
 			String address, String email, String thumbnailPath);
+	
+	Consumer loadConsumerById(Integer id);
 }

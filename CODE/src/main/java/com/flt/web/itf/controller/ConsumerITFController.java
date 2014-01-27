@@ -69,4 +69,22 @@ public class ConsumerITFController {
 		jo.put("userId", o.getUserId());
 		return jo.toString();
 	}
+	
+	
+	@RequestMapping("getLoginConsumerInfo")
+	@ResponseBody
+	public String getLoginConsumerInfo(Integer consumerId){
+		
+		Consumer o=service.loadConsumerById(consumerId);
+		JSONObject jo=new JSONObject();
+		
+		jo.put("consumerId", o.getId());
+		jo.put("name", o.getAccount());
+		jo.put("phoneNum", o.getPhoneNum());
+		jo.put("address", o.getAddress());
+		jo.put("email", o.getEmail());
+		
+		
+		return jo.toString();
+	}
 }

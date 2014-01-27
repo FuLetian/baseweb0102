@@ -8,12 +8,14 @@ import com.flt.dao.client.ArticleImgMapper;
 import com.flt.dao.client.ArticleMapper;
 import com.flt.dao.client.ArticlePropertyMapper;
 import com.flt.dao.client.CommonMapper;
+import com.flt.dao.client.OrderMapper;
 import com.flt.dao.model.Article;
 import com.flt.dao.model.ArticleExample;
 import com.flt.dao.model.ArticleImg;
 import com.flt.dao.model.ArticleImgExample;
 import com.flt.dao.model.ArticleProperty;
 import com.flt.dao.model.ArticlePropertyExample;
+import com.flt.dao.model.Order;
 import com.flt.service.base.BaseService;
 import com.flt.web.itf.service.IBuycarService;
 import com.flt.web.module.views.article.IArticleService;
@@ -119,6 +121,14 @@ public class ArticleService extends BaseService implements IArticleService,IBuyc
 		ArticleImgMapper m=this.getSqlSession().getMapper(ArticleImgMapper.class);
 		
 		return m.selectByExample(new ArticleImgExample());
+	}
+
+	@Override
+	public void saveOrder(Order o) {
+		// TODO Auto-generated method stub
+		OrderMapper m=this.getSqlSession().getMapper(OrderMapper.class);
+		
+		m.insert(o);
 	}
 
 	

@@ -48,4 +48,11 @@ public class ConsumerService extends BaseService implements IConsumerITFService 
 		return o;
 	}
 
+	@Override
+	public Consumer loadConsumerById(Integer id) {
+		// TODO Auto-generated method stub
+		ConsumerMapper m=this.getSqlSession().getMapper(ConsumerMapper.class);
+		return m.selectByPrimaryKey(id);
+	}
+
 }

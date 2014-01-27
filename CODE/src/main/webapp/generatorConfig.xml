@@ -57,6 +57,10 @@
  	<table schema="basedb" tableName="resource" domainObjectName="Resource"> 
  		<generatedKey column="id" sqlStatement="MySql" identity="true" /> 
  	</table> 
+ 	
+ 	 <table schema="basedb" tableName="t_order" domainObjectName="Order"> 
+ 		<generatedKey column="id" sqlStatement="MySql" identity="true" /> 
+ 	</table> 
 
     
   </context>

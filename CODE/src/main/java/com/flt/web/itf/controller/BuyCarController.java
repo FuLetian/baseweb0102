@@ -1,5 +1,6 @@
 package com.flt.web.itf.controller;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,15 +11,16 @@ import net.sf.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.flt.common.constant.KeyConstant;
 import com.flt.common.controller.BaseController;
 import com.flt.dao.model.Article;
 import com.flt.dao.model.ArticleImg;
+import com.flt.dao.model.Order;
 import com.flt.web.itf.dto.AritcleCountDTO;
 import com.flt.web.itf.service.IBuycarService;
-import com.flt.web.module.views.article.ArticleCommentListInPage4View;
 import com.flt.web.module.views.article.IArticleService;
 
 @Controller
@@ -81,6 +83,28 @@ public class BuyCarController extends BaseController {
 		
 		return JSONArray.fromObject(list).toString();
 		
+	}
+	
+	@RequestMapping(value="addOrder",method=RequestMethod.POST)
+	@ResponseBody
+	public String addOrder(Integer articleId,Integer count,String name,String phoneNum,
+			String address,String email,Integer consumerId,String remark,HttpServletRequest req){
+		
+		Order o=new Order();
+		o.setArticleId(articleId);
+		o.setConsumerId(consumerId);
+		o.setcDt(new Date());
+		o.setConsumerId(consumerId);
+		o.setCount(count);
+		o.setRemark(remark);
+		o.setRunStatus(0);
+		o.setuDt(new Date());
+		
+		articleService.saveOrder(o);
+		
+		req.getSession().removeAttribute(KeyConstant.SESSION_BUY_CAR_KEY);
+		
+		return "SUCESS";
 	}
 	
 }
