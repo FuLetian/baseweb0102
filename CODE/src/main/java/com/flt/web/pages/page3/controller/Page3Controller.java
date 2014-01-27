@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.flt.common.config.Configuration;
 import com.flt.common.controller.BaseController;
 import com.flt.common.view.PageWrapper;
 import com.flt.web.module.views.footer.FooterView;
@@ -60,6 +59,7 @@ public class Page3Controller extends BaseController{
 		
 		model.addAllAttributes(p.getRoot());
 		
+		model.addAttribute("basePath", req.getContextPath()+"/");
 		return p.getPageTemplate();
 	}
 }

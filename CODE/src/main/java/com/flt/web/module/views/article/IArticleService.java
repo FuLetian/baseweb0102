@@ -5,6 +5,7 @@ import java.util.List;
 import com.flt.dao.model.Article;
 import com.flt.dao.model.ArticleImg;
 import com.flt.dao.model.ArticleProperty;
+import com.flt.dao.model.Order;
 
 public interface IArticleService {
 	
@@ -22,4 +23,6 @@ public interface IArticleService {
 	ArticleImg loadFirstArticleImgByArticleId(Integer articleId);
 	
 	List<ArticleImg> listArticleImgsByArticleId(Integer articleId);
+	
+	void saveOrder(Order o);
 }

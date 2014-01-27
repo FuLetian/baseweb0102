@@ -50,7 +50,7 @@
 		var account=$("#loginText").val();
 		var pwd=$("#loginPwd").val();
 		
-		$.post("http://localhost:8080/baseweb/consumerITF/login",{"account":account,"pwd":pwd},function(data){
+		$.post(global_server_domain+"/consumerITF/login",{"account":account,"pwd":pwd},function(data){
 			if(data.result){
 				model.isTourist(false);
 				model.loginConsumerName(data.account);
@@ -112,24 +112,67 @@
 	/**
 	 * 购物车
 	 */
+	model.consumerOrderInfo=ko.observable({"address":"","consumerId":1,"email":"","name":"","phoneNum":""});
 	model.deleteItem=function(articleDTO){
 		$.getJSON(global_server_domain+"buycar/removeItem",{"articleId":articleDTO.article.id},function(data){
 			model.selectedArticles(data);
 		});
 	};
+	model.isAutoSetConsumerInfo=ko.observableArray(["1"]);
+	model.setConsumerInfo=ko.computed(function(){
+		var d=model.isAutoSetConsumerInfo();
+		
+		if(d.length==1){
+			var loginConsumerId=$.cookie("loginConsumerId");
+			$.getJSON(global_server_domain+"consumerITF/getLoginConsumerInfo",{"consumerId":loginConsumerId},function(data){
+				model.consumerOrderInfo(data);
+			});
+		}
+	});
+	model.onSaveOrder=function(){
+		var d=model.selectedArticles();
+		var d2=model.consumerOrderInfo();
+		var loginConsumerId=$.cookie("loginConsumerId");
+		if(!loginConsumerId){
+			loginConsumerId=1;
+		}
+		var _remark=$("#remark").val();
+		
+		if(d.length==0){
+			alert("您的购物车还是空的呢!");
+			return false;
+		}
+		
+		$.each(d,function(index,value){
+			var json={"articleId":value.article.id,"count":value.count,"name":d2.name,"address":d2.address,"phoneNum":d2.phoneNum,"email":d2.email,"consumerId":loginConsumerId};
+			$.post(global_server_domain+"buycar/addOrder",json,function(data){
+			});
+		});
+		
+		$("#saveOrderSuccessModal").modal();
+	};
+	
+	/**
+	 * page3
+	 */
+	
 	
 $(function(){
 	ko.applyBindings(model);
 	
-	/**
-	 * 与服务器session同步购物车数据
-	 */
-	$.getJSON(global_server_domain+"buycar/getBuycar",function(data){
-		model.selectedArticles(data);
-	});
+	remoteBuycar();
 	
 	$.getJSON("http://localhost:8080/baseweb/commentITF/getComments",{"articleId":1,"userId":1},function(data){
 		model.comments(data);
 	});
 	
 });
+
+function remoteBuycar(){
+	/**
+	 * 与服务器session同步购物车数据
+	 */
+	$.getJSON(global_server_domain+"buycar/getBuycar",function(data){
+		model.selectedArticles(data);
+	});
+}
