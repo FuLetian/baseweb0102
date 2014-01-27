@@ -1,3 +1,8 @@
+<!-- 
+当前页面
+a:html/page2-brandId- -channelId- -menuId- -priceRange- -discountRange- .html
+ -->
+
 <!-- location -->
 <div class="location container">您现在的位置:</div>
 <!-- //location -->
@@ -22,7 +27,7 @@
 	<div class="col-xs-1"><b>价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格</b></div>
 	<div class="col-xs-11">
 		<ul class="list-inline">
-		  <li><a href="#">0-10元</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+		  <li><a href="">0-10元</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 		  <li><a href="#">10-15元</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 		  <li><a href="#">15-20元</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 		  <li><a href="#">20-25元</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
@@ -63,7 +68,8 @@
       <div class="caption">
         <h3>覆盖</h3>
         <p>5</p>
-        <p><button class="btn btn-primary addToBuyCar" role="button">加入购物车</button> <a href="#" class="btn btn-default" role="button">购买</a></p>
+        <p><button class="btn btn-primary addToBuyCar" role="button">加入购物车</button> 
+        	<a href="${global_local_domain}html/page2-brandId-${item.brandId}-channelId-${item.channelId}-menuId-${item.menuId}-priceRange--discountRange-.html" class="btn btn-default" role="button">购买</a></p>
       </div>
     </div>
   </div>

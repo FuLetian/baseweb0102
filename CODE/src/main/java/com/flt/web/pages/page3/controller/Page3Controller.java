@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.flt.common.controller.BaseController;
 import com.flt.common.view.PageWrapper;
+import com.flt.dao.model.User;
 import com.flt.web.module.views.footer.FooterView;
 import com.flt.web.module.views.menu.MenuView;
 import com.flt.web.module.views.passage.LeftNavigationView;
@@ -35,14 +36,14 @@ public class Page3Controller extends BaseController{
 	@Autowired private LeftNavigationView leftNavigationView;
 	@Autowired private LocationView locationView;
 	@Autowired private MainPassageView mainPassageView;
-	private PageWrapper buildPage(Integer num,Integer userId){
+	private PageWrapper buildPage(Integer num,User user){
 		Assert.notNull(num);
 		
-		page3View.setUserId(userId);
+		page3View.setUserId(user.getId());
 		
 		mainPassageView.setNum(num);
 		
-		PageWrapper p=new PageWrapper(page3View, new HashMap<String,Object>(),userId);
+		PageWrapper p=new PageWrapper(page3View, new HashMap<String,Object>(),user);
 		
 		p.addView(footerView);
 		p.addView(menuView);
@@ -55,7 +56,7 @@ public class Page3Controller extends BaseController{
 	
 	@RequestMapping("view")
 	private String view(Integer passageNum,Model model,HttpServletRequest req){
-		PageWrapper p=this.buildPage(passageNum,this.getUserId(req));
+		PageWrapper p=this.buildPage(passageNum,this.getUser(req));
 		
 		model.addAllAttributes(p.getRoot());
 		

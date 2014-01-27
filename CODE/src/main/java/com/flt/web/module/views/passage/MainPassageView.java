@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
 import com.flt.common.annotation.View;
+import com.flt.common.config.Configuration;
 import com.flt.common.view.BaseView;
 import com.flt.dao.model.Passage;
 

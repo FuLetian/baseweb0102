@@ -1,3 +1,8 @@
+<!--
+首页
+a:html/page1-channelId-{channelId}.html
+-->
+
 <!-- big image -->
 <div class="container">
 	<div class="row">
@@ -12,7 +17,11 @@
 <div class="container margin-top-line">
 	<div class="row">
 		<#list channels as item>
-		<div class="col-xs-3"><img src="../images/channel1.png" class="image-equal-width" alt="${item.name}" /></div>
+		<div class="col-xs-3">
+			<a href="${global_local_domain}html/page1-channelId-${item.id}.html">
+				<img src="../images/channel1.png" class="image-equal-width" alt="${item.name}" />
+			</a>
+		</div>
 		</#list>
 	</div>
 </div>

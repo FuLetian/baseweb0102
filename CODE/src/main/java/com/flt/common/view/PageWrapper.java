@@ -6,6 +6,7 @@ import java.util.Set;
 
 import com.flt.common.annotation.View;
 import com.flt.common.config.Configuration;
+import com.flt.dao.model.User;
 
 
 public class PageWrapper {
@@ -14,11 +15,12 @@ public class PageWrapper {
 	
 	private Map<String, Object> root;
 	
-	public PageWrapper(BasePage page,Map<String, Object> root,Integer userId) {
+	public PageWrapper(BasePage page,Map<String, Object> root,User user) {
 		// TODO Auto-generated constructor stub
 		this.page=page;
 		this.root=root;
-		this.root.put("global_user_id", userId);
+		this.root.put("global_user_id", user.getId());
+		this.root.put("global_local_domain", user.getDomain());
 		this.root.put("global_server_domain", Configuration.DB_SERVER_DOMAIN);
 	}
 	
