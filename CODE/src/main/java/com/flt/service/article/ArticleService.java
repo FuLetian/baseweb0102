@@ -36,9 +36,12 @@ public class ArticleService extends BaseService implements IArticleService,IBuyc
 	}
 
 	@Override
+	/**
+	 * @param orderByType 0-默认排序 1-销量降序，2-价格声讯,3-折扣升序
+	 */
 	public List<Article> findArticlesIfConditionExist(Integer channelId,
 			Integer brandId, Integer menuId, String priceRange,
-			String discountRange,Integer userId) {
+			String discountRange,Integer userId,Integer orderByType) {
 		// TODO Auto-generated method stub
 		ArticleMapper m=getSqlSession().getMapper(ArticleMapper.class);
 		ArticleExample ex=new ArticleExample();
@@ -62,6 +65,25 @@ public class ArticleService extends BaseService implements IArticleService,IBuyc
 		if(discountRange!=null){
 			Double[] nums=parseRangeToInteger(discountRange);
 			c.andDiscountBetween(nums[0], nums[1]);
+		}
+		
+		if(orderByType!=null){
+			switch(orderByType.intValue()){
+			case 1:{
+				ex.setOrderByClause("sale_count ASC");
+				break;
+			}
+			case 2:{
+				ex.setOrderByClause("price ASC");
+				break;
+			}
+			case 3:{
+				ex.setOrderByClause("discount ASC");
+				break;
+			}
+			}
+
+			
 		}
 		
 		return m.selectByExample(ex);

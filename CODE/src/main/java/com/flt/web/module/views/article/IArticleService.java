@@ -6,6 +6,7 @@ import com.flt.dao.model.Article;
 import com.flt.dao.model.ArticleImg;
 import com.flt.dao.model.ArticleProperty;
 import com.flt.dao.model.Order;
+import com.flt.web.pages.page2.dto.ArticleThumbnailDTO;
 
 public interface IArticleService {
 	
@@ -16,7 +17,7 @@ public interface IArticleService {
 	List<Article> listArticlesByChannelId(Integer channelId);
 	
 	List<Article> findArticlesIfConditionExist(Integer channelId,Integer brandId,Integer menuId,
-			String priceRange,String discountRange,Integer userId);
+			String priceRange,String discountRange,Integer userId,Integer orderByType);
 	
 	Integer countArticleGrade(Integer articleId);
 	
@@ -25,4 +26,5 @@ public interface IArticleService {
 	List<ArticleImg> listArticleImgsByArticleId(Integer articleId);
 	
 	void saveOrder(Order o);
+	
 }

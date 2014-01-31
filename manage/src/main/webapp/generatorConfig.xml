@@ -11,7 +11,6 @@
     <sqlMapGenerator targetPackage="com.flt.dao.sqlmap" targetProject="basemanage" />
     <javaClientGenerator targetPackage="com.flt.dao.client" implementationPackage="com.flt.dao.client.impl" targetProject="basemanage" type="XMLMAPPER" />
 
-
 	<table schema="basedb" tableName="article" domainObjectName="Article">
 		<generatedKey column="id" sqlStatement="MySql" identity="true" />
 	</table>
@@ -44,7 +43,7 @@
  	<table schema="basedb" tableName="comment" domainObjectName="Comment"> 
  		<generatedKey column="id" sqlStatement="MySql" identity="true" /> 
  	</table> 
- 	<table schema="basedb" tableName="consumer" domainObjectName="Consume"> 
+ 	<table schema="basedb" tableName="consumer" domainObjectName="Consumer"> 
  		<generatedKey column="id" sqlStatement="MySql" identity="true" /> 
  	</table> 
  	<table schema="basedb" tableName="menu" domainObjectName="Menu"> 
@@ -56,6 +55,11 @@
  	<table schema="basedb" tableName="resource" domainObjectName="Resource"> 
  		<generatedKey column="id" sqlStatement="MySql" identity="true" /> 
  	</table> 
+ 	
+ 	 <table schema="basedb" tableName="t_order" domainObjectName="Order"> 
+ 		<generatedKey column="id" sqlStatement="MySql" identity="true" /> 
+ 	</table> 
+
 
     
   </context>

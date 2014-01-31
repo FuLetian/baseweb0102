@@ -13,6 +13,7 @@ import com.flt.common.controller.BaseController;
 import com.flt.common.view.PageWrapper;
 import com.flt.dao.model.User;
 import com.flt.web.module.views.buycar.BuycarListInPage5View;
+import com.flt.web.module.views.footer.FooterView;
 import com.flt.web.module.views.menu.MenuView;
 import com.flt.web.pages.page5.view.Page5View;
 
@@ -41,12 +42,15 @@ public class Page5Controller extends BaseController{
 	private MenuView menuView;
 	@Autowired
 	private BuycarListInPage5View buycarListInPage5View;
+	@Autowired
+	private FooterView footerView;
 	
 	private PageWrapper buildPage(User user){
 		
 		PageWrapper p=new PageWrapper(page5View, new HashMap<String, Object>(),user);
 		p.addView(menuView);
 		p.addView(buycarListInPage5View);
+		p.addView(footerView);
 		
 		return p;
 	}

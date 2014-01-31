@@ -45,5 +45,7 @@ var global_server_domain="${global_server_domain}";
 			</div>
 		</div>
 	</div>
+	
+	<#include FooterView/>
 </body>
 </html>
