@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.flt.common.controller.BaseController;
 import com.flt.common.view.PageWrapper;
@@ -42,13 +43,14 @@ public class Page2Controller extends BaseController{
 	}
 	
 	@RequestMapping("view")
-	public String view(Integer brandId,Integer channelId,Integer menuId,String priceRange,String discountRange,Model model,HttpServletRequest req){
+	public String view(Integer brandId,Integer channelId,Integer menuId,String priceRange,String discountRange,Integer orderByType,Model model,HttpServletRequest req){
 		
 		articleInPage2View.setBrandId(brandId);
 		articleInPage2View.setChannelId(channelId);
 		articleInPage2View.setDiscountRange(discountRange);
 		articleInPage2View.setMenuId(menuId);
 		articleInPage2View.setPriceRange(priceRange);
+		articleInPage2View.setOrderByType(orderByType);
 		
 		PageWrapper p=this.buildPage(this.getUser(req));
 		
@@ -57,6 +59,33 @@ public class Page2Controller extends BaseController{
 		p.addView(articleInPage2View);
 		
 		model.addAllAttributes(p.getRoot());
+		model.addAttribute("basePath", req.getContextPath()+"/");
 		return p.getPageTemplate();
+	}
+	@RequestMapping("query")
+	@ResponseBody
+	/**
+	 * 
+	 * @param brandId
+	 * @param channelId
+	 * @param discountRange
+	 * @param menuId
+	 * @param priceRange
+	 * @param orderByType 1-销量降序，2-价格声讯,3-折扣升序
+	 * @return
+	 */
+	public String query(Integer brandId,Integer channelId,String discountRange,Integer menuId,String priceRange,Integer orderByType,HttpServletRequest req){
+		
+		articleInPage2View.setBrandId(brandId);
+		articleInPage2View.setChannelId(channelId);
+		articleInPage2View.setDiscountRange(discountRange);
+		articleInPage2View.setMenuId(menuId);
+		articleInPage2View.setPriceRange(priceRange);
+		articleInPage2View.setOrderByType(orderByType);
+		articleInPage2View.setUserId(this.getUser(req).getId());
+		
+		String json=articleInPage2View.getJSON();
+		
+		return json;
 	}
 }

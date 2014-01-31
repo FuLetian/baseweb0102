@@ -1,12 +1,17 @@
 package com.flt.web.module.views.article;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import net.sf.json.JSONArray;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.flt.common.annotation.View;
 import com.flt.common.view.BaseView;
 import com.flt.dao.model.Article;
+import com.flt.dao.model.ArticleImg;
+import com.flt.web.pages.page2.dto.ArticleThumbnailDTO;
 
 @View(template="component/article/{theme}/articleInPage2View.ftl")
 public class ArticleInPage2View extends BaseView {
@@ -17,6 +22,8 @@ public class ArticleInPage2View extends BaseView {
 	private String priceRange;
 	private String discountRange;
 	
+	private Integer orderByType; //1-销量降序，2-价格声讯,3-折扣升序;
+	
 	@Autowired
 	private IArticleService service;
 	@Override
@@ -24,9 +31,21 @@ public class ArticleInPage2View extends BaseView {
 		// TODO Auto-generated method stub
 		super.render();
 		
-		List<Article> list=service.findArticlesIfConditionExist(channelId, brandId, menuId, priceRange, discountRange,userId);
+	}
+	public String getJSON(){
+		List<Article> list=service.findArticlesIfConditionExist(channelId, brandId, menuId, priceRange, discountRange,userId,orderByType);
 		
-		root.put("articles", list);
+		List<ArticleThumbnailDTO> dtos=new ArrayList<>();
+		for(Article a:list){
+			ArticleImg img=service.loadFirstArticleImgByArticleId(a.getId());
+			
+			ArticleThumbnailDTO dto=new ArticleThumbnailDTO();
+			dto.setArticle(a);
+			dto.setImg(img);
+			
+			dtos.add(dto);
+		}
+		return JSONArray.fromObject(dtos).toString();
 	}
 	public Integer getChannelId() {
 		return channelId;
@@ -57,6 +76,12 @@ public class ArticleInPage2View extends BaseView {
 	}
 	public void setDiscountRange(String discountRange) {
 		this.discountRange = discountRange;
+	}
+	public Integer getOrderByType() {
+		return orderByType;
+	}
+	public void setOrderByType(Integer orderByType) {
+		this.orderByType = orderByType;
 	}
 	
 	

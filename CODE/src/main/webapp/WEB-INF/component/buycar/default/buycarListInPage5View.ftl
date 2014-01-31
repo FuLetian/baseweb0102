@@ -1,6 +1,10 @@
-<div style="margin-top:15px;border-bottom:1px dashed #CCCCCC;height:50px;">
-	<div style="float:left;width:100px;"><h4>购物车</h4></div>
+<div class="row margin-top-line">
+	<div class="col-md-12">
+		<div style="float:left;width=100px;"><h4>购物车</h4></div>
+		<div style="margin-left:70px;border-bottom:1px dashed #CCCCCC;height:20px;"></div>
+	</div>
 </div>
+
 <div class="margin-top-line">
 <table class="table table-bordered">
 	<tr>
@@ -42,11 +46,18 @@
 </table>
 </div>
 
-<div style="margin-top:15px;border-bottom:1px dashed #CCCCCC;height:50px;">
-	<div style="float:left;width:100px;"><h4>收货信息</h4></div>
-</div>
+<div align="right"><button data-bind="click:onMakeOrderForm" class="btn btn-primary">确认</button></div>
 
-<div style="width:70%;" class="margin-top-line">
+<!-- Modal -->
+<div class="modal fade" id="makeOrderForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+
 <form class="form-horizontal" role="form">
 
   <div class="form-group">
@@ -99,7 +110,14 @@
     </div>
   </div>
 </form>
-</div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="location.reload();">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 <!-- Modal -->
 <div class="modal fade" id="saveOrderSuccessModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
