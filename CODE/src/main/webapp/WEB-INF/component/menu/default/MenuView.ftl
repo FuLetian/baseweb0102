@@ -5,8 +5,37 @@
 .all-menu-ul li{height:30px;line-height:30px;}
 .first-menu-title{color:#E5288A;font-size:12px;margin-top:10px;font-weight:bold;}
 </style>
+
+<!-- header -->
+<div>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class="container">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <a class="navbar-brand" href="#">Brand</a>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">首页</a></li>
+    	<#list header_menu_channels as item>
+      		<li><a href="${global_local_domain}html/page1-channelId-${item.id}.html">${item.name}</a></li>
+		</#list>
+    </ul>
+
+	<ul class="nav navbar-nav navbar-right">
+		<li><div class="all-menu-btn"><label>所有商品分类</label></div></li>
+	</ul>
+
+  </div><!-- /.navbar-collapse -->
+ </div>
+</nav>
+</div>
+<!-- //header-menu -->
+
 <!-- header log -->
-<div class="header-logo border container">
+<div class="container">
 <div class="row" align="right">
 	<ul class="list-inline header-logo-ul">
 		<li>welcome to my world</li>
@@ -36,6 +65,11 @@
 		<li><button class="btn btn-default btn-xs">联系客服</button></li>
 	</ul>
 </div>
+
+<!-- //header log -->
+
+
+<!-- logo & buycar count -->
 <div class="row">
 	<div class="col-xs-6"><img src="../images/vip.png" /></div>
 	<div class="col-xs-6" align="right">
@@ -59,25 +93,17 @@
 	</div>
 </div>
 </div>
-<!-- //header log -->
+<!-- //log -->
 
-<!-- header -->
-<div class="header-main-bg">
-<div class="container border">
-<div class="row">
-<div class="col-xs-12">
-    <ul class="header-menu nav navbar-nav navbar-left">
-    	<#list header_menu_channels as item>
-      		<li><a href="#">${item.name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
-		</#list>
-    </ul>
-    <div class="all-menu-btn"><label>所有商品分类</label></div>
-
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 bg">
+			<div style="height:30px;line-height:30px;padding-left:10px;width:100%;border:1px solid #E3007F;margin:5px 0px 5px 0px;border-radius:5px;">
+				<p class="text-success" style="font-size:12px;"><span class="glyphicon glyphicon-cloud"></span>&nbsp;&nbsp;&nbsp;&nbsp;哥哥了给和人力和任何好皇天后土好搜噶和他如何让它</p>
+			</div>
+		</div>
+	</div>
 </div>
-</div>
-</div>
-</div>
-<!-- //header-menu -->
 
 <div id="allMenus" class="popover fade bottom in" style="display: none;">
 	<div class="arrow"></div>
