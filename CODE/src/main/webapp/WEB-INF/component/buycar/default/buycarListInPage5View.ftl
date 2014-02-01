@@ -26,12 +26,12 @@
 		<tr>
 			<td>
 				<div class="media">
-				  <a class="pull-left" href="#">
+				  <a class="pull-left" data-bind="attr:{'href':'${global_local_domain}html/page4-articleId-'+article.id+'.html'}">
 				    <img class="media-object" style="height:50px;" data-bind="attr:{'src':thumbnail}" alt="...">
 				  </a>
 				  <div class="media-body">
-				    <h4 class="media-heading" data-bind="text:article.name">Media heading</h4>
-				    ...
+				    <a data-bind="attr:{'href':'${global_local_domain}html/page4-articleId-'+article.id+'.html'}"><h4 class="media-heading" data-bind="text:article.name">Media heading</h4></a>
+				    <p data-bind="text:article.remark" class="text-muted"></p>
 				  </div>
 				</div>
 			</td>
@@ -46,7 +46,7 @@
 </table>
 </div>
 
-<div align="right"><button data-bind="click:onMakeOrderForm" class="btn btn-primary">确认</button></div>
+<div align="right"><button data-bind="click:onMakeOrderForm" class="btn btn-danger">&nbsp;&nbsp;&nbsp;&nbsp;确&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;认&nbsp;&nbsp;&nbsp;&nbsp;</button></div>
 
 <!-- Modal -->
 <div class="modal fade" id="makeOrderForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

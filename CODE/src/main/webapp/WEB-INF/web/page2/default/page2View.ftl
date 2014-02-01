@@ -31,6 +31,7 @@
 <script>
 var global_server_domain="${global_server_domain}";
 var global_local_domain="${global_local_domain}";
+var page2_menu_id=${param_menu_id};
 </script>
 
 <script src="${basePath}javascript/model.js"></script>

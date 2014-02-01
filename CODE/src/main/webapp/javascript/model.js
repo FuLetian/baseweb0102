@@ -318,6 +318,11 @@ function remoteBuycar(){
 function remotePage2Articles(){
 	var param={};
 	
+	try{
+		if(page2_menu_id){
+			model.page2MenuId(page2_menu_id);
+		}
+	}catch(e){}
 	param.menuId=model.page2MenuId();
 	param.brandId=model.page2BrandId();
 	param.channelId=model.page2ChannelId();

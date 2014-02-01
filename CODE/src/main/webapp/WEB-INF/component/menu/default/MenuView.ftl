@@ -1,11 +1,10 @@
 <style>
-.all-menu-btn{color:#FFFFFF;font-size:14px;text-align:center;float:right;width:150px;height:50px;line-height:50px;border-left:1px solid #E5E3E6;border-right:1px solid #E5E3E6;}
+.all-menu-btn{color:#E3007F;font-size:14px;text-align:center;float:right;width:150px;height:50px;line-height:50px;border-left:1px solid #E5E3E6;border-right:1px solid #E5E3E6;}
 .all-menu-content{width:20px;height:100px;float:right;}
-.AllMenuBtnActive{background-color:#FFFFFF;color:#E02284;}
+.AllMenuBtnActive{background-color:#E3007F;color:#FBFBFB;}
 .all-menu-ul li{height:30px;line-height:30px;}
 .first-menu-title{color:#E5288A;font-size:12px;margin-top:10px;font-weight:bold;}
 </style>
-
 <!-- header -->
 <div>
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -22,6 +21,7 @@
     	<#list header_menu_channels as item>
       		<li><a href="${global_local_domain}html/page1-channelId-${item.id}.html">${item.name}</a></li>
 		</#list>
+			<li><a href="#">全部商品</a></li>
     </ul>
 
 	<ul class="nav navbar-nav navbar-right">

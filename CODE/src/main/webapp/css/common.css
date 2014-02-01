@@ -16,7 +16,7 @@ body{background-color:#FDFBFE;padding-top: 62px;}
 .buy-car{width:150px;height:30px;line-height:30px;background-color:#E3007F;color:#FFFFFF;text-align:center;margin-top:15px;border:1px solid #E02284;}
 .buy-car-count{width:30px;height:28px;background-color:#FFFFFF;float:right;color:#E82D8E;}
 #buyCarContent{height:150px;width:300px;background-color:#FFFFFF;}
-.location{font-size:12px;color:#666666;font-weight:bold;margin-top:15px;margin-bottom:10px;padding-bottom:10px;border-bottom:1px dashed #E5E3E6;}
+.location{width:100%;font-size:12px;color:#666666;font-weight:bold;margin-top:15px;padding-bottom:10px;border-bottom:1px dashed #E5E3E6;}
 .selector{border-bottom:1px dashed #E5E3E6;font-size:12px;}
 .bar-sort{height:40px;line-height:40px;background-color:#F6F6F4;margin:15px 0px 10px 0px;}
 .bar-sort>div{float:left;margin-left:10px;}

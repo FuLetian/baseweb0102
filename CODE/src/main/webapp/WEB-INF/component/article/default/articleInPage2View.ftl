@@ -7,10 +7,18 @@ a:html/page3-articleId- .html
  -->
 
 <!-- location -->
-<div class="location container">您现在的位置:</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="location container">您现在的位置:商品检索</div>
+		</div>
+	</div>
+</div>
 <!-- //location -->
 
 <!-- selector -->
+
+<!-- 
 <div class="container">
 <div class="selector">
 <div class="row">
@@ -52,6 +60,8 @@ a:html/page3-articleId- .html
 </div>
 </div>
 </div>
+
+ -->
 <!-- //selector -->
 
 <!-- articles -->
@@ -74,7 +84,7 @@ a:html/page3-articleId- .html
         <h3 data-bind="text:article.name"></h3>
         <p><span data-bind="text:article.price"></span></p>
         <p><button class="btn btn-primary addToBuyCar" role="button" data-bind="click:addArticeToBuycar">加入购物车</button> 
-        	<a href="${global_local_domain}html/page2-brandId-${item.brandId}-channelId-${item.channelId}-menuId-${item.menuId}-priceRange--discountRange-.html" class="btn btn-default" role="button">购买</a></p>
+        	<a href="${global_local_domain}html/page5.html" class="btn btn-default" role="button">购买</a></p>
       </div>
     </div>
   </div>

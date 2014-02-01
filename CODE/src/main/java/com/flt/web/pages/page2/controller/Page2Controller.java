@@ -60,6 +60,7 @@ public class Page2Controller extends BaseController{
 		
 		model.addAllAttributes(p.getRoot());
 		model.addAttribute("basePath", req.getContextPath()+"/");
+		model.addAttribute("param_menu_id", menuId);
 		return p.getPageTemplate();
 	}
 	@RequestMapping("query")
