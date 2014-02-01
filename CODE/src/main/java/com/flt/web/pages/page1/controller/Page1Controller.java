@@ -78,7 +78,7 @@ public class Page1Controller extends BaseController implements htmlAbled{
 		PageWrapper p=this.buildPage(channelId,this.getUser(req));
 		
 		model.addAllAttributes(p.getRoot());
-		model.addAttribute("basePath",req.getServletPath());
+		model.addAttribute("basePath",req.getContextPath()+"/");
 		return p.getPageTemplate();
 	}
 

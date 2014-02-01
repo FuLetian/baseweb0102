@@ -6,8 +6,10 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.flt.dao.client.ChannelMapper;
+import com.flt.dao.client.OrderMapper;
 import com.flt.dao.model.Channel;
 import com.flt.dao.model.ChannelExample;
+import com.flt.dao.model.Order;
 import com.flt.service.base.BaseService;
 import com.flt.web.manage.channel.service.IChannelManageService;
 import com.flt.web.module.views.channel.IChannelService;
@@ -62,5 +64,6 @@ public class ChannelService extends BaseService implements IChannelService,IChan
 		ChannelMapper mapper=getSqlSession().getMapper(ChannelMapper.class);
 		mapper.deleteByPrimaryKey(channelId);
 	}
+
 
 }

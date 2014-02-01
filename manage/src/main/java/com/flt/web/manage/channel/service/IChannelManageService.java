@@ -11,4 +11,5 @@ public interface IChannelManageService {
 	void saveOrUpdateChannel(Channel channel);
 	
 	void deleteChannelById(Integer channelId);
+	
 }

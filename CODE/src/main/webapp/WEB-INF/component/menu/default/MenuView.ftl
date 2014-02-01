@@ -67,8 +67,8 @@
 <div class="row">
 <div class="col-xs-12">
     <ul class="header-menu nav navbar-nav navbar-left">
-    	<#list menus as item>
-      		<li><a href="#">${item.menu.name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+    	<#list header_menu_channels as item>
+      		<li><a href="#">${item.name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
 		</#list>
     </ul>
     <div class="all-menu-btn"><label>所有商品分类</label></div>
