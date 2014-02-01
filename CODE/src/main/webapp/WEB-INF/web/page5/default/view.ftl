@@ -30,6 +30,7 @@
 
 <script>
 var global_server_domain="${global_server_domain}";
+var global_local_domain="${global_local_domain}";
 </script>
 
 <script src="${basePath}javascript/model.js"></script>
