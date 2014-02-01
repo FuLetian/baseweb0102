@@ -7,7 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.flt.common.log.Assert;
 import com.flt.common.log.LogEnum;
+import com.flt.dao.client.ChannelMapper;
 import com.flt.dao.client.MenuMapper;
+import com.flt.dao.model.Channel;
+import com.flt.dao.model.ChannelExample;
 import com.flt.dao.model.Menu;
 import com.flt.dao.model.MenuExample;
 import com.flt.service.base.BaseService;
@@ -60,6 +63,17 @@ public class MenuService extends BaseService implements IMenuService {
 		childMenus=m.selectByExample(ex);
 		
 		return childMenus;
+	}
+
+	@Override
+	public List<Channel> listChannels(Integer userId) {
+		// TODO Auto-generated method stub
+		
+		ChannelMapper m=this.getSqlSession().getMapper(ChannelMapper.class);
+		ChannelExample ex=new ChannelExample();
+		ex.createCriteria().andUserIdEqualTo(userId);
+		ex.setOrderByClause("idx DESC");
+		return m.selectByExample(ex);
 	}
 
 }

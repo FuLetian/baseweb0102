@@ -18,6 +18,8 @@ public class MenuFactory {
 		menus.add(new LeftMenu("passage", "/basemanage/passage/view", false));
 		menus.add(new LeftMenu("article", "/basemanage/article/view", false));
 		menus.add(new LeftMenu("服务承诺", "/basemanage/serviceAndPromise/view", false));
+		menus.add(new LeftMenu("订单", "/basemanage/order/view", false));
+		menus.add(new LeftMenu("评论", "/basemanage/comment/view", false));
 		
 		return menus;
 	}

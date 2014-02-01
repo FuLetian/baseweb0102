@@ -17,8 +17,11 @@ $(function(){
 	$("#buyCarContent").css('position','absolute').css("left",270).hide();
 	
 	$("#buyCar").hover(function(){
-		$("#buyCarContent").show("normal");
+		var $el=$("#buyCarContent");
+		$el.show("normal");
+		$("#buyCarContent").mouseleave(function(){
+			$(this).hide();
+		});
 	},function(){
-		$("#buyCarContent").hide();
 	});
 });
