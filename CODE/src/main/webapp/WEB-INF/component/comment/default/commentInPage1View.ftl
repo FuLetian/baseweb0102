@@ -1,6 +1,5 @@
-<div class="font-bold well well-sm">
-	<span class="glyphicon glyphicon-book"></span>&nbsp;服务承诺
-</div>
+<div class="panel panel-default">
+<div class="panel-heading"><span class="glyphicon glyphicon-book"></span>&nbsp;会员评价</div>
 <div class="panel-body right-content">
 	<#list comments as item>
 		<div class="row">
@@ -11,4 +10,5 @@
 			</div>
 		</div>
 	</#list>
+</div>
 </div>

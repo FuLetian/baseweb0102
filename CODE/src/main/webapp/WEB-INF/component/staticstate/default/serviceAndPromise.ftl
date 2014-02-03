@@ -1,6 +1,5 @@
-		<div class="font-bold well well-sm">
-			服务承诺
-		</div>
+<div class="panel panel-default">
+<div class="panel-heading">服务与承诺</div>
 		<div class="panel-body right-content">
 			<div class="row">
 				<div class="col-xs-12"><img src="../images/brand.png" class="image-equal-width" /></div>
@@ -27,3 +26,4 @@
 				</div>
 			</div>
 		</div>
+</div>

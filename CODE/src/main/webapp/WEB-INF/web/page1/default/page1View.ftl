@@ -25,11 +25,9 @@ var global_server_domain="${global_server_domain}";
 	<!-- right column -->
 	<div class="col-xs-4">
 		<div class="subject-text2"></div>
-		<div class="panel">
 			<#include ServiceAndPromise/>
 			<#include CommentInPage1View />
 			<#include BrandInPage1View />
-		</div>
 	</div>
 	<!-- //right column -->
 </div>

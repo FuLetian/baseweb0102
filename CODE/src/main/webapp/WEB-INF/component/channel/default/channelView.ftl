@@ -18,7 +18,7 @@ a:html/page1-channelId-{channelId}.html
 	<div class="row">
 		<#list channels as item>
 		<div class="col-xs-3">
-			<a href="${global_local_domain}html/page1-channelId-${item.id}.html">
+			<a href="page1-channelId-${item.id}.html">
 				<img src="../images/channel1.png" class="image-equal-width" alt="${item.name}" />
 			</a>
 		</div>
