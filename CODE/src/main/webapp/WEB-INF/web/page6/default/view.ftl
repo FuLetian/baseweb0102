@@ -30,6 +30,8 @@
 
 <script>
 var global_server_domain="${global_server_domain}";
+
+window.global_flag_login_validation_enable=true;
 </script>
 
 <script src="${basePath}javascript/model.js"></script>

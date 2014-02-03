@@ -19,7 +19,7 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">首页</a></li>
     	<#list header_menu_channels as item>
-      		<li><a href="${global_local_domain}html/page1-channelId-${item.id}.html">${item.name}</a></li>
+      		<li><a href="page1-channelId-${item.id}.html">${item.name}</a></li>
 		</#list>
 			<li><a href="#">全部商品</a></li>
     </ul>

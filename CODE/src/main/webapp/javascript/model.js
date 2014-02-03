@@ -285,7 +285,10 @@ $(function(){
 	
 	remotePage2Articles();
 	
-	remoteHasBuyArticles();
+	if(window.global_flag_login_validation_enable){
+		//初始化时检验是否已登录，若未登录启用login窗口
+		remoteHasBuyArticles();
+	}
 	
 	$.getJSON(global_server_domain+"commentITF/getComments",{"articleId":1,"userId":1},function(data){
 		model.comments(data);

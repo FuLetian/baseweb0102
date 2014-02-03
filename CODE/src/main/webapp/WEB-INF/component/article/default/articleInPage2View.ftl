@@ -77,14 +77,14 @@ a:html/page3-articleId- .html
 <div data-bind="foreach:page2Artricles">
   <div class="col-xs-3">
     <div class="thumbnail">
-    <a href="#" data-bind="attr:{'href':'${global_local_domain}html/page3-articleId-'+article.id+'.html'}">
+    <a href="#" data-bind="attr:{'href':'page3-articleId-'+article.id+'.html'}">
       <img src="../images/cell.jpg" alt="...">
      </a>
       <div class="caption">
         <h3 data-bind="text:article.name"></h3>
         <p><span data-bind="text:article.price"></span></p>
         <p><button class="btn btn-primary addToBuyCar" role="button" data-bind="click:addArticeToBuycar">加入购物车</button> 
-        	<a href="${global_local_domain}html/page5.html" class="btn btn-default" role="button">购买</a></p>
+        	<a href="page5.html" class="btn btn-default" role="button">购买</a></p>
       </div>
     </div>
   </div>
@@ -138,7 +138,7 @@ a:html/page3-articleId- .html
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">继续购物</button>
-        <a href="${global_local_domain}html/page5.html" class="btn btn-primary">结算</a>
+        <a href="page5.html" class="btn btn-primary">结算</a>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
