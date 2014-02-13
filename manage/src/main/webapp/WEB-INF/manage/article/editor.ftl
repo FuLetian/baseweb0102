@@ -4,6 +4,7 @@
 	<th>name</th>
 	<td>
 		<input type="hidden" name="id" value="${id}">
+		<input type="hidden" name="homepageImg" value="0">
 		<input name="name" value="${article.name}"></td>
 </tr>
 <tr>
@@ -70,7 +71,14 @@
 	<th>images</th>
 	<td>
 		<input type="hidden" name="dir" value="1">
+		<input type="checkbox" name="extra" value="1">
 		<input type="file" name="imgFile"><input type="button" onclick="uploadImg();"  value="add">
+	</td>
+</tr>
+<tr>
+	<th>首页图片</th>
+	<td>
+		<div id="homepageImgContainer"><img src="${article.homepageImg}"/></div>
 	</td>
 </tr>
 <tr>
@@ -109,11 +117,22 @@ function addProp(type){
 function uploadImg(){
 	$("#uploadForm").ajaxSubmit({
 		url:"${basePath}util/upload",
+		dataType:'json',
 		success:function(data){
-			var path=$.parseJSON(data).url;
+			
+			var path=data.url;
 			var tmp=path.replace(/\//g,"-");
-			appendHiddenInput("imgs",tmp);
-			$("#imgPreview").append("<div class=\"col-sm-6\"><img style=\"width:100%;\" src=\""+path+"\" /></div>");
+			
+			if(data.extra&&data.extra==1){
+				//设置为homepage img
+				$("#homepageImgContainer").html("<img style=\"width:100%;\" src=\""+path+"\" />");
+				$("input[name='homepageImg']").val(path);
+				alert($("input[name='homepageImg']").length);
+			}else{
+				appendHiddenInput("imgs",tmp);
+				$("#imgPreview").append("<div class=\"col-sm-6\"><img style=\"width:100%;\" src=\""+path+"\" /></div>");
+			}
+			
 		}
 	});
 }

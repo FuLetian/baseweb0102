@@ -56,9 +56,9 @@
 				model.loginConsumerName(data.account);
 				$("#loginModal").modal("toggle");
 				
-				$.cookie("loginConsumerId",data.consumerId);
-				$.cookie("loginConsumerName",data.account);
-				$.cookie("loginConsumerUserId",data.userId);
+				$.cookie("loginConsumerId",data.consumerId,{"path":"/"});
+				$.cookie("loginConsumerName",data.account,{"path":"/"});
+				$.cookie("loginConsumerUserId",data.userId,{"path":"/"});
 			}else{
 				$("#loginResultFeedback").text("账户或密码错误");
 			}
@@ -67,8 +67,9 @@
 	model.logout=function(){
 		var result=confirm("确认退出吗?");
 		if(result){
-			$.cookie("loginConsumerId",null);
-			$.cookie("loginConsumerName",null);
+			$.cookie("loginConsumerId",null,{"path":"/"});
+			$.cookie("loginConsumerName",null,{"path":"/"});
+			$.cookie("loginConsumerUserId",null,{"path":"/"});
 			model.isTourist(true);
 		}
 	};
@@ -301,7 +302,7 @@ function remoteHasBuyArticles(runStatus){
 	model.page6_runStatus(runStatus);
 	var loginConsumerId=$.cookie("loginConsumerId");
 	if(!loginConsumerId){
-		model.login();
+		model.openLoginModal();
 		return false;
 	}
 	$.getJSON(global_server_domain+"page6/getOrderByRunStatus",{"runStatus":runStatus,"consumerId":loginConsumerId},function(data){

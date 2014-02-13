@@ -48,18 +48,7 @@
 			<a data-bind="visible:isConsumer,click:logout" class="btn btn-default btn-xs">退出</a>
 			</li>
 		<li>
-			<div class="btn-group" align="left">
-			  <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
-			    我的订单<span class="caret"></span>
-			  </button>
-			  <ul class="dropdown-menu">
-			    <li><a href="#">已买到商品</a></li>
-			    <li><a href="#">已下单商品</a></li>
-			    <li><a href="#">已收藏商品</a></li>
-			    <li class="divider"></li>
-			    <li><a href="#">送货追踪</a></li>
-			  </ul>
-			</div>
+			<a href="page6.html">我的订单</a>
 		</li>
 		<li><button class="btn btn-default btn-xs">积分兑换</button></li>
 		<li><button class="btn btn-default btn-xs">联系客服</button></li>
