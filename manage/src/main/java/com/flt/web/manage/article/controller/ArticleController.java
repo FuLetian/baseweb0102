@@ -40,7 +40,7 @@ public class ArticleController {
 	@RequestMapping(value="onSaveOrUpdate",method=RequestMethod.POST)
 	@ResponseBody
 	public String saveOrUpdate(Integer id,String name,Long price,Long discount,Integer idx,Integer brandId,
-			Integer menuId,Integer channelId,String imgs,String properties,Model model,HttpServletRequest req){
+			Integer menuId,Integer channelId,String imgs,String properties,String homepageImg,Model model,HttpServletRequest req){
 		
 		if(id!=null&&"0".equals(id.toString())){
 			id=null;
@@ -52,7 +52,7 @@ public class ArticleController {
 		Assert.notNull(menuId);
 		Assert.notNull(channelId);
 		
-		service.saveOrUpdateArticle(id, name, price, discount, idx, brandId, menuId, channelId, imgs, properties,Configuration.TMP_SESSION_USER_ID);
+		service.saveOrUpdateArticle(id, name, price, discount, idx, brandId, menuId, channelId, imgs, properties,homepageImg,Configuration.TMP_SESSION_USER_ID);
 		
 		return "SUCCESS";
 	}

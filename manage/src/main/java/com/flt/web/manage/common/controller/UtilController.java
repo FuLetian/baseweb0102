@@ -6,6 +6,8 @@ import java.util.Calendar;
 
 import javax.servlet.http.HttpServletRequest;
 
+import net.sf.json.JSONObject;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -20,7 +22,7 @@ public class UtilController {
 
 	@RequestMapping(value="upload",method=RequestMethod.POST)
 	@ResponseBody
-	public String upload(MultipartFile imgFile,String dir,Model model,HttpServletRequest req){
+	public String upload(MultipartFile imgFile,String dir,String extra,Model model,HttpServletRequest req){
 		
 		String realDir=req.getSession().getServletContext().getRealPath("images"+File.separator+"upload");
 
@@ -49,7 +51,16 @@ public class UtilController {
 		}
 		
 		String imgContextPath=req.getContextPath()+"/images/upload/"+imgName;
-		return "{\"error\":0,\"url\":\""+imgContextPath+"\"}";
+//		String imgContextPath="/images/upload/"+imgName;
+		
+		JSONObject o=new JSONObject();
+		o.put("error", 0);
+		o.put("url", imgContextPath);
+		if(extra!=null){
+			o.put("extra", extra);
+		}
+		
+		return o.toString();
 	}
 	
 	private String buildImgName(String originName){

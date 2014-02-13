@@ -129,7 +129,7 @@ public class ArticleService extends BaseService implements IArticleService,IArti
 	@Override
 	public void saveOrUpdateArticle(Integer id, String name, double price,
 			double discount, Integer idx, Integer brandId, Integer menuId,
-			Integer channelId, String imgs, String properties,Integer userId) {
+			Integer channelId, String imgs, String properties,String homepageImg,Integer userId) {
 		// TODO Auto-generated method stub
 		
 		
@@ -147,6 +147,10 @@ public class ArticleService extends BaseService implements IArticleService,IArti
 		a.setPrice(price);
 		a.setuDt(new Date());
 		a.setUserId(userId);
+		
+		if(homepageImg!="0"){
+			a.setHomepageImg(homepageImg);
+		}
 		
 		if(id==null){
 			m.insert(a);

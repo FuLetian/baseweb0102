@@ -22,7 +22,7 @@ public interface IArticleManageService {
 	List<Channel> listAllChannels(Integer userId);
 	
 	void saveOrUpdateArticle(Integer id,String name,double price,double discount,Integer idx,Integer brandId,
-			Integer menuId,Integer channelId,String imgs,String properties,Integer userId);
+			Integer menuId,Integer channelId,String imgs,String properties,String homepageImg,Integer userId);
 	
 	void deleteArticle(Integer id);
 	

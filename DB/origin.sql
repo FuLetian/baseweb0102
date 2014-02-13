@@ -87,13 +87,15 @@ CREATE  TABLE IF NOT EXISTS `article` (
   `price` DOUBLE NULL ,
   `discount` DOUBLE NULL ,
   `name` VARCHAR(45) NOT NULL ,
+  `remark` TEXT NULL ,
   `u_dt` DATETIME NOT NULL ,
-  `c_dt` DATETIME NOT NULL ,
   `idx` INT NOT NULL DEFAULT 0 ,
+  `c_dt` DATETIME NOT NULL ,
   `menu_id` INT NOT NULL ,
   `channel_id` INT NOT NULL ,
   `brand_id` INT NOT NULL ,
   `user_id` INT NOT NULL ,
+  `sale_count` INT NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `fk_article_menu` (`menu_id` ASC) ,
   INDEX `fk_article_channel1` (`channel_id` ASC) ,
@@ -291,14 +293,6 @@ CREATE  TABLE IF NOT EXISTS `article_img` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 COMMENT = 'article详细画面多个图片展示源';
-
-
--- -----------------------------------------------------
--- Table `table1`
--- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `table1` (
-)
-ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
