@@ -2,7 +2,7 @@ package com.flt.common.freemarker;
 
 import javax.servlet.http.HttpServletRequest;
 
-public interface htmlAbled {
+public interface HTMLAbled {
 
-	 String createHtml(HttpServletRequest req);
+	 String createHtml(HttpServletRequest req,Integer userId);
 }

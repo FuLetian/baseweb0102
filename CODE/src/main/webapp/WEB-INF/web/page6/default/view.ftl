@@ -16,9 +16,9 @@
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="${basePath}javascript/bootstrap/bootstrap.min.js"></script>
 
-<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="${basePath}css/common.css">
 
-<script src="../javascript/common.js"></script>
+<script src="${basePath}javascript/common.js"></script>
 
 <!--knockout-->
 <script src="${basePath}javascript/knockout-3.0.0.js"></script>
@@ -42,14 +42,12 @@ window.global_flag_login_validation_enable=true;
 	
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12">
-			
-				<div class="row margin-top-line">
-					<div class="col-md-12">
-						<div style="float:left;width=100px;"><h4>我的订单</h4></div>
-						<div style="margin-left:70px;border-bottom:1px dashed #CCCCCC;height:20px;"></div>
-					</div>
-				</div>
+			<div class="col-md-12" style="font-size:12px;height:40px;">
+				<ol class="breadcrumb">
+				  <li><a href="#">Bootstrap</a></li>
+				  <li><a href="#">我的订单</a></li>
+				  <li class="active">全部订单</li>
+				</ol>
 			</div>
 		</div>
 	</div>

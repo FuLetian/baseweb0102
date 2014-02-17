@@ -6,7 +6,6 @@ import com.flt.dao.model.Article;
 import com.flt.dao.model.ArticleImg;
 import com.flt.dao.model.ArticleProperty;
 import com.flt.dao.model.Order;
-import com.flt.web.pages.page2.dto.ArticleThumbnailDTO;
 
 public interface IArticleService {
 	

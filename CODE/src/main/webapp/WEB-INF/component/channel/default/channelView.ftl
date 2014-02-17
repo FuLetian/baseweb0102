@@ -7,7 +7,7 @@ a:html/page1-channelId-{channelId}.html
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12">
-			<img src="../images/big.jpg" class="image-equal-width"/>
+			<img src="${basePath}images/big.jpg" class="image-equal-width"/>
 		</div>
 	</div>
 </div>
@@ -19,7 +19,7 @@ a:html/page1-channelId-{channelId}.html
 		<#list channels as item>
 		<div class="col-xs-3">
 			<a href="page1-channelId-${item.id}.html">
-				<img src="../images/channel1.png" class="image-equal-width" alt="${item.name}" />
+				<img src="${basePath}images/channel1.png" class="image-equal-width" alt="${item.name}" />
 			</a>
 		</div>
 		</#list>
