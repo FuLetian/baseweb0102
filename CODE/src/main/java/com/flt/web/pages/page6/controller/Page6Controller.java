@@ -3,6 +3,7 @@ package com.flt.web.pages.page6.controller;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,9 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.flt.common.controller.BaseController;
+import com.flt.common.freemarker.HTMLAbled;
 import com.flt.common.utils.JSONDateValueProcessor;
 import com.flt.common.view.PageWrapper;
 import com.flt.dao.model.User;
+import com.flt.service.freemarker.FreemarkerService;
+import com.flt.web.common.service.ICommonUserService;
 import com.flt.web.module.views.footer.FooterView;
 import com.flt.web.module.views.menu.MenuView;
 import com.flt.web.pages.page6.OrderArticleDTO;
@@ -32,7 +36,7 @@ import com.flt.web.pages.page6.view.Page6View;
  */
 @Controller
 @RequestMapping("page6")
-public class Page6Controller extends BaseController {
+public class Page6Controller extends BaseController implements HTMLAbled {
 	
 	@Autowired
 	private IPage6OrderService service;
@@ -101,5 +105,18 @@ public class Page6Controller extends BaseController {
 		service.setRunStatus(orderId, runStatus);
 		
 		return "SUCCESS";
+	}
+
+	@Autowired private ICommonUserService userService;
+	@Autowired private FreemarkerService freemarkerService;
+	@Override
+	public String createHtml(HttpServletRequest req, Integer userId) {
+		// TODO Auto-generated method stub
+		User user=userService.loadUserById(userId);
+		PageWrapper p=this.buildPage(user);
+		Map<String, Object> root=p.getRoot();
+		root.put("basePath","../");
+		freemarkerService.flush(req,userId,"page6.html", p.getPageTemplate(),root);
+		return null;
 	}
 }

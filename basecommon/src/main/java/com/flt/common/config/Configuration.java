@@ -10,5 +10,5 @@ public class Configuration {
 	
 	public static boolean AJAX_ENABLE=true;
 	
-	public static boolean IS_DEVELOP_MODE=true;
+	public static boolean IS_DEVELOP_MODE=false;
 }

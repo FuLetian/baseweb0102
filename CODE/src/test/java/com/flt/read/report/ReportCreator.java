@@ -1,5 +1,7 @@
 package com.flt.read.report;
 
+import java.io.File;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.testng.annotations.BeforeMethod;
@@ -13,12 +15,17 @@ public class ReportCreator {
 	
 	@BeforeMethod
 	public void initContext(){
-		 context=new ClassPathXmlApplicationContext("applicationContext.xml");
+		// context=new ClassPathXmlApplicationContext("applicationContext.xml");
 	}
 	@Test
 	public void main(){
-		FrequencyReport frequencyReport=context.getBean(FrequencyReport.class);
 		
-		frequencyReport.createExcel("E:/frequencyReport.xls");
+		String str="E:\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp1\\wtpwebapps\\baseweb\\css\\common.css";
+		
+		int index=str.lastIndexOf(File.separator);
+		
+		String str2=str.substring(0,index);
+		
+		System.err.println(str2);
 	}
 }

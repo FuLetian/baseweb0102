@@ -39,4 +39,12 @@ public class UserService extends BaseService implements ICommonUserService {
 		
 	}
 
+	@Override
+	public User loadUserById(Integer id) {
+		// TODO Auto-generated method stub
+		UserMapper m=this.getSqlSession().getMapper(UserMapper.class);
+		
+		return m.selectByPrimaryKey(id);
+	}
+
 }

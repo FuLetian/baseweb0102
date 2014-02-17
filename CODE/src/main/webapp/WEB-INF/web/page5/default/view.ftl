@@ -16,9 +16,9 @@
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="${basePath}javascript/bootstrap/bootstrap.min.js"></script>
 
-<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="${basePath}css/common.css">
 
-<script src="../javascript/common.js"></script>
+<script src="${basePath}javascript/common.js"></script>
 
 <!--knockout-->
 <script src="${basePath}javascript/knockout-3.0.0.js"></script>

@@ -3,7 +3,7 @@
 a:html/page2-brandId- -channelId- -menuId- -priceRange- -discountRange- .html
 
 商品详情界面
-a:html/page3-articleId- .html
+a:html/page4-articleId- .html
  -->
 
 <!-- location -->
@@ -77,8 +77,8 @@ a:html/page3-articleId- .html
 <div data-bind="foreach:page2Artricles">
   <div class="col-xs-3">
     <div class="thumbnail">
-    <a href="#" data-bind="attr:{'href':'page3-articleId-'+article.id+'.html'}">
-      <img src="../images/cell.jpg" alt="...">
+    <a href="#" data-bind="attr:{'href':'page4-articleId-'+article.id+'.html'}">
+      <img src="${basePath}images/cell.jpg" alt="...">
      </a>
       <div class="caption">
         <h3 data-bind="text:article.name"></h3>

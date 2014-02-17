@@ -2,8 +2,10 @@
 .footer-list{border-right:1px solid #E9E1E8;}
 .footer-list li{color:#666666;height:25px;}
 .footer-container{margin-top:30px;}
+.footer-block{background-color:#F9F9F9;border-top:1px solid #E0E0E0;margin-top:30px;}
 </style>
 
+<div class="footer-block">
 <div class="container footer-container">
 	<div class="row">
 		<div class="col-xs-3">
@@ -50,4 +52,8 @@
 			</div>
 		</div>
 	</div>
+	<div class="row" style="margin-top:10px;">
+		<div class="col-md-12" align="center"><img src="${basePath}images/footer.png" /></div>
+	</div>
+</div>
 </div>

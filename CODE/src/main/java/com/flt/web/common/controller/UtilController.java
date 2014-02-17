@@ -11,6 +11,7 @@ import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.Assert;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.flt.web.common.service.ICommonService;
+import com.flt.web.common.service.ICommonStaticWebService;
 
 @Controller
 @RequestMapping("util")
@@ -25,6 +27,9 @@ public class UtilController {
 	
 	@Autowired
 	private ICommonService service;
+	
+	@Autowired
+	private ICommonStaticWebService staticWebService;
 
 	@RequestMapping(value="upload",method=RequestMethod.POST)
 	@ResponseBody
@@ -74,5 +79,27 @@ public class UtilController {
 		int length=originName.length();
 		return date+originName.substring(index,length);
 	}
+	
+	/**
+	 * 
+	 */
+	@RequestMapping("onStaticWeb")
+	@ResponseBody
+	public String onStaticweb(Integer userId,HttpServletRequest req){
+		Assert.notNull(userId);
+		
+		staticWebService.staticweb(userId,req);
+		
+		//CopyDirectoryUtil.copyResources("css", "h"+File.separator+userId, req);
+		//CopyDirectoryUtil.copyResources("javascript", "h"+File.separator+userId, req);
+		
+		JSONObject o=new JSONObject();
+		o.put("result", true);
+		
+		return o.toString();
+	}
+	
+
+	
 
 }

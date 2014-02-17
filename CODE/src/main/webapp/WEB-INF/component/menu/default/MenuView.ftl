@@ -36,33 +36,32 @@
 
 <!-- header log -->
 <div class="container">
+
 <div class="row" align="right">
-	<ul class="list-inline header-logo-ul">
-		<li>welcome to my world</li>
-		<li>
-			<a data-bind="visible:isTourist,click:openLoginModal" class="btn btn-primary btn-xs">登陆</a>
-			<span data-bind="visible:isConsumer,text:loginConsumerName">2</span>
-			</li>
-		<li>
-			<a data-bind="visible:isTourist,click:register" class="btn btn-default btn-xs">注册</a>
-			<a data-bind="visible:isConsumer,click:logout" class="btn btn-default btn-xs">退出</a>
-			</li>
-		<li>
-			<a href="page6.html">我的订单</a>
-		</li>
-		<li><button class="btn btn-default btn-xs">积分兑换</button></li>
-		<li><button class="btn btn-default btn-xs">联系客服</button></li>
-	</ul>
+	<div class="col-md-12" style="font-size:12px;height:45px;">
+		<ol class="breadcrumb">
+		  <li  class="active">
+		  		<a data-bind="visible:isTourist,click:openLoginModal" href="#">登陆</a>
+				<span data-bind="visible:isConsumer,text:loginConsumerName" href="#">2</span>
+		  </li>
+		  <li  class="active">
+				<a data-bind="visible:isTourist,click:register">注册</a>
+				<a data-bind="visible:isConsumer,click:logout">退出</a>
+		  </li>
+		  <li class="active">
+		  		<a href="page6.html">我的订单</a>
+		  </li>
+		  <li  class="active"><a href="#">积分兑换</a></li>
+		  <li><a  href="#">联系客服</a></li>
+		</ol>
+	</div>
 </div>
-
-<!-- //header log -->
-
 
 <!-- logo & buycar count -->
 <div class="row">
-	<div class="col-xs-6"><img src="../images/vip.png" /></div>
+	<div class="col-xs-6"><img src="${basePath}images/vip.png" /></div>
 	<div class="col-xs-6" align="right">
-		<div id="buyCar" class="buy-car"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;购物车<span data-bind="text:carCount" class="buy-car-count">0</span></div>
+		<div id="buyCar" class="buy-car" onclick="location.href='page5.html'"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;购物车<span data-bind="text:carCount" class="buy-car-count">0</span></div>
 		<div id="buyCarContent" style="z-index:500;" align="left">
 			<div class="panel panel-default">
 			  <div class="panel-heading">Panel heading without title</div>
@@ -81,6 +80,7 @@
 		</div>
 	</div>
 </div>
+
 </div>
 <!-- //log -->
 
@@ -103,7 +103,7 @@
 		<div class="first-menu-title">${item.menu.name}</div>
 		<ul class="all-menu-ul list-inline">
 			<#list item.childMenus as item2>
-			<li><a href="#">${item2.menu.name}</a></li>
+			<li><a href="page2-menuId-${item2.menu.id}.html">${item2.menu.name}</a></li>
 			</#list>
 		</ul>
 		</#list>

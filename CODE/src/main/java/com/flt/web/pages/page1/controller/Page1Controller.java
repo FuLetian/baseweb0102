@@ -12,14 +12,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.flt.common.config.Configuration;
 import com.flt.common.controller.BaseController;
-import com.flt.common.freemarker.htmlAbled;
+import com.flt.common.freemarker.HTMLAbled;
 import com.flt.common.log.Assert;
 import com.flt.common.view.PageWrapper;
 import com.flt.dao.model.Channel;
 import com.flt.dao.model.User;
 import com.flt.service.freemarker.FreemarkerService;
+import com.flt.web.common.service.ICommonUserService;
 import com.flt.web.module.views.article.ArticleInPage1View;
 import com.flt.web.module.views.brand.BrandInPage1View;
 import com.flt.web.module.views.channel.ChannelView;
@@ -37,7 +37,7 @@ import com.flt.web.pages.page1.view.Page1View;
  */
 @Controller
 @RequestMapping(value="page1")
-public class Page1Controller extends BaseController implements htmlAbled{
+public class Page1Controller extends BaseController implements HTMLAbled{
 	
 	@Autowired private Page1View page;
 	@Autowired private ChannelView channelView;
@@ -84,18 +84,20 @@ public class Page1Controller extends BaseController implements htmlAbled{
 
 	@Autowired private FreemarkerService freemarkerService;
 	@Autowired private IChannelService channelService;
+	@Autowired private ICommonUserService userService;
 	@Override
 	@RequestMapping("html")
 	@ResponseBody
-	public String createHtml(HttpServletRequest req) {
+	public String createHtml(HttpServletRequest req,Integer userId) {
 		// TODO Auto-generated method stub
+		User user=userService.loadUserById(userId);
 		
-		List<Channel> channels=channelService.listChannels(this.getUser(req).getId());
+		List<Channel> channels=channelService.listChannels(userId);
 		for(Channel c:channels){
 			PageWrapper p=this.buildPage(c.getId(),new User());
 			Map<String, Object> root=p.getRoot();
-			root.put("basePath", req.getServletPath());
-			freemarkerService.flush(req, p.getTargetHtmlName(), p.getPageTemplate(),root);
+			root.put("basePath","../");
+			freemarkerService.flush(req,userId,"page1-channelId-"+c.getId()+".html", p.getPageTemplate(),root);
 		}
 		
 		return "success";

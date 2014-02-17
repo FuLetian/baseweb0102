@@ -7,4 +7,6 @@ public interface ICommonUserService {
 	User loadConsumerById(Integer userId);
 	
 	User loadUserByDomain(String domain);
+	
+	User loadUserById(Integer id);
 }
