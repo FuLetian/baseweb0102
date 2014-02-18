@@ -4,6 +4,7 @@
 .AllMenuBtnActive{background-color:#E3007F;color:#FBFBFB;}
 .all-menu-ul li{height:30px;line-height:30px;}
 .first-menu-title{color:#E5288A;font-size:12px;margin-top:10px;font-weight:bold;}
+.small-nav div{float:right;margin-right:10px;padding-right:10px;border-right:2px solid #F1F0F2;}
 </style>
 <!-- header -->
 <div>
@@ -38,29 +39,28 @@
 <div class="container">
 
 <div class="row" align="right">
-	<div class="col-md-12" style="font-size:12px;height:45px;">
-		<ol class="breadcrumb">
-		  <li  class="active">
+	<div class="col-md-12" style="font-size:12px;height:25px;">
+		<div class="small-nav">
+			<div><a  href="#">联系客服</a></div>
+			<div><a href="#">积分兑换</a></div>
+		  <div>
+				<a data-bind="visible:isTourist,click:register" href="#">注册</a>
+				<a data-bind="visible:isConsumer,click:logout" href="#">退出</a>
+		  </div>
+		  <div><a href="page6.html">我的订单</a></div>
+		  <div>
 		  		<a data-bind="visible:isTourist,click:openLoginModal" href="#">登陆</a>
 				<span data-bind="visible:isConsumer,text:loginConsumerName" href="#">2</span>
-		  </li>
-		  <li  class="active">
-				<a data-bind="visible:isTourist,click:register">注册</a>
-				<a data-bind="visible:isConsumer,click:logout">退出</a>
-		  </li>
-		  <li class="active">
-		  		<a href="page6.html">我的订单</a>
-		  </li>
-		  <li  class="active"><a href="#">积分兑换</a></li>
-		  <li><a  href="#">联系客服</a></li>
-		</ol>
+		  </div>
+		</ul>
 	</div>
+</div>
 </div>
 
 <!-- logo & buycar count -->
 <div class="row">
-	<div class="col-xs-6"><img src="${basePath}images/vip.png" /></div>
-	<div class="col-xs-6" align="right">
+	<div class="col-md-6" align="left"><img src="${basePath}images/vip.png" /></div>
+	<div class="col-md-6" align="right">
 		<div id="buyCar" class="buy-car" onclick="location.href='page5.html'"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;购物车<span data-bind="text:carCount" class="buy-car-count">0</span></div>
 		<div id="buyCarContent" style="z-index:500;" align="left">
 			<div class="panel panel-default">
@@ -87,7 +87,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12 bg">
-			<div style="height:30px;line-height:30px;padding-left:10px;width:100%;border:1px solid #E3007F;margin:5px 0px 5px 0px;border-radius:5px;">
+			<div style="height:30px;line-height:30px;padding-left:10px;width:100%;border:1px solid #E3007F;margin:5px 0px 5px 0px;">
 				<p class="text-success" style="font-size:12px;"><span class="glyphicon glyphicon-cloud"></span>&nbsp;&nbsp;&nbsp;&nbsp;哥哥了给和人力和任何好皇天后土好搜噶和他如何让它</p>
 			</div>
 		</div>

@@ -40,16 +40,16 @@ a:html/page2-articleId-${articleId}
 			<div class="col-xs-3" style="padding:20px 10px 0px 10px;color:#E3007F;">
 				<div style="margin-left:10%;">
 					<blockquote>
-					  <p class="lead">规格规格</p>
-					  <p>￥2330.99</p>
-					  <p><@getStars grade=3/></p>
-					  <small><em>总销量:${item.saleCount}</em></small>
+						<p>规格规格</p>
+						<div style="font-size:12px;"><@getStars grade=item.stars/></div>
+						<small><em>总销量:${item.saleCount}</em></small>
 					</blockquote>
 				</div>
 
 			</div>
-			<div class="col-xs-9">
-				<img src="${item.homepageImg}" alt="${item.name}" class="image-equal-width" />
+			<div class="col-xs-9" style="position:relative;">
+				<div><img src="${item.homepageImg}" alt="${item.name}" class="image-equal-width" /></div>
+				<div style="float:right;position:absolute;right:15px;bottom:0px;;width:50px;height:20px;background-color:#FFFFFF;color:#F772B5;text-align:center"><em>￥${item.price}</em></div>
 			</div>
 		</div>
 		</a>
