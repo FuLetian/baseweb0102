@@ -1,6 +1,7 @@
 package com.flt.service.menu;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -14,11 +15,12 @@ import com.flt.dao.model.ChannelExample;
 import com.flt.dao.model.Menu;
 import com.flt.dao.model.MenuExample;
 import com.flt.service.base.BaseService;
+import com.flt.web.manage.menu.service.IMenuManageService;
 import com.flt.web.module.views.menu.IMenuService;
 import com.flt.web.module.views.menu.MenuDTO;
 
 @Service
-public class MenuService extends BaseService implements IMenuService {
+public class MenuService extends BaseService implements IMenuService,IMenuManageService {
 
 	
 	@Override
@@ -74,6 +76,57 @@ public class MenuService extends BaseService implements IMenuService {
 		ex.createCriteria().andUserIdEqualTo(userId);
 		ex.setOrderByClause("idx DESC");
 		return m.selectByExample(ex);
+	}
+
+	@Override
+	public List<Menu> listAllMenus(Integer userId) {
+		// TODO Auto-generated method stub
+		MenuMapper m=getSqlSession().getMapper(MenuMapper.class);
+		MenuExample ex=new MenuExample();
+		ex.createCriteria().andUserIdEqualTo(userId);
+		return m.selectByExample(ex);
+	}
+
+	@Override
+	public void onSaveOrUpdateMenu(Menu menu, Integer userId) {
+		// TODO Auto-generated method stub
+		
+		menu.setUserId(userId);
+		
+		if(menu.getcDt()==null){
+			menu.setcDt(new Date());
+		}
+		
+		if(menu.getuDt()==null){
+			menu.setuDt(new Date());
+		}
+		
+		MenuMapper m=getSqlSession().getMapper(MenuMapper.class);
+		m.insert(menu);
+	}
+
+	@Override
+	public void deleteMenuById(Integer id) {
+		// TODO Auto-generated method stub
+		MenuMapper m=getSqlSession().getMapper(MenuMapper.class);
+		
+		MenuExample ex=new MenuExample();
+		ex.createCriteria().andPIdEqualTo(id);
+		List<Menu> childMenus=m.selectByExample(ex);
+		if(childMenus!=null&&!childMenus.isEmpty()){
+			for(Menu item:childMenus){
+				this.deleteMenuById(item.getId());
+			}
+		}
+		
+		m.deleteByPrimaryKey(id);
+	}
+
+	@Override
+	public Menu findMenuById(Integer id) {
+		// TODO Auto-generated method stub
+		MenuMapper m=getSqlSession().getMapper(MenuMapper.class);
+		return m.selectByPrimaryKey(id);
 	}
 
 }

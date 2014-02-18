@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.flt.web.common.service.ICommonService;
 import com.flt.web.common.service.ICommonStaticWebService;
+import com.flt.web.common.session.SessionUserLoader;
 
 @Controller
 @RequestMapping("util")
@@ -33,10 +34,16 @@ public class UtilController {
 
 	@RequestMapping(value="upload",method=RequestMethod.POST)
 	@ResponseBody
-	public String upload(Integer userId,MultipartFile imgFile,Model model,HttpServletRequest req){
+	public String upload(Integer userId,MultipartFile imgFile,String extra,Model model,HttpServletRequest req){
 		
-		String realDir=req.getSession().getServletContext().getRealPath("images"+File.separator+"upload");
-
+		Integer sessionUserId=SessionUserLoader.findSessionUserId(req);
+		
+		String realDir=req.getSession().getServletContext().getRealPath("images"+File.separator+"upload"+File.separator+sessionUserId);
+		File temp=new File(realDir);
+		if(!temp.exists()){
+			temp.mkdir();
+		}
+		
 		byte[] bytes=null;
 		if(!imgFile.isEmpty()){
 			try {
@@ -61,12 +68,13 @@ public class UtilController {
 			}
 		}
 		
-		String imgContextPath=req.getContextPath()+"/images/upload/"+imgName;
-		String domain=service.loadUserById(userId).getDomain();
+		String imgContextPath=req.getContextPath()+"/images/upload/"+sessionUserId+"/"+imgName;
+		//String domain=service.loadUserById(userId).getDomain();
 		
 		JSONObject jo=new JSONObject();
 		jo.put("result",true);
-		jo.put("path", domain+imgContextPath);
+		jo.put("path",imgContextPath);
+		jo.put("extra", extra);
 		
 		return jo.toString();
 	}
