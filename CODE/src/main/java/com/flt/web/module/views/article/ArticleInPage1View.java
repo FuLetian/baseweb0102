@@ -1,9 +1,12 @@
 package com.flt.web.module.views.article;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.flt.common.annotation.View;
 import com.flt.common.view.BaseView;
+import com.flt.dao.model.Article;
 
 /**
  * @description 商品列表，竖直排列
@@ -23,7 +26,8 @@ public class ArticleInPage1View extends BaseView {
 		// TODO Auto-generated method stub
 		super.render();
 		
-		root.put("articles", service.listArticlesByChannelId(channelId));
+		List<Article> list=service.listArticlesByChannelId(channelId);
+		root.put("articles", list);
 	}
 
 	public Integer getChannelId() {
