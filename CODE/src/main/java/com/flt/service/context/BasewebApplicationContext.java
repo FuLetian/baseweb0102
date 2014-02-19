@@ -13,6 +13,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Service;
 
 import com.flt.common.freemarker.HTMLAbled;
+import com.flt.common.utils.CopyDirectoryUtil;
 import com.flt.web.common.service.ICommonStaticWebService;
 
 @Service
@@ -38,6 +39,12 @@ public class BasewebApplicationContext implements ApplicationContextAware,ICommo
 			Entry<String, HTMLAbled> e=it.next();
 			e.getValue().createHtml(req, userId);
 		}
+		
+		String filesContainer=req.getSession().getServletContext().getRealPath("h");
+		
+		CopyDirectoryUtil copyFile = new CopyDirectoryUtil();
+		boolean result=copyFile.copy(filesContainer, "E:\\htmlApp");
+		System.err.println(result);
 	}
 	
 

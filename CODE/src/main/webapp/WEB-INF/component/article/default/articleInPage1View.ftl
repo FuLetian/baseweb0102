@@ -41,9 +41,14 @@ a:html/page2-articleId-${articleId}
 				<div style="margin-left:10%;">
 					<blockquote>
 						<p>规格规格</p>
+						<div style="border:1px dashed red;">
 						<div style="font-size:12px;"><@getStars grade=item.stars/></div>
 						<small><em>总销量:${item.saleCount}</em></small>
+						</div>
 					</blockquote>
+				</div>
+				<div style="color:#3e3e3e;margin-left:20px;border-top:1px dashed red;height:70px;padding-top:10px;">
+					<p style="text-indent: 2em">${item.remark}</p>
 				</div>
 
 			</div>

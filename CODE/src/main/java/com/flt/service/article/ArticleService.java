@@ -40,7 +40,7 @@ public class ArticleService extends BaseService implements IArticleService,IBuyc
 		
 		ArticleMapper m=getSqlSession().getMapper(ArticleMapper.class);
 		
-		return m.selectByExample(new ArticleExample(){{
+		return m.selectByExampleWithBLOBs(new ArticleExample(){{
 			this.createCriteria().andChannelIdEqualTo(channelId);
 			this.setOrderByClause("idx DESC");
 		}});
