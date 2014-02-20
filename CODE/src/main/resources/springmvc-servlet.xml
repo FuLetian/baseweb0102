@@ -42,6 +42,12 @@
 		<mvc:resources mapping="/javascript/**" location="/javascript/"/>
 		<mvc:resources mapping="/css/**" location="/css/"/>
 		<mvc:resources mapping="/video/**" location="/video/"/>
+		<mvc:resources mapping="/h/**" location="/h/"/>
+		<mvc:resources mapping="/h2/**" location="/h2/"/>
+		<mvc:resources mapping="/editor/**" location="/editor/"/>
+<!-- 		<mvc:interceptors> -->
+<!-- 			<bean class="com.flt.web.context.dynamic.DynamicURLInterceptor"></bean> -->
+<!-- 		</mvc:interceptors> -->
 	
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basename" value="messages"></property>

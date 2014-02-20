@@ -7,7 +7,7 @@ a:html/page1-channelId-{channelId}.html
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12">
-			<img src="${basePath}images/big.jpg" class="image-equal-width"/>
+			<img src="${basePath}h/images/big.jpg" class="image-equal-width"/>
 		</div>
 	</div>
 </div>

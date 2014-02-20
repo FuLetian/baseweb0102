@@ -36,6 +36,79 @@
 	res1:<input name="text" value="${res1}"><input type="submit" value="submit">
 </form>
 
+<div style="padding:20px 20px 20px 20px;">
+
+<form class="form-horizontal" role="form">
+	<fieldset>
+		<legend>网站全局设置</legend>
+		<div class="form-group">
+			<label for="i1" class="col-sm-1 control-label">名字</label>
+			<div class="col-sm-10">
+			<input type="email" class="form-control" id="i1" placeholder="Email">
+			</div>
+		</div>
+		<legend>服务与承诺</legend>
+		<div class="form-group">
+			<label for="i2" class="col-sm-1 control-label">文字</label>
+			<div class="col-sm-10">
+			<input type="text" class="form-control" id="i2" placeholder="Email">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="i3" class="col-sm-1 control-label">文字</label>
+			<div class="col-sm-10">
+			<textarea rows="" cols="" class="form-control"></textarea>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="i2" class="col-sm-1 control-label">文字</label>
+			<div class="col-sm-10">
+			<input type="text" class="form-control" id="i2" placeholder="Email">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="i3" class="col-sm-1 control-label">文字</label>
+			<div class="col-sm-10">
+			<textarea rows="" cols="" class="form-control"></textarea>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="i2" class="col-sm-1 control-label">文字</label>
+			<div class="col-sm-10">
+			<input type="text" class="form-control" id="i2" placeholder="Email">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="i3" class="col-sm-1 control-label">文字</label>
+			<div class="col-sm-10">
+			<textarea rows="" cols="" class="form-control"></textarea>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="i2" class="col-sm-1 control-label">文字</label>
+			<div class="col-sm-10">
+			<input type="text" class="form-control" id="i2" placeholder="Email">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="i3" class="col-sm-1 control-label">文字</label>
+			<div class="col-sm-10">
+				<textarea rows="" cols="" class="form-control"></textarea>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="i3" class="col-sm-1 control-label">图片</label>
+			<div class="col-sm-10">
+			<input type="file" id="i3">
+			</div>
+		</div>
+		
+	</fieldset>
+
+</form>
+
+</div>
+
 <script>
 function load(id){
 	$("input[name='num']").val(id);

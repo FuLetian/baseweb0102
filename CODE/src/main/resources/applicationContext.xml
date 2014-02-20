@@ -16,7 +16,6 @@
     	<context:include-filter type="annotation" expression="com.flt.common.annotation.View"/>
     </context:component-scan>
 
-
 	<import resource="applicationContext-datasource.xml"/>
 	
 	<import resource="applicationContext-freemarker.xml"/>

@@ -20,5 +20,6 @@ public class ServiceAndPromise extends BaseView {
 		root.put("static_text1", service.findResourceByNum(FieldConstant.resource.id.ServiceAndPromise_RES_1,userId));
 		root.put("static_text2", service.findResourceByNum(FieldConstant.resource.id.ServiceAndPromise_RES_2,userId));
 		root.put("static_text3", service.findResourceByNum(FieldConstant.resource.id.ServiceAndPromise_RES_3,userId));
+		
 	}
 }

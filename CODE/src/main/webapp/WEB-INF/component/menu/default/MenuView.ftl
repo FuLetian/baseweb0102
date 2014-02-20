@@ -18,7 +18,7 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">首页</a></li>
+      <li class="active"><a href="${user_domain}">首页</a></li>
     	<#list header_menu_channels as item>
       		<li><a href="page1-channelId-${item.id}.html">${item.name}</a></li>
 		</#list>
