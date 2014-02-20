@@ -33,9 +33,9 @@ public class DynamicURLFilter implements Filter {
 		String requestURI=req.getRequestURI();
 		
 		boolean isHtmlRequest=isHtmlRequest(requestURI);
-		if(Configuration.IS_DEVELOP_MODE&&isHtmlRequest){
+		if(Boolean.valueOf(Configuration.getProp("mode.develop"))&&isHtmlRequest){
 			String dynamicURI=this.parseToMappingURLFromHtmlRequestURI(req);
-			response.getWriter().write("<script>window.top.location.href='"+Configuration.DB_SERVER_DOMAIN+dynamicURI+"'</script>");
+			response.getWriter().write("<script>window.top.location.href='"+Configuration.getProp("db.server.domain")+dynamicURI+"'</script>");
 		}else{
 			chain.doFilter(request, response);
 		}

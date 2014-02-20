@@ -41,10 +41,8 @@ public class BasewebApplicationContext implements ApplicationContextAware,ICommo
 		}
 		
 		String filesContainer=req.getSession().getServletContext().getRealPath("h");
-		
-		CopyDirectoryUtil copyFile = new CopyDirectoryUtil();
-		boolean result=copyFile.copy(filesContainer, "E:\\htmlApp");
-		System.err.println(result);
+		System.err.println(filesContainer);
+		CopyDirectoryUtil.entry(filesContainer, "E:\\htmlApp");
 	}
 	
 

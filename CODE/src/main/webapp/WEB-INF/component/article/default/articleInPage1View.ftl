@@ -37,17 +37,17 @@ a:html/page2-articleId-${articleId}
 	<div>
 		<a href="page4-articleId-${item.id}.html" class="thumbnail">
 		<div class="row">
-			<div class="col-xs-3" style="padding:20px 10px 0px 10px;color:#E3007F;">
+			<div class="col-xs-3" style="padding:20px 0px 0px 10px;color:#E3007F;font-size:12px;">
 				<div style="margin-left:10%;">
 					<blockquote>
 						<p>规格规格</p>
-						<div style="border:1px dashed red;">
-						<div style="font-size:12px;"><@getStars grade=item.stars/></div>
-						<small><em>总销量:${item.saleCount}</em></small>
+						<div>
+						<div><span style="color:#666666">评&nbsp;&nbsp;分:</span><@getStars grade=item.stars/></div>
+						<div style="color:#666666">销&nbsp;&nbsp;量:${item.saleCount}</div>
 						</div>
 					</blockquote>
 				</div>
-				<div style="color:#3e3e3e;margin-left:20px;border-top:1px dashed red;height:70px;padding-top:10px;">
+				<div style="color:#666666;margin-left:20px;">
 					<p style="text-indent: 2em">${item.remark}</p>
 				</div>
 

@@ -35,9 +35,9 @@ public class BrandController {
 	
 	@RequestMapping(value="onSaveOrUpdate")
 	@ResponseBody
-	public String saveOrUpdate(Integer id,String name,Integer idx,Model model,HttpServletRequest req){
+	public String saveOrUpdate(Integer id,String name,Integer idx,String thumbnail,Model model,HttpServletRequest req){
 		
-		service.saveOrUpdateBrand(id, name, idx,Configuration.TMP_SESSION_USER_ID);
+		service.saveOrUpdateBrand(id, name, idx,thumbnail,Configuration.TMP_SESSION_USER_ID);
 		return "SUCCESS";
 	}
 	

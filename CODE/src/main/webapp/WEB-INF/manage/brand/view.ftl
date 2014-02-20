@@ -55,7 +55,7 @@
         <h4 class="modal-title" id="myModalLabel">Modal title</h4>
       </div>
       <div id="modalBody" class="modal-body">
-      	<form id="editForm" action="${basePath}brand/onSaveOrUpdate">
+      	<form id="editForm" action="${basePath}util/upload" method="POST" enctype="multipart/form-data">
       		<input type="hidden" name="id" value="0">
       		<table class="table">
       			<tr>
@@ -68,7 +68,13 @@
       					<input name="idx">
       				</td>
       			</tr>
-      			
+      			<tr>
+      				<td>thumbnails</td>
+      				<td>
+      					<input name="imgFile" type="file">
+      					<img id="thumbnailImg" style="width:450px;">
+      				</td>
+      			</tr>
       		</table>
       	</form>
       </div>
@@ -89,11 +95,24 @@
 		self.onCloseModal=function(){}
 		
 		self.onSubmitModal=function(){
+			
 			$("#editForm").ajaxSubmit({
+				dataType:'json',
 				success:function(data){
-					location.reload();
+					
+					var path=data.path;
+					$("#editForm").append("<input type='hidden' name='thumbnail' value='"+path+"'>").ajaxSubmit({
+						url:'${basePath}brand/onSaveOrUpdate',
+						type:'GET',
+						//data:{'name':name,'idx':idx,'thumbnail':path},
+						success:function(data){
+							$(this).clearForm();
+							location.reload();
+						}
+					});
 				}
 			});
+			return false;
 		}
 		self.openModalToAdd=function(){
 			$("input[name='id']").val("0");
@@ -103,6 +122,7 @@
 			$("input[name='id']").val(item.id);
 			$("input[name='name']").val(item.name);
 			$("input[name='idx']").val(item.idx);
+			$("#thumbnailImg").attr("src",item.thumbnail);
 			$("#myModal").modal();
 		}
 		self.delete=function(item){

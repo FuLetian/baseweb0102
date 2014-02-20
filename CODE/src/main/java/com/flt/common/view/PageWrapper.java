@@ -21,7 +21,7 @@ public class PageWrapper {
 		this.root=root;
 		this.root.put("global_user_id", user.getId());
 		this.root.put("global_local_domain", user.getDomain());
-		this.root.put("global_server_domain", Configuration.DB_SERVER_DOMAIN);
+		this.root.put("global_server_domain", Configuration.getProp("db.server.domain"));
 	}
 	
 	public void addView(BaseView view){
@@ -88,14 +88,14 @@ public class PageWrapper {
 		
 		View view=page.getClass().getAnnotation(View.class);
 		
-		return view.template().replace("{theme}", Configuration.THEME_HOME);
+		return view.template().replace("{theme}", Configuration.getProp("theme.home"));
 	}
 	
 	public String getPageTemplate(BaseView baseView){
 		
 		View view=baseView.getClass().getAnnotation(View.class);
 		
-		return view.template().replace("{theme}", Configuration.THEME_HOME);
+		return view.template().replace("{theme}", Configuration.getProp("theme.home"));
 	}
 	
 	private String subObjectName(Object obj){
