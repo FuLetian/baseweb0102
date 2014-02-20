@@ -1,73 +1,81 @@
 package com.flt.common.utils;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
+import org.springframework.util.FileCopyUtils;
+import org.springframework.util.StringUtils;
+
 public class CopyDirectoryUtil {
-	public boolean copy(String file1,String file2) {
+	
+	private static String resource;
+	private static String target;
+	
+	public static void entry(String resource,String target){
+		if(StringUtils.isEmpty(resource)||StringUtils.isEmpty(target)){
+			System.err.println("resource||target is/are empty");
+			return;
+		}
 		
-		File in=new File(file1);
-		File out=new File(file2);
-		if(!in.exists()){
-			System.out.println(in.getAbsolutePath()+"源文件路径错误！！！");
-			return false;
-		}
-		else {
-			System.out.println("源文件路径"+in.getAbsolutePath());
-			System.out.println("目标路径"+out.getAbsolutePath());
+		CopyDirectoryUtil.resource=resource;
+		CopyDirectoryUtil.target=target;
+		
+		checkFileOrDir(new File(resource));
+	}
+
+	private static void checkFileOrDir(File f) {
+		// TODO Auto-generated method stub
+		if(f.isDirectory()){
 			
+			String absolutePath=f.getAbsolutePath();
+			int index=absolutePath.indexOf(CopyDirectoryUtil.resource);
+			if(index==-1){
+				System.err.println(CopyDirectoryUtil.resource);
+				System.err.println(absolutePath);
+			}else{
+				int length=CopyDirectoryUtil.resource.length();
+				String subStr=absolutePath.substring(length);
+				
+				File targetFile=new File(CopyDirectoryUtil.target+subStr);
+				targetFile.mkdir();
+			}
+			
+			listFilesFromDir(f);
+		}else{
+			copyFileToTarget(f);
 		}
-		if(!out.exists()) 
-			out.mkdirs();
-		File[] file=in.listFiles();
-		FileInputStream fin=null;
-		FileOutputStream fout=null;
-		for(int i=0;i<file.length;i++){
-		if(file[i].isFile()){
+	}
+
+	private static void copyFileToTarget(File file) {
+		// TODO Auto-generated method stub
+		String absolutePath=file.getAbsolutePath();
+		int index=absolutePath.indexOf(CopyDirectoryUtil.resource);
+		if(index==-1){
+			System.err.println(CopyDirectoryUtil.resource);
+			System.err.println(absolutePath);
+		}else{
+			int length=CopyDirectoryUtil.resource.length();
+			String subStr=absolutePath.substring(length);
+			
+			File targetFile=new File(CopyDirectoryUtil.target+subStr);
 			try {
-				fin=new FileInputStream(file[i]);
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			System.out.println("in.name="+file[i].getName());
-			try {
-				fout=new FileOutputStream(new File(file2+"/"+file[i].getName()));
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			System.out.println(file2);
-			int c;
-			byte[] b=new byte[1024*5];
-			try {
-				while((c=fin.read(b))!=-1){
-					
-					fout.write(b, 0, c);
-					System.out.println("复制文件中！");
-				}
-				fin.close();
-				fout.flush();
-				fout.close();
+				FileCopyUtils.copy(file, targetFile);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			return true;
 		}
-		else copy(file1+"/"+file[i].getName(),file2+"/"+file[i].getName());
+	}
+
+	private static void listFilesFromDir(File file) {
+		// TODO Auto-generated method stub
+		File[] fs=file.listFiles();
+		for(File f:fs){
+			checkFileOrDir(f);
 		}
-		
-		return false;
-	
-	
 	}
 
 	public static void main(String[] args) {
-		CopyDirectoryUtil copyFile = new CopyDirectoryUtil();
-		copyFile.copy("E:\\ppsfile", "E:\\pps");
+		entry("E:"+File.separator+"htmlApp","E:\\htmlApp2");
 	}
 } 

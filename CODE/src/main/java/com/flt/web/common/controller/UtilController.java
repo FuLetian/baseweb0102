@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.flt.common.config.Configuration;
+import com.flt.common.utils.ImgUtil;
 import com.flt.web.common.service.ICommonService;
 import com.flt.web.common.service.ICommonStaticWebService;
 import com.flt.web.common.session.SessionUserLoader;
@@ -34,7 +36,7 @@ public class UtilController {
 
 	@RequestMapping(value="upload",method=RequestMethod.POST)
 	@ResponseBody
-	public String upload(Integer userId,MultipartFile imgFile,String extra,Model model,HttpServletRequest req){
+	public String upload(MultipartFile imgFile,String extra,Model model,HttpServletRequest req){
 		
 		Integer sessionUserId=SessionUserLoader.findSessionUserId(req);
 		
@@ -67,6 +69,9 @@ public class UtilController {
 				e.printStackTrace();
 			}
 		}
+		
+		String absolutePath=req.getSession().getServletContext().getRealPath("images/upload/"+sessionUserId+"/"+imgName);
+		ImgUtil.compressImg(absolutePath,Integer.valueOf(Configuration.getProp("image.max.size")));
 		
 		String imgContextPath=req.getContextPath()+"/images/upload/"+sessionUserId+"/"+imgName;
 		//String domain=service.loadUserById(userId).getDomain();

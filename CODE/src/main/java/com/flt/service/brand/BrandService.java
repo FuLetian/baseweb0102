@@ -38,13 +38,17 @@ public class BrandService extends BaseService implements IBrandService ,IBrandMa
 	}
 
 	@Override
-	public void saveOrUpdateBrand(Integer id, String name, Integer idx,
+	public void saveOrUpdateBrand(Integer id, String name, Integer idx,String thumbnail,
 			Integer userId) {
 		// TODO Auto-generated method stub
 		BrandMapper m=getSqlSession().getMapper(BrandMapper.class);
 		
 		if(id!=null&&id.toString().equals("0")){
 			id=null;
+		}else{
+			if(id!=null&&thumbnail==null){
+				thumbnail=m.selectByPrimaryKey(id).getThumbnail();
+			}
 		}
 		
 		Brand b=new Brand();
@@ -55,6 +59,7 @@ public class BrandService extends BaseService implements IBrandService ,IBrandMa
 		b.setuDt(new Date());
 		b.setType(0);
 		b.setUserId(userId);
+		b.setThumbnail(thumbnail);
 		
 		if(id==null){
 			m.insert(b);

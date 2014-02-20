@@ -15,9 +15,9 @@
 		    <a class="pull-left" href="#" style="width:20%;">
 		      <img class="media-object" src="${basePath}images/icon-user.jpg" style="width:100%;" />
 		    </a>
-		    <div class="media-body">
-		      <h4 class="media-heading">Media heading</h4>
-		      	${item.content}
+		    <div class="media-body" style="color:#666666;">
+		      <h5 class="media-heading">Media heading</h5>
+		      	<div>${item.content}</div>
 		    </div>
 		  </li>
 		</#list>

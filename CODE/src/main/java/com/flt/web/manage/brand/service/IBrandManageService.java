@@ -8,7 +8,7 @@ public interface IBrandManageService {
 
 	List<Brand> listAllBrands(Integer userId);
 	
-	void saveOrUpdateBrand(Integer id,String name,Integer idx,Integer userId);
+	void saveOrUpdateBrand(Integer id,String name,Integer idx,String thumbnail,Integer userId);
 	
 	void deleteBrand(Integer id);
 }

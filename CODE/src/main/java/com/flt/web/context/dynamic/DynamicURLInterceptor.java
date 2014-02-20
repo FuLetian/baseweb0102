@@ -25,7 +25,7 @@ public class DynamicURLInterceptor extends HandlerInterceptorAdapter {
 		String requestURI=request.getRequestURI();
 		boolean isHtmlRequest=isHtmlRequest(requestURI);
 		
-		if(Configuration.IS_DEVELOP_MODE&&isHtmlRequest){
+		if(Boolean.valueOf(Configuration.getProp("mode.develop"))&&isHtmlRequest){
 			String mappingURL=parseToMappingURLFromHtmlRequestURI(request);
 			System.err.println(">>>>>>>>>>>"+mappingURL);
 		}
