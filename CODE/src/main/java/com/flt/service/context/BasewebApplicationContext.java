@@ -42,7 +42,7 @@ public class BasewebApplicationContext implements ApplicationContextAware,ICommo
 		
 		String filesContainer=req.getSession().getServletContext().getRealPath("h");
 		System.err.println(filesContainer);
-		CopyDirectoryUtil.entry(filesContainer, "E:\\htmlApp");
+		//CopyDirectoryUtil.entry(filesContainer, "E:\\htmlApp");
 	}
 	
 
