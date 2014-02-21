@@ -1,22 +1,15 @@
-body{background-color:#FDFBFE;padding-top: 62px;}
-.header-main-bg{background-color:#E02284;}
+body{padding-top: 62px;}
 .header-ul{list-style-type:none;}
 .header-ul>li{float:left;width:60px;height:50px;text-align:center;}
-.header-logo{height:100px;}
-.header-logo-ul{float:right;font-size:13px;}
-.header-logo-ul>li{border-right:1px solid #D6D5D6;}
-//.header-logo-ul>li>a{color:black;}
-.header-menu>li>a{color:#FFFFFF;font-weight:bold;}
 .subject-text2{background-position: -250px -150px;background-image:url(../images/texts.png);background-repeat: no-repeat;height:35px;margin-top:20px;margin-bottom:10px;}
 .right-content{}
 .right-content>div{border-bottom:1px dashed #E5E3E6;margin:0px 5px 15px 5px;padding-bottom:10px;}
-.right-content-title{font-size:14px;color:#F52D96;font-weight:bold;margin-bottom:5px;}
-.right-content-text{font-size:12px;color:#666666;}
-.store-list-title{width:100%;height:35px;line-height:35px;background-color:#D96196;color:#FFFFFF;font-weight:bold;text-indent:2em;}
-.buy-car{width:150px;height:30px;line-height:30px;background-color:#E3007F;color:#FFFFFF;text-align:center;margin-top:15px;border:1px solid #E02284;}
-.buy-car-count{width:30px;height:28px;background-color:#FFFFFF;float:right;color:#E82D8E;}
-#buyCarContent{height:150px;width:300px;background-color:#FFFFFF;}
-.location{width:100%;font-size:12px;color:#666666;font-weight:bold;margin-top:15px;padding-bottom:10px;border-bottom:1px dashed #E5E3E6;}
+.right-content-title{font-size:14px;font-weight:bold;margin-bottom:5px;}
+.right-content-text{font-size:12px;}
+.buy-car{width:150px;height:30px;line-height:30px;color:#FFFFFF;text-align:center;margin-top:15px;border:1px solid #E02284;}
+.buy-car-count{width:30px;height:28px;background-color:#FFFFFF;float:right;}
+#buyCarContent{width:300px;}
+.location{width:100%;font-size:12px;font-weight:bold;margin-top:15px;padding-bottom:10px;border-bottom:1px dashed #E5E3E6;}
 .selector{border-bottom:1px dashed #E5E3E6;font-size:12px;}
 .bar-sort{height:40px;line-height:40px;background-color:#F6F6F4;margin:15px 0px 10px 0px;}
 .bar-sort>div{float:left;margin-left:10px;}
@@ -39,8 +32,39 @@ body{background-color:#FDFBFE;padding-top: 62px;}
 .detail-comment-text-title{width:40px;text-align: right;float:left;}
 .detail-comment-text-content{margin-left:50px;}
 
-a.a{color:#666666;}
-a.a:hover{color:#E02284;}
+/*articleDetailInPage4View*/
+.articleDetailInPage4View-star-color{color:red};
+
+/*mainPassageView*/
+.passage-content{height:740px;}
+.panel-heading-title{font-size:12px;}
+
+/*menuView*/
+.all-menu-btn{color:#E3007F;font-size:14px;text-align:center;float:right;width:150px;height:50px;line-height:50px;border-left:1px solid #E5E3E6;border-right:1px solid #E5E3E6;}
+.all-menu-content{width:20px;height:100px;float:right;}
+.AllMenuBtnActive{background-color:#E3007F;color:#FBFBFB;}
+.all-menu-ul li{height:30px;line-height:30px;}
+.first-menu-title{color:#E5288A;font-size:12px;margin-top:10px;font-weight:bold;}
+.small-nav div{float:right;margin-right:10px;padding-right:10px;border-right:2px solid #F1F0F2;}
+
+/*footerView*/
+.footer-list{border-right:1px solid #E9E1E8;}
+.footer-list li{color:#666666;height:25px;}
+.footer-container{margin-top:30px;}
+.footer-block{background-color:#F9F9F9;border-top:1px solid #E0E0E0;margin-top:30px;}
+
+/* a.a{color:#666666;} */
+/* a.a:hover{color:#E02284;} */
+
+/*a标签去掉下划线*/
+a.not-underline{TEXT-DECORATION:none}
+
+/*背景颜色-主色调，粉色*/
+.background-color-primary{background-color:#E3007F;}
+
+/*字体大小-12*/
+.font-size-12{font-size:12px}
+
 .font-bold{font-weight:bold;text-align:left;}
 .margin-top-line{margin-top:10px;}
 .image-equal-width{width:100%;}

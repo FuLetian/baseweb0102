@@ -14,7 +14,7 @@ $(function(){
 	
 	//homepage
 	
-	$("#buyCarContent").css('position','absolute').css("left",270).hide();
+	$("#buyCarContent").css('position','absolute').css("left",-15).hide();
 	
 	$("#buyCar").hover(function(){
 		var $el=$("#buyCarContent");

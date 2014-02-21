@@ -6,9 +6,9 @@
 		<#list comments as item>
 		  <li class="media">
 		    <a class="pull-left" href="#" style="width:20%;">
-		      <img class="media-object" src="${basePath}images/icon-user.jpg" style="width:100%;" />
+		      <img class="media-object" src="${basePath}h/images/icon-user.jpg" style="width:100%;" />
 		    </a>
-		    <div class="media-body color-greys">
+		    <div class="media-body text-info">
 		      <h5 class="media-heading">Media heading</h5>
 		      	<div>${item.content}</div>
 		    </div>

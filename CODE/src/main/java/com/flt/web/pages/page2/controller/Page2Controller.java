@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.flt.common.controller.BaseController;
 import com.flt.common.freemarker.HTMLAbled;
 import com.flt.common.view.PageWrapper;
-import com.flt.dao.model.Channel;
-import com.flt.dao.model.Menu;
 import com.flt.dao.model.User;
 import com.flt.service.freemarker.FreemarkerService;
 import com.flt.web.common.service.ICommonUserService;
@@ -113,7 +111,7 @@ public class Page2Controller extends BaseController implements HTMLAbled{
 			for(MenuDTO c:childs){
 				PageWrapper p=this.buildPage(user,c.getMenu().getId());
 				Map<String, Object> root=p.getRoot();
-				root.put("basePath","../");
+				root.put("basePath",user.getDomain());
 				root.put("param_menu_id", c.getMenu().getId());
 				freemarkerService.flush(req,userId,"page2-menuId-"+c.getMenu().getId()+".html", p.getPageTemplate(),root);
 			}
