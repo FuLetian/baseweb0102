@@ -1,6 +1,6 @@
 <div class="panel panel-default">
 <div class="panel-heading">服务与承诺</div>
-		<div class="panel-body right-content">
+		<div class="panel-body right-content" style="background-color:#FCFAFC;">
 			<div class="row">
 				<div class="col-xs-12"><img src="${basePath}images/brand.png" class="image-equal-width" /></div>
 			</div>

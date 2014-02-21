@@ -1,11 +1,3 @@
-<style>
-.all-menu-btn{color:#E3007F;font-size:14px;text-align:center;float:right;width:150px;height:50px;line-height:50px;border-left:1px solid #E5E3E6;border-right:1px solid #E5E3E6;}
-.all-menu-content{width:20px;height:100px;float:right;}
-.AllMenuBtnActive{background-color:#E3007F;color:#FBFBFB;}
-.all-menu-ul li{height:30px;line-height:30px;}
-.first-menu-title{color:#E5288A;font-size:12px;margin-top:10px;font-weight:bold;}
-.small-nav div{float:right;margin-right:10px;padding-right:10px;border-right:2px solid #F1F0F2;}
-</style>
 <!-- header -->
 <div>
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">

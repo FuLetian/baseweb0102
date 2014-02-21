@@ -39,8 +39,33 @@ body{background-color:#FDFBFE;padding-top: 62px;}
 .detail-comment-text-title{width:40px;text-align: right;float:left;}
 .detail-comment-text-content{margin-left:50px;}
 
-a.a{color:#666666;}
-a.a:hover{color:#E02284;}
+
+/*menuView*/
+.all-menu-btn{color:#E3007F;font-size:14px;text-align:center;float:right;width:150px;height:50px;line-height:50px;border-left:1px solid #E5E3E6;border-right:1px solid #E5E3E6;}
+.all-menu-content{width:20px;height:100px;float:right;}
+.AllMenuBtnActive{background-color:#E3007F;color:#FBFBFB;}
+.all-menu-ul li{height:30px;line-height:30px;}
+.first-menu-title{color:#E5288A;font-size:12px;margin-top:10px;font-weight:bold;}
+.small-nav div{float:right;margin-right:10px;padding-right:10px;border-right:2px solid #F1F0F2;}
+
+/*footerView*/
+.footer-list{border-right:1px solid #E9E1E8;}
+.footer-list li{color:#666666;height:25px;}
+.footer-container{margin-top:30px;}
+.footer-block{background-color:#F9F9F9;border-top:1px solid #E0E0E0;margin-top:30px;}
+
+/* a.a{color:#666666;} */
+/* a.a:hover{color:#E02284;} */
+
+/*a标签去掉下划线*/
+a.not-underline{TEXT-DECORATION:none}
+
+/*文字颜色-灰色*/
+.color-greys{color:#666666;}
+
+/*字体大小-12*/
+.font-size-12{font-size:12px}
+
 .font-bold{font-weight:bold;text-align:left;}
 .margin-top-line{margin-top:10px;}
 .image-equal-width{width:100%;}
