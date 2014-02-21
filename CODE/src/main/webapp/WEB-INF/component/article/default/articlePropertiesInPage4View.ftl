@@ -2,7 +2,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12">
-			<div class="location">商品参数:</div>
+			<div class="location color-greys">商品参数:</div>
 		</div>
 	</div>
 	

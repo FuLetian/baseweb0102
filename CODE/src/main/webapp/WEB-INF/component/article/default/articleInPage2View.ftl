@@ -10,7 +10,7 @@ a:html/page4-articleId- .html
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			<div class="location container">您现在的位置:商品检索</div>
+			<div class="location container color-greys">您现在的位置:商品检索</div>
 		</div>
 	</div>
 </div>
