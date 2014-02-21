@@ -37,24 +37,24 @@ a:html/page2-articleId-${articleId}
 	<div>
 		<a href="page4-articleId-${item.id}.html" class="thumbnail">
 		<div class="row">
-			<div class="col-xs-3" style="padding:20px 0px 0px 10px;color:#E3007F;font-size:12px;">
+			<div class="col-xs-3 color-pink font-size-12" style="padding:20px 0px 0px 10px;">
 				<div style="margin-left:10%;">
 					<blockquote>
 						<p>规格规格</p>
 						<div>
-						<div><span style="color:#666666">评&nbsp;&nbsp;分:</span><@getStars grade=item.stars/></div>
-						<div style="color:#666666">销&nbsp;&nbsp;量:${item.saleCount}</div>
+							<div><span class="color-greys">评&nbsp;&nbsp;分:</span><@getStars grade=item.stars/></div>
+							<div class="color-greys">销&nbsp;&nbsp;量:${item.saleCount}</div>
+							<div class="color-greys">价&nbsp;&nbsp;格:￥${item.price}</div>
 						</div>
 					</blockquote>
 				</div>
-				<div style="color:#666666;margin-left:20px;">
+				<div style="margin-left:20px;" class="color-greys">
 					<p style="text-indent: 2em">${item.remark}</p>
 				</div>
 
 			</div>
-			<div class="col-xs-9" style="position:relative;">
+			<div class="col-xs-9">
 				<div><img src="${item.homepageImg}" alt="${item.name}" class="image-equal-width" /></div>
-				<div style="float:right;position:absolute;right:15px;bottom:0px;;width:50px;height:20px;background-color:#FFFFFF;color:#F772B5;text-align:center"><em>￥${item.price}</em></div>
 			</div>
 		</div>
 		</a>

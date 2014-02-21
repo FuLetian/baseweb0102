@@ -26,7 +26,7 @@
 				</#list>
 				  <dt>大众评分</dt>
 				  <dd>
-				  	<div style="color:red">
+				  	<div class="articleDetailInPage4View-star-color">
 				  	<#list grade as item>
 				  		<span class="glyphicon glyphicon-star"></span>
 				  	</#list>
