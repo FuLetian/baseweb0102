@@ -1,11 +1,9 @@
 body{background-color:#FDFBFE;padding-top: 62px;}
-.header-main-bg{background-color:#E02284;}
 .header-ul{list-style-type:none;}
 .header-ul>li{float:left;width:60px;height:50px;text-align:center;}
 .header-logo{height:100px;}
 .header-logo-ul{float:right;font-size:13px;}
 .header-logo-ul>li{border-right:1px solid #D6D5D6;}
-//.header-logo-ul>li>a{color:black;}
 .header-menu>li>a{color:#FFFFFF;font-weight:bold;}
 .subject-text2{background-position: -250px -150px;background-image:url(../images/texts.png);background-repeat: no-repeat;height:35px;margin-top:20px;margin-bottom:10px;}
 .right-content{}
@@ -39,6 +37,12 @@ body{background-color:#FDFBFE;padding-top: 62px;}
 .detail-comment-text-title{width:40px;text-align: right;float:left;}
 .detail-comment-text-content{margin-left:50px;}
 
+/*articleDetailInPage4View*/
+.articleDetailInPage4View-star-color{color:red};
+
+/*mainPassageView*/
+.passage-content{height:740px;}
+.panel-heading-title{font-size:12px;}
 
 /*menuView*/
 .all-menu-btn{color:#E3007F;font-size:14px;text-align:center;float:right;width:150px;height:50px;line-height:50px;border-left:1px solid #E5E3E6;border-right:1px solid #E5E3E6;}
@@ -62,6 +66,9 @@ a.not-underline{TEXT-DECORATION:none}
 
 /*文字颜色-灰色*/
 .color-greys{color:#666666;}
+
+/*文字颜色-主色调,粉色*/
+.color-pink{color:#E3007F;}
 
 /*字体大小-12*/
 .font-size-12{font-size:12px}
