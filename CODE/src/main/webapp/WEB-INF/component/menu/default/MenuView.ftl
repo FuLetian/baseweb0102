@@ -53,7 +53,7 @@
 <div class="row">
 	<div class="col-md-6" align="left"><img src="${basePath}images/vip.png" /></div>
 	<div class="col-md-6" align="right">
-		<div id="buyCar" class="buy-car" onclick="location.href='page5.html'"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;购物车<span data-bind="text:carCount" class="buy-car-count">0</span></div>
+		<div id="buyCar" class="buy-car background-color-pink" onclick="location.href='page5.html'"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;购物车<span data-bind="text:carCount" class="buy-car-count color-pink">0</span></div>
 		<div id="buyCarContent" style="z-index:500;" align="left">
 			<div class="panel panel-default">
 			  <div class="panel-heading">Panel heading without title</div>
