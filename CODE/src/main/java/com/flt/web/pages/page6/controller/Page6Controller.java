@@ -115,7 +115,7 @@ public class Page6Controller extends BaseController implements HTMLAbled {
 		User user=userService.loadUserById(userId);
 		PageWrapper p=this.buildPage(user);
 		Map<String, Object> root=p.getRoot();
-		root.put("basePath","../");
+		root.put("basePath",user.getDomain());
 		freemarkerService.flush(req,userId,"page6.html", p.getPageTemplate(),root);
 		return null;
 	}

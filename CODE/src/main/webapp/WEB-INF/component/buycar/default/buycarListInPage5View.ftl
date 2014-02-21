@@ -27,10 +27,10 @@
 			<td>
 				<div class="media">
 				  <a class="pull-left" data-bind="attr:{'href':'page4-articleId-'+article.id+'.html'}">
-				    <img class="media-object" style="height:50px;" data-bind="attr:{'src':thumbnail}" alt="...">
+				    <img class="media-object" style="height:50px;" data-bind="attr:{'src':article.homepageImg}" alt="...">
 				  </a>
 				  <div class="media-body">
-				    <a data-bind="attr:{'href':'page4-articleId-'+article.id+'.html'}"><h4 class="media-heading" data-bind="text:article.name">Media heading</h4></a>
+				    <a class="not-underline" data-bind="attr:{'href':'page4-articleId-'+article.id+'.html'}"><span class="media-heading text-info" data-bind="text:article.name">Media heading</span></a>
 				    <p data-bind="text:article.remark" class="text-muted"></p>
 				  </div>
 				</div>

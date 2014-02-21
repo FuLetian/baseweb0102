@@ -83,7 +83,7 @@ public class Page4Controller extends BaseController implements HTMLAbled{
 		for(Article a:list){
 			PageWrapper p=this.buildPage(a.getId(),user);
 			Map<String, Object> root=p.getRoot();
-			root.put("basePath","../");
+			root.put("basePath",user.getDomain());
 			freemarkerService.flush(req,userId,"page4-articleId-"+a.getId()+".html", p.getPageTemplate(),root);
 		}
 		return null;

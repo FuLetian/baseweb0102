@@ -4,7 +4,7 @@
 <div class="container">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
-    <a class="navbar-brand" href="#">Brand</a>
+    <a class="navbar-brand" href="#"><span class="text-primary">Brand</span></a>
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
@@ -33,54 +33,65 @@
 <div class="row" align="right">
 	<div class="col-md-12" style="font-size:12px;height:25px;">
 		<div class="small-nav">
-			<div><a  href="#">联系客服</a></div>
-			<div><a href="#">积分兑换</a></div>
-		  <div>
-				<a data-bind="visible:isTourist,click:register" href="#">注册</a>
-				<a data-bind="visible:isConsumer,click:logout" href="#">退出</a>
-		  </div>
-		  <div><a href="page6.html">我的订单</a></div>
-		  <div>
-		  		<a data-bind="visible:isTourist,click:openLoginModal" href="#">登陆</a>
-				<span data-bind="visible:isConsumer,text:loginConsumerName" href="#">2</span>
-		  </div>
-		</ul>
-	</div>
-</div>
+			<div><a  href="#" class="not-underline text-info">联系客服</a></div>
+			<div><a href="#" class="not-underline text-info">积分兑换</a></div>
+		  	<div>
+				<a data-bind="visible:isTourist,click:register" href="#" class="not-underline text-info">注册</a>
+				<a data-bind="visible:isConsumer,click:logout" href="#" class="not-underline text-info">退出</a>
+		 	 </div>
+		  	<div><a href="page6.html" class="not-underline text-info">我的订单</a></div>
+		  	<div>
+		  		<a data-bind="visible:isTourist,click:openLoginModal" href="#" class="not-underline text-info">登陆</a>
+				<span data-bind="visible:isConsumer,text:loginConsumerName" href="#" class="not-underline text-info">2</span>
+		  	</div>
+		</div>
+   </div>
 </div>
 
 <!-- logo & buycar count -->
 <div class="row">
-	<div class="col-md-6" align="left"><img src="${basePath}images/vip.png" /></div>
-	<div class="col-md-6" align="right">
-		<div id="buyCar" class="buy-car background-color-pink" onclick="location.href='page5.html'"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;购物车<span data-bind="text:carCount" class="buy-car-count color-pink">0</span></div>
-		<div id="buyCarContent" style="z-index:500;" align="left">
-			<div class="panel panel-default">
-			  <div class="panel-heading">Panel heading without title</div>
+	<div class="col-md-5" align="left"><img src="${basePath}h/images/vip.png" /></div>
+	<div class="col-md-4">
+		<div class="pull-left" style="height:30px;width:120px;margin-top:20px;background-repeat: no-repeat;background-image:url('http://localhost:8080/baseweb/h/images/header_corn_new_v1.png');background-position:0px 0px;"></div>
+		<div class="pull-left" style="height:30px;width:120px;margin-top:20px;background-repeat: no-repeat;background-image:url('http://localhost:8080/baseweb/h/images/header_corn_new_v1.png');background-position:0px -30px;"></div>
+		<div class="pull-left" style="height:30px;width:120px;margin-top:20px;background-repeat: no-repeat;background-image:url('http://localhost:8080/baseweb/h/images/header_corn_new_v1.png');background-position:0px -60px;"></div>
+	</div>
+	<div class="col-md-3" align="right">
+		<div id="buyCar" class="buy-car background-color-primary" onclick="location.href='page5.html'"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;购物车<span data-bind="text:carCount" class="buy-car-count text-primary">0</span></div>
+			<div id="buyCarContent" class="panel panel-default" style="z-index:500;" align="left">
 			  <div class="panel-body" data-bind="foreach:selectedArticles">
 					<div class="media">
-					  <a class="pull-left" href="#" style="width:30%;">
-					    <img data-bind="attr:{'src':thumbnail}" class="media-object" style="width:100%;" alt="...">
+					  <a class="pull-left" style="width:30%;" data-bind="attr:{'href':'page4-articleId-'+article.id+'.html'}">
+					    <img data-bind="attr:{'src':article.homepageImg}" class="media-object" style="width:100%;" alt="...">
 					  </a>
 					  <div class="media-body">
-					    <h4 data-bind="text:article.name" class="media-heading" align="left">Media heading</h4>
-					    	<p>数量:<span data-bind="text:count">1</span></p>
+					    <a data-bind="attr:{'href':'page4-articleId-'+article.id+'.html'}" class="not-underline"><h4 data-bind="text:article.name" class="media-heading" align="left"></h4></a>
+					    	<p>数量:<span data-bind="text:count">1</span><span class="pull-right" data-bind="click:$root.menuViewBuycarDeleteItem">d</span></p>
 					  </div>
 					</div>
 			  </div>
 			</div>
-		</div>
 	</div>
 </div>
 
 </div>
 <!-- //log -->
 
-<div class="container">
-	<div class="row">
-		<div class="col-md-12 bg">
-			<div style="height:30px;line-height:30px;padding-left:10px;width:100%;border:1px solid #E3007F;margin:5px 0px 5px 0px;">
-				<p class="text-success" style="font-size:12px;"><span class="glyphicon glyphicon-cloud"></span>&nbsp;&nbsp;&nbsp;&nbsp;哥哥了给和人力和任何好皇天后土好搜噶和他如何让它</p>
+<!-- <div class="container"> -->
+<!-- 	<div class="row"> -->
+<!-- 		<div class="col-md-12 bg"> -->
+<!-- 			<div style="height:30px;line-height:30px;padding-left:10px;width:100%;border:1px solid #E3007F;margin:5px 0px 5px 0px;"> -->
+<!-- 				<p class="text-info" style="font-size:12px;"><span class="glyphicon glyphicon-cloud"></span>&nbsp;&nbsp;&nbsp;&nbsp;哥哥了给和人力和任何好皇天后土好搜噶和他如何让它</p> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+<!-- </div> -->
+
+<div id="infoContainer" style="border-bottom:1px solid #CCCCCC;border-top:1px solid #CCCCCC;" class="margin-top-line">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center" style="height:30px;line-height:30px;">
+				<p class="text-info">范围跟顾客非<img id="closeImg" class="pull-right" src="${basePath}h/images/close.jpg" style="height:30px;"/></p>
 			</div>
 		</div>
 	</div>
@@ -257,5 +268,10 @@ $(function(){
 		$(".all-menu-btn").removeClass("AllMenuBtnActive");
 	});
 	
+	$("#closeImg").click(function(){
+		$("#infoContainer").hide(500);
+	});
+	
 });
+
 </script>

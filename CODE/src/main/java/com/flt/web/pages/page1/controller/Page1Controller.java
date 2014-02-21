@@ -96,7 +96,7 @@ public class Page1Controller extends BaseController implements HTMLAbled{
 		for(Channel c:channels){
 			PageWrapper p=this.buildPage(c.getId(),new User());
 			Map<String, Object> root=p.getRoot();
-			root.put("basePath","../");
+			root.put("basePath",user.getDomain());
 			freemarkerService.flush(req,userId,"page1-channelId-"+c.getId()+".html", p.getPageTemplate(),root);
 		}
 		

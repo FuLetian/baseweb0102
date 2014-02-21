@@ -80,7 +80,7 @@ public class Page3Controller extends BaseController implements HTMLAbled{
 		for(int i=1;i<18;i++){
 			PageWrapper p=this.buildPage(i,user);
 			Map<String, Object> root=p.getRoot();
-			root.put("basePath","../");
+			root.put("basePath",user.getDomain());
 			freemarkerService.flush(req,userId,"page3-passageNum-"+i+".html", p.getPageTemplate(),root);
 		}
 		return null;

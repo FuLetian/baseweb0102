@@ -23,6 +23,11 @@
 	var model=new ViewModel();
 
 	model.selectedArticles=ko.observableArray();
+	model.menuViewBuycarDeleteItem=function(o){
+		$.getJSON(global_server_domain+"buycar/removeItem",{"articleId":o.article.id},function(data){
+			model.selectedArticles(data);
+		});
+	};
 	model.carCount=ko.computed(function(){
 		var count= model.selectedArticles().length;
 		return count;
