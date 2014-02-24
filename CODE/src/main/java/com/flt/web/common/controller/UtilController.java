@@ -34,13 +34,20 @@ public class UtilController {
 	@Autowired
 	private ICommonStaticWebService staticWebService;
 
+	/**
+	 * @param imgFile
+	 * @param extra
+	 * @param model
+	 * @param req
+	 * @return
+	 */
 	@RequestMapping(value="upload",method=RequestMethod.POST)
 	@ResponseBody
 	public String upload(MultipartFile imgFile,String extra,Model model,HttpServletRequest req){
 		
 		Integer sessionUserId=SessionUserLoader.findSessionUserId(req);
 		
-		String realDir=req.getSession().getServletContext().getRealPath("images"+File.separator+"upload"+File.separator+sessionUserId);
+		String realDir=req.getSession().getServletContext().getRealPath("h"+File.separator+"images"+File.separator+"upload"+File.separator+sessionUserId);
 		File temp=new File(realDir);
 		if(!temp.exists()){
 			temp.mkdir();
@@ -70,10 +77,10 @@ public class UtilController {
 			}
 		}
 		
-		String absolutePath=req.getSession().getServletContext().getRealPath("images/upload/"+sessionUserId+"/"+imgName);
+		String absolutePath=req.getSession().getServletContext().getRealPath("h"+File.separator+"images"+File.separator+"upload"+File.separator+sessionUserId+File.separator+imgName);
 		ImgUtil.compressImg(absolutePath,Integer.valueOf(Configuration.getProp("image.max.size")));
 		
-		String imgContextPath=req.getContextPath()+"/images/upload/"+sessionUserId+"/"+imgName;
+		String imgContextPath=req.getContextPath()+"/h/images/upload/"+sessionUserId+"/"+imgName;
 		//String domain=service.loadUserById(userId).getDomain();
 		
 		JSONObject jo=new JSONObject();
@@ -108,6 +115,43 @@ public class UtilController {
 		
 		JSONObject o=new JSONObject();
 		o.put("result", true);
+		
+		return o.toString();
+	}
+	
+	/**
+	 * session 记录广告开关
+	 * @param status show/hide
+	 * @param req
+	 * @return
+	 */
+	@RequestMapping("setAdFlag")
+	@ResponseBody
+	public String setAdFlag(String status,HttpServletRequest req){
+		
+		JSONObject o=new JSONObject();
+		
+		req.getSession().setAttribute("AD_FLAG", status);
+		
+		o.put("status", status);
+		return o.toString();
+	}
+	
+	/**
+	 * session 获取广告开关
+	 * @param req
+	 * @return
+	 */
+	@RequestMapping("getAdFlag")
+	@ResponseBody
+	public String getAdFlag(HttpServletRequest req){
+		JSONObject o=new JSONObject();
+		String status=(String) req.getSession().getAttribute("AD_FLAG");
+		if(status==null){
+			o.put("status", "show");
+		}else{
+			o.put("status", status);
+		}
 		
 		return o.toString();
 	}

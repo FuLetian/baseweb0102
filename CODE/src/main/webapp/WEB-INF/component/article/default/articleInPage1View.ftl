@@ -54,10 +54,11 @@ a:html/page2-articleId-${articleId}
 
 			</div>
 			<div class="col-xs-9">
-				<div><img src="${item.homepageImg}" alt="${item.name}" class="image-equal-width" /></div>
+				<div><img data-original="${item.homepageImg}" alt="${item.name}" class="image-equal-width lazy" /></div>
 			</div>
 		</div>
 		</a>
 	</div>
 	</#list>
 </div>
+<script src="${basePath}h/javascript/lazyload.js"></script>

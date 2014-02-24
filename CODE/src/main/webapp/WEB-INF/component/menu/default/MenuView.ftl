@@ -99,14 +99,14 @@
 
 <div id="allMenus" class="popover fade bottom in" style="display: none;">
 	<div class="arrow"></div>
-	<h3 class="popover-title">A Title</h3>
+	<h3 class="popover-title">所有商品</h3>
 	<div class="popover-content" style="height:400px;width:270px;overflow-y:scroll;padding:0px 10px 10px 10px;">
 	
 		<#list menus as item>
-		<div class="first-menu-title">${item.menu.name}</div>
+		<div class="first-menu-title">※${item.menu.name}</div>
 		<ul class="all-menu-ul list-inline">
 			<#list item.childMenus as item2>
-			<li><a href="page2-menuId-${item2.menu.id}.html">${item2.menu.name}</a></li>
+			<li><a href="page2-menuId-${item2.menu.id}.html" class="not-underline text-info">${item2.menu.name}</a></li>
 			</#list>
 		</ul>
 		</#list>
@@ -252,7 +252,7 @@ $(function(){
 
 	<!--allMenus listener-->
 		$("#allMenus").mouseleave(function(){
-			$(this).hide();
+			$(this).hide(500);
 		});
 	<!--// allMenus listener-->
 
@@ -270,6 +270,18 @@ $(function(){
 	
 	$("#closeImg").click(function(){
 		$("#infoContainer").hide(500);
+		$.getJSON(global_server_domain+"util/setAdFlag",{status:'hide'},function(data){
+			
+		});
+	});
+	
+	<!--ad-->
+	$.getJSON(global_server_domain+"util/getAdFlag",function(data){
+		if(data.status=='hide'){
+			$("#infoContainer").hide();
+		}else if(data.status=='show'){
+			$("#infoContainer").show();
+		}
 	});
 	
 });

@@ -11,7 +11,6 @@
 var global_server_domain="${global_server_domain}";
 </script>
 
-<!-- <script type="text/javascript" charset="UTF-8" src="http://chat.kefu360.com/code/13553"></script> -->
 <body>
 <#include MenuView />
 <#include ChannelView />
