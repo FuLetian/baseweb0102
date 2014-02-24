@@ -16,7 +16,7 @@ window.global_flag_login_validation_enable=true;
 <body>
 	<#include MenuView/>
 	
-	<div class="container">
+	<div id="navContainer" class="container">
 		<div class="row">
 			<div class="col-md-12" style="font-size:12px;height:40px;">
 				<ol class="breadcrumb">
@@ -28,20 +28,19 @@ window.global_flag_login_validation_enable=true;
 		</div>
 	</div>
 	
-	<div class="container">
+	<div id="orderList" class="container">
 		<div class="row">
 			<div class="col-md-2">
 				<div class="panel panel-default">
 				  <!-- group -->
-				  <div class="panel-heading"><b>服务保障</b></div>
-
+				  <div class="panel-heading"><b>我的订单</b></div>
 						<div class="list-group">
-							<a href="#" class="list-group-item active" onclick="remoteHasBuyArticles();triggerActiveItem(this);">全部订单与收藏</a>
-						  <a href="#" class="list-group-item" onclick="remoteHasBuyArticles(2);triggerActiveItem(this);">正在配送</a>
-						  <a href="#" class="list-group-item" onclick="remoteHasBuyArticles(1);triggerActiveItem(this);">订单正在处理</a>
-						  <a href="#" class="list-group-item" onclick="remoteHasBuyArticles(0);triggerActiveItem(this);">已下单</a>
-						  <a href="#" class="list-group-item" onclick="remoteHasBuyArticles(3);triggerActiveItem(this);">购买成功</a>
-						  <a href="#" class="list-group-item" onclick="remoteHasBuyArticles(4);triggerActiveItem(this);">收藏夹</a>
+						  <a href="#navContainer" class="list-group-item active" onclick="remoteHasBuyArticles();triggerActiveItem(this);" title="所有状态的订单和已收藏的商品">全部订单与收藏</a>
+						  <a href="#navContainer" class="list-group-item" onclick="remoteHasBuyArticles(2);triggerActiveItem(this);" title="商品正在路途中的订单，请耐心等待">正在配送</a>
+						  <a href="#navContainer" class="list-group-item" onclick="remoteHasBuyArticles(1);triggerActiveItem(this);" title="我们已接受的订单，正在处理中，请耐心等待">订单正在处理</a>
+						  <a href="#navContainer" class="list-group-item" onclick="remoteHasBuyArticles(0);triggerActiveItem(this);" title="您已下单，但我们尚未接受的订单">已下单</a>
+						  <a href="#navContainer" class="list-group-item" onclick="remoteHasBuyArticles(3);triggerActiveItem(this);" title="交易成功并结束的订单">购买成功</a>
+						  <a href="#navContainer" class="list-group-item" onclick="remoteHasBuyArticles(4);triggerActiveItem(this);" title="收藏的商品">收藏夹</a>
 						</div>
 				  <!--// group -->
 				</div>
@@ -49,12 +48,11 @@ window.global_flag_login_validation_enable=true;
 			<div class="col-md-10">
 				<div class="panel panel-default">
 				  <!-- group -->
-				  <div class="panel-heading"><b>服务保障</b></div>
 					<div class="panel-body">
 					
 					<div style="height:500px;overflow-y:scroll;">
 						<table class="table">
-							<tr>
+							<tr class="text-success">
 								<th>商品名字</th>
 								<th>单价</th>
 								<th>数量</th>
@@ -70,7 +68,7 @@ window.global_flag_login_validation_enable=true;
 									<td data-bind="text:(article.price*order.count)"></td>
 									<td data-bind="text:order.cDt"></td>
 									<td>
-										<a href="#" data-bind="click:$root.page6_btn_showDetail_action">查看</a>
+										<a href="#" class="text-info" data-bind="click:$root.page6_btn_showDetail_action"><span class="glyphicon glyphicon-fullscreen" title="查看"></span></a>
 										<a href="#" data-bind="click:$root.page6_btn_action_delete,visible:$root.page6_btn_delete_visible">删除</a>
 										<a href="#" data-bind="click:$root.page6_btn_action_buy,visible:$root.page6_btn_buy_visible">购买</a>
 									</td>

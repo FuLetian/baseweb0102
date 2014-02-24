@@ -71,6 +71,7 @@ public class Page2Controller extends BaseController implements HTMLAbled{
 	@ResponseBody
 	/**
 	 * 
+	 * @param consumerId 若不为null，则需要选择出每一个商品的"收藏"状态
 	 * @param brandId
 	 * @param channelId
 	 * @param discountRange
@@ -79,8 +80,9 @@ public class Page2Controller extends BaseController implements HTMLAbled{
 	 * @param orderByType 1-销量降序，2-价格声讯,3-折扣升序
 	 * @return
 	 */
-	public String query(Integer brandId,Integer channelId,String discountRange,Integer menuId,String priceRange,Integer orderByType,HttpServletRequest req){
+	public String query(Integer consumerId,Integer brandId,Integer channelId,String discountRange,Integer menuId,String priceRange,Integer orderByType,HttpServletRequest req){
 		
+		articleInPage2View.setConsumerId(consumerId);
 		articleInPage2View.setBrandId(brandId);
 		articleInPage2View.setChannelId(channelId);
 		articleInPage2View.setDiscountRange(discountRange);

@@ -169,6 +169,7 @@
 	model.page2DiscountRange=ko.observable();
 	model.page2OrderByType=ko.observable(0);
 	
+	//添加至购物车
 	self.addArticeToBuycar=function(articleThumbnailDTO){
 		$("#detailModal").modal();
 		var item={};
@@ -184,6 +185,25 @@
 		$.getJSON(global_server_domain+"buycar/addItem",item,function(data){
 			model.selectedArticles(data);
 		});
+	};
+	
+	//添加至收藏夹
+	self.addArticleToCollection=function(data){
+		var cId=$.cookie("loginConsumerId");
+		if(!cId){
+			model.openLoginModal();
+		}else{
+			console.log(data);
+			var targetRunStatus=data.collectionStatus==0?4:0;
+			$.ajax({
+				url:global_server_domain+"buycar/collection",
+				type:"POST",
+				data:{"articleId":data.article.id,"consumerId":cId,"runStatus":targetRunStatus},
+				success:function(data){
+					remotePage2Articles();
+				}
+			});
+		}
 	};
 	
 	self.onMakeOrderForm=function(){
@@ -338,6 +358,11 @@ function remotePage2Articles(){
 	param.discountRange=model.page2DiscountRange();
 	param.priceRange=model.page2PriceRange();
 	param.orderByType=model.page2OrderByType();
+	
+	var cId=$.cookie("loginConsumerId");
+	if(cId){
+		param.consumerId=cId;
+	}
 	
 	
 	$.getJSON(global_server_domain+"page2/query",param,function(data){

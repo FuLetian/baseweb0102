@@ -16,6 +16,7 @@ import com.flt.web.pages.page2.dto.ArticleThumbnailDTO;
 @View(template="component/article/{theme}/articleInPage2View.ftl")
 public class ArticleInPage2View extends BaseView {
 
+	private Integer consumerId;
 	private Integer channelId;
 	private Integer brandId;
 	private Integer menuId;
@@ -42,6 +43,9 @@ public class ArticleInPage2View extends BaseView {
 			ArticleThumbnailDTO dto=new ArticleThumbnailDTO();
 			dto.setArticle(a);
 			dto.setImg(img);
+			dto.setCollectionCount(service.loadArticleCollectionCount(a.getId()));
+			dto.setCollectionStatus(consumerId==null?0:service.loadConsumerArticleCollectionStatus(consumerId, a.getId()));
+			dto.setCommentCount(service.loadCommentCountByArticleId(a.getId()));
 			
 			dtos.add(dto);
 		}
@@ -82,6 +86,12 @@ public class ArticleInPage2View extends BaseView {
 	}
 	public void setOrderByType(Integer orderByType) {
 		this.orderByType = orderByType;
+	}
+	public Integer getConsumerId() {
+		return consumerId;
+	}
+	public void setConsumerId(Integer consumerId) {
+		this.consumerId = consumerId;
 	}
 	
 	

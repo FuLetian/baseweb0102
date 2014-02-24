@@ -45,9 +45,15 @@ a:html/page4-articleId- .html
      </a>
       <div class="caption">
         <h3 data-bind="text:article.name"></h3>
-        <p><span data-bind="text:article.price"></span></p>
+        <p>
+        	<span data-bind="text:article.price"></span>
+        	<span class="pull-right" data-bind="text:collectionCount">3</span>
+        	<span class="pull-right glyphicon glyphicon-heart text-primary" style="margin-right:2px;"></span>
+        	<span class="pull-right" style="margin-right:8px;" data-bind="text:commentCount">3</span>
+        	<span class="pull-right glyphicon glyphicon-comment text-primary" style="margin-right:2px;"></span>
+        </p>
         <p><button class="btn btn-primary addToBuyCar" role="button" data-bind="click:addArticeToBuycar">加入购物车</button> 
-        	<a href="page5.html" class="btn btn-default" role="button">购买</a></p>
+        	<a href="#" class="btn btn-default" role="button" data-bind="click:addArticleToCollection,text:collectionStatus==0?'收藏':'取消收藏'"></a></p>
       </div>
     </div>
   </div>
