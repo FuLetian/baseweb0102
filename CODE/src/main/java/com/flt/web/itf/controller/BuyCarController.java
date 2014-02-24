@@ -88,7 +88,11 @@ public class BuyCarController extends BaseController {
 	@RequestMapping(value="addOrder",method=RequestMethod.POST)
 	@ResponseBody
 	public String addOrder(Integer articleId,Integer count,String name,String phoneNum,
-			String address,String email,Integer consumerId,String remark,HttpServletRequest req){
+			String address,String email,Integer consumerId,String remark,Integer runStatus,HttpServletRequest req){
+		
+		if(runStatus==null){
+			runStatus=0;
+		}
 		
 		Order o=new Order();
 		o.setArticleId(articleId);
@@ -97,10 +101,36 @@ public class BuyCarController extends BaseController {
 		o.setConsumerId(consumerId);
 		o.setCount(count);
 		o.setRemark(remark);
-		o.setRunStatus(0);
+		o.setRunStatus(runStatus);
 		o.setuDt(new Date());
 		
 		articleService.saveOrder(o);
+		
+		req.getSession().removeAttribute(KeyConstant.SESSION_BUY_CAR_KEY);
+		
+		return "SUCESS";
+	}
+	
+	@RequestMapping(value="collection",method=RequestMethod.POST)
+	@ResponseBody
+	public String collection(Integer articleId,Integer count,String name,String phoneNum,
+			String address,String email,Integer consumerId,String remark,Integer runStatus,HttpServletRequest req){
+		
+		Order o=new Order();
+		o.setArticleId(articleId);
+		o.setConsumerId(consumerId);
+		o.setcDt(new Date());
+		o.setConsumerId(consumerId);
+		o.setCount(count);
+		o.setRemark(remark);
+		o.setRunStatus(runStatus);
+		o.setuDt(new Date());
+		
+		if(runStatus.intValue()==4){
+			articleService.saveOrder(o);
+		}else if(runStatus.intValue()==0){
+			articleService.cancelCollection(articleId, consumerId);
+		}
 		
 		req.getSession().removeAttribute(KeyConstant.SESSION_BUY_CAR_KEY);
 		

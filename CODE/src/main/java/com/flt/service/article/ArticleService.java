@@ -10,6 +10,7 @@ import com.flt.dao.client.ArticleMapper;
 import com.flt.dao.client.ArticlePropertyMapper;
 import com.flt.dao.client.BrandMapper;
 import com.flt.dao.client.ChannelMapper;
+import com.flt.dao.client.CommentMapper;
 import com.flt.dao.client.CommonMapper;
 import com.flt.dao.client.MenuMapper;
 import com.flt.dao.client.OrderMapper;
@@ -23,9 +24,11 @@ import com.flt.dao.model.Brand;
 import com.flt.dao.model.BrandExample;
 import com.flt.dao.model.Channel;
 import com.flt.dao.model.ChannelExample;
+import com.flt.dao.model.CommentExample;
 import com.flt.dao.model.Menu;
 import com.flt.dao.model.MenuExample;
 import com.flt.dao.model.Order;
+import com.flt.dao.model.OrderExample;
 import com.flt.service.base.BaseService;
 import com.flt.web.itf.service.IBuycarService;
 import com.flt.web.manage.article.service.IArticleManageService;
@@ -294,6 +297,43 @@ public class ArticleService extends BaseService implements IArticleService,IBuyc
 		return m3.selectByExample(new ArticlePropertyExample(){{
 			this.createCriteria().andArticleIdEqualTo(id);
 		}});
+	}
+
+	@Override
+	public Integer loadConsumerArticleCollectionStatus(Integer consumerId,
+			Integer articleId) {
+		// TODO Auto-generated method stub
+		OrderMapper m=this.getSqlSession().getMapper(OrderMapper.class);
+		OrderExample e=new OrderExample();
+		e.createCriteria().andArticleIdEqualTo(articleId).andConsumerIdEqualTo(consumerId).andRunStatusEqualTo(4);
+		return m.countByExample(e);
+	}
+
+	@Override
+	public Integer loadArticleCollectionCount(Integer articleId) {
+		// TODO Auto-generated method stub
+		OrderMapper m=this.getSqlSession().getMapper(OrderMapper.class);
+		OrderExample e=new OrderExample();
+		e.createCriteria().andArticleIdEqualTo(articleId).andRunStatusEqualTo(4);
+		return m.countByExample(e);
+	}
+
+	@Override
+	public Integer loadCommentCountByArticleId(Integer articleId) {
+		// TODO Auto-generated method stub
+		CommentMapper m=this.getSqlSession().getMapper(CommentMapper.class);
+		CommentExample e=new CommentExample();
+		e.createCriteria().andArticleIdEqualTo(articleId);
+		return m.countByExample(e);
+	}
+
+	@Override
+	public void cancelCollection(Integer articleId, Integer consumerId) {
+		// TODO Auto-generated method stub
+		OrderMapper m=this.getSqlSession().getMapper(OrderMapper.class);
+		OrderExample e=new OrderExample();
+		e.createCriteria().andArticleIdEqualTo(articleId).andConsumerIdEqualTo(consumerId).andRunStatusEqualTo(4);
+		m.deleteByExample(e);
 	}
 
 	

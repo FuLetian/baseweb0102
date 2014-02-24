@@ -6,8 +6,8 @@ body{padding-top: 62px;}
 .right-content>div{border-bottom:1px dashed #E5E3E6;margin:0px 5px 15px 5px;padding-bottom:10px;}
 .right-content-title{font-size:14px;font-weight:bold;margin-bottom:5px;}
 .right-content-text{font-size:12px;}
-.buy-car{width:150px;height:30px;line-height:30px;color:#FFFFFF;text-align:center;margin-top:15px;border:1px solid #E02284;}
-.buy-car-count{width:30px;height:28px;background-color:#FFFFFF;float:right;}
+.buy-car{width:200px;height:50px;;line-height:50px;text-align:center;border:1px solid #E02284;}
+.buy-car-count{width:50px;height:50px;line-height:50px;background-color:#FFFFFF;float:right;}
 #buyCarContent{width:300px;}
 .location{width:100%;font-size:12px;font-weight:bold;margin-top:15px;padding-bottom:10px;border-bottom:1px dashed #E5E3E6;}
 .selector{border-bottom:1px dashed #E5E3E6;font-size:12px;}
@@ -40,9 +40,9 @@ body{padding-top: 62px;}
 .panel-heading-title{font-size:12px;}
 
 /*menuView*/
-.all-menu-btn{color:#E3007F;font-size:14px;text-align:center;float:right;width:150px;height:50px;line-height:50px;border-left:1px solid #E5E3E6;border-right:1px solid #E5E3E6;}
+.all-menu-btn{font-size:14px;text-align:center;float:right;width:150px;height:50px;line-height:50px;border-left:1px solid #E5E3E6;border-right:1px solid #E5E3E6;}
 .all-menu-content{width:20px;height:100px;float:right;}
-.AllMenuBtnActive{background-color:#E3007F;color:#FBFBFB;}
+.AllMenuBtnActive{background-color:#FFFFFF;}
 .all-menu-ul li{height:30px;line-height:30px;}
 .first-menu-title{color:#E5288A;font-size:12px;margin-top:10px;font-weight:bold;}
 .small-nav div{float:right;margin-right:10px;padding-right:10px;border-right:2px solid #F1F0F2;}

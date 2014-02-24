@@ -18,7 +18,26 @@
     </ul>
 
 	<ul class="nav navbar-nav navbar-right">
-		<li><div class="all-menu-btn"><label>所有商品分类</label></div></li>
+		<li id="buycarNavItem" style="border-left:1px solid #E5E3E6;">
+			<a id="buycarNavItem"><span class="glyphicon glyphicon-shopping-cart">
+				</span>&nbsp;&nbsp;购物车&nbsp;&nbsp;<span data-bind="text:carCount">0</span></a>
+			<div id="buyCarContent" class="panel panel-default" style="z-index:500;" align="left">
+			  <div class="panel-body" data-bind="foreach:selectedArticles">
+					<div class="media">
+					  <a class="pull-left" style="width:30%;" data-bind="attr:{'href':'page4-articleId-'+article.id+'.html'}">
+					    <img data-bind="attr:{'src':article.homepageImg}" class="media-object" style="width:100%;" alt="...">
+					  </a>
+					  <div class="media-body">
+					    <a data-bind="attr:{'href':'page4-articleId-'+article.id+'.html'}" class="not-underline"><h4 data-bind="text:article.name" class="media-heading" align="left"></h4></a>
+					    	<p>数量:<span data-bind="text:count">1</span>
+					    		<a href="#" class="pull-right"><span class="glyphicon glyphicon-remove text-danger" data-bind="click:$root.menuViewBuycarDeleteItem"></span></a>
+					    	</p>
+					  </div>
+					</div>
+			  </div>
+			</div>
+		</li>
+		<li><div class="all-menu-btn"><a href="#" class="not-underline text-info">所有商品分类</a></div></li>
 	</ul>
 
   </div><!-- /.navbar-collapse -->
@@ -55,22 +74,6 @@
 		<div class="pull-left" style="height:30px;width:120px;margin-top:20px;background-repeat: no-repeat;background-image:url('http://localhost:8080/baseweb/h/images/header_corn_new_v1.png');background-position:0px 0px;"></div>
 		<div class="pull-left" style="height:30px;width:120px;margin-top:20px;background-repeat: no-repeat;background-image:url('http://localhost:8080/baseweb/h/images/header_corn_new_v1.png');background-position:0px -30px;"></div>
 		<div class="pull-left" style="height:30px;width:120px;margin-top:20px;background-repeat: no-repeat;background-image:url('http://localhost:8080/baseweb/h/images/header_corn_new_v1.png');background-position:0px -60px;"></div>
-	</div>
-	<div class="col-md-3" align="right">
-		<div id="buyCar" class="buy-car background-color-primary" onclick="location.href='page5.html'"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;购物车<span data-bind="text:carCount" class="buy-car-count text-primary">0</span></div>
-			<div id="buyCarContent" class="panel panel-default" style="z-index:500;" align="left">
-			  <div class="panel-body" data-bind="foreach:selectedArticles">
-					<div class="media">
-					  <a class="pull-left" style="width:30%;" data-bind="attr:{'href':'page4-articleId-'+article.id+'.html'}">
-					    <img data-bind="attr:{'src':article.homepageImg}" class="media-object" style="width:100%;" alt="...">
-					  </a>
-					  <div class="media-body">
-					    <a data-bind="attr:{'href':'page4-articleId-'+article.id+'.html'}" class="not-underline"><h4 data-bind="text:article.name" class="media-heading" align="left"></h4></a>
-					    	<p>数量:<span data-bind="text:count">1</span><span class="pull-right" data-bind="click:$root.menuViewBuycarDeleteItem">d</span></p>
-					  </div>
-					</div>
-			  </div>
-			</div>
 	</div>
 </div>
 
@@ -253,6 +256,7 @@ $(function(){
 	<!--allMenus listener-->
 		$("#allMenus").mouseleave(function(){
 			$(this).hide(500);
+			$(".all-menu-btn").removeClass("AllMenuBtnActive");
 		});
 	<!--// allMenus listener-->
 
@@ -265,7 +269,6 @@ $(function(){
 		
 		$(".all-menu-btn").addClass("AllMenuBtnActive");
 	},function(){
-		$(".all-menu-btn").removeClass("AllMenuBtnActive");
 	});
 	
 	$("#closeImg").click(function(){
@@ -282,6 +285,14 @@ $(function(){
 		}else if(data.status=='show'){
 			$("#infoContainer").show();
 		}
+	});
+	
+	$("#buycarNavItem").hover(function(){
+		$("#buyCarContent").show();
+		$(this).addClass("AllMenuBtnActive");
+	},function(){
+		$("#buyCarContent").hide(300);
+		$(this).removeClass("AllMenuBtnActive");
 	});
 	
 });

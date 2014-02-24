@@ -26,4 +26,10 @@ public interface IArticleService {
 	
 	void saveOrder(Order o);
 	
+	Integer loadConsumerArticleCollectionStatus(Integer consumerId,Integer articleId);
+	Integer loadArticleCollectionCount(Integer articleId);
+	Integer loadCommentCountByArticleId(Integer articleId);
+	
+	void cancelCollection(Integer articleId,Integer consumerId);
+	
 }
