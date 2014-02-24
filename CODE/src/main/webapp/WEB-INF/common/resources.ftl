@@ -20,3 +20,7 @@
 <script src="${basePath}h/javascript/jquery.cookie.js"></script>
 
 <script src="${basePath}h/javascript/model.js"></script>
+
+<script src="${basePath}h/javascript/jquery.lazyload.js"></script>
+
+<script type="text/javascript" charset="UTF-8" src="http://chat.kefu360.com/code/13553"></script>

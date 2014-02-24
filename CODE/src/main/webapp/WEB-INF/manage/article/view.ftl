@@ -1,20 +1,17 @@
 <!-- 最新 Bootstrap 核心 CSS 文件 -->
-<link rel="stylesheet" href="${basePath}javascript/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="${basePath}h/javascript/bootstrap/css/bootstrap.min.css">
 
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-<script src="${basePath}javascript/jquery-1.9.1.min.js"></script>
+<script src="${basePath}h/javascript/jquery-1.9.1.min.js"></script>
 
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="${basePath}javascript/bootstrap/js/bootstrap.min.js"></script>
+<script src="${basePath}h/javascript/bootstrap/js/bootstrap.min.js"></script>
 
 <!--knockout-->
-<script src="${basePath}javascript/knockout-3.0.0.js"></script>
-
-<!--knockout-->
-<script src="${basePath}javascript/knockout-3.0.0.js"></script>
+<script src="${basePath}h/javascript/knockout-3.0.0.js"></script>
 
 <!--jquery.form-->
-<script src="${basePath}javascript/jquery.form.js"></script>
+<script src="${basePath}h/javascript/jquery.form.js"></script>
 
 <div class="container">
 <div class="row">

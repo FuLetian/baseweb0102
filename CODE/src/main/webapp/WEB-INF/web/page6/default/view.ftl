@@ -20,8 +20,8 @@ window.global_flag_login_validation_enable=true;
 		<div class="row">
 			<div class="col-md-12" style="font-size:12px;height:40px;">
 				<ol class="breadcrumb">
-				  <li><a href="#">Bootstrap</a></li>
-				  <li><a href="#">我的订单</a></li>
+				  <li>Bootstrap</li>
+				  <li>我的订单</li>
 				  <li class="active">全部订单</li>
 				</ol>
 			</div>

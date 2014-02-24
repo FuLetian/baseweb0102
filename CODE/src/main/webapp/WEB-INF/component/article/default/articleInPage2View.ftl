@@ -8,22 +8,33 @@ a:html/page4-articleId- .html
 
 <!-- location -->
 <div class="container">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="location container text-info">您现在的位置:商品检索</div>
-		</div>
+<div class="row margin-top-line">
+	<div class="col-md-12" style="height:40px;font-size:12px;">
+				<ol class="breadcrumb">
+				  <li>Bootstrap</li>
+				  <li>商品检索</li>
+				</ol>
 	</div>
+</div>
 </div>
 <!-- //location -->
 
 <!-- articles -->
 <div class="container">
-<div class="bar-sort">
-	<div data-bind="attr:{'class':(model.page2OrderByType()==0?'btn-sort btn-sort-active-default':'btn-sort')}" onclick="model.page2OrderByType(0);remotePage2Articles();"><label>默认排序</label><span class="glyphicon glyphicon-align-center"></span></div>
-	<div data-bind="attr:{'class':(model.page2OrderByType()==1?'btn-sort btn-sort-active-default':'btn-sort')}" onclick="model.page2OrderByType(1);remotePage2Articles();"><label>销量降序</label><span class="glyphicon glyphicon-arrow-down"></span></div>
-	<div data-bind="attr:{'class':(model.page2OrderByType()==2?'btn-sort btn-sort-active-default':'btn-sort')}" onclick="model.page2OrderByType(2);remotePage2Articles();"><label>价格升序</label><span class="glyphicon glyphicon-arrow-up"></span></div>
-	<div data-bind="attr:{'class':(model.page2OrderByType()==3?'btn-sort btn-sort-active-default':'btn-sort')}" onclick="model.page2OrderByType(3);remotePage2Articles();"><label>折扣升序</label><span class="glyphicon glyphicon-arrow-up"></span></div>
+<div style="height:50px;line-height:50px;" align="left">
+	<div class="btn-group">
+	  <button type="button" class="btn btn-default btn-sm" onclick="model.page2OrderByType(0);remotePage2Articles();">默认排序</button>
+	  <button type="button" class="btn btn-default btn-sm" onclick="model.page2OrderByType(1);remotePage2Articles();">销量降序</button>
+	  <button type="button" class="btn btn-default btn-sm" onclick="model.page2OrderByType(2);remotePage2Articles();">价格升序</button>
+	  <button type="button" class="btn btn-default btn-sm" onclick="model.page2OrderByType(3);remotePage2Articles();">折扣升序</button>
+	</div>
 </div>
+<!-- <div class="bar-sort"> -->
+<!-- 	<div data-bind="attr:{'class':(model.page2OrderByType()==0?'btn-sort btn-sort-active-default':'btn-sort')}" onclick="model.page2OrderByType(0);remotePage2Articles();"><label>默认排序</label><span class="glyphicon glyphicon-align-center"></span></div> -->
+<!-- 	<div data-bind="attr:{'class':(model.page2OrderByType()==1?'btn-sort btn-sort-active-default':'btn-sort')}" onclick="model.page2OrderByType(1);remotePage2Articles();"><label>销量降序</label><span class="glyphicon glyphicon-arrow-down"></span></div> -->
+<!-- 	<div data-bind="attr:{'class':(model.page2OrderByType()==2?'btn-sort btn-sort-active-default':'btn-sort')}" onclick="model.page2OrderByType(2);remotePage2Articles();"><label>价格升序</label><span class="glyphicon glyphicon-arrow-up"></span></div> -->
+<!-- 	<div data-bind="attr:{'class':(model.page2OrderByType()==3?'btn-sort btn-sort-active-default':'btn-sort')}" onclick="model.page2OrderByType(3);remotePage2Articles();"><label>折扣升序</label><span class="glyphicon glyphicon-arrow-up"></span></div> -->
+<!-- </div> -->
 <div class="row">
 
 <div data-bind="foreach:page2Artricles">

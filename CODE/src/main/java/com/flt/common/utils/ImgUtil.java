@@ -33,6 +33,12 @@ public class ImgUtil {
 		
 		File file=new File(absolutePath);
 		
+		if(new BigDecimal(file.length()).intValue()==0){
+			System.err.println(file.exists());
+			System.err.println(file.getAbsolutePath());
+			return false;
+		}
+		
 		BigDecimal a=new BigDecimal(maxSize).divide(new BigDecimal(file.length()),1,RoundingMode.HALF_DOWN);
 		
 		if(a.doubleValue()>Double.valueOf("1")){

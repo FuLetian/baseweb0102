@@ -5,21 +5,24 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.flt.dao.client.ArticleMapper;
 import com.flt.dao.client.CommentMapper;
 import com.flt.dao.client.ConsumerMapper;
+import com.flt.dao.model.Article;
 import com.flt.dao.model.Comment;
 import com.flt.dao.model.CommentExample;
-import com.flt.dao.model.ConsumerExample;
+import com.flt.dao.model.Consumer;
 import com.flt.service.base.BaseService;
 import com.flt.web.itf.dto.ConsumerCommentDTO;
 import com.flt.web.itf.service.ICommentITFService;
+import com.flt.web.module.views.comment.CommentConsumerDTO;
 import com.flt.web.module.views.comment.ICommentService;
 
 @Service
 public class CommentService extends BaseService implements ICommentService,ICommentITFService{
 
 	@Override
-	public List<Comment> listHomePageComments(Integer max,final Integer userId) {
+	public List<CommentConsumerDTO> listHomePageComments(Integer max,final Integer userId) {
 		// TODO Auto-generated method stub
 		
 		CommentMapper m=this.getSqlSession().getMapper(CommentMapper.class);
@@ -27,10 +30,22 @@ public class CommentService extends BaseService implements ICommentService,IComm
 			this.createCriteria().andUserIdEqualTo(userId);
 		}});
 		
-		if(list.size()>5){
-			return list.subList(0, 4);
+		if(list.size()>max.intValue()){
+			list=list.subList(0, max.intValue()-1);
 		}
-		return list;
+		
+		List<CommentConsumerDTO> dtos=new ArrayList<>();
+		
+		ConsumerMapper cm=this.getSqlSession().getMapper(ConsumerMapper.class);
+		ArticleMapper am=this.getSqlSession().getMapper(ArticleMapper.class);
+		for(Comment o:list){
+			Consumer c=cm.selectByPrimaryKey(o.getConsumerId());
+			Article a=am.selectByPrimaryKey(o.getArticleId());
+			CommentConsumerDTO d=new CommentConsumerDTO(a,o,c);
+			dtos.add(d);
+		}
+		
+		return dtos;
 	}
 
 	@Override
