@@ -19,7 +19,7 @@ import com.flt.web.module.views.comment.CommentConsumerDTO;
 import com.flt.web.module.views.comment.ICommentService;
 
 @Service
-public class CommentService extends BaseService implements ICommentService,ICommentITFService{
+public class CommentService extends BaseService implements ICommentService,ICommentITFService,ICommentCommonService{
 
 	@Override
 	public List<CommentConsumerDTO> listHomePageComments(Integer max,final Integer userId) {
@@ -82,6 +82,17 @@ public class CommentService extends BaseService implements ICommentService,IComm
 		}
 		
 		return results;
+	}
+
+	@Override
+	public List<Comment> listCommentsByArticleId(Integer articleId) {
+		// TODO Auto-generated method stub
+		
+		CommentMapper m=this.getSqlSession().getMapper(CommentMapper.class);
+		CommentExample e=new CommentExample();
+		e.createCriteria().andArticleIdEqualTo(articleId);
+		
+		return m.selectByExample(e);
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.flt.phone.controller;
+package com.flt.mobile.homepage.controller;
 
 import java.util.List;
 
@@ -12,13 +12,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.flt.web.module.views.channel.IChannelService;
 import com.flt.web.module.views.menu.IMenuService;
 import com.flt.web.module.views.menu.MenuDTO;
 
 @Controller
-@RequestMapping("phone-homepage")
-public class PhoneHomepageController {
+@RequestMapping("mobile-homepage")
+public class MobileHomepageController {
 	
 	@Autowired
 	private IMenuService menuService;
@@ -32,8 +31,8 @@ public class PhoneHomepageController {
 	private String processModel(Integer userId,Model model, HttpServletRequest req) {
 		// TODO Auto-generated method stub
 		model.addAttribute("basePath", req.getContextPath()+"/");
-		
-		return "phone/view.ftl";
+		model.addAttribute("userId", userId);
+		return "mobile/homepage/view.ftl";
 	}
 	
 	@RequestMapping("menus")
