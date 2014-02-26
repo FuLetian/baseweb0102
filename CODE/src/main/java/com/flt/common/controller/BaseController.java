@@ -4,7 +4,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.flt.common.config.Configuration;
 import com.flt.common.constant.KeyConstant;
 import com.flt.dao.model.User;
 import com.flt.web.common.service.ICommonUserService;
@@ -30,7 +29,7 @@ public class BaseController {
 		}
 		
 		if(user==null){
-			System.err.println("didn`t find the user of base path values :"+basePath);
+			System.err.println(">>>>>>>>>>>Didn`t find the user of base path values :"+basePath);
 		}
 		
 		return user;

@@ -94,7 +94,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 text-center" style="height:30px;line-height:30px;">
-				<p class="text-info">范围跟顾客非<img id="closeImg" class="pull-right" src="${basePath}h/images/close.jpg" style="height:30px;"/></p>
+				<p class="text-info">范围跟顾客非<a href="#"><span id="closeImg" style="margin-top:5px;" class="pull-right glyphicon glyphicon-remove text-info"></span></a></p>
 			</div>
 		</div>
 	</div>
@@ -241,7 +241,20 @@
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <button data-bind="click:login" type="submit" class="btn btn-default">Sign in</button>
+      <a id="showFindPwdContainer" href="#" class="text-danger not-underline pull-right" style="margin-top:10px;margin-right:10px;font-size:12px;">忘记密码</a>
     </div>
+  </div>
+  <div id="findPwd" class="form-group" style="display:none">
+    <label for="loginPwd" class="col-sm-4 control-label text-warning">请输入注册邮箱地址:</label>
+    <div class="col-sm-5">
+      <input id="findPwdByEmail" type="text" class="form-control" placeholder="email">
+    </div>
+    <div class="col-sm-3">
+    	<button id="sendEmail" class="btn btn-danger">发送验证邮件</button>
+    </div>
+  </div>
+  <div id="emailLoginContainer" class="form-group" style="display:none" align="center">
+  	<a id="emailLogin" target="_blank" href="#" class="text-success">登陆邮箱>></a>
   </div>
 </form>
 
@@ -293,6 +306,29 @@ $(function(){
 	},function(){
 		$("#buyCarContent").hide(300);
 		$(this).removeClass("AllMenuBtnActive");
+	});
+	
+	$("#showFindPwdContainer").click(function(){
+		$("#findPwd").show();
+		$("#emailLoginContainer").hide();
+	});
+	
+	$("#sendEmail").click(function(){
+		var email=$("#findPwdByEmail").val();
+		
+		if(!email){
+			alert("请输入邮箱地址");
+			return false;
+		}else{
+			$.getJSON(global_server_domain+"util/findPwd",{"email":email},function(data){
+				if(data.exist){
+					$("#emailLogin").attr("href",data.href);
+					$("#emailLoginContainer").show();
+				}else{
+					alert("邮件地址不存在");
+				}
+			});
+		}
 	});
 	
 });

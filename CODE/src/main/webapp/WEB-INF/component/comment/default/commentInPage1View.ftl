@@ -10,7 +10,9 @@
 		    </a>
 		    <div class="media-body text-info">
 		      <h5 class="media-heading">${item.consumer.name}</h5>
-		      	<div>${item.comment.content}</div>
+		      	<div>
+		      		${item.comment.content}
+		      	</div>
 		    </div>
 		  </li>
 		</#list>
