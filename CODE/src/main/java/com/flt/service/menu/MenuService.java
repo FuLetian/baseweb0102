@@ -20,7 +20,7 @@ import com.flt.web.module.views.menu.IMenuService;
 import com.flt.web.module.views.menu.MenuDTO;
 
 @Service
-public class MenuService extends BaseService implements IMenuService,IMenuManageService {
+public class MenuService extends BaseService implements IMenuService,IMenuManageService,IMenuCommonService {
 
 	
 	@Override
@@ -127,6 +127,27 @@ public class MenuService extends BaseService implements IMenuService,IMenuManage
 		// TODO Auto-generated method stub
 		MenuMapper m=getSqlSession().getMapper(MenuMapper.class);
 		return m.selectByPrimaryKey(id);
+	}
+
+	@Override
+	public List<Menu> listRootMenus(Integer userId) {
+		// TODO Auto-generated method stub
+		MenuMapper m=getSqlSession().getMapper(MenuMapper.class);
+		MenuExample ex=new MenuExample();
+		ex.createCriteria().andPIdIsNull()
+		.andUserIdEqualTo(userId);
+		List<Menu> rootMenus=m.selectByExample(ex);
+		return rootMenus;
+	}
+
+	@Override
+	public List<Menu> listChildMenuByParentMenuid(Integer menuId) {
+		// TODO Auto-generated method stub
+		MenuMapper m=getSqlSession().getMapper(MenuMapper.class);
+		MenuExample ex=new MenuExample();
+		ex.createCriteria().andPIdEqualTo(menuId);
+		List<Menu> menus=m.selectByExample(ex);
+		return menus;
 	}
 
 }

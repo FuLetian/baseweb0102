@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50520
 File Encoding         : 65001
 
-Date: 2014-01-31 13:49:45
+Date: 2014-02-26 18:13:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -23,6 +23,7 @@ CREATE TABLE `article` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `price` double DEFAULT NULL,
   `discount` double DEFAULT NULL,
+  `stars` int(11) DEFAULT NULL COMMENT '评分',
   `name` varchar(45) NOT NULL,
   `u_dt` datetime NOT NULL,
   `c_dt` datetime NOT NULL,
@@ -32,6 +33,8 @@ CREATE TABLE `article` (
   `brand_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `sale_count` int(11) DEFAULT NULL,
+  `remark` text,
+  `homepage_img` varchar(45) DEFAULT NULL COMMENT '首页图片，矩形',
   PRIMARY KEY (`id`),
   KEY `fk_article_menu` (`menu_id`),
   KEY `fk_article_channel1` (`channel_id`),
@@ -41,22 +44,20 @@ CREATE TABLE `article` (
   CONSTRAINT `fk_article_channel1` FOREIGN KEY (`channel_id`) REFERENCES `channel` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_article_menu` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_article_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1 COMMENT='商品表';
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 COMMENT='商品表';
 
 -- ----------------------------
 -- Records of article
 -- ----------------------------
-INSERT INTO `article` VALUES ('1', '13333', '100', '12', '2014-01-24 14:45:03', '2014-01-24 14:45:03', '1', '1', '1', '1', '1', null);
-INSERT INTO `article` VALUES ('2', '1', '1', '1', '2014-01-23 22:10:33', '2014-01-23 22:10:33', '1', '1', '1', '1', '1', null);
-INSERT INTO `article` VALUES ('3', '1', '1', '1', '2014-01-23 20:48:37', '2014-01-23 20:48:37', '1', '1', '1', '1', '1', null);
-INSERT INTO `article` VALUES ('4', '1', '1', '1', '2014-01-23 20:50:42', '2014-01-23 20:50:42', '1', '1', '1', '1', '1', null);
-INSERT INTO `article` VALUES ('5', '1', '1', '1', '2014-01-23 21:58:34', '2014-01-23 21:58:34', '1', '1', '1', '1', '1', null);
-INSERT INTO `article` VALUES ('6', '1', '1', '1', '2014-01-23 21:04:34', '2014-01-23 21:04:34', '1', '1', '1', '1', '1', null);
-INSERT INTO `article` VALUES ('7', '1', '1', '1', '2014-01-23 21:10:28', '2014-01-23 21:10:28', '1', '1', '1', '1', '1', null);
-INSERT INTO `article` VALUES ('8', '1', '1', '1', '2014-01-23 21:18:42', '2014-01-23 21:18:42', '1', '1', '1', '1', '1', null);
-INSERT INTO `article` VALUES ('9', '1', '1', '1', '2014-01-23 22:12:08', '2014-01-23 22:12:08', '1', '1', '1', '1', '1', null);
-INSERT INTO `article` VALUES ('10', '3', '3', '3', '2014-01-24 13:46:22', '2014-01-24 13:46:22', '3', '1', '1', '1', '1', null);
-INSERT INTO `article` VALUES ('11', '23', '23', 'jj23', '2014-01-25 14:07:46', '2014-01-25 14:07:46', '23', '1', '1', '1', '1', null);
+INSERT INTO `article` VALUES ('1', '13333', '100', null, '12', '2014-02-26 14:00:07', '2014-02-26 14:00:07', '1', '5', '1', '1', '1', null, 'remark', '/baseweb/h/images/upload/1/1393394403283.jpg');
+INSERT INTO `article` VALUES ('2', '1', '1', '2', '1', '2014-02-03 17:13:06', '2014-02-03 17:13:06', '1', '4', '1', '1', '1', '1', 'remark', '/baseweb/h/images/upload/1/1393207087946.jpg');
+INSERT INTO `article` VALUES ('3', '1', '1', '3', '1', '2014-02-18 13:39:24', '2014-02-18 13:39:24', '1', '5', '1', '1', '1', '1', 'remark', '/baseweb/h/images/upload/1/1393207087946.jpg');
+INSERT INTO `article` VALUES ('4', '1', '1', '4', '1', '2014-02-03 16:35:54', '2014-02-03 16:35:54', '1', '6', '1', '1', '1', '1', 'remark', '/baseweb/h/images/upload/1/1393207087946.jpg');
+INSERT INTO `article` VALUES ('5', '1', '1', '3', '1', '2014-02-18 13:47:33', '2014-02-18 13:47:33', '1', '5', '1', '1', '1', '1', 'remark', '/baseweb/h/images/upload/1/1393207087946.jpg');
+INSERT INTO `article` VALUES ('6', '1', '1', '2', '1', '2014-02-03 17:08:43', '2014-02-03 17:08:43', '1', '3', '1', '1', '1', '1', 'remark', '/baseweb/h/images/upload/1/1393207087946.jpg');
+INSERT INTO `article` VALUES ('7', '1', '1', '4', '1', '2014-02-03 17:10:27', '2014-02-03 17:10:27', '1', '4', '1', '1', '1', '1', 'remark', '/baseweb/h/images/upload/1/1393207087946.jpg');
+INSERT INTO `article` VALUES ('9', '1', '1', '3', '1', '2014-02-03 17:09:01', '2014-02-03 17:09:01', '1', '5', '1', '1', '1', '1', 'remark', '/baseweb/h/images/upload/1/1393207087946.jpg');
+INSERT INTO `article` VALUES ('10', '3', '3', null, '30', '2014-02-24 09:58:13', '2014-02-24 09:58:13', '3', '5', '1', '1', '1', null, 'remark', '/baseweb/h/images/upload/1/1393207087946.jpg');
 
 -- ----------------------------
 -- Table structure for `article_img`
@@ -70,7 +71,7 @@ CREATE TABLE `article_img` (
   PRIMARY KEY (`id`),
   KEY `fk_article_img_article1` (`article_id`),
   CONSTRAINT `fk_article_img_article1` FOREIGN KEY (`article_id`) REFERENCES `article` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1 COMMENT='article详细画面多个图片展示源';
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1 COMMENT='article详细画面多个图片展示源';
 
 -- ----------------------------
 -- Records of article_img
@@ -81,7 +82,10 @@ INSERT INTO `article_img` VALUES ('6', null, '/basemanage/images/upload/13904862
 INSERT INTO `article_img` VALUES ('7', null, '/basemanage/images/upload/1390486326187.jpg', '9');
 INSERT INTO `article_img` VALUES ('12', null, '/basemanage/images/upload/1390542363901.jpg', '10');
 INSERT INTO `article_img` VALUES ('13', null, 'http://localhost:8080/basemanage/images/upload/1390544846690.jpg', '1');
-INSERT INTO `article_img` VALUES ('14', null, '/basemanage/images/upload/1390630063000.png', '11');
+INSERT INTO `article_img` VALUES ('14', null, '/basemanage/images/upload/1391416550332.jpg', '4');
+INSERT INTO `article_img` VALUES ('15', null, '/baseweb/images/upload/1/1392701951651.jpg', '3');
+INSERT INTO `article_img` VALUES ('16', null, '/baseweb/images/upload/1/1392702351360.jpg', '5');
+INSERT INTO `article_img` VALUES ('17', null, '/baseweb/h/images/upload/1/1393394349264.jpg', '1');
 
 -- ----------------------------
 -- Table structure for `article_property`
@@ -99,7 +103,7 @@ CREATE TABLE `article_property` (
   PRIMARY KEY (`id`),
   KEY `fk_article_property_article1` (`article_id`),
   CONSTRAINT `fk_article_property_article1` FOREIGN KEY (`article_id`) REFERENCES `article` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of article_property
@@ -111,8 +115,9 @@ INSERT INTO `article_property` VALUES ('6', '2', '2', '2014-01-24 13:46:22', '20
 INSERT INTO `article_property` VALUES ('7', '1', '1', '2014-01-24 14:26:16', '2014-01-24 14:26:16', '1', '1', '0');
 INSERT INTO `article_property` VALUES ('8', '2', '2', '2014-01-24 14:26:35', '2014-01-24 14:26:35', '1', '1', '0');
 INSERT INTO `article_property` VALUES ('9', '3', '3', '2014-01-24 14:26:35', '2014-01-24 14:26:35', '2', '1', '1');
-INSERT INTO `article_property` VALUES ('10', '1', '1', '2014-01-25 14:07:46', '2014-01-25 14:07:46', '1', '11', '0');
-INSERT INTO `article_property` VALUES ('11', '2', '2', '2014-01-25 14:07:47', '2014-01-25 14:07:47', '2', '11', '1');
+INSERT INTO `article_property` VALUES ('10', '4', '4', '2014-02-26 13:58:07', '2014-02-26 13:58:07', '1', '1', '0');
+INSERT INTO `article_property` VALUES ('11', '5', '5', '2014-02-26 13:58:37', '2014-02-26 13:58:37', '1', '1', '1');
+INSERT INTO `article_property` VALUES ('12', '6', '6', '2014-02-26 13:58:37', '2014-02-26 13:58:37', '2', '1', '1');
 
 -- ----------------------------
 -- Table structure for `ball`
@@ -160,15 +165,20 @@ CREATE TABLE `brand` (
   PRIMARY KEY (`id`),
   KEY `fk_brand_user1` (`user_id`),
   CONSTRAINT `fk_brand_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COMMENT='品牌';
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1 COMMENT='品牌';
 
 -- ----------------------------
 -- Records of brand
 -- ----------------------------
-INSERT INTO `brand` VALUES ('1', 'b1', null, '0', '2014-01-23 16:46:22', '2014-01-23 16:46:27', '0', '1');
-INSERT INTO `brand` VALUES ('2', 'b2', null, '0', '2014-01-23 16:46:34', '2014-01-23 16:46:36', '0', '1');
-INSERT INTO `brand` VALUES ('3', '33', null, '0', '2014-01-23 23:07:22', '2014-01-23 23:07:22', '2', '1');
-INSERT INTO `brand` VALUES ('4', 'b4', null, '0', '2014-01-25 14:06:40', '2014-01-25 14:06:40', '2', '1');
+INSERT INTO `brand` VALUES ('1', 'b1', '/baseweb/h/images/upload/1/1393207739748.jpg', '0', '2014-02-24 10:08:59', '2014-02-24 10:08:59', '0', '1');
+INSERT INTO `brand` VALUES ('2', 'b2', '/baseweb/h/images/upload/1/1393207857020.jpg', '0', '2014-02-24 10:10:57', '2014-02-24 10:10:57', '0', '1');
+INSERT INTO `brand` VALUES ('3', '33', '/baseweb/h/images/upload/1/1393207865432.jpg', '0', '2014-02-24 10:11:05', '2014-02-24 10:11:05', '2', '1');
+INSERT INTO `brand` VALUES ('4', 'b4', '/baseweb/h/images/upload/1/1393207874438.jpg', '0', '2014-02-24 10:11:14', '2014-02-24 10:11:14', '2', '1');
+INSERT INTO `brand` VALUES ('5', 'd', '/baseweb/h/images/upload/1/1393207883731.jpg', '0', '2014-02-24 10:11:23', '2014-02-24 10:11:23', '4', '1');
+INSERT INTO `brand` VALUES ('6', '3', '/baseweb/h/images/upload/1/1393207893033.jpg', '0', '2014-02-24 10:11:33', '2014-02-24 10:11:33', '4', '1');
+INSERT INTO `brand` VALUES ('7', 'dd', '/baseweb/h/images/upload/1/1393207900918.jpg', '0', '2014-02-24 10:11:40', '2014-02-24 10:11:40', '11', '1');
+INSERT INTO `brand` VALUES ('8', 'ff', '/baseweb/h/images/upload/1/1393207909250.jpg', '0', '2014-02-24 10:11:49', '2014-02-24 10:11:49', '11', '1');
+INSERT INTO `brand` VALUES ('9', '3', '/baseweb/h/images/upload/1/1393207917572.jpg', '0', '2014-02-24 10:11:57', '2014-02-24 10:11:57', '122', '1');
 
 -- ----------------------------
 -- Table structure for `channel`
@@ -253,19 +263,19 @@ CREATE TABLE `consumer` (
 -- ----------------------------
 -- Records of consumer
 -- ----------------------------
-INSERT INTO `consumer` VALUES ('1', 'consumer1', 'aaa', 'aaa', 'http://localhost:8080/baseweb/images/icon-user.jpg', '123', '123', '133', '1');
+INSERT INTO `consumer` VALUES ('1', 'consumer1', 'aaa', 'aaa', 'http://localhost:8080/baseweb/h/images/icon-user.jpg', '123', '123', '133', '1');
 INSERT INTO `consumer` VALUES ('2', 'bb', 'b', 'bb', 'http://localhost:8080/baseweb/images/icon-user.jpg', null, null, null, '1');
-INSERT INTO `consumer` VALUES ('3', null, '', '', null, '', '', '', '1');
-INSERT INTO `consumer` VALUES ('4', null, 'fuletian', '123', null, '15281060106', 'chengdu', '313376212@qq.com', '1');
-INSERT INTO `consumer` VALUES ('5', null, 'fuletian', '123', null, '15281060106', 'chengdu', '313376212@qq.com', '1');
-INSERT INTO `consumer` VALUES ('6', null, 'fuletian', '123', null, '15281060106', 'chengdu', '313376212@qq.com', '1');
-INSERT INTO `consumer` VALUES ('7', null, 'letian', '111', null, '15281060106', 'sichuan', '1111@qq.com', '1');
-INSERT INTO `consumer` VALUES ('8', null, '1', '1', 'http://localhost:8080/baseweb/images/upload/1390718066673.jpg', '1', '1', '1', '1');
-INSERT INTO `consumer` VALUES ('9', null, '', '', '', '', '', '', '1');
-INSERT INTO `consumer` VALUES ('10', null, '', '', '', '', '', '', '1');
-INSERT INTO `consumer` VALUES ('11', null, '', '', '', '', '', '', '1');
-INSERT INTO `consumer` VALUES ('12', null, '', '', '', '', '', '', '1');
-INSERT INTO `consumer` VALUES ('13', null, '', '', '', '', '', '', '1');
+INSERT INTO `consumer` VALUES ('3', '343', '', '', null, '', '', '', '1');
+INSERT INTO `consumer` VALUES ('4', '45', 'fuletian', '123', null, '15281060106', 'chengdu', '313376212@qq.com', '1');
+INSERT INTO `consumer` VALUES ('5', '66', 'fuletian', '123', null, '15281060106', 'chengdu', '313376212@qq.com', '1');
+INSERT INTO `consumer` VALUES ('6', '454', 'fuletian', '123', null, '15281060106', 'chengdu', '313376212@qq.com', '1');
+INSERT INTO `consumer` VALUES ('7', '3434', 'letian', '111', null, '15281060106', 'sichuan', '1111@qq.com', '1');
+INSERT INTO `consumer` VALUES ('8', '545', '1', '1', 'http://localhost:8080/baseweb/images/upload/1390718066673.jpg', '1', '1', '1', '1');
+INSERT INTO `consumer` VALUES ('9', '34', '', '', '', '', '', '', '1');
+INSERT INTO `consumer` VALUES ('10', '6', '', '', '', '', '', '', '1');
+INSERT INTO `consumer` VALUES ('11', '6', '', '', '', '', '', '', '1');
+INSERT INTO `consumer` VALUES ('12', '3', '', '', '', '', '', '', '1');
+INSERT INTO `consumer` VALUES ('13', '2', '', '', '', '', '', '', '1');
 
 -- ----------------------------
 -- Table structure for `menu`
@@ -282,7 +292,7 @@ CREATE TABLE `menu` (
   PRIMARY KEY (`id`),
   KEY `fk_menu_user1` (`user_id`),
   CONSTRAINT `fk_menu_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of menu
@@ -294,6 +304,7 @@ INSERT INTO `menu` VALUES ('4', '1-1', '2', '2014-01-23 16:45:59', '2014-01-23 1
 INSERT INTO `menu` VALUES ('5', '56', '1', '2014-01-23 23:20:23', '2014-01-23 23:20:23', '23', '1');
 INSERT INTO `menu` VALUES ('6', 'm1-2', '1', '2014-01-25 14:05:25', '2014-01-25 14:05:25', '2', '1');
 INSERT INTO `menu` VALUES ('7', 'm1-2', '1', '2014-01-25 14:05:51', '2014-01-25 14:05:51', '20', '1');
+INSERT INTO `menu` VALUES ('8', 'jj', '1', '2014-02-18 13:21:24', '2014-02-18 13:21:24', '45', '1');
 
 -- ----------------------------
 -- Table structure for `passage`
@@ -361,16 +372,22 @@ CREATE TABLE `t_order` (
   KEY `fk_order_article1` (`article_id`),
   CONSTRAINT `fk_order_article1` FOREIGN KEY (`article_id`) REFERENCES `article` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_order_consumer1` FOREIGN KEY (`consumer_id`) REFERENCES `consumer` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of t_order
 -- ----------------------------
-INSERT INTO `t_order` VALUES ('1', '3', '0', null, '2014-01-27 16:54:26', '2014-01-27 16:54:26', '1', '1');
-INSERT INTO `t_order` VALUES ('3', '3', '0', null, '2014-01-27 17:00:34', '2014-01-27 17:00:34', '1', '1');
-INSERT INTO `t_order` VALUES ('4', '3', '0', null, '2014-01-27 17:01:48', '2014-01-27 17:01:48', '1', '1');
+INSERT INTO `t_order` VALUES ('1', '3', '3', null, '2014-01-27 16:54:26', '2014-01-27 16:54:26', '1', '1');
+INSERT INTO `t_order` VALUES ('3', '3', '1', null, '2014-01-27 17:00:34', '2014-01-27 17:00:34', '1', '1');
+INSERT INTO `t_order` VALUES ('4', '3', '3', null, '2014-01-27 17:01:48', '2014-01-27 17:01:48', '1', '1');
 INSERT INTO `t_order` VALUES ('7', '0', '3', null, '2014-01-30 00:09:56', '2014-01-30 00:09:56', '1', '6');
-INSERT INTO `t_order` VALUES ('8', '1', '0', null, '2014-01-30 00:09:56', '2014-01-30 00:09:56', '1', '1');
+INSERT INTO `t_order` VALUES ('11', null, '0', null, '2014-02-24 15:09:12', '2014-02-24 15:09:12', '1', '3');
+INSERT INTO `t_order` VALUES ('12', null, '0', null, '2014-02-24 15:09:20', '2014-02-24 15:09:20', '1', '3');
+INSERT INTO `t_order` VALUES ('13', null, '0', null, '2014-02-24 15:09:27', '2014-02-24 15:09:27', '1', '3');
+INSERT INTO `t_order` VALUES ('14', null, '0', null, '2014-02-24 15:09:50', '2014-02-24 15:09:50', '1', '3');
+INSERT INTO `t_order` VALUES ('15', null, '0', null, '2014-02-24 15:10:46', '2014-02-24 15:10:46', '1', '1');
+INSERT INTO `t_order` VALUES ('17', null, '4', null, '2014-02-24 15:30:19', '2014-02-24 15:30:19', '1', '5');
+INSERT INTO `t_order` VALUES ('18', null, '4', null, '2014-02-24 15:31:09', '2014-02-24 15:31:09', '1', '6');
 
 -- ----------------------------
 -- Table structure for `user`

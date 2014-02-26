@@ -35,7 +35,7 @@ import com.flt.web.manage.article.service.IArticleManageService;
 import com.flt.web.module.views.article.IArticleService;
 
 @Service
-public class ArticleService extends BaseService implements IArticleService,IBuycarService,IArticleManageService{
+public class ArticleService extends BaseService implements IArticleService,IBuycarService,IArticleManageService,IArticleCommonService{
 
 	@Override
 	public List<Article> listArticlesByChannelId(final Integer channelId) {
@@ -334,6 +334,37 @@ public class ArticleService extends BaseService implements IArticleService,IBuyc
 		OrderExample e=new OrderExample();
 		e.createCriteria().andArticleIdEqualTo(articleId).andConsumerIdEqualTo(consumerId).andRunStatusEqualTo(4);
 		m.deleteByExample(e);
+	}
+
+	@Override
+	public List<Article> listArticleByMenuId(Integer menuId) {
+		// TODO Auto-generated method stub
+		
+		ArticleMapper m=getSqlSession().getMapper(ArticleMapper.class);
+		ArticleExample ex=new ArticleExample();
+		
+		ex.createCriteria().andMenuIdEqualTo(menuId);
+		
+		return m.selectByExample(ex);
+	}
+
+	@Override
+	public List<ArticleProperty> listArticlePropertyByArticleId(
+			Integer articleId) {
+		// TODO Auto-generated method stub
+		ArticlePropertyMapper m=this.getSqlSession().getMapper(ArticlePropertyMapper.class);
+		ArticlePropertyExample e=new ArticlePropertyExample();
+		e.createCriteria().andArticleIdEqualTo(articleId);
+		return m.selectByExample(e);
+	}
+
+	@Override
+	public List<ArticleImg> listArticleImgByArticleId(Integer articleId) {
+		// TODO Auto-generated method stub
+		ArticleImgMapper m=this.getSqlSession().getMapper(ArticleImgMapper.class);
+		ArticleImgExample e=new ArticleImgExample();
+		e.createCriteria().andArticleIdEqualTo(articleId);
+		return m.selectByExample(e);
 	}
 
 	

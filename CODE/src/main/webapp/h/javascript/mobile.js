@@ -1,26 +1,28 @@
-function ViewModel(){};
-var model=new ViewModel();
-
-model.menus=ko.observableArray();
-model.navToMenus=function(){
-	romoteMenus(function(){
-		$.mobile.changePage("#channelListPage");
+function listComments(userId,articleId){
+	createLoadingMSG();
+	$.ajax({
+		url:basePath+"mobile-article/comments-list",
+		data:{"userId":userId,"articleId":articleId},
+		success:function(data){
+			$("#tabsContent-info").hide();
+			$("#tabsContent-comments").html(data).show();			
+		},
+		complete:function(){
+			$.mobile.loading( "hide" );
+		}
 	});
-};
+}
+function listDetailsInfo(){
+	$("#tabsContent-comments").hide();
+	$("#tabsContent-info").show();
+}
 
-$(function(){
-	ko.applyBindings(model);
-});
-
-function romoteMenus(callback){
-	
-	if(model.menus.length>0){
-		callback();
-		return;
-	}
-	
-	$.getJSON(basePath+"phone-homepage/menus",{userId:1},function(data){
-		model.menus(data);
-		callback();
-	});
+function createLoadingMSG(){
+    $.mobile.loading( "show", {
+        text: "",
+        textVisible:false,
+        theme: $.mobile.loader.prototype.options.theme,
+        textonly: false,
+        html: ""
+    });
 }
