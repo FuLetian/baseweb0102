@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.flt.common.config.Configuration;
+import com.flt.common.utils.EmailUtil;
 import com.flt.common.utils.ImgUtil;
+import com.flt.dao.model.Consumer;
 import com.flt.web.common.service.ICommonService;
 import com.flt.web.common.service.ICommonStaticWebService;
 import com.flt.web.common.session.SessionUserLoader;
@@ -156,6 +158,31 @@ public class UtilController {
 		return o.toString();
 	}
 	
+	/**
+	 * 找回密码
+	 * @param email
+	 * @return
+	 */
+	@RequestMapping("findPwd")
+	@ResponseBody
+	public String findoutPwd(String email){
+		JSONObject o=new JSONObject();
+		
+		Consumer c=service.findConsumerByEmail(email);
+		
+		if(c!=null){
+			
+			EmailUtil.send("找回密码", "您的账户是:"+c.getAccount()+"\r\n您的密码是:"+c.getPassword(), c.getEmail());
+			
+			o.put("exist", true);
+			o.put("href", "https://mail.qq.com/cgi-bin/loginpage");
+		}else{
+			o.put("exist", false);
+		}
+		
+		return o.toString();
+		
+	}
 
 	
 

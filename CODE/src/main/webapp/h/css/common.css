@@ -17,12 +17,13 @@ body{padding-top: 62px;}
 .btn-sort-active{background-color:#E02284;}
 .btn-sort-active-default{background-color:#E02284;}
 
-.detail-title{font-size:16px;font-weight:bold;color:#6A4D4D;border-bottom: 1px dashed #E5E3E6;margin-top:5px;}
-.detail-price{color:#E6559D;font-weight:bold;margin-top:20px;}
+.detail-title{font-size:30px;text-indent:1em;font-weight:bold;color:#6A4D4D;height:60px;line-height:60px;background-color:#F8F8F8;}
+.detail-price{font-size:24px;color:#FFFFFF;text-indent:2em;font-weight:bold;background-color:#DD3931;height:60px;line-height:60px;}
 .detail-price-number{font-size:30px;}
-.detail-article-line{margin-top:10px;padding-top:20px;}
-.detail-article-line dt{width:60px;height:40px;}
-.detail-article-line dd{margin-left:100px;height:40px;}
+.detail-article-line{padding-top:20px;color:#666666;background-color:#EAE3DD;}
+.detail-article-line dt{width:80px;height:25px;}
+.detail-article-line dd{margin-left:100px;height:25px;}
+.detail-article-buy{background-color:#F8F8F8;height:60px;}
 .article-param dt{width:100px;}
 .detail-comment{height:200px;border:1px solid #D0E4C2;padding:20px;}
 .detail-comment-title{border-bottom:1px solid #D0E4C2;}

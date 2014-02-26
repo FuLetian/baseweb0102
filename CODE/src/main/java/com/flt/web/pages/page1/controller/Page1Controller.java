@@ -79,6 +79,7 @@ public class Page1Controller extends BaseController implements HTMLAbled{
 		
 		model.addAllAttributes(p.getRoot());
 		model.addAttribute("basePath",req.getContextPath()+"/");
+		
 		return p.getPageTemplate();
 	}
 

@@ -2,10 +2,12 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12">
-			<div class="location">您现在的位置:</div>
+			<ol class="breadcrumb">
+				  <li>Bootstrap</li>
+				  <li class="active">商品详细</li>
+				</ol>
 		</div>
 	</div>
-	
 </div>
 <!-- //location -->
 
@@ -13,11 +15,11 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-5">
-			<img id="bigPic" alt="" src="${img.path}" class="image-equal-width"/>
+			<img id="bigPic" alt="" src="${a.homepageImg}" class="image-equal-width"/>
 		</div>
 		<div class="col-xs-7">
 			<div class="detail-title">${a.name}</div>
-			<div class="detail-price"><span>￥</span><span class="detail-price-number"><i>${a.price}</i></span>&nbsp;&nbsp;&nbsp;<span class="label label-primary">${a.discount}折</span></div>
+			<div class="detail-price">价格&nbsp;&nbsp;&nbsp;${a.price}元/${a.discount}折</div>
 			<div class="detail-article-line">
 				<dl class="dl-horizontal">
 				<#list props0 as item>
@@ -34,13 +36,16 @@
 				  </dd>
 				</dl>
 			</div>
-			<div class="detail-article-line top-border">
-				<dl class="dl-horizontal">
-					<dt>数量</dt>
-					<dd><input id="articleCount" type="number" value="1"/></dd>
-				<dl>
-				<div style="width:40%;">
-					<a data-bind="click:openBuycarModal" href="#" class="btn btn-primary btn-block">&nbsp;&nbsp;&nbsp;加入购物车&nbsp;&nbsp;&nbsp;</a>
+			<div class="detail-article-buy">
+				<div class="row">
+					<div class="col-sm-4" align="right">
+						数量:<input id="articleCount" type="number" value="1"/>						
+					</div>
+				</div>
+				<div class="row margin-top-line">
+					<div class="col-sm-8">
+						<a data-bind="click:openBuycarModal" href="#" class="btn btn-success btn-block">&nbsp;&nbsp;&nbsp;加入购物车&nbsp;&nbsp;&nbsp;</a>						
+					</div>
 				</div>
 			</div>
 		</div>
