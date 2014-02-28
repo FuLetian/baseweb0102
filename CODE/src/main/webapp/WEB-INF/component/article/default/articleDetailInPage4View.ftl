@@ -4,7 +4,7 @@
 		<div class="col-xs-12">
 			<ol class="breadcrumb">
 				  <li>Bootstrap</li>
-				  <li class="active">商品详细</li>
+				  <li>商品详细</li>
 				</ol>
 		</div>
 	</div>

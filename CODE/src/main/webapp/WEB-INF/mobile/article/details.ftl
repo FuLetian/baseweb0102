@@ -1,6 +1,10 @@
 <!-- homepage -->
 <div id="homepage" data-role="page">
 
+<style>
+.article-details-buy{background-color:#FFFFFF;margin-top:10px;margin-bottom:10px;padding:10px 10px 10px 10px;border:1px solid #3388CC;}
+</style>
+
 	<div data-role="header">
 		<a data-rel="back" data-icon="back">back</a>
 		<h1>${article.name}</h1>
@@ -9,6 +13,32 @@
 	<div data-role="content"> 
 		<div>
 			<img src="${basePath}h/images/big-article.jpg" class="util-img-equals-width"/>
+		</div>
+		
+		<div class="article-details-buy ui-corner-all ui-shadow">
+			<table style="font-size:12px;width:100%;text-align:left;">
+				<tr>
+					<td>价&nbsp;&nbsp;格</td>
+					<td>${article.price}</td>
+				</tr>
+				<tr>
+					<td>数&nbsp;&nbsp;量</td>
+					<td>
+						<table>
+							<tr>
+								<td><a href="#" data-role="button" data-icon="minus" data-iconpos="notext" data-theme="c" data-inline="true" onclick="minusCount();">Plus</a></td>
+								<td><input type="number" id="countInput" value="1"></td>
+								<td><a href="#" data-role="button" data-icon="plus" data-iconpos="notext" data-theme="c" data-inline="true" onclick="plusCount();">Minus</a></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td colspan=2 align="right">
+						<a href="#" data-role="button" data-mini="true" data-inline="true" data-icon="star" data-theme="b" onclick="addToBuycar(${article.id});">加入购物车</a>
+					</td>
+				</tr>
+			</table>
 		</div>
 		
 		<div data-role="tabs" id="tabs">
@@ -34,14 +64,6 @@
 
 	</div><!-- /content -->
 	
-	<div data-role="footer" data-position="fixed">
-		<div data-role="navbar">
-		    <ul>
-		        <li><a href="#" data-icon="home">home</a></li>
-		        <li><a href="${basePath}mobile-menu/view?userId=${userId}" data-icon="bullets">menus</a></li>
-		        <li><a href="#" data-icon="gear">settings</a></li>
-		    </ul>
-		</div><!-- /navbar -->
-	</div><!-- /footer -->
+<#include "/mobile/common/footer.ftl"/>	
 	
 </div><!-- /homepage -->

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50520
 File Encoding         : 65001
 
-Date: 2014-02-26 18:13:31
+Date: 2014-02-28 18:11:29
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -362,32 +362,51 @@ CREATE TABLE `t_order` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `count` int(11) DEFAULT NULL,
   `run_status` int(11) DEFAULT NULL COMMENT '状态,0-刚下单,1-正在处理订单，2-正在配送，3-交易成功,4-收藏商品',
+  `tour_name` varchar(45) DEFAULT NULL COMMENT '游客下单名字',
+  `tour_email` varchar(45) DEFAULT NULL COMMENT '游客下单邮件',
+  `tour_phone` varchar(45) DEFAULT NULL COMMENT '游客下单电话',
+  `tour_address` varchar(45) DEFAULT NULL COMMENT '游客下单地址',
   `remark` varchar(45) DEFAULT NULL,
   `u_dt` datetime DEFAULT NULL,
   `c_dt` datetime DEFAULT NULL,
-  `consumer_id` int(11) NOT NULL,
+  `consumer_id` int(11) DEFAULT NULL,
   `article_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_order_consumer1` (`consumer_id`),
   KEY `fk_order_article1` (`article_id`),
   CONSTRAINT `fk_order_article1` FOREIGN KEY (`article_id`) REFERENCES `article` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_order_consumer1` FOREIGN KEY (`consumer_id`) REFERENCES `consumer` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of t_order
 -- ----------------------------
-INSERT INTO `t_order` VALUES ('1', '3', '3', null, '2014-01-27 16:54:26', '2014-01-27 16:54:26', '1', '1');
-INSERT INTO `t_order` VALUES ('3', '3', '1', null, '2014-01-27 17:00:34', '2014-01-27 17:00:34', '1', '1');
-INSERT INTO `t_order` VALUES ('4', '3', '3', null, '2014-01-27 17:01:48', '2014-01-27 17:01:48', '1', '1');
-INSERT INTO `t_order` VALUES ('7', '0', '3', null, '2014-01-30 00:09:56', '2014-01-30 00:09:56', '1', '6');
-INSERT INTO `t_order` VALUES ('11', null, '0', null, '2014-02-24 15:09:12', '2014-02-24 15:09:12', '1', '3');
-INSERT INTO `t_order` VALUES ('12', null, '0', null, '2014-02-24 15:09:20', '2014-02-24 15:09:20', '1', '3');
-INSERT INTO `t_order` VALUES ('13', null, '0', null, '2014-02-24 15:09:27', '2014-02-24 15:09:27', '1', '3');
-INSERT INTO `t_order` VALUES ('14', null, '0', null, '2014-02-24 15:09:50', '2014-02-24 15:09:50', '1', '3');
-INSERT INTO `t_order` VALUES ('15', null, '0', null, '2014-02-24 15:10:46', '2014-02-24 15:10:46', '1', '1');
-INSERT INTO `t_order` VALUES ('17', null, '4', null, '2014-02-24 15:30:19', '2014-02-24 15:30:19', '1', '5');
-INSERT INTO `t_order` VALUES ('18', null, '4', null, '2014-02-24 15:31:09', '2014-02-24 15:31:09', '1', '6');
+INSERT INTO `t_order` VALUES ('1', '3', '3', null, null, null, null, null, '2014-01-27 16:54:26', '2014-01-27 16:54:26', '1', '1');
+INSERT INTO `t_order` VALUES ('3', '3', '1', null, null, null, null, null, '2014-01-27 17:00:34', '2014-01-27 17:00:34', '1', '1');
+INSERT INTO `t_order` VALUES ('4', '3', '3', null, null, null, null, null, '2014-01-27 17:01:48', '2014-01-27 17:01:48', '1', '1');
+INSERT INTO `t_order` VALUES ('7', '0', '3', null, null, null, null, null, '2014-01-30 00:09:56', '2014-01-30 00:09:56', '1', '6');
+INSERT INTO `t_order` VALUES ('11', null, '0', null, null, null, null, null, '2014-02-24 15:09:12', '2014-02-24 15:09:12', '1', '3');
+INSERT INTO `t_order` VALUES ('12', null, '0', null, null, null, null, null, '2014-02-24 15:09:20', '2014-02-24 15:09:20', '1', '3');
+INSERT INTO `t_order` VALUES ('13', null, '0', null, null, null, null, null, '2014-02-24 15:09:27', '2014-02-24 15:09:27', '1', '3');
+INSERT INTO `t_order` VALUES ('14', null, '0', null, null, null, null, null, '2014-02-24 15:09:50', '2014-02-24 15:09:50', '1', '3');
+INSERT INTO `t_order` VALUES ('15', null, '0', null, null, null, null, null, '2014-02-24 15:10:46', '2014-02-24 15:10:46', '1', '1');
+INSERT INTO `t_order` VALUES ('17', null, '4', null, null, null, null, null, '2014-02-24 15:30:19', '2014-02-24 15:30:19', '1', '5');
+INSERT INTO `t_order` VALUES ('18', null, '4', null, null, null, null, null, '2014-02-24 15:31:09', '2014-02-24 15:31:09', null, '6');
+INSERT INTO `t_order` VALUES ('19', '1', '0', 'consumer1', '133', '123', '123', 'vv', '2014-02-28 10:51:31', '2014-02-28 10:51:31', '1', '1');
+INSERT INTO `t_order` VALUES ('20', '1', '0', 'consumer1', '133@qq.com', '123', '123', 'vv', '2014-02-28 10:51:38', '2014-02-28 10:51:38', '1', '1');
+INSERT INTO `t_order` VALUES ('21', '1', '0', 'consumer1', '133@qq.com', '123', '123', 'vv', '2014-02-28 10:51:38', '2014-02-28 10:51:38', '1', '1');
+INSERT INTO `t_order` VALUES ('22', '1', '0', 'consumer1', '133', '123', '123', '', '2014-02-28 10:53:05', '2014-02-28 10:53:05', '1', '1');
+INSERT INTO `t_order` VALUES ('23', '1', '0', 'consumer1e', '133@qq.com', '123', '123', 'c', '2014-02-28 10:53:38', '2014-02-28 10:53:38', '1', '1');
+INSERT INTO `t_order` VALUES ('24', '1', '0', 'consumer1e', '133@qq.com', '123', '123', 'c', '2014-02-28 10:53:39', '2014-02-28 10:53:39', '1', '1');
+INSERT INTO `t_order` VALUES ('25', '1', '0', 'consumer1', '133', '123', '123', '', '2014-02-28 10:55:16', '2014-02-28 10:55:16', '1', '1');
+INSERT INTO `t_order` VALUES ('26', '1', '0', 'consumer1', '133', '123', '123', '', '2014-02-28 10:55:19', '2014-02-28 10:55:19', '1', '1');
+INSERT INTO `t_order` VALUES ('27', '2', '0', 'consumer1', '133', '123', '123', '', '2014-02-28 11:01:41', '2014-02-28 11:01:41', '1', '1');
+INSERT INTO `t_order` VALUES ('28', '2', '0', 'consumer1', '133', '123', '123', '46', '2014-02-28 11:01:53', '2014-02-28 11:01:53', '1', '1');
+INSERT INTO `t_order` VALUES ('29', '2', '0', 'consumer1', '133', '123', '123', '', '2014-02-28 11:02:51', '2014-02-28 11:02:51', '1', '1');
+INSERT INTO `t_order` VALUES ('30', '6', '0', 'consumer1', '133', '123', '123', '', '2014-02-28 11:04:40', '2014-02-28 11:04:40', '1', '1');
+INSERT INTO `t_order` VALUES ('31', '2', '0', 'consumer1', '133', '123', '123', '', '2014-02-28 11:21:33', '2014-02-28 11:21:33', '1', '1');
+INSERT INTO `t_order` VALUES ('32', '2', '0', 'consumer1', '133', '123', '123', '', '2014-02-28 13:41:52', '2014-02-28 13:41:52', '1', '3');
+INSERT INTO `t_order` VALUES ('33', '1', '0', 'consumer1', '133', '123', '123', 'å¥½å®¶ä¼?', '2014-02-28 13:42:51', '2014-02-28 13:42:51', '1', '3');
 
 -- ----------------------------
 -- Table structure for `user`

@@ -11,7 +11,7 @@ import com.flt.service.base.BaseService;
 import com.flt.web.itf.service.IConsumerITFService;
 
 @Service
-public class ConsumerService extends BaseService implements IConsumerITFService {
+public class ConsumerService extends BaseService implements IConsumerITFService,IConsumerCommonService {
 
 	@Override
 	public Consumer login(String account, String password) {
