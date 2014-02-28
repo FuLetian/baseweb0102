@@ -64,7 +64,7 @@ public class ArticleMobileController {
 	@RequestMapping("comments-list")
 	public String commentsList(Integer userId,Integer articleId,Model model,HttpServletRequest req){
 
-		model.addAttribute("comments", commentCommonService.listCommentsByArticleId(articleId));
+		model.addAttribute("comments", commentCommonService.listConsumerCommentsByArticleId(articleId,userId));
 		
 		model.addAttribute("basePath", req.getContextPath()+"/");
 		model.addAttribute("userId", userId);

@@ -126,6 +126,7 @@ public class BuyCarController extends BaseController {
 		o.setRunStatus(runStatus);
 		o.setuDt(new Date());
 		
+		
 		if(runStatus.intValue()==4){
 			articleService.saveOrder(o);
 		}else if(runStatus.intValue()==0){

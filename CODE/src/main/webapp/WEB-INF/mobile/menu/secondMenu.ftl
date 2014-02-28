@@ -20,14 +20,6 @@
         
 	</div><!-- /content -->
 	
-	<div data-role="footer" data-position="fixed">
-		<div data-role="navbar">
-		    <ul>
-		        <li><a href="#" data-icon="home">home</a></li>
-		        <li><a href="${basePath}mobile-menu/view?userId=${userId}" data-icon="bullets">menus</a></li>
-		        <li><a href="#" data-icon="gear">settings</a></li>
-		    </ul>
-		</div><!-- /navbar -->
-	</div><!-- /footer -->
+	<#include "/mobile/common/footer.ftl"/>	
 	
 </div>

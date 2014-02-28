@@ -1,3 +1,7 @@
+body{
+	font-size:12px;
+}
+
 .util-img-equals-width{width:100%;}
 .util-text-popular{font-size:12px;color:#666666};
 .util-text-indent{text-indent:2em};

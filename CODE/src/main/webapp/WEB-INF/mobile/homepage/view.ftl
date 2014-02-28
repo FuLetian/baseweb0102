@@ -3,14 +3,19 @@
 <head> 
 　<title>Page Title</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<!-- consumer style -->
 <link rel="stylesheet" href="${basePath}h/css/mobile.css" />
+<!-- jquery mobile style -->
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
-<script src="${basePath}h/javascript/knockout-3.0.0.js"></script>
 <script type="text/javascript">
 	var basePath="${basePath}";
 </script>
+<!--jquery.form-->
+<script src="${basePath}h/javascript/jquery.form.js"></script>
+<script src="${basePath}h/javascript/jquery.cookie.js"></script>
 <script src="${basePath}h/javascript/mobile.js"></script>
 
 </head> 
@@ -27,16 +32,7 @@
 		<p><a href="#channelListPage">channels</a></p> 
 	</div><!-- /content -->
 	
-	<div data-role="footer" data-position="fixed">
-		<div data-role="navbar">
-		    <ul>
-		        <li><a href="#" data-icon="home">home</a></li>
-		        <li><a href="${basePath}mobile-menu/view?userId=${userId}" data-icon="bullets">menus</a></li>
-		        <li><a href="#" data-icon="gear">settings</a></li>
-		    </ul>
-		</div><!-- /navbar -->
-	</div><!-- /footer -->
-	
+	<#include "/mobile/common/footer.ftl"/>	
 </div><!-- /homepage -->
 </body>
 </html>

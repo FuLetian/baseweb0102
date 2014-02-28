@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.flt.service.menu.IMenuCommonService;
+import com.flt.web.module.views.menu.IMenuService;
 
 /**
  * 
@@ -20,11 +21,13 @@ public class MenuMobileController {
 	
 	@Autowired
 	private IMenuCommonService menuCommonService;
+	@Autowired
+	private IMenuService menuService;
 
 	@RequestMapping("view")
 	public String view(Integer userId,Model model,HttpServletRequest req){
 		
-		model.addAttribute("rootMenus", menuCommonService.listRootMenus(userId));
+		model.addAttribute("menus", menuService.listMenus(userId));
 		model.addAttribute("basePath", req.getContextPath()+"/");
 		model.addAttribute("userId", userId);
 		return "mobile/menu/view.ftl";

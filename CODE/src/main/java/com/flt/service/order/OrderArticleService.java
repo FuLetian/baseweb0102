@@ -23,7 +23,7 @@ import com.flt.web.pages.page6.OrderArticleDTO;
 import com.flt.web.pages.page6.service.IPage6OrderService;
 
 @Service
-public class OrderArticleService extends BaseService implements IPage6OrderService,IOrderManageService {
+public class OrderArticleService extends BaseService implements IPage6OrderService,IOrderManageService,IOrderCommonService {
 
 	
 	@Override
@@ -157,6 +157,13 @@ public class OrderArticleService extends BaseService implements IPage6OrderServi
 		o.setRunStatus(runStatus);
 		
 		m.updateByPrimaryKey(o);
+	}
+
+	@Override
+	public void saveOrder(Order o) {
+		// TODO Auto-generated method stub
+		OrderMapper m=this.getSqlSession().getMapper(OrderMapper.class);
+		m.insert(o);
 	}
 
 }

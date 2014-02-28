@@ -15,4 +15,6 @@ public class KeyConstant {
 	public static String SESSION_BUY_KEY="gkiewngobmt";
 	
 	public static String SESSION_BELOANG_USER_ID_KEY="giejhudowlkmnvhbsh";
+	
+	public static String SESSION_LOGIN_USER="fweafogkhuejdlkeie";
 }
