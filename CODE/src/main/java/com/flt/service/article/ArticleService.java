@@ -1,9 +1,11 @@
 package com.flt.service.article;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 import com.flt.dao.client.ArticleImgMapper;
 import com.flt.dao.client.ArticleMapper;
@@ -11,6 +13,7 @@ import com.flt.dao.client.ArticlePropertyMapper;
 import com.flt.dao.client.BrandMapper;
 import com.flt.dao.client.ChannelMapper;
 import com.flt.dao.client.CommentMapper;
+import com.flt.dao.client.CommonArticleMapper;
 import com.flt.dao.client.CommonMapper;
 import com.flt.dao.client.MenuMapper;
 import com.flt.dao.client.OrderMapper;
@@ -365,6 +368,29 @@ public class ArticleService extends BaseService implements IArticleService,IBuyc
 		ArticleImgExample e=new ArticleImgExample();
 		e.createCriteria().andArticleIdEqualTo(articleId);
 		return m.selectByExample(e);
+	}
+
+	/**
+	 * type 0-人气，1-最新
+	 */
+	@Override
+	public List<Article> listArticleByTypeFlag(int type) {
+		// TODO Auto-generated method stub
+		List<Article> as=new ArrayList<>();
+		
+		CommonArticleMapper m=this.getSqlSession().getMapper(CommonArticleMapper.class);
+		
+		switch(type){
+		case 0:{
+			as=m.listPopularArticle();
+			break;
+		}
+		case 1:{
+			as=m.listNewerArticle();
+			break;
+		}
+		}
+		return as;
 	}
 
 	

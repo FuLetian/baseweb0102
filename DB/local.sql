@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50520
 File Encoding         : 65001
 
-Date: 2014-02-28 18:11:29
+Date: 2014-03-03 18:00:30
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -24,7 +24,7 @@ CREATE TABLE `article` (
   `price` double DEFAULT NULL,
   `discount` double DEFAULT NULL,
   `stars` int(11) DEFAULT NULL COMMENT '评分',
-  `name` varchar(45) NOT NULL,
+  `name` varchar(45) CHARACTER SET latin1 NOT NULL,
   `u_dt` datetime NOT NULL,
   `c_dt` datetime NOT NULL,
   `idx` int(11) NOT NULL DEFAULT '0',
@@ -33,8 +33,8 @@ CREATE TABLE `article` (
   `brand_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `sale_count` int(11) DEFAULT NULL,
-  `remark` text,
-  `homepage_img` varchar(45) DEFAULT NULL COMMENT '首页图片，矩形',
+  `remark` text CHARACTER SET latin1,
+  `homepage_img` varchar(45) CHARACTER SET latin1 DEFAULT NULL COMMENT '首页图片，矩形',
   PRIMARY KEY (`id`),
   KEY `fk_article_menu` (`menu_id`),
   KEY `fk_article_channel1` (`channel_id`),
@@ -44,7 +44,7 @@ CREATE TABLE `article` (
   CONSTRAINT `fk_article_channel1` FOREIGN KEY (`channel_id`) REFERENCES `channel` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_article_menu` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_article_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 COMMENT='商品表';
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='商品表';
 
 -- ----------------------------
 -- Records of article
@@ -376,7 +376,7 @@ CREATE TABLE `t_order` (
   KEY `fk_order_article1` (`article_id`),
   CONSTRAINT `fk_order_article1` FOREIGN KEY (`article_id`) REFERENCES `article` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_order_consumer1` FOREIGN KEY (`consumer_id`) REFERENCES `consumer` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of t_order
@@ -407,6 +407,9 @@ INSERT INTO `t_order` VALUES ('30', '6', '0', 'consumer1', '133', '123', '123', 
 INSERT INTO `t_order` VALUES ('31', '2', '0', 'consumer1', '133', '123', '123', '', '2014-02-28 11:21:33', '2014-02-28 11:21:33', '1', '1');
 INSERT INTO `t_order` VALUES ('32', '2', '0', 'consumer1', '133', '123', '123', '', '2014-02-28 13:41:52', '2014-02-28 13:41:52', '1', '3');
 INSERT INTO `t_order` VALUES ('33', '1', '0', 'consumer1', '133', '123', '123', 'å¥½å®¶ä¼?', '2014-02-28 13:42:51', '2014-02-28 13:42:51', '1', '3');
+INSERT INTO `t_order` VALUES ('34', '3', '0', 'consumer1', '133', '123', '123', '', '2014-03-03 10:06:56', '2014-03-03 10:06:56', '1', '1');
+INSERT INTO `t_order` VALUES ('35', '1', '0', 'consumer1', '133', '123', '123', '', '2014-03-03 16:45:53', '2014-03-03 16:45:53', '1', '1');
+INSERT INTO `t_order` VALUES ('36', '4', '0', 'æ??æ?º', '133', '123', '123', '', '2014-03-03 17:23:24', '2014-03-03 17:23:24', '1', '1');
 
 -- ----------------------------
 -- Table structure for `user`

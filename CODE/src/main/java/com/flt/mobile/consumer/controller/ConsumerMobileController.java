@@ -28,6 +28,22 @@ public class ConsumerMobileController {
 		model.addAttribute("userId", userId);
 		return "mobile/consumer/login-view.ftl";
 	}
+	/**
+	 * 
+	 * @param userId
+	 * @param targetUrl 登陆成功后跳转的url
+	 * @param model
+	 * @param req
+	 * @return
+	 */
+	@RequestMapping("login-page")
+	public String loginPage(Integer userId,String targetUrl,Model model,HttpServletRequest req){
+		
+		model.addAttribute("targetUrl", targetUrl);
+		model.addAttribute("basePath", req.getContextPath()+"/");
+		model.addAttribute("userId", userId);
+		return "mobile/consumer/login-page.ftl";
+	}
 	
 	@RequestMapping("login")
 	@ResponseBody
