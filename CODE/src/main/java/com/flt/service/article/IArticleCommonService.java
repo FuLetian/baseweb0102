@@ -15,4 +15,6 @@ public interface IArticleCommonService {
 	List<ArticleProperty> listArticlePropertyByArticleId(Integer articleId);
 	
 	List<ArticleImg> listArticleImgByArticleId(Integer articleId);
+	
+	List<Article> listArticleByTypeFlag(int type);
 }

@@ -1,5 +1,11 @@
 <!-- homepage -->
-<div id="homepage" data-role="page">
+<div data-role="page">
+<div data-role="popup" id="purchase" data-theme="d" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
+    <h3>Purchase Album?</h3>
+    <p>Your download will begin immediately on your mobile device when you purchase.</p>
+    <a href="index.html" data-role="button" data-rel="back" data-theme="b" data-icon="check" data-inline="true" data-mini="true">Buy: $10.99</a>
+    <a href="index.html" data-role="button" data-rel="back" data-inline="true" data-mini="true">Cancel</a>
+</div>
 
 <style>
 .article-details-buy{background-color:#FFFFFF;margin-top:10px;margin-bottom:10px;padding:10px 10px 10px 10px;border:1px solid #3388CC;}
@@ -44,7 +50,7 @@
 		<div data-role="tabs" id="tabs">
 		  <div data-role="navbar">
 		    <ul>
-		      <li><a href="#" data-ajax="false" onclick="listDetailsInfo();">详细介绍</a></li>
+		      <li><a href="#" data-ajax="false" onclick="listDetailsInfo();" class="ui-btn-active">详细介绍</a></li>
 		      <li><a href="#" data-ajax="false" onclick="listComments(${userId},${article.id})">评论列表</a></li>
 		    </ul>
 		  </div>
