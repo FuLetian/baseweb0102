@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration status="debug">
+<configuration status="error">
 	<appenders>
 		<Console name="Console" target="SYSTEM_OUT">
 			<ThresholdFilter level="trace" onMatch="ACCEPT" onMismatch="DENY" />
@@ -11,7 +11,7 @@
 		</RollingFile>
 	</appenders>
 	<loggers>
-		<root level="debug">
+		<root level="error">
 			<appender-ref ref="RollingFile" />
 			<appender-ref ref="Console" />
 		</root>

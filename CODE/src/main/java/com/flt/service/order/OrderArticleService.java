@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.flt.common.constant.FieldConstant;
 import com.flt.dao.client.ArticleMapper;
 import com.flt.dao.client.CommentMapper;
 import com.flt.dao.client.ConsumerMapper;
@@ -165,5 +166,46 @@ public class OrderArticleService extends BaseService implements IPage6OrderServi
 		OrderMapper m=this.getSqlSession().getMapper(OrderMapper.class);
 		m.insert(o);
 	}
+
+	@Override
+	public List<Order> listOrderByRunStatus(Integer runstatus,Integer articleId) {
+		// TODO Auto-generated method stub
+		OrderMapper m=this.getSqlSession().getMapper(OrderMapper.class);
+		OrderExample ex=new OrderExample();
+		ex.createCriteria().andRunStatusEqualTo(runstatus).andArticleIdEqualTo(articleId);
+		return m.selectByExample(ex);
+	}
+
+	@Override
+	public Boolean saveOrUpdateOrder(Order order) {
+		// TODO Auto-generated method stub
+		OrderMapper m=this.getSqlSession().getMapper(OrderMapper.class);
+		OrderExample ex=new OrderExample();
+		
+		if(FieldConstant.order.runStatus.collections.intValue()==order.getRunStatus().intValue()){
+			ex.createCriteria().andArticleIdEqualTo(order.getArticleId()).andConsumerIdEqualTo(order.getConsumerId()).andRunStatusEqualTo(order.getRunStatus());
+			List<Order> dbOrder=m.selectByExample(ex);
+			if(!dbOrder.isEmpty()){
+				return false;
+			}else{
+				order.setcDt(new Date());
+				order.setuDt(new Date());
+				
+				m.insert(order);
+			}
+		}else{
+			if(order.getId()==null){
+				order.setcDt(new Date());
+				order.setuDt(new Date());
+				m.insert(order);
+			}else{
+				order.setuDt(new Date());
+				m.updateByPrimaryKey(order);
+			}
+		}
+		return true;
+	}
+
+
 
 }

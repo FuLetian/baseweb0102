@@ -17,4 +17,6 @@ public interface IArticleCommonService {
 	List<ArticleImg> listArticleImgByArticleId(Integer articleId);
 	
 	List<Article> listArticleByTypeFlag(int type);
+	
+	void addClip(Integer articleId);
 }

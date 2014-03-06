@@ -31,7 +31,7 @@ public class DynamicURLFilter implements Filter {
 		// TODO Auto-generated method stub
 		HttpServletRequest req=(HttpServletRequest) request;
 		String requestURI=req.getRequestURI();
-		
+
 		boolean isHtmlRequest=isHtmlRequest(requestURI);
 		if(Boolean.valueOf(Configuration.getProp("mode.develop"))&&isHtmlRequest){
 			String dynamicURI=this.parseToMappingURLFromHtmlRequestURI(req);
