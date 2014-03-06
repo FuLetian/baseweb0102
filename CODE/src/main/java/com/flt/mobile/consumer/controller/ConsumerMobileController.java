@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.flt.common.constant.KeyConstant;
 import com.flt.dao.model.Consumer;
 import com.flt.service.article.IArticleCommonService;
+import com.flt.service.consumer.IConsumerCommonService;
 import com.flt.web.itf.service.IConsumerITFService;
 
 @Controller
@@ -23,6 +24,8 @@ public class ConsumerMobileController {
 	private IConsumerITFService service;
 	@Autowired
 	private IArticleCommonService articleCommonService;
+	@Autowired
+	private IConsumerCommonService consumerCommonService;
 
 	@RequestMapping("login-view")
 	public String loginView(Integer userId,Model model,HttpServletRequest req){
@@ -69,6 +72,33 @@ public class ConsumerMobileController {
 			jo.put("userId", o.getUserId());
 		}
 		return jo.toString();
+	}
+	
+	@RequestMapping("login-homepage")
+	public String homepageLogin(Integer userId,Model model,HttpServletRequest req){
+		
+		model.addAttribute("userId", userId);
+		model.addAttribute("basePath", req.getContextPath()+"/");
+		return "mobile/consumer/login-homepage.ftl";
+	}
+	@RequestMapping("regist-view")
+	public String registView(Integer userId,Model model,HttpServletRequest req){
+		
+		model.addAttribute("userId", userId);
+		model.addAttribute("basePath", req.getContextPath()+"/");
+		return "mobile/consumer/regist.ftl";
+	}
+	
+	@RequestMapping("onRegist")
+	@ResponseBody
+	public String onRegist(String account,String emailAddress,String pwd,String name,String thumbnailPath,
+			String address,String phoneNum,Integer userId,HttpServletRequest req){
+		JSONObject o=new JSONObject();
+		
+		int code=this.consumerCommonService.registConsumer(account, emailAddress, pwd, name, thumbnailPath, address, phoneNum, userId);
+		
+		o.put("code", code);
+		return o.toString();
 	}
 	
 }

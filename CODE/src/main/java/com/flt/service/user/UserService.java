@@ -11,7 +11,7 @@ import com.flt.service.base.BaseService;
 import com.flt.web.common.service.ICommonUserService;
 
 @Service
-public class UserService extends BaseService implements ICommonUserService {
+public class UserService extends BaseService implements ICommonUserService,IUserCommonService {
 
 	@Override
 	public User loadConsumerById(Integer userId) {
@@ -45,6 +45,23 @@ public class UserService extends BaseService implements ICommonUserService {
 		UserMapper m=this.getSqlSession().getMapper(UserMapper.class);
 		
 		return m.selectByPrimaryKey(id);
+	}
+
+	@Override
+	public User loadUserBySiteAddress(String siteAddress) {
+		// TODO Auto-generated method stub
+		
+		UserMapper m=this.getSqlSession().getMapper(UserMapper.class);
+		UserExample ex=new UserExample();
+		ex.createCriteria().andSiteAddressEqualTo(siteAddress);
+		
+		List<User> list=m.selectByExample(ex);
+		
+		if(list.isEmpty()){
+			return null;
+		}else{
+			return list.get(0);
+		}
 	}
 
 }

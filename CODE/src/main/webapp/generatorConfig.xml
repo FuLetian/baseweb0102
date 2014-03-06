@@ -13,10 +13,11 @@
     <javaClientGenerator targetPackage="com.flt.dao.client" implementationPackage="com.flt.dao.client.impl" targetProject="baseweb" type="XMLMAPPER" />
 
 
-	<table schema="basedb" tableName="article" domainObjectName="Article">
+	<table schema="basedb" tableName="user" domainObjectName="User">
 		<generatedKey column="id" sqlStatement="MySql" identity="true" />
 	</table>
-	<table schema="basedb" tableName="user" domainObjectName="User">
+	
+	<table schema="basedb" tableName="article" domainObjectName="Article">
 		<generatedKey column="id" sqlStatement="MySql" identity="true" />
 	</table>
 	<table schema="basedb" tableName="comment" domainObjectName="Comment">

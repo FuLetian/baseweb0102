@@ -55,4 +55,39 @@ public class ConsumerService extends BaseService implements IConsumerITFService,
 		return m.selectByPrimaryKey(id);
 	}
 
+	@Override
+	/**
+	 * @return 1-account被占用,2-email被占用
+	 */
+	public int registConsumer(final String account, final String emailAddress, String pwd,String name,
+			String thumbnailPath,String address,String phoneNum,Integer userId) {
+		// TODO Auto-generated method stub
+		ConsumerMapper m=this.getSqlSession().getMapper(ConsumerMapper.class);
+		
+		if(m.countByExample(new ConsumerExample(){{
+			this.createCriteria().andAccountEqualTo(account);
+		}})>0){
+			return 1;
+		}
+		
+		if(m.countByExample(new ConsumerExample(){{
+			this.createCriteria().andEmailEqualTo(emailAddress);
+		}})>0){
+			return 2;
+		}
+		
+		Consumer c=new Consumer();
+		c.setAccount(account);
+		c.setAddress(address);
+		c.setEmail(emailAddress);
+		c.setName(name);
+		c.setPassword(pwd);
+		c.setPhoneNum(phoneNum);
+		c.setThumbnailPath(thumbnailPath);
+		c.setUserId(userId);
+		m.insert(c);
+		
+		return 0;
+	}
+
 }
