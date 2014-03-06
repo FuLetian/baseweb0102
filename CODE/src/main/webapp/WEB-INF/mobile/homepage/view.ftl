@@ -7,6 +7,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <!-- consumer style -->
 <link rel="stylesheet" href="${basePath}h/css/mobile.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <!-- jquery mobile style -->
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
 <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
@@ -45,7 +46,7 @@ function toMyOrderView(userId){
 		<div  style="background-image:url('${basePath}h/images/public-bg3.jpg');width:100%;height:150px;text-align:center;font-size:24px;color:#FFFFFF;">
 			<img src="${basePath}h/images/icon-user.jpg" style="height:50%;margin-top:40px;border-radius: 50%;" />
 		</div>
-		<div style="color:#FFFFFF;background-color:#2D2D2D;height:40px;line-height:40px;text-align:center;font-size:18px;">思盖网络科技工作室</div>
+		<div style="color:#FFFFFF;background-color:#2D2D2D;height:40px;line-height:40px;text-align:center;font-size:18px;">您的品牌名字</div>
 	</div><!-- /header -->
 	
 	<div> 
