@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50520
 File Encoding         : 65001
 
-Date: 2014-03-05 14:55:01
+Date: 2014-03-06 16:45:57
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -24,14 +24,13 @@ CREATE TABLE `access_log` (
   `ip` varchar(30) DEFAULT NULL,
   `lunch_dt` datetime DEFAULT NULL,
   `consumer_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of access_log
 -- ----------------------------
-INSERT INTO `access_log` VALUES ('1', '0', '2014-03-05 14:32:52', '0');
-INSERT INTO `access_log` VALUES ('2', '0', '2014-03-05 14:52:16', '0');
 
 -- ----------------------------
 -- Table structure for `article`
@@ -68,11 +67,11 @@ CREATE TABLE `article` (
 -- ----------------------------
 -- Records of article
 -- ----------------------------
-INSERT INTO `article` VALUES ('1', '13333', '100', null, '7', '12?', '2014-02-26 14:00:07', '2014-02-26 14:00:07', '1', '5', '1', '1', '1', null, 'remark', '/baseweb/h/images/upload/1/1393394403283.jpg');
+INSERT INTO `article` VALUES ('1', '13333', '100', null, '9', '统一预约卡', '2014-02-26 14:00:07', '2014-02-26 14:00:07', '1', '5', '1', '1', '1', '100', 'remark', '/baseweb/h/images/upload/1/1393394403283.jpg');
 INSERT INTO `article` VALUES ('2', '1', '1', '2', '0', '1', '2014-02-03 17:13:06', '2014-02-03 17:13:06', '1', '4', '1', '1', '1', '1', 'remark', '/baseweb/h/images/upload/1/1393207087946.jpg');
 INSERT INTO `article` VALUES ('3', '1', '1', '3', '0', '1', '2014-02-18 13:39:24', '2014-02-18 13:39:24', '1', '5', '1', '1', '1', '1', 'remark', '/baseweb/h/images/upload/1/1393207087946.jpg');
-INSERT INTO `article` VALUES ('4', '1', '1', '4', '0', '1', '2014-02-03 16:35:54', '2014-02-03 16:35:54', '1', '6', '1', '1', '1', '1', 'remark', '/baseweb/h/images/upload/1/1393207087946.jpg');
-INSERT INTO `article` VALUES ('5', '1', '1', '3', '0', '1', '2014-02-18 13:47:33', '2014-02-18 13:47:33', '1', '5', '1', '1', '1', '1', 'remark', '/baseweb/h/images/upload/1/1393207087946.jpg');
+INSERT INTO `article` VALUES ('4', '1', '1', '4', '1', '1', '2014-02-03 16:35:54', '2014-02-03 16:35:54', '1', '6', '1', '1', '1', '1', 'remark', '/baseweb/h/images/upload/1/1393207087946.jpg');
+INSERT INTO `article` VALUES ('5', '1', '1', '3', '1', '1', '2014-02-18 13:47:33', '2014-02-18 13:47:33', '1', '5', '1', '1', '1', '1', 'remark', '/baseweb/h/images/upload/1/1393207087946.jpg');
 INSERT INTO `article` VALUES ('6', '1', '1', '2', '0', '6', '2014-02-03 17:08:43', '2014-02-03 17:08:43', '1', '3', '1', '1', '1', '1', 'remark', '/baseweb/h/images/upload/1/1393207087946.jpg');
 INSERT INTO `article` VALUES ('7', '1', '1', '4', '0', '1', '2014-02-03 17:10:27', '2014-02-03 17:10:27', '1', '4', '1', '1', '1', '1', 'remark', '/baseweb/h/images/upload/1/1393207087946.jpg');
 INSERT INTO `article` VALUES ('9', '1', '1', '3', '0', '1', '2014-02-03 17:09:01', '2014-02-03 17:09:01', '1', '5', '1', '1', '1', '1', 'remark', '/baseweb/h/images/upload/1/1393207087946.jpg');
@@ -277,7 +276,7 @@ CREATE TABLE `consumer` (
   PRIMARY KEY (`id`),
   KEY `fk_consumer_user1` (`user_id`),
   CONSTRAINT `consumer_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of consumer
@@ -295,6 +294,11 @@ INSERT INTO `consumer` VALUES ('10', '6', '', '', '', '', '', '', '1');
 INSERT INTO `consumer` VALUES ('11', '6', '', '', '', '', '', '', '1');
 INSERT INTO `consumer` VALUES ('12', '3', '', '', '', '', '', '', '1');
 INSERT INTO `consumer` VALUES ('13', '2', '', '', '', '', '', '', '1');
+INSERT INTO `consumer` VALUES ('14', '111', '111', '111', '/baseweb/h/images/upload/1/1394093920499.jpg', '111', '111', '111', '1');
+INSERT INTO `consumer` VALUES ('15', '111', '222', '222', '/baseweb/h/images/upload/1/1394094008247.jpg,/baseweb/h/images/upload/1/1394094020614.jpg', '111', '111', '222', '1');
+INSERT INTO `consumer` VALUES ('16', '333', '333', '333', '/baseweb/h/images/upload/1/1394094387164.jpg', '333', '333', '333', '1');
+INSERT INTO `consumer` VALUES ('17', '444', '444', '444', '/baseweb/h/images/upload/1/1394094434320.jpg', '444', '444', '444', '1');
+INSERT INTO `consumer` VALUES ('18', '555', '555', '555', '/baseweb/h/images/upload/1/1394094719829.jpg', '555', '555', '555', '1');
 
 -- ----------------------------
 -- Table structure for `menu`
@@ -311,19 +315,22 @@ CREATE TABLE `menu` (
   PRIMARY KEY (`id`),
   KEY `fk_menu_user1` (`user_id`),
   CONSTRAINT `menu_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of menu
 -- ----------------------------
-INSERT INTO `menu` VALUES ('1', 'm1-1', null, '2014-01-23 16:45:01', '2014-01-23 16:45:05', '0', '1');
-INSERT INTO `menu` VALUES ('2', 'm1-2', null, '2014-01-23 16:45:13', '2014-01-23 16:45:16', '0', '1');
-INSERT INTO `menu` VALUES ('3', '2-1', '2', '2014-01-23 16:45:46', '2014-01-23 16:45:46', '99', '1');
-INSERT INTO `menu` VALUES ('4', '1-1', '2', '2014-01-23 16:45:59', '2014-01-23 16:45:59', '22', '1');
-INSERT INTO `menu` VALUES ('5', '56', '1', '2014-01-23 23:20:23', '2014-01-23 23:20:23', '23', '1');
-INSERT INTO `menu` VALUES ('6', 'm1-2', '1', '2014-01-25 14:05:25', '2014-01-25 14:05:25', '2', '1');
-INSERT INTO `menu` VALUES ('7', 'm1-2', '1', '2014-01-25 14:05:51', '2014-01-25 14:05:51', '20', '1');
-INSERT INTO `menu` VALUES ('8', 'jj', '1', '2014-02-18 13:21:24', '2014-02-18 13:21:24', '45', '1');
+INSERT INTO `menu` VALUES ('1', '给i', null, '2014-01-23 16:45:01', '2014-01-23 16:45:05', '0', '1');
+INSERT INTO `menu` VALUES ('2', '价格', null, '2014-01-23 16:45:13', '2014-01-23 16:45:16', '0', '1');
+INSERT INTO `menu` VALUES ('3', '恩恩', '2', '2014-01-23 16:45:46', '2014-01-23 16:45:46', '99', '1');
+INSERT INTO `menu` VALUES ('4', '发才个', '2', '2014-01-23 16:45:59', '2014-01-23 16:45:59', '22', '1');
+INSERT INTO `menu` VALUES ('5', '非好看', '1', '2014-01-23 23:20:23', '2014-01-23 23:20:23', '23', '1');
+INSERT INTO `menu` VALUES ('6', '更热', '1', '2014-01-25 14:05:25', '2014-01-25 14:05:25', '2', '1');
+INSERT INTO `menu` VALUES ('7', '羽绒', '1', '2014-01-25 14:05:51', '2014-01-25 14:05:51', '20', '1');
+INSERT INTO `menu` VALUES ('8', '空管局', '1', '2014-02-18 13:21:24', '2014-02-18 13:21:24', '45', '1');
+INSERT INTO `menu` VALUES ('9', '哦了的', '1', '2014-03-06 11:37:46', '2014-03-06 11:37:49', '0', '1');
+INSERT INTO `menu` VALUES ('10', '顾客', '1', '2014-03-06 11:38:03', '2014-03-06 11:38:07', '0', '1');
+INSERT INTO `menu` VALUES ('11', '儿科', '1', '2014-03-06 11:38:17', '2014-03-06 11:38:20', '0', '1');
 
 -- ----------------------------
 -- Table structure for `passage`
@@ -440,10 +447,12 @@ CREATE TABLE `user` (
   `account` varchar(45) DEFAULT NULL,
   `password` varchar(45) DEFAULT NULL,
   `domain` varchar(45) DEFAULT NULL,
+  `email_address` varchar(45) DEFAULT NULL,
+  `site_address` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'a', 'a', 'http://localhost:8080/baseweb/');
+INSERT INTO `user` VALUES ('1', 'a', 'a', 'http://localhost:8080/baseweb/', null, 'fuletian');
