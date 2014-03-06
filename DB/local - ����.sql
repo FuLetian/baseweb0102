@@ -1,37 +1,19 @@
-/*
+﻿/*
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
 Source Server Version : 50520
 Source Host           : localhost:3306
-Source Database       : baseweb
+Source Database       : basedb
 
 Target Server Type    : MYSQL
 Target Server Version : 50520
 File Encoding         : 65001
 
-Date: 2014-03-05 14:55:01
+Date: 2014-03-03 18:00:30
 */
 
 SET FOREIGN_KEY_CHECKS=0;
-
--- ----------------------------
--- Table structure for `access_log`
--- ----------------------------
-DROP TABLE IF EXISTS `access_log`;
-CREATE TABLE `access_log` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `ip` varchar(30) DEFAULT NULL,
-  `lunch_dt` datetime DEFAULT NULL,
-  `consumer_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of access_log
--- ----------------------------
-INSERT INTO `access_log` VALUES ('1', '0', '2014-03-05 14:32:52', '0');
-INSERT INTO `access_log` VALUES ('2', '0', '2014-03-05 14:52:16', '0');
 
 -- ----------------------------
 -- Table structure for `article`
@@ -42,8 +24,7 @@ CREATE TABLE `article` (
   `price` double DEFAULT NULL,
   `discount` double DEFAULT NULL,
   `stars` int(11) DEFAULT NULL COMMENT '评分',
-  `clip_count` int(11) NOT NULL DEFAULT '0' COMMENT '赞数',
-  `name` varchar(45) NOT NULL,
+  `name` varchar(45) CHARACTER SET utf8 NOT NULL,
   `u_dt` datetime NOT NULL,
   `c_dt` datetime NOT NULL,
   `idx` int(11) NOT NULL DEFAULT '0',
@@ -52,31 +33,31 @@ CREATE TABLE `article` (
   `brand_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `sale_count` int(11) DEFAULT NULL,
-  `remark` text,
-  `homepage_img` varchar(45) DEFAULT NULL COMMENT '首页图片，矩形',
+  `remark` text CHARACTER SET utf8,
+  `homepage_img` varchar(45) CHARACTER SET utf8 DEFAULT NULL COMMENT '首页图片，矩形',
   PRIMARY KEY (`id`),
   KEY `fk_article_menu` (`menu_id`),
   KEY `fk_article_channel1` (`channel_id`),
   KEY `fk_article_brand1` (`brand_id`),
   KEY `fk_article_user1` (`user_id`),
-  CONSTRAINT `article_ibfk_1` FOREIGN KEY (`brand_id`) REFERENCES `brand` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `article_ibfk_2` FOREIGN KEY (`channel_id`) REFERENCES `channel` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `article_ibfk_3` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `article_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_article_brand1` FOREIGN KEY (`brand_id`) REFERENCES `brand` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_article_channel1` FOREIGN KEY (`channel_id`) REFERENCES `channel` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_article_menu` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_article_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='商品表';
 
 -- ----------------------------
 -- Records of article
 -- ----------------------------
-INSERT INTO `article` VALUES ('1', '13333', '100', null, '7', '12?', '2014-02-26 14:00:07', '2014-02-26 14:00:07', '1', '5', '1', '1', '1', null, 'remark', '/baseweb/h/images/upload/1/1393394403283.jpg');
-INSERT INTO `article` VALUES ('2', '1', '1', '2', '0', '1', '2014-02-03 17:13:06', '2014-02-03 17:13:06', '1', '4', '1', '1', '1', '1', 'remark', '/baseweb/h/images/upload/1/1393207087946.jpg');
-INSERT INTO `article` VALUES ('3', '1', '1', '3', '0', '1', '2014-02-18 13:39:24', '2014-02-18 13:39:24', '1', '5', '1', '1', '1', '1', 'remark', '/baseweb/h/images/upload/1/1393207087946.jpg');
-INSERT INTO `article` VALUES ('4', '1', '1', '4', '0', '1', '2014-02-03 16:35:54', '2014-02-03 16:35:54', '1', '6', '1', '1', '1', '1', 'remark', '/baseweb/h/images/upload/1/1393207087946.jpg');
-INSERT INTO `article` VALUES ('5', '1', '1', '3', '0', '1', '2014-02-18 13:47:33', '2014-02-18 13:47:33', '1', '5', '1', '1', '1', '1', 'remark', '/baseweb/h/images/upload/1/1393207087946.jpg');
-INSERT INTO `article` VALUES ('6', '1', '1', '2', '0', '6', '2014-02-03 17:08:43', '2014-02-03 17:08:43', '1', '3', '1', '1', '1', '1', 'remark', '/baseweb/h/images/upload/1/1393207087946.jpg');
-INSERT INTO `article` VALUES ('7', '1', '1', '4', '0', '1', '2014-02-03 17:10:27', '2014-02-03 17:10:27', '1', '4', '1', '1', '1', '1', 'remark', '/baseweb/h/images/upload/1/1393207087946.jpg');
-INSERT INTO `article` VALUES ('9', '1', '1', '3', '0', '1', '2014-02-03 17:09:01', '2014-02-03 17:09:01', '1', '5', '1', '1', '1', '1', 'remark', '/baseweb/h/images/upload/1/1393207087946.jpg');
-INSERT INTO `article` VALUES ('10', '3', '3', null, '1', '30', '2014-02-24 09:58:13', '2014-02-24 09:58:13', '3', '5', '1', '1', '1', null, 'remark', '/baseweb/h/images/upload/1/1393207087946.jpg');
+INSERT INTO `article` VALUES ('1', '13333', '100', null, '12', '2014-02-26 14:00:07', '2014-02-26 14:00:07', '1', '5', '1', '1', '1', null, 'remark', '/baseweb/h/images/upload/1/1393394403283.jpg');
+INSERT INTO `article` VALUES ('2', '1', '1', '2', '1', '2014-02-03 17:13:06', '2014-02-03 17:13:06', '1', '4', '1', '1', '1', '1', 'remark', '/baseweb/h/images/upload/1/1393207087946.jpg');
+INSERT INTO `article` VALUES ('3', '1', '1', '3', '1', '2014-02-18 13:39:24', '2014-02-18 13:39:24', '1', '5', '1', '1', '1', '1', 'remark', '/baseweb/h/images/upload/1/1393207087946.jpg');
+INSERT INTO `article` VALUES ('4', '1', '1', '4', '1', '2014-02-03 16:35:54', '2014-02-03 16:35:54', '1', '6', '1', '1', '1', '1', 'remark', '/baseweb/h/images/upload/1/1393207087946.jpg');
+INSERT INTO `article` VALUES ('5', '1', '1', '3', '1', '2014-02-18 13:47:33', '2014-02-18 13:47:33', '1', '5', '1', '1', '1', '1', 'remark', '/baseweb/h/images/upload/1/1393207087946.jpg');
+INSERT INTO `article` VALUES ('6', '1', '1', '2', '1', '2014-02-03 17:08:43', '2014-02-03 17:08:43', '1', '3', '1', '1', '1', '1', 'remark', '/baseweb/h/images/upload/1/1393207087946.jpg');
+INSERT INTO `article` VALUES ('7', '1', '1', '4', '1', '2014-02-03 17:10:27', '2014-02-03 17:10:27', '1', '4', '1', '1', '1', '1', 'remark', '/baseweb/h/images/upload/1/1393207087946.jpg');
+INSERT INTO `article` VALUES ('9', '1', '1', '3', '1', '2014-02-03 17:09:01', '2014-02-03 17:09:01', '1', '5', '1', '1', '1', '1', 'remark', '/baseweb/h/images/upload/1/1393207087946.jpg');
+INSERT INTO `article` VALUES ('10', '3', '3', null, '30', '2014-02-24 09:58:13', '2014-02-24 09:58:13', '3', '5', '1', '1', '1', null, 'remark', '/baseweb/h/images/upload/1/1393207087946.jpg');
 
 -- ----------------------------
 -- Table structure for `article_img`
@@ -89,7 +70,7 @@ CREATE TABLE `article_img` (
   `article_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_article_img_article1` (`article_id`),
-  CONSTRAINT `article_img_ibfk_1` FOREIGN KEY (`article_id`) REFERENCES `article` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_article_img_article1` FOREIGN KEY (`article_id`) REFERENCES `article` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COMMENT='article详细画面多个图片展示源';
 
 -- ----------------------------
@@ -121,7 +102,7 @@ CREATE TABLE `article_property` (
   `type` varchar(45) DEFAULT '0' COMMENT '0-商品详细界面的属性\n1-商品参数属性',
   PRIMARY KEY (`id`),
   KEY `fk_article_property_article1` (`article_id`),
-  CONSTRAINT `article_property_ibfk_1` FOREIGN KEY (`article_id`) REFERENCES `article` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_article_property_article1` FOREIGN KEY (`article_id`) REFERENCES `article` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -162,7 +143,7 @@ CREATE TABLE `ball` (
   `e_value` double DEFAULT NULL,
   `average_value` double DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ball
@@ -183,7 +164,7 @@ CREATE TABLE `brand` (
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_brand_user1` (`user_id`),
-  CONSTRAINT `brand_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_brand_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='品牌';
 
 -- ----------------------------
@@ -212,7 +193,7 @@ CREATE TABLE `channel` (
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_channel_user1` (`user_id`),
-  CONSTRAINT `channel_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_channel_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -241,9 +222,9 @@ CREATE TABLE `comment` (
   KEY `fk_comment_article1` (`article_id`),
   KEY `fk_comment_consumer1` (`consumer_id`),
   KEY `fk_comment_user1` (`user_id`),
-  CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`article_id`) REFERENCES `article` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`consumer_id`) REFERENCES `consumer` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `comment_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_comment_article1` FOREIGN KEY (`article_id`) REFERENCES `article` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_comment_consumer1` FOREIGN KEY (`consumer_id`) REFERENCES `consumer` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_comment_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -276,7 +257,7 @@ CREATE TABLE `consumer` (
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_consumer_user1` (`user_id`),
-  CONSTRAINT `consumer_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_consumer_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -310,7 +291,7 @@ CREATE TABLE `menu` (
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_menu_user1` (`user_id`),
-  CONSTRAINT `menu_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_menu_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -340,7 +321,7 @@ CREATE TABLE `passage` (
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_passage_user1` (`user_id`),
-  CONSTRAINT `passage_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_passage_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -363,7 +344,7 @@ CREATE TABLE `resource` (
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_resource_user1` (`user_id`),
-  CONSTRAINT `resource_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_resource_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -393,14 +374,14 @@ CREATE TABLE `t_order` (
   PRIMARY KEY (`id`),
   KEY `fk_order_consumer1` (`consumer_id`),
   KEY `fk_order_article1` (`article_id`),
-  CONSTRAINT `t_order_ibfk_1` FOREIGN KEY (`article_id`) REFERENCES `article` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `t_order_ibfk_2` FOREIGN KEY (`consumer_id`) REFERENCES `consumer` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
+  CONSTRAINT `fk_order_article1` FOREIGN KEY (`article_id`) REFERENCES `article` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_order_consumer1` FOREIGN KEY (`consumer_id`) REFERENCES `consumer` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_order
 -- ----------------------------
-INSERT INTO `t_order` VALUES ('1', '3', '4', null, null, null, null, null, '2014-01-27 16:54:26', '2014-01-27 16:54:26', '1', '1');
+INSERT INTO `t_order` VALUES ('1', '3', '3', null, null, null, null, null, '2014-01-27 16:54:26', '2014-01-27 16:54:26', '1', '1');
 INSERT INTO `t_order` VALUES ('3', '3', '1', null, null, null, null, null, '2014-01-27 17:00:34', '2014-01-27 17:00:34', '1', '1');
 INSERT INTO `t_order` VALUES ('4', '3', '3', null, null, null, null, null, '2014-01-27 17:01:48', '2014-01-27 17:01:48', '1', '1');
 INSERT INTO `t_order` VALUES ('7', '0', '3', null, null, null, null, null, '2014-01-30 00:09:56', '2014-01-30 00:09:56', '1', '6');
@@ -429,7 +410,6 @@ INSERT INTO `t_order` VALUES ('33', '1', '0', 'consumer1', '133', '123', '123', 
 INSERT INTO `t_order` VALUES ('34', '3', '0', 'consumer1', '133', '123', '123', '', '2014-03-03 10:06:56', '2014-03-03 10:06:56', '1', '1');
 INSERT INTO `t_order` VALUES ('35', '1', '0', 'consumer1', '133', '123', '123', '', '2014-03-03 16:45:53', '2014-03-03 16:45:53', '1', '1');
 INSERT INTO `t_order` VALUES ('36', '4', '0', 'æ??æ?º', '133', '123', '123', '', '2014-03-03 17:23:24', '2014-03-03 17:23:24', '1', '1');
-INSERT INTO `t_order` VALUES ('37', null, '4', null, null, null, null, null, '2014-03-05 13:45:41', '2014-03-05 13:45:41', '1', '10');
 
 -- ----------------------------
 -- Table structure for `user`

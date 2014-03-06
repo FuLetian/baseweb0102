@@ -1,4 +1,4 @@
-	<div data-role="footer" data-position="fixed">
+	<div data-role="footer" data-position="fixed" data-theme="c">
 		<div data-role="navbar" data-theme="b">
 		    <ul>
 		        <li><a href="${basePath}mobile-homepage/view" data-icon="home">主页</a></li>

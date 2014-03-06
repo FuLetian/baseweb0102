@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-import org.springframework.util.Assert;
 
 import com.flt.dao.client.ArticleImgMapper;
 import com.flt.dao.client.ArticleMapper;
@@ -391,6 +390,18 @@ public class ArticleService extends BaseService implements IArticleService,IBuyc
 		}
 		}
 		return as;
+	}
+
+	@Override
+	public void addClip(Integer articleId) {
+		// TODO Auto-generated method stub
+		Article a=this.loadArticleById(articleId);
+		
+		ArticleMapper m=getSqlSession().getMapper(ArticleMapper.class);
+		Integer clip=a.getClipCount()+1;
+		
+		a.setClipCount(clip);
+		m.updateByPrimaryKey(a);
 	}
 
 	

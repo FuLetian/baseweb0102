@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.flt.common.constant.KeyConstant;
 import com.flt.dao.model.Consumer;
+import com.flt.service.article.IArticleCommonService;
 import com.flt.web.itf.service.IConsumerITFService;
 
 @Controller
@@ -20,6 +21,8 @@ public class ConsumerMobileController {
 	
 	@Autowired
 	private IConsumerITFService service;
+	@Autowired
+	private IArticleCommonService articleCommonService;
 
 	@RequestMapping("login-view")
 	public String loginView(Integer userId,Model model,HttpServletRequest req){
@@ -67,4 +70,5 @@ public class ConsumerMobileController {
 		}
 		return jo.toString();
 	}
+	
 }

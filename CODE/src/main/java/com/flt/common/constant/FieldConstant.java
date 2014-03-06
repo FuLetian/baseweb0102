@@ -43,4 +43,10 @@ public class FieldConstant {
 		}
 	}
 	
+	public static class order{
+		public static class runStatus{
+			public static Integer collections=4;
+		}
+	}
+	
 }

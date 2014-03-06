@@ -23,6 +23,7 @@ public class DynamicURLInterceptor extends HandlerInterceptorAdapter {
 		// TODO Auto-generated method stub
 		
 		String requestURI=request.getRequestURI();
+
 		boolean isHtmlRequest=isHtmlRequest(requestURI);
 		
 		if(Boolean.valueOf(Configuration.getProp("mode.develop"))&&isHtmlRequest){

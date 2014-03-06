@@ -17,4 +17,8 @@ public class KeyConstant {
 	public static String SESSION_BELOANG_USER_ID_KEY="giejhudowlkmnvhbsh";
 	
 	public static String SESSION_LOGIN_USER="fweafogkhuejdlkeie";
+	
+	public static String SESSION_CLIP_KEY="eikjhwiwoqjejejrh";
+	
+	public static String SESSION_ACCESS_LOG_KEY="dkdiejwowjjdnfkf";
 }

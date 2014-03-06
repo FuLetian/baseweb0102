@@ -85,5 +85,9 @@
             <value>4096</value>  
         </property>  
     </bean>
+    
+    <mvc:interceptors>
+    	<bean class="com.flt.system.AppAccessLogInterceptor"></bean>
+    </mvc:interceptors>
 
 </beans>

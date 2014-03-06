@@ -12,7 +12,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.flt.common.constant.KeyConstant;
+import com.flt.service.access.IAccessLogService;
 import com.flt.service.article.IArticleCommonService;
+import com.flt.service.context.BasewebApplicationContext;
 import com.flt.web.module.views.menu.IMenuService;
 import com.flt.web.module.views.menu.MenuDTO;
 
@@ -26,7 +29,18 @@ public class MobileHomepageController {
 	private IArticleCommonService articleCommonService;
 
 	@RequestMapping("view")
-	public String view(Model model,Integer type,HttpServletRequest req){
+	public String view(Model model,Integer cId,Integer userId,Integer type,HttpServletRequest req){
+		
+		if(req.getSession().getAttribute(KeyConstant.SESSION_ACCESS_LOG_KEY)==null){
+			IAccessLogService logService= BasewebApplicationContext.applicationContext.getBean(IAccessLogService.class);
+			
+			String ip=req.getRemoteAddr();
+			
+			logService.addLog(ip,cId==null?null:Integer.valueOf(cId),userId==null?null:Integer.valueOf(userId));
+			
+			req.getSession().setAttribute(KeyConstant.SESSION_ACCESS_LOG_KEY, "");
+		}
+		
 		
 		if(type==null){
 			type=0;

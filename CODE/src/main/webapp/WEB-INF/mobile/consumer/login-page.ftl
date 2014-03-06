@@ -6,7 +6,8 @@ function login2(){
 		success:function(data){
 			if(data.result){
 				$.cookie('key_session_consumer_id',data.consumerId, { expires: 7, path: '/' });
-				changePage("${targetUrl}");
+				var t="${targetUrl}".replace("_","&");
+				changePage(t);
 			}else{
 				alert("账户或密码错误!");
 			}
