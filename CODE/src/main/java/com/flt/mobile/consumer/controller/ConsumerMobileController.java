@@ -88,6 +88,13 @@ public class ConsumerMobileController {
 		model.addAttribute("basePath", req.getContextPath()+"/");
 		return "mobile/consumer/regist.ftl";
 	}
+	@RequestMapping("regist-page")
+	public String registPage(Integer userId,Model model,HttpServletRequest req){
+		
+		model.addAttribute("userId", userId);
+		model.addAttribute("basePath", req.getContextPath()+"/");
+		return "mobile/consumer/regist-page.ftl";
+	}
 	
 	@RequestMapping("onRegist")
 	@ResponseBody

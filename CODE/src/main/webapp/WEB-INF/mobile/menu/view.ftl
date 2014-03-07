@@ -3,9 +3,9 @@
 .gray{background-color:#DDDDDD;}
 .white{background-color:#EEEEEE;}
 </style>
-	<div data-role="header" data-position="fixed" data-theme="b">
-		<a data-rel="back" data-icon="back">back</a>
-		<h1>一级菜单</h1>
+	<div data-role="header" data-position="fixed" data-theme="c">
+		<h3>频道</h3>
+		<a data-rel="back" data-corners="false" data-theme="b">完成</a>
 	</div><!-- /header -->
 	
 	<div>

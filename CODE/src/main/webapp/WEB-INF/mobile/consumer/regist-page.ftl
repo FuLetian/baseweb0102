@@ -1,10 +1,5 @@
-<html>
-	<head>
-		<title>注册</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-		<script src="${basePath}h/javascript/jquery.form.js"></script>
+<div id="registerPage" data-role="page">
+
 		<script type="text/javascript">
 			function regist(){
 				alert(1);
@@ -18,7 +13,7 @@
 							alert("邮箱已存在");
 						}else{
 							alert("注册成功");
-							location.href="${basePath}mobile-consumer/login-homepage?userId=${userId}";
+							changePage("${basePath}mobile-homepage/view?userId=${userId}");
 						}
 					}
 				});
@@ -34,15 +29,13 @@
 				width:100%;
 			}
 			
-			tr{
-				border-top:1px solid #BBBBBB;
-				height:30px;
-			}
-			
 			.table input{width:90%;margin-left:5%;}
 		</style>
-	</head>
-	<body>
+		
+	<div data-role="header" data-theme="c">
+		<a href="#" data-rel="back" data-theme="b" data-corners="false">完成</a>
+		<h3>注册</h3>
+	</div>
 	
 <form id="form" action="${basePath}mobile-consumer/onRegist">
 <div id="container">
@@ -83,7 +76,7 @@
 </div>
 <input type="hidden" name="userId" value="${userId}">
 </form>
-<div onclick="regist()">注册</div>
-
-	</body>
-</html>
+<div onclick="regist()" style="height:50px;font-size:20px;color:red;text-align">提交信息</div>
+	
+	<#include "/mobile/common/footer.ftl"/>	
+</div>

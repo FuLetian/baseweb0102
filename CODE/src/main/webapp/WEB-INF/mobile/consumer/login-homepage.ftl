@@ -29,7 +29,7 @@
 				padding:10px 10px 10px 10px;
 				
 				position:fixed;
-				top:70px;
+				top:101px;
 				left:10%;
 			}
 			
@@ -60,6 +60,13 @@
 			}
 		</style>
 		<script type="text/javascript">
+			function hideFooter(){
+				$("#footer").hide();
+			}
+			function showFooter(){
+				$("#footer").show();
+			};
+		
 			function login(){
 				$("#loginForm").ajaxSubmit({
 					dataType:"json",
@@ -78,20 +85,21 @@
 		</script>
 	</head>
 	<body>
+		<div align="center"><img src="${basePath}h/images/cow.png" style="width:70%;" /></div>
 		<div id="content">
-			<form id="loginForm" action="${basePath}/mobile-consumer/login">
+			<form id="loginForm" action="${basePath}mobile-consumer/login">
 				<div style="color:#FFFFFF;font-size:12px;font-weight:bold;">
 					<label for="account">用户名/Email</label>
 				</div>
 				<div>
-					<input type="text" name="account" style="width:100%;height:30px;border:1px solid #E8E8E8;border-radius:0%;">
+					<input type="text" name="account" onfocus="hideFooter()" onblur="showFooter();" style="width:100%;height:30px;border:1px solid #E8E8E8;border-radius:0%;">
 				</div>
 				
 				<div style="color:#FFFFFF;font-size:12px;font-weight:bold;margin-top:10px;">
 					<label>密码</label>
 				</div>
 				<div>
-					<input type="password" id="pwd" name="pwd" style="width:100%;height:30px;border:1px solid #E8E8E8;border-radius:0%;">
+					<input type="password" id="pwd" name="pwd" onfocus="hideFooter()" onblur="showFooter();" style="width:100%;height:30px;border:1px solid #E8E8E8;border-radius:0%;">
 				</div>
 				
 				<div class="btn" onclick="login();">登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录</div>
