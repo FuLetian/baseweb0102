@@ -38,7 +38,6 @@ function toMyOrderView(userId){
 </head> 
 <body>
 
-
 <!-- homepage -->
 <div id="homepage" data-role="page">
 

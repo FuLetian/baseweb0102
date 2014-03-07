@@ -13,7 +13,7 @@
 				<td><input type="password" name="pwd"/></td>
 			</tr>
 		</table>
-		<a href="#" onclick="login()">登陆</a>
+		<a href="#" onclick="login()" data-corners="false">登陆</a>
 		</form>
 	</div>
 <script type="text/javascript">

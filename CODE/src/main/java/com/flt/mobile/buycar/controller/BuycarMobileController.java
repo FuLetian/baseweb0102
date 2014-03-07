@@ -36,13 +36,6 @@ public class BuycarMobileController {
 	@RequestMapping("view")
 	public String view(Integer userId,Model model,HttpServletRequest req){
 		
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
 		Set<AritcleCountDTO> list=(Set<AritcleCountDTO>) req.getSession().getAttribute(KeyConstant.SESSION_BUY_CAR_KEY);
 		if(list==null){
 			list=new HashSet<>();
