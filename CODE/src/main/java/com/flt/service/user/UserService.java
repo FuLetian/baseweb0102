@@ -64,4 +64,11 @@ public class UserService extends BaseService implements ICommonUserService,IUser
 		}
 	}
 
+	@Override
+	public void updateUser(User user) {
+		// TODO Auto-generated method stub
+		UserMapper m=this.getSqlSession().getMapper(UserMapper.class);
+		m.updateByPrimaryKey(user);
+	}
+
 }

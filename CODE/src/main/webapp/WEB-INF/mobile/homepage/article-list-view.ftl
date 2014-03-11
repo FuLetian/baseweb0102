@@ -1,7 +1,7 @@
 <div data-role="page">
 
 	<div data-role="header" data-position="fixed" data-theme="c">
-		<a data-rel="back" data-icon="back">返回</a>
+		<a data-rel="back" data-theme="b" data-corners="false">完成</a>
 		<h1>人气商品</h1>
 	</div><!-- /header -->
 	

@@ -21,6 +21,7 @@ public class MenuFactory {
 		menus.add(new LeftMenu("服务承诺", Configuration.getProp("db.server.domain")+"serviceAndPromise/view", false));
 		menus.add(new LeftMenu("订单", Configuration.getProp("db.server.domain")+"order/view", false));
 		menus.add(new LeftMenu("评论", Configuration.getProp("db.server.domain")+"comment/view", false));
+		menus.add(new LeftMenu("关于我们", Configuration.getProp("db.server.domain")+"user-manage/view", false));
 		
 		return menus;
 	}

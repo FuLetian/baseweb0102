@@ -1,6 +1,6 @@
 <div id="orderView" data-role="page">
-	<div data-role="header" data-theme="b">
-		<a data-rel="back" data-icon="back">back</a>
+	<div data-role="header" data-theme="c">
+		<a data-rel="back" data-icon="back" data-corners="false" data-theme="b" >返回</a>
 		<h1>结算</h1>
 	</div>
 	
@@ -15,7 +15,7 @@
 
 		<form id="orderForm" action="${basePath}mobile-buycar/addOrder">
 		<input id="hiddenCID" type="hidden" name="cId" value="0">
-		<div class="ui-corner-all ui-shadow" style="border:1px solid #588EBD;padding:10px 10px 10px 10px;">
+		<div class="ui-shadow" style="border:1px solid #588EBD;padding:10px 10px 10px 10px;">
 		<table style="width:100%;font-size:14px;">
 			<tr>
 				<td style="width:20%;">姓名:</td>
@@ -40,7 +40,7 @@
 		</table>
 		</div>
 		<div align="left" style="font-size:15px;color:red;font-weight:bold;margin-top:20px;">总计:￥${moneyTotal}</div>
-		<div><button data-theme="b" onclick="sumbitOrder(${userId});return false;">提交订单</button></div>
+		<div><button data-theme="b" data-corners="false" onclick="sumbitOrder(${userId});return false;">提交订单</button></div>
 		</form>
 		
 	</div>

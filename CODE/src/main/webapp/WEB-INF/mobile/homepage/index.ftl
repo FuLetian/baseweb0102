@@ -30,7 +30,7 @@
 		</style>
 	</head>
 	<body>
-		<div id="title">您的品牌名字</div>
+		<div id="title">${user.siteName}</div>
 		<div id="tree" align="right">
 			<img style="float:right;" src="${basePath}h/images/tree.png" />
 		</div>

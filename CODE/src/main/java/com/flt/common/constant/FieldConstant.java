@@ -45,6 +45,10 @@ public class FieldConstant {
 	
 	public static class order{
 		public static class runStatus{
+			public static Integer makeOrderJustNow=0;
+			public static Integer dealingOrder=1;//正在处理订单
+			public static Integer postingOrder=2;//正在配送
+			public static Integer successedDeal=3;//成功交易
 			public static Integer collections=4;
 		}
 	}
