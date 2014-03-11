@@ -1,6 +1,6 @@
 <div id="buycarPage" data-role="page">
-	<div data-role="header" data-theme="b">
-		<a data-rel="back" data-icon="back">back</a>
+	<div data-role="header" data-theme="c">
+		<a data-rel="back"  data-corners="false" data-theme="b">完成</a>
 		<h1>购物车列表</h1>
 	</div>
 	
@@ -8,7 +8,7 @@
 	
 		<div id="articleList">
 
-		<div style="background-color:#FFFFFF;padding:10px 5px 10px 5px;" class="ui-corner-all ui-shadow">
+		<div style="background-color:#FFFFFF;padding:10px 5px 10px 5px;" class="ui-shadow">
 		
 			<#list list as item>
 			<div id="buycar-item-${item.article.id}" style="border-bottom:1px solid #EAE3DD;">
@@ -34,7 +34,7 @@
 		</div>
 		
 		<div style="height:50px;line-height:50px;font-weight:bold;text-align:left;font-size:16px;color:red;">合计:￥<span id="meneyTotal"></span></div>
-		<div><a href="#" type="button" data-theme="b" onclick="toOrderView();">结算</a></div>
+		<div><a href="#" type="button" data-theme="b" onclick="toOrderView();" data-corners="false">结算</a></div>
 		
 		</div>
 		

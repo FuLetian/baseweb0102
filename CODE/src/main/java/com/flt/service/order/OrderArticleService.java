@@ -17,6 +17,7 @@ import com.flt.dao.model.CommentExample;
 import com.flt.dao.model.Order;
 import com.flt.dao.model.OrderExample;
 import com.flt.dao.model.OrderExample.Criteria;
+import com.flt.dto.OrderArticleComment;
 import com.flt.service.base.BaseService;
 import com.flt.web.manage.order.dto.OrderConsumerDTO;
 import com.flt.web.manage.order.service.IOrderManageService;
@@ -204,6 +205,98 @@ public class OrderArticleService extends BaseService implements IPage6OrderServi
 			}
 		}
 		return true;
+	}
+
+	@Override
+	public int countOrderByRunStatus(Integer runStatus, Integer consumerId) {
+		// TODO Auto-generated method stub
+		OrderMapper m=this.getSqlSession().getMapper(OrderMapper.class);
+		OrderExample ex=new OrderExample();
+		
+		ex.createCriteria().andRunStatusEqualTo(runStatus).andConsumerIdEqualTo(consumerId);
+		return m.countByExample(ex);
+	}
+
+	@Override
+	public List<OrderArticleComment> listCOnsumerOrderByRunStatus(Integer runstatus,
+			Integer consumerId) {
+		// TODO Auto-generated method stub
+		OrderMapper m=this.getSqlSession().getMapper(OrderMapper.class);
+		OrderExample ex=new OrderExample();
+		
+		ex.createCriteria().andRunStatusEqualTo(runstatus).andConsumerIdEqualTo(consumerId);
+		
+		List<Order> orders= m.selectByExample(ex);
+		
+		List<OrderArticleComment> list=new ArrayList<>();
+		for(Order o:orders){
+			ArticleMapper m2=this.getSqlSession().getMapper(ArticleMapper.class);
+			Article a=m2.selectByPrimaryKey(o.getArticleId());
+			
+			OrderArticleComment oa=new OrderArticleComment();
+			oa.setArticle(a);
+			oa.setOrder(o);
+			list.add(oa);
+		}
+		
+		return list;
+	}
+
+	@Override
+	public OrderArticleComment loadOrderArticleByOrderId(Integer orderId) {
+		// TODO Auto-generated method stub
+		
+		OrderMapper m=this.getSqlSession().getMapper(OrderMapper.class);
+		ArticleMapper m2=this.getSqlSession().getMapper(ArticleMapper.class);
+		
+		Order order=m.selectByPrimaryKey(orderId);
+		Article article=m2.selectByPrimaryKey(order.getArticleId());
+		
+		OrderArticleComment oa=new OrderArticleComment();
+		oa.setArticle(article);
+		oa.setOrder(order);
+		
+		return oa;
+	}
+
+	@Override
+	public OrderArticleComment loadOrderArticleByOrderId(Integer orderId,
+			Integer consumerId) {
+		// TODO Auto-generated method stub
+		OrderMapper m=this.getSqlSession().getMapper(OrderMapper.class);
+		ArticleMapper m2=this.getSqlSession().getMapper(ArticleMapper.class);
+		
+		Order order=m.selectByPrimaryKey(orderId);
+		Article article=m2.selectByPrimaryKey(order.getArticleId());
+		
+		CommentMapper m3=this.getSqlSession().getMapper(CommentMapper.class);
+		CommentExample ex3=new CommentExample();
+		ex3.createCriteria().andArticleIdEqualTo(order.getArticleId()).andConsumerIdEqualTo(consumerId);
+		List<Comment> comments=m3.selectByExample(ex3);
+		
+		OrderArticleComment oa=new OrderArticleComment();
+		oa.setArticle(article);
+		oa.setOrder(order);
+		
+		if(comments.isEmpty()){
+			oa.setComment(null);
+		}else{
+			oa.setComment(comments.get(0));
+		}
+		return oa;
+	}
+
+	@Override
+	public Order loadOrderById(Integer orderId) {
+		// TODO Auto-generated method stub
+		return this.getSqlSession().getMapper(OrderMapper.class).selectByPrimaryKey(orderId);
+	}
+
+	@Override
+	public void updateOrder(Order order) {
+		// TODO Auto-generated method stub
+		OrderMapper m=this.getSqlSession().getMapper(OrderMapper.class);
+		m.updateByPrimaryKey(order);
 	}
 
 

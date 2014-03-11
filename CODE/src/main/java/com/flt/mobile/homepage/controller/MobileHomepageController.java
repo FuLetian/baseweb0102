@@ -9,6 +9,7 @@ import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -16,6 +17,7 @@ import com.flt.common.constant.KeyConstant;
 import com.flt.service.access.IAccessLogService;
 import com.flt.service.article.IArticleCommonService;
 import com.flt.service.context.BasewebApplicationContext;
+import com.flt.service.user.IUserCommonService;
 import com.flt.web.module.views.menu.IMenuService;
 import com.flt.web.module.views.menu.MenuDTO;
 
@@ -27,12 +29,17 @@ public class MobileHomepageController {
 	private IMenuService menuService;
 	@Autowired
 	private IArticleCommonService articleCommonService;
+	@Autowired
+	private IUserCommonService userCommonService;
+	@Autowired
+	private IAccessLogService logService;
 
 	@RequestMapping("view")
 	public String view(Model model,Integer cId,Integer userId,Integer type,HttpServletRequest req){
 		
+		Assert.notNull(userId,"userId");
+		
 		if(req.getSession().getAttribute(KeyConstant.SESSION_ACCESS_LOG_KEY)==null){
-			IAccessLogService logService= BasewebApplicationContext.applicationContext.getBean(IAccessLogService.class);
 			
 			String ip=req.getRemoteAddr();
 			
@@ -45,8 +52,9 @@ public class MobileHomepageController {
 		if(type==null){
 			type=0;
 		}
-		model.addAttribute("articles", articleCommonService.listArticleByTypeFlag(type));
 		
+		model.addAttribute("articles", articleCommonService.listArticleByTypeFlag(type));
+		model.addAttribute("user", userCommonService.loadUserById(userId));
 		return processModel(1,model,req);
 	}
 	/**

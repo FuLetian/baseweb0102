@@ -101,6 +101,10 @@ public class MenuService extends BaseService implements IMenuService,IMenuManage
 			menu.setuDt(new Date());
 		}
 		
+		if(menu.getpId().intValue()==0){
+			menu.setpId(null);
+		}
+		
 		MenuMapper m=getSqlSession().getMapper(MenuMapper.class);
 		m.insert(menu);
 	}

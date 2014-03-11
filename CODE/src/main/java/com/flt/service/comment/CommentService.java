@@ -84,4 +84,67 @@ public class CommentService extends BaseService implements ICommentService,IComm
 		return results;
 	}
 
+	@Override
+	public Comment loadCommentById(Integer id) {
+		// TODO Auto-generated method stub
+		CommentMapper m=this.getSqlSession().getMapper(CommentMapper.class);
+		return m.selectByPrimaryKey(id);
+	}
+
+	@Override
+	public void saveComment(Comment comment) {
+		// TODO Auto-generated method stub
+		CommentMapper m=this.getSqlSession().getMapper(CommentMapper.class);
+		m.insert(comment);
+	}
+
+	@Override
+	public Comment loadCommnetByConsuerIdArticleId(Integer consumerId,
+			Integer articleId) {
+		// TODO Auto-generated method stub
+		CommentMapper m=this.getSqlSession().getMapper(CommentMapper.class);
+		CommentExample ex=new CommentExample();
+		ex.createCriteria().andArticleIdEqualTo(articleId).andConsumerIdEqualTo(consumerId);
+		
+		List<Comment> list=m.selectByExample(ex);
+		if(!list.isEmpty()){
+			return list.get(0);
+		}
+		return null;
+	}
+
+	@Override
+	public void updateComment(Comment comment) {
+		// TODO Auto-generated method stub
+		CommentMapper m=this.getSqlSession().getMapper(CommentMapper.class);
+		m.updateByPrimaryKey(comment);
+	}
+
+	@Override
+	public List<ConsumerCommentDTO> listConsumerCommentDTOsByUserId(
+			Integer userId) {
+		// TODO Auto-generated method stub
+		
+		CommentMapper m=this.getSqlSession().getMapper(CommentMapper.class);
+		CommentExample ex=new CommentExample();
+		ex.createCriteria().andUserIdEqualTo(userId);
+		
+		List<Comment> list=m.selectByExample(ex);
+		List<ConsumerCommentDTO> results=new ArrayList<>();
+		for(Comment o:list){
+			ConsumerCommentDTO dto=new ConsumerCommentDTO();
+			dto.setComment(o);
+			
+			ConsumerMapper m2=this.getSqlSession().getMapper(ConsumerMapper.class);
+			dto.setConsumer(m2.selectByPrimaryKey(o.getConsumerId()));
+			
+			ArticleMapper m3=this.getSqlSession().getMapper(ArticleMapper.class);
+			dto.setArticle(m3.selectByPrimaryKey(o.getArticleId()));
+			
+			results.add(dto);
+		}
+		
+		return results;
+	}
+
 }

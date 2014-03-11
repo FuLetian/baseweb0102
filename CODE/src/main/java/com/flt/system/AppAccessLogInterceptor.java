@@ -12,6 +12,7 @@ public class AppAccessLogInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
 		// TODO Auto-generated method stub
+		System.err.println(">>pre>>"+request.getRequestURI());
 		return true;
 	}
 
@@ -20,7 +21,7 @@ public class AppAccessLogInterceptor implements HandlerInterceptor {
 			HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
@@ -28,7 +29,7 @@ public class AppAccessLogInterceptor implements HandlerInterceptor {
 			HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
 		// TODO Auto-generated method stub
-
+		System.err.println(">>after>>"+request.getRequestURI());
 	}
 
 }

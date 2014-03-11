@@ -78,7 +78,7 @@
 <tr>
 	<th>首页图片</th>
 	<td>
-		<div id="homepageImgContainer"><img src="${article.homepageImg}"/></div>
+		<div id="homepageImgContainer"><img src="${article.homepageImg}" style="width:100%;"/></div>
 	</td>
 </tr>
 <tr>

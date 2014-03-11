@@ -1,5 +1,6 @@
 package com.flt.web.manage.order.controller;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.flt.common.utils.JSONDateValueProcessor;
 import com.flt.dao.model.Order;
 import com.flt.web.manage.order.dto.OrderConsumerDTO;
 import com.flt.web.manage.order.service.IOrderManageService;
@@ -38,6 +40,7 @@ public class OrderController {
 		List<OrderConsumerDTO> list=service.listOrderConsumerDTOs(order);
 		
 		JsonConfig config=new JsonConfig();
+		config.registerJsonValueProcessor(Date.class, new JSONDateValueProcessor());
 		
 		return JSONArray.fromObject(list).toString();
 	}

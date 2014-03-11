@@ -5,7 +5,7 @@
 </style>
 
 	<div data-role="header" data-position="fixed" data-theme="c">
-		<a data-rel="back" data-icon="back">返回</a>
+		<a data-rel="back" data-icon="back" data-corners="false" data-theme="b">返回</a>
 		<h1>详细信息</h1>
 	</div><!-- /header -->
 	
@@ -34,14 +34,16 @@
 		<div class="ui-grid-b" style="margin-top:5px;padding-bottom:5px;color:#888888;">
 			<div class="ui-block-a">
 		    	<div style="height:30px" align="center">
-		    		<a href="#"  onclick="clip(${article.id});"><img src="${basePath}h/images/heart.png" style="height:70%;" /></a>${article.clipCount}</div>
+		    		<button onclick="clip(${article.id});" data-corners="false">赞/${article.clipCount}</button>
+		    	</div>
 		    </div>
 		    <div class="ui-block-b">
-		    	<div style="height:30px" align="center"><img src="${basePath}h/images/msg.png" style="height:70%;" />${commentSize}</div>
+		    	<button  data-corners="false" onclick="comment(${article.id});">评论/${commentSize}</button>
 		    </div>
-		    <div class="ui-block-c" onclick="collect(${article.id},${userId})">
+		    <div class="ui-block-c">
 		    	<div style="height:30px" align="center">
-		    		<a href="#"><img src="${basePath}h/images/add.png" style="height:70%;" /></a>${collections}</div>
+		    		<button onclick="collect(${article.id},${userId})"  data-corners="false">收藏/${collections}</button>
+		    	</div>
 		    </div>
 		</div><!-- /grid-c -->
 	</div>
@@ -66,7 +68,7 @@
 				</tr>
 				<tr>
 					<td colspan=2 align="right">
-						<a href="#" data-role="button" data-mini="true" data-inline="true" data-icon="star" data-theme="b" onclick="addToBuycar(${article.id});">加入购物车</a>
+						<a href="#" data-role="button" data-mini="true" data-inline="true" data-icon="star" data-theme="b"  data-corners="false" onclick="addToBuycar(${article.id});">加入购物车</a>
 					</td>
 				</tr>
 			</table>
@@ -122,6 +124,21 @@ function collect(articleId,userId){
 			}
 		});
 	}
+}
+
+function comment(articleId){
+	var cId=getLoginConsumerId();
+	if(cId==0){
+		changePage(basePath+"mobile-consumer/login-page?userId="+${userId}+"&targetUrl=${basePath}mobile-article/details?userId="+${userId}+"_articleId="+articleId);
+	}else{
+		var str=prompt("请输入评价内容");
+		if(str){
+			$.post("${basePath}mobile-order/set-comment",{"articleId":articleId,"cId":cId,"userId":${userId},"comment":str},function(data){
+				alert("评论成功");
+			});
+		}
+	}
+	
 }
 </script>
 	

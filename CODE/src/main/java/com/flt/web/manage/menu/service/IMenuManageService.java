@@ -13,4 +13,6 @@ public interface IMenuManageService {
 	void deleteMenuById(Integer id);
 	
 	Menu findMenuById(Integer id);
+	
+	List<Menu> listRootMenus(Integer userId);
 }

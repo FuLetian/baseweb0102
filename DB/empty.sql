@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50520
 File Encoding         : 65001
 
-Date: 2014-03-11 15:51:33
+Date: 2014-03-11 15:20:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -43,7 +43,7 @@ CREATE TABLE `article` (
   `price` double DEFAULT NULL,
   `discount` double DEFAULT NULL,
   `stars` int(11) DEFAULT NULL COMMENT '评分',
-  `clip_count` int(11) DEFAULT '0' COMMENT '赞数',
+  `clip_count` int(11) NOT NULL DEFAULT '0' COMMENT '赞数',
   `name` varchar(45) NOT NULL,
   `u_dt` datetime NOT NULL,
   `c_dt` datetime NOT NULL,
@@ -156,12 +156,11 @@ CREATE TABLE `brand` (
   PRIMARY KEY (`id`),
   KEY `fk_brand_user1` (`user_id`),
   CONSTRAINT `brand_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='品牌';
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='品牌';
 
 -- ----------------------------
 -- Records of brand
 -- ----------------------------
-INSERT INTO `brand` VALUES ('10', '阿迪', null, '0', '2014-03-11 15:50:46', '2014-03-11 15:50:52', '0', '1');
 
 -- ----------------------------
 -- Table structure for `channel`
@@ -177,12 +176,11 @@ CREATE TABLE `channel` (
   PRIMARY KEY (`id`),
   KEY `fk_channel_user1` (`user_id`),
   CONSTRAINT `channel_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of channel
 -- ----------------------------
-INSERT INTO `channel` VALUES ('5', '女生频道', '2014-03-11 15:44:40', '2014-03-11 15:44:40', '1', '1');
 
 -- ----------------------------
 -- Table structure for `comment`

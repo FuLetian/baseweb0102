@@ -37,8 +37,11 @@ public class MenuController {
 	@RequestMapping("getMenuEditorView")
 	public String getMenuEditorView(Integer menuId,Model model,HttpServletRequest req){
 		
-		List<Menu> menus=iMenuManageService.listAllMenus(Configuration.TMP_SESSION_USER_ID);
-		
+		List<Menu> menus=iMenuManageService.listRootMenus(Configuration.TMP_SESSION_USER_ID);
+		menus.add(new Menu(){{
+			this.setId(0);
+			this.setName("空");
+		}});
 		if(menuId!=null){
 			Menu menu=iMenuManageService.findMenuById(menuId);
 			model.addAttribute("menu", menu);

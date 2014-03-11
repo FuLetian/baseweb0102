@@ -1,5 +1,6 @@
 package com.flt.web.itf.dto;
 
+import com.flt.dao.model.Article;
 import com.flt.dao.model.Comment;
 import com.flt.dao.model.Consumer;
 
@@ -15,6 +16,13 @@ public class ConsumerCommentDTO {
 
 	private Consumer consumer;
 	private Comment comment;
+	private Article article;
+	public Article getArticle() {
+		return article;
+	}
+	public void setArticle(Article article) {
+		this.article = article;
+	}
 	public Consumer getConsumer() {
 		return consumer;
 	}

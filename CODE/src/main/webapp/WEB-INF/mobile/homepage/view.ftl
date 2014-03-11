@@ -29,7 +29,7 @@ function toMyOrderView(userId){
 	if(cId==0){
 		changePage(basePath+"mobile-consumer/login-page?userId="+userId+"&targetUrl=${basePath}mobile-order/view?userId="+userId);
 	}else{
-		changePage(basePath+"mobile-order/view?userId="+userId);
+		changePage(basePath+"mobile-order/view?userId="+userId+"&cId="+cId);
 	}
 	
 }
@@ -43,9 +43,9 @@ function toMyOrderView(userId){
 
 	<div>
 		<div  style="background-image:url('${basePath}h/images/public-bg3.jpg');width:100%;height:150px;text-align:center;font-size:24px;color:#FFFFFF;">
-			<img src="${basePath}h/images/icon-user.jpg" style="height:50%;margin-top:40px;border-radius: 50%;" />
+			<img src="${user.logoPath}" style="height:50%;margin-top:40px;border-radius: 50%;" />
 		</div>
-		<div style="color:#FFFFFF;background-color:#2D2D2D;height:40px;line-height:40px;text-align:center;font-size:18px;">您的品牌名字</div>
+		<div style="color:#FFFFFF;background-color:#2D2D2D;height:40px;line-height:40px;text-align:center;font-size:18px;">${user.siteName}</div>
 	</div><!-- /header -->
 	
 	<div> 
