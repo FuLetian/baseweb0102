@@ -12,7 +12,6 @@ public class AppAccessLogInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
 		// TODO Auto-generated method stub
-		System.err.println(">>pre>>"+request.getRequestURI());
 		return true;
 	}
 

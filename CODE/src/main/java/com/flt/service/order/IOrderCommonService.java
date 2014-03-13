@@ -1,5 +1,7 @@
 package com.flt.service.order;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import com.flt.dao.model.Order;
@@ -24,4 +26,6 @@ public interface IOrderCommonService {
 	Order loadOrderById(Integer orderId);
 	
 	void updateOrder(Order order);
+	
+	List<Integer> listCountBetweenDateByRunstatus(Calendar startDate,Calendar endDate,List<Integer> runStatusList,Integer userId);
 }

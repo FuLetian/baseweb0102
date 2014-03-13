@@ -71,7 +71,7 @@ public class ArticleController {
 		
 		model.addAttribute("id", id);
 		model.addAttribute("brands", service.listAllBrands(Configuration.TMP_SESSION_USER_ID));
-		model.addAttribute("menus", service.listAllSecondMenus(Configuration.TMP_SESSION_USER_ID));
+		model.addAttribute("menus", service.listAllChildMenus(Configuration.TMP_SESSION_USER_ID));
 		model.addAttribute("channels", service.listAllChannels(Configuration.TMP_SESSION_USER_ID));
 		
 		model.addAttribute("basePath",req.getContextPath()+"/");

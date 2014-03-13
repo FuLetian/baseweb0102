@@ -92,14 +92,14 @@
 					<label for="account">用户名/Email</label>
 				</div>
 				<div>
-					<input type="text" name="account" onfocus="hideFooter()" onblur="showFooter();" style="width:100%;height:30px;border:1px solid #E8E8E8;border-radius:0%;">
+					<input type="text" value="111" name="account" onfocus="hideFooter()" onblur="showFooter();" style="width:100%;height:30px;border:1px solid #E8E8E8;border-radius:0%;">
 				</div>
 				
 				<div style="color:#FFFFFF;font-size:12px;font-weight:bold;margin-top:10px;">
 					<label>密码</label>
 				</div>
 				<div>
-					<input type="password" id="pwd" name="pwd" onfocus="hideFooter()" onblur="showFooter();" style="width:100%;height:30px;border:1px solid #E8E8E8;border-radius:0%;">
+					<input type="password" value="111" id="pwd" name="pwd" onfocus="hideFooter()" onblur="showFooter();" style="width:100%;height:30px;border:1px solid #E8E8E8;border-radius:0%;">
 				</div>
 				
 				<div class="btn" onclick="login();">登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录</div>

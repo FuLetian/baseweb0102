@@ -26,8 +26,8 @@ function login2(){
 	<div data-role="content"> 
    		<form id="loginForm2" action="${basePath}mobile-consumer/login" method="POST">
    			<input type="hidden" name="userId" value="${userId}" data-theme="c" data-clear-btn="true">
-			<input type="text" name="account" placeHolder="email/账户名"/>
-   			<input type="password" name="pwd" placeHolder="密码"/>
+			<input type="text" name="account" placeHolder="email/账户名" value="111"/>
+   			<input type="password" name="pwd" placeHolder="密码" value="111"/>
    		</form>
    		<button class="button" onclick="login2();" data-corners="false">登陆</button>
    		<div>没有账户?<a href="${basePath}mobile-consumer/regist-page?userId=${userId}">注册</a></div>

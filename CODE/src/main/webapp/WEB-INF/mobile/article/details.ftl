@@ -90,7 +90,7 @@
 		  	<div style="border-bottom:1px dashed #666666;padding-bottom:5px;font-size:12px;">※商品描述</div>
 			<p class="util-text-popular util-text-indent">${article.remark}</p>
 			<#list imgs as i>
-				<div><img src="${basePath}${i.path}" class="util-img-equals-width"/></div>	
+				<div><img src="${i.path}" class="util-img-equals-width"/></div>	
 			</#list>	  	
 		  </div>
 		</div>
@@ -116,7 +116,7 @@ function collect(articleId,userId){
 			changePage(basePath+"mobile-consumer/login-page?userId="+userId+"&targetUrl=${basePath}mobile-article/details?userId="+userId+"_articleId="+articleId);
 		}
 	}else{
-		$.getJSON(basePath+"mobile-article/collect",{"articleId":articleId,"consumerId":cId,"runStatus":4},function(data){
+		$.getJSON(basePath+"mobile-article/collect",{"articleId":articleId,"consumerId":cId,"runStatus":4,"userId":userId},function(data){
 			if(data.result){
 				alert("已收藏");
 			}else{
