@@ -17,6 +17,8 @@ public interface IArticleManageService {
 	
 	List<Menu> listAllSecondMenus(Integer userId);
 	
+	List<Menu> listAllChildMenus(Integer userId);
+	
 	List<Brand> listAllBrands(Integer userId);
 	
 	List<Channel> listAllChannels(Integer userId);

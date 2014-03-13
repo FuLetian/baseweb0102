@@ -6,11 +6,11 @@
 		<table style="width:100%;font-size:18px;">
 			<tr>
 				<td style="width:20%;">姓名:</td>
-				<td><input type="text" name="account"/></td>
+				<td><input type="text" name="account" value="111"/></td>
 			</tr>
 			<tr>
 				<td style="width:20%;">密码:</td>
-				<td><input type="password" name="pwd"/></td>
+				<td><input type="password" name="pwd" value="111"/></td>
 			</tr>
 		</table>
 		<a href="#" onclick="login()" data-corners="false">登陆</a>

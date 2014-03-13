@@ -34,7 +34,7 @@
 	<td>
 		<select name="menuId">
 			<#list menus as item>
-				<option value="${item.id}">${item.name}</option>
+				<option value="${item.id}" <#if item.id==article.menuId>selected</#if>>${item.name}</option>
 			</#list>
 		</select>
 	</td>

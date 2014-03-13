@@ -69,7 +69,7 @@ public class BuycarMobileController {
 	
 	@RequestMapping("addOrder")
 	@ResponseBody
-	public String addOrder(Integer cId,String name,String email,Integer phone,String address,String remark,HttpServletRequest req){
+	public String addOrder(Integer userId,Integer cId,String name,String email,Integer phone,String address,String remark,HttpServletRequest req){
 		JSONObject o=new JSONObject();
 		
 		Date now=new Date();
@@ -92,6 +92,7 @@ public class BuycarMobileController {
 			order.setTourName(name);
 			order.setTourPhone(phone.toString());
 			order.setuDt(now);
+			order.setUserId(userId);
 			
 			orderCommonService.saveOrder(order);
 			

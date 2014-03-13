@@ -15,6 +15,7 @@
 
 		<form id="orderForm" action="${basePath}mobile-buycar/addOrder">
 		<input id="hiddenCID" type="hidden" name="cId" value="0">
+		<input type="hidden" name="userId" value="${userId}">
 		<div class="ui-shadow" style="border:1px solid #588EBD;padding:10px 10px 10px 10px;">
 		<table style="width:100%;font-size:14px;">
 			<tr>

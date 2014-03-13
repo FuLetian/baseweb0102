@@ -1,6 +1,8 @@
 package com.flt.service.order;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -297,6 +299,44 @@ public class OrderArticleService extends BaseService implements IPage6OrderServi
 		// TODO Auto-generated method stub
 		OrderMapper m=this.getSqlSession().getMapper(OrderMapper.class);
 		m.updateByPrimaryKey(order);
+	}
+
+	@Override
+	public List<Integer> listCountBetweenDateByRunstatus(Calendar date1,
+			Calendar date2, List<Integer> runStatusList,Integer userId) {
+		// TODO Auto-generated method stub
+		List<Integer> countList=new ArrayList<>();
+		
+		OrderMapper m=this.getSqlSession().getMapper(OrderMapper.class);
+		
+		
+		while(!(date1.get(Calendar.MONTH)==date2.get(Calendar.MONTH)&&date1.get(Calendar.DAY_OF_MONTH)==date2.get(Calendar.DAY_OF_MONTH))){
+			
+			Calendar tmp=(Calendar) date1.clone();
+			Calendar tmp2=(Calendar) date1.clone();
+			
+			tmp.set(Calendar.HOUR, 0);
+			tmp.set(Calendar.MINUTE, 0);
+			tmp.set(Calendar.SECOND, 0);
+			Date minTime=tmp.getTime();
+			
+			tmp2.set(Calendar.HOUR, 23);
+			tmp2.set(Calendar.MINUTE, 59);
+			tmp2.set(Calendar.SECOND, 59);
+			Date maxTime=tmp2.getTime();
+			
+			SimpleDateFormat fmt=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			System.err.print(fmt.format(minTime));
+			System.err.print("~");
+			System.err.println(fmt.format(maxTime));
+			
+			OrderExample ex=new OrderExample();
+			ex.createCriteria().andRunStatusIn(runStatusList).andCDtBetween(minTime, maxTime).andUserIdEqualTo(userId);
+			countList.add(m.countByExample(ex));
+			
+			date1.add(Calendar.DAY_OF_MONTH, 1);
+		}
+		return countList;
 	}
 
 

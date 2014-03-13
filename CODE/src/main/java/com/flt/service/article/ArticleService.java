@@ -404,5 +404,14 @@ public class ArticleService extends BaseService implements IArticleService,IBuyc
 		m.updateByPrimaryKey(a);
 	}
 
+	@Override
+	public List<Menu> listAllChildMenus(final Integer userId) {
+		// TODO Auto-generated method stub
+		MenuMapper m=getSqlSession().getMapper(MenuMapper.class);
+		return m.selectByExample(new MenuExample(){{
+			this.createCriteria().andUserIdEqualTo(userId).andPIdNotEqualTo(0).andPIdIsNotNull();
+		}});
+	}
+
 	
 }

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50520
 File Encoding         : 65001
 
-Date: 2014-03-11 14:58:24
+Date: 2014-03-12 16:15:03
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -26,8 +26,8 @@ CREATE TABLE `user` (
   `site_name` varchar(32) DEFAULT NULL COMMENT '网站名字',
   `logo_path` varchar(100) DEFAULT NULL COMMENT '网站logo',
   `domain` varchar(45) DEFAULT NULL,
-  `qq_num` int(11) DEFAULT NULL,
-  `phone_num` int(11) DEFAULT NULL,
+  `qq_num` bigint(32) DEFAULT NULL,
+  `phone_num` bigint(32) DEFAULT NULL,
   `home_address` varchar(32) DEFAULT NULL,
   `email_address` varchar(45) DEFAULT NULL,
   `site_address` varchar(45) DEFAULT NULL COMMENT '基本信息',
@@ -39,4 +39,4 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'fuletian', null, '1', '/baseweb/h/images/upload/1/1394518492272.jpg', null, '1', '1', '1', '1', 'fuletian', '122', '1');
+INSERT INTO `user` VALUES ('1', 'fuletian', null, '1', '/baseweb/h/images/upload/1/1394518492272.jpg', null, '2364596482', '15281060106', '您的地址', '您的邮箱地址', 'a', '您的基本资料', '您的宣传语');
