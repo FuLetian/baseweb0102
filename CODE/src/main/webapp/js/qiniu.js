@@ -1,0 +1,7 @@
+/**
+ * 
+ */
+
+function loadQiniu(option){
+	
+}

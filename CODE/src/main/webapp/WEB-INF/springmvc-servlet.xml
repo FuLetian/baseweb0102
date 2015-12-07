@@ -44,7 +44,7 @@
 		<mvc:resources mapping="/video/**" location="/video/"/>
 		<mvc:resources mapping="/h/**" location="/h/"/>
 		<mvc:resources mapping="/h2/**" location="/h2/"/>
-		<mvc:resources mapping="/editor/**" location="/editor/"/>
+		<mvc:resources mapping="/lib/**" location="/lib/"/>
 		<mvc:resources mapping="/index.htm" location="/index.htm"/>
 <!-- 		<mvc:interceptors> -->
 <!-- 			<bean class="com.flt.web.context.dynamic.DynamicURLInterceptor"></bean> -->
